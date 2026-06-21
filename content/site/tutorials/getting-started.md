@@ -1,82 +1,82 @@
 ---
-title: Getting started
-tagline: "From zero to your first /polish pass in five minutes."
+title: Primeros pasos
+tagline: "De cero a tu primer pase de /polish en cinco minutos."
 order: 1
-description: "Install Impeccable, run /impeccable teach once to establish project context, and run /polish on something that already exists. The fastest path to seeing what Impeccable changes about AI-generated design."
+description: "Instala Impeccable, ejecuta /impeccable teach una vez para establecer el contexto del proyecto y ejecuta /polish en algo que ya exista. El camino más rápido para ver qué cambia Impeccable en el diseño generado por IA."
 ---
 
-## What you'll build
+## Qué construirás
 
-You will end this tutorial with Impeccable installed in your project, a `.impeccable.md` file that captures your brand and audience, and one hand-polished page that went through a `/polish` pass. Total time: about five minutes.
+Terminarás este tutorial con Impeccable instalado en tu proyecto, un archivo `.impeccable.md` que capture tu marca y audiencia, y una página pulida a mano que haya pasado por un flujo `/polish`. Tiempo total: unos cinco minutos.
 
-## Prerequisites
+## Requisitos previos
 
-- An AI coding harness: Claude Code, Cursor, Gemini CLI, Codex CLI, or any of the other supported tools.
-- A project with at least one HTML or component file you want to improve. A fresh scaffolded landing page works fine.
+- Un asistente de desarrollo con soporte para habilidades: Claude Code, Cursor, Gemini CLI, Codex CLI o cualquier otra herramienta compatible.
+- Un proyecto con al menos un archivo HTML o componente que desees mejorar. Una página de inicio recién creada sirve perfectamente.
 
-## Step 1. Install
+## Paso 1. Instalación
 
-From the root of your project, run:
+Desde la raíz de tu proyecto, ejecuta:
 
 ```
 npx skills add pbakaus/impeccable
 ```
 
-This auto-detects your harness and writes the skill files to the right location (e.g., `.claude/skills/`, `.cursor/skills/`). Reload your harness and type `/`. You should see `/impeccable`, `/polish`, `/critique`, and the other commands in the autocomplete.
+Esto detecta de forma automática tu entorno de IA y escribe los archivos de habilidades en la ubicación correcta (por ejemplo, `.claude/skills/`, `.cursor/skills/`). Recarga tu asistente y escribe `/`. Deberías ver `/impeccable`, `/polish`, `/critique` y los demás comandos en el autocompletado.
 
-## Step 2. Teach Impeccable about your project
+## Paso 2. Enseñar a Impeccable sobre tu proyecto
 
-This is the most important step. Design without context produces generic output. The `/impeccable teach` command runs a short discovery interview and writes a `.impeccable.md` file at the root of your project.
+Este es el paso más importante. El diseño sin contexto produce resultados genéricos. El comando `/impeccable teach` ejecuta una breve entrevista de descubrimiento y escribe un archivo `.impeccable.md` en la raíz de tu proyecto.
 
-Run:
+Ejecuta:
 
 ```
 /impeccable teach
 ```
 
-The skill will ask you a handful of questions:
+La habilidad te hará algunas preguntas clave:
 
-- **Who is this product for?** Be specific. Not "users" but "solo founders evaluating a new tool on their phone between meetings".
-- **What is the brand voice in three words?** Pick real words. "Warm and mechanical and opinionated" is better than "modern and clean".
-- **What should the interface feel like?** Concrete adjectives. "Calm, trustworthy, fast" or "playful, bold, a little chaotic".
-- **Any visual references?** Screenshots, sites, design systems you admire.
-- **Anti-references?** Things the product should explicitly not look like.
+- **¿Para quién es este producto?** Sé específico. No pongas "usuarios", sino "fundadores en solitario que evalúan una nueva herramienta en sus teléfonos entre reuniones".
+- **¿Cuál es la voz de la marca en tres palabras?** Elige palabras con significado. "Cálido, mecánico y obstinado" es mejor que "moderno y limpio".
+- **¿Cómo debería sentirse la interfaz?** Adjetivos concretos. "Calmado, confiable, rápido" o "juguetón, atrevido, un poco caótico".
+- **¿Alguna referencia visual?** Capturas de pantalla, sitios web o sistemas de diseño que admires.
+- **¿Referencias negativas?** Cosas a las que el producto no debería parecerse bajo ningún concepto.
 
-Answer in your own words. The skill writes a `.impeccable.md` file with the answers. Every future skill call reads it automatically.
+Responde con tus propias palabras. La habilidad escribirá un archivo `.impeccable.md` con las respuestas. Cada llamada futura a una habilidad leerá este archivo de forma automática.
 
-Open `.impeccable.md` and read what it wrote. Edit anything that does not feel right. The file is yours.
+Abre `.impeccable.md` y lee lo que ha escrito. Modifica lo que no se sienta del todo correcto. El archivo te pertenece y es tuyo.
 
-## Step 3. Polish something
+## Paso 3. Pulir algo existente
 
-Pick a page that already exists. An about page, a settings screen, a pricing table, anything. Run:
-
-```
-/polish the pricing page
-```
-
-The skill will walk through alignment, spacing, typography, color, interaction states, transitions, and copy. It makes targeted fixes, not a rewrite. Expect a handful of small diffs that together lift the page from "done" to "done well".
-
-A typical polish pass looks like:
+Elige una página que ya esté creada. Una página "Sobre nosotros", una pantalla de configuración, una tabla de precios o cualquier otra. Ejecuta:
 
 ```
-Visual alignment: fixed 3 off-grid elements
-Typography: tightened h1 kerning, fixed widow on feature list
-Color: replaced one hardcoded hex with --color-accent token
-Interaction: added missing hover state on FAQ items
-Motion: softened modal entrance to 220ms ease-out-quart
-Copy: removed stray 'Lorem' placeholder
+/polish la página de precios
 ```
 
-Review the diff. If something does not feel right, ask the model to explain the change. If it still does not feel right, revert it. Impeccable is opinionated but not infallible.
+La habilidad revisará la alineación, el espaciado, la tipografía, el color, los estados de interacción, las transiciones y los textos. Realizará correcciones específicas, no una reescritura completa. Espera una serie de pequeños cambios en el código que juntos elevarán la página de "terminada" a "terminada con excelencia".
 
-## What to try next
+Un pase típico de pulido se ve así:
 
-- `/critique the landing page` runs a full design review with scoring, persona tests, and automated detection. It is the best way to find what to fix next.
-- `/audit the checkout` runs accessibility, performance, theming, responsive, and anti-pattern checks against the implementation. Useful before shipping.
-- `/impeccable craft a pricing page for enterprise customers` runs the full shape-then-build flow on a brand new feature.
+```
+Alineación visual: corregidos 3 elementos fuera de cuadrícula
+Tipografía: ajustado el espaciado del h1, corregida línea viuda en la lista de características
+Color: reemplazado un color hex por el token --color-accent
+Interacción: añadidos estados hover en los elementos de P+F
+Movimiento: suavizada la entrada del modal a 220ms ease-out-quart
+Textos: eliminado un texto de prueba residual 'Lorem ipsum'
+```
 
-## Common issues
+Revisa los cambios en el código (diff). Si algo no se siente correcto, pídele al modelo que te explique el cambio. Si sigues sin estar de acuerdo, reviértelo. Impeccable tiene criterio y opinión, pero no es infalible.
 
-- **The skill says "no design context found"**. You skipped step 2. Run `/impeccable teach` first.
-- **Commands do not appear in the harness**. Reload the harness after installing. If they still do not appear, check that the installer wrote files into the expected location (`.claude/skills/`, `.cursor/skills/`, etc.) and that your harness is picking up that directory.
-- **The polish pass rewrote something you liked**. Say so. Revert the change, tell the model which specific edit to undo, and continue from there.
+## Qué probar a continuación
+
+- `/critique la landing page` ejecuta una revisión de diseño completa con puntuaciones, pruebas de personas y detección automatizada de antipatrones. Es la mejor manera de encontrar qué corregir después.
+- `/audit el proceso de compra` ejecuta comprobaciones de accesibilidad, rendimiento, temas, diseño responsivo y antipatrones. Muy útil antes de lanzar a producción.
+- `/impeccable craft una página de precios para clientes corporativos` ejecuta el flujo completo de planificación y construcción desde cero.
+
+## Problemas comunes
+
+- **La habilidad dice "no se encontró contexto de diseño"**. Te saltaste el paso 2. Ejecuta `/impeccable teach` primero.
+- **Los comandos no aparecen en el asistente**. Recarga la herramienta de IA después de instalar. Si siguen sin aparecer, comprueba que el instalador haya escrito los archivos en la ubicación esperada (por ejemplo, `.claude/skills/`, `.cursor/skills/`) y que tu software esté configurado para leer ese directorio.
+- **El pase de pulido modificó algo que te gustaba**. Dilo claramente. Revierte el cambio, dile al modelo exactamente qué edición quieres deshacer y continúa desde ahí.

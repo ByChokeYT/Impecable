@@ -1,50 +1,50 @@
 ---
-tagline: "Five-dimension technical quality check with P0 to P3 severity."
+tagline: "Control de calidad técnica en 5 dimensiones con niveles de severidad P0 a P3."
 ---
 
-## When to use it
+## Cuándo usarlo
 
-`/audit` is the technical counterpart to `/critique`. Where `/critique` asks "does this feel right", `/audit` asks "does this hold up". It runs accessibility, performance, theming, responsive design, and anti-pattern checks against the implementation, scores each dimension 0 to 4, and produces a plan with P0 to P3 severity ratings.
+`/audit` es el equivalente técnico de `/critique`. Mientras que `/critique` se pregunta "si esto se siente bien", `/audit` pregunta "si esto aguanta el tipo". Ejecuta comprobaciones de accesibilidad, rendimiento, temas (color/modo oscuro), diseño responsivo y antipatrones contra la implementación, califica cada dimensión del 0 al 4 y produce un plan de acción clasificado por prioridades P0 a P3.
 
-Use it before shipping, during a quality sprint, or whenever a tech lead says "we should really look at accessibility".
+Úsalo antes de pasar a producción, durante un sprint de calidad o cada vez que un responsable técnico diga "deberíamos revisar la accesibilidad".
 
-## How it works
+## Cómo funciona
 
-The skill scans your code across five dimensions:
+La habilidad escanea tu código a través de cinco dimensiones clave:
 
-1. **Accessibility**: WCAG contrast, ARIA, keyboard nav, semantic HTML, form labels.
-2. **Performance**: layout thrashing, expensive animations, missing lazy loading, bundle weight.
-3. **Theming**: hard-coded colors, dark mode coverage, token consistency.
-4. **Responsive**: breakpoint behavior, touch targets, mobile viewport handling.
-5. **Anti-patterns**: the same deterministic 25 checks the detector runs.
+1. **Accesibilidad**: contraste según WCAG, roles ARIA, navegación por teclado, HTML semántico y etiquetas de formularios.
+2. **Rendimiento**: saltos de diseño (layout thrashing), animaciones costosas en rendimiento, falta de carga diferida (lazy loading) y peso del paquete (bundle).
+3. **Temas**: colores harcodeados en el código, soporte de modo oscuro y consistencia en el uso de tokens.
+4. **Responsivo**: comportamiento en puntos de interrupción, objetivos táctiles y manejo de la pantalla en móviles.
+5. **Antipatrones**: las mismas 25 comprobaciones deterministas que realiza el detector.
 
-Each dimension gets a 0 to 4 score. Each finding gets a severity: P0 blocks the release, P1 should fix this sprint, P2 is next cycle, P3 is polish. You get back a single document you can paste into a ticket tracker.
+Cada dimensión recibe una puntuación de 0 a 4. Cada hallazgo recibe una prioridad: P0 bloquea el lanzamiento, P1 debe solucionarse en el sprint actual, P2 se planifica para el siguiente ciclo y P3 es para pulido menor. Recibes un único informe estructurado que puedes copiar directamente a tu gestor de tareas (como Jira o GitHub Issues).
 
-Audit does not fix anything. It documents. Route the findings to `/polish`, `/harden`, or `/optimize` depending on the category.
+`audit` no corrige nada directamente; su función es documentar y analizar. Canaliza los hallazgos hacia `/polish`, `/harden` u `/optimize` dependiendo de su categoría.
 
-## Try it
-
-```
-/audit the checkout flow
-```
-
-Expected output:
+## Pruébalo
 
 ```
-Accessibility: 2/4 (partial)
-  P0: Missing form labels on 4 inputs
-  P1: Contrast 3.1:1 on disabled button state
-  P2: No visible focus indicator on custom dropdown
+/audit el flujo de pago
+```
 
-Performance: 3/4 (good)
-  P1: Hero image not lazy-loaded (340KB)
+Resultado esperado:
+
+```
+Accesibilidad: 2/4 (parcial)
+  P0: Faltan etiquetas visibles en 4 campos de entrada
+  P1: Contraste de 3.1:1 en el estado desactivado del botón
+  P2: Sin indicador de enfoque visible en el menú desplegable personalizado
+
+Rendimiento: 3/4 (bueno)
+  P1: La imagen principal no tiene carga diferida (340KB)
   ...
 ```
 
-Hand the P0s to `/harden`, the theming and typography P1s to `/typeset` and `/polish`, the rest to `/polish`.
+Asigna las tareas P0 a `/harden`, las P1 de temas y tipografía a `/typeset` y `/polish`, y el resto a `/polish`.
 
-## Pitfalls
+## Problemas comunes
 
-- **Confusing it with `/critique`.** Audit is implementation quality. Critique is design quality. Run both for a full picture.
-- **Fixing P3s before P0s.** The severity scale exists for a reason. Start at the top.
-- **Skipping the dimensions you think are fine.** Theming and responsive are the ones most people assume are fine until they are not.
+- **Confundirlo con `/critique`.** `audit` evalúa la calidad de la implementación. `critique` evalúa la calidad del diseño y la experiencia de usuario. Ejecuta ambos para obtener una visión completa.
+- **Corregir tareas P3 antes que las P0.** La escala de prioridades existe por una razón. Comienza siempre por el nivel superior.
+- **Omitir las dimensiones que asumes que están bien.** Los temas y el diseño responsivo son las áreas que la mayoría de los desarrolladores asumen que funcionan correctamente hasta que se prueban en profundidad.

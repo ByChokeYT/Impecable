@@ -6,8 +6,9 @@ import path from 'path';
  * Returns { frontmatter: object, body: string }
  */
 export function parseFrontmatter(content) {
+  const normalized = content.replace(/\r\n/g, '\n');
   const frontmatterRegex = /^---\n([\s\S]*?)\n---\n([\s\S]*)$/;
-  const match = content.match(frontmatterRegex);
+  const match = normalized.match(frontmatterRegex);
 
   if (!match) {
     return { frontmatter: {}, body: content };
@@ -252,7 +253,7 @@ export function readPatterns(rootDir) {
 
     // Track section headings (### Typography, ### Color & Theme, etc.)
     if (trimmed.startsWith('### ')) {
-      currentSection = trimmed.slice(4).trim();
+      currentSection = trimmed.slice(4).trim().replace(/\s*\{#[a-z0-9_-]+\}\s*$/i, '');
       // Normalize to English keys for consistent mapping
       if (currentSection === 'Color & Theme' || currentSection === 'Color y Tema' || currentSection === 'Color y Contraste') {
         currentSection = 'Color & Contrast';

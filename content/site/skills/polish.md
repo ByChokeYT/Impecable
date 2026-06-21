@@ -1,46 +1,46 @@
 ---
-tagline: "The meticulous final pass between good and great."
+tagline: "El meticuloso pase final que separa lo bueno de lo excelente."
 ---
 
-## When to use it
+## Cuándo usarlo
 
-`/polish` is the last thing you run before shipping. It hunts down the small details that separate a shipped feature from a polished one: half-pixel misalignments, inconsistent spacing, forgotten focus states, loading transitions that flash, copy that drifts in tone. It also aligns the feature with your design system -- replacing hard-coded values with tokens, swapping custom components for shared ones, and fixing any drift from established patterns.
+`/polish` es el último paso que ejecutas antes de subir a producción. Busca y corrige los pequeños detalles que marcan la diferencia entre una funcionalidad simplemente terminada y una impecable: desalineaciones de medio píxel, espaciados inconsistentes, estados de enfoque (focus) olvidados, transiciones de carga que parpadean o textos que varían en su tono. También alinea el código con tu sistema de diseño, reemplazando valores manuales (hardcoded) por tokens, sustituyendo componentes personalizados por los compartidos del sistema y corrigiendo desviaciones de los patrones establecidos.
 
-Reach for it when the feature is functionally complete, nothing is broken, and something still feels off. Also reach for it when a feature has drifted from the design system and needs to be pulled back in line.
+Recurre a él cuando la funcionalidad esté completa, todo funcione bien pero sientas que falta refinamiento. También cuando el código se haya desviado del sistema de diseño y necesite alinearse de nuevo.
 
-## How it works
+## Cómo funciona
 
-Polish starts by discovering the design system (tokens, spacing scale, shared components), then works methodically across six dimensions:
+`/polish` comienza explorando tu sistema de diseño (tokens, escalas de espaciado, componentes compartidos) y luego trabaja de forma metódica en seis dimensiones:
 
-1. **Visual alignment and spacing**: pixel-perfect grid adherence, consistent spacing scale, optical alignment on icons.
-2. **Typography**: hierarchy consistency, line length, widows and orphans, kerning on headlines.
-3. **Color and contrast**: token usage, theme parity, WCAG ratios, focus indicators.
-4. **Interaction states**: hover, focus, active, disabled, loading, error, success. Every state accounted for.
-5. **Transitions and motion**: smooth easing, no layout jank, respect for `prefers-reduced-motion`.
-6. **Copy**: consistent voice, correct tense, no placeholder strings, no stray TODOs.
+1. **Alineación visual y espaciado**: adhesión estricta a la cuadrícula, consistencia en la escala de espaciado y alineación óptica de iconos.
+2. **Tipografía**: consistencia en la jerarquía, longitud de línea óptima, control de líneas viudas y huérfanas, y ajuste de interlineado (kerning) en encabezados principales.
+3. **Color y contraste**: uso correcto de tokens, paridad de temas (claro/oscuro), relaciones de contraste según WCAG e indicadores de enfoque legibles.
+4. **Estados interactivos**: hover, focus, active, disabled, loading, error y success. Asegura que todos los estados tengan tratamiento visual.
+5. **Transiciones y movimiento**: suavizado correcto (easing), evitando saltos bruscos en el layout y respetando `prefers-reduced-motion`.
+6. **Textos**: tono consistente en la voz, conjugación correcta, eliminación de textos de prueba y comentarios TODO olvidados.
 
-The skill is explicit about one thing: polish is the last step, not the first. If the feature is not functionally complete, polishing it is wasted work.
+Esta habilidad tiene una regla clara: pulir es el último paso, no el primero. Si la funcionalidad aún no está completa en su lógica, pulirla es trabajo perdido.
 
-## Try it
-
-```
-/polish the pricing page
-```
-
-A healthy run looks like:
+## Pruébalo
 
 ```
-Visual alignment: fixed 3 off-grid elements (8px baseline)
-Typography: tightened h1 kerning, fixed widow on testimonial
-Interaction: added hover state on FAQ items, focus ring on email input
-Motion: softened modal entrance, added reduced-motion fallback
-Copy: removed one "Lorem ipsum" stray, aligned button voice
+/polish la página de precios
 ```
 
-Five small fixes, no rewrites. That is the shape of a good polish pass.
+Un resultado típico del proceso:
 
-## Pitfalls
+```
+Alineación visual: corregidos 3 elementos fuera de la cuadrícula (base de 8px)
+Tipografía: ajustado el espaciado del h1, corregida línea viuda en el testimonio
+Interacción: añadido estado hover en preguntas frecuentes, anillo de enfoque en el input de email
+Movimiento: suavizada la entrada del modal, añadida alternativa de reducción de movimiento
+Textos: eliminado un texto de prueba residual, alineado el tono del botón
+```
 
-- **Polishing work that is not done.** If there are TODOs in the code, you are not ready. Run `/polish` on finished features only.
-- **Treating polish as redesign.** Polish refines what exists. If you find yourself rearchitecting a layout, you needed `/critique` or `/layout` instead.
-- **Running `/polish` without `/audit` first.** Polish catches feel-based issues. Audit catches measurable ones. Use both.
+Cinco correcciones precisas, sin reescrituras estructurales. Ese es el resultado ideal de un pase de pulido.
+
+## Problemas comunes
+
+- **Pulir trabajo inacabado.** Si aún hay comentarios TODO en el código que afectan al flujo, no es el momento. Ejecuta `/polish` únicamente sobre funcionalidades terminadas.
+- **Tratar el pulido como un rediseño.** Pulir refina lo que ya existe. Si te encuentras reestructurando la distribución completa de una página, necesitas `/critique` o `/layout` en su lugar.
+- **Ejecutar `/polish` sin hacer `/audit` primero.** El pulido corrige sensaciones y detalles visuales. La auditoría corrige problemas medibles y técnicos. Usa ambos.

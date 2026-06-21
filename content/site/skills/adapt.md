@@ -1,40 +1,40 @@
 ---
-tagline: "Make designs work across screens, devices, and contexts without amputating features."
+tagline: "Haz que los diseños funcionen en diferentes pantallas, dispositivos y contextos sin amputar funciones."
 ---
 
-## When to use it
+## Cuándo usarlo
 
-`/adapt` is for taking a design built for one context and making it work in another. Mobile from desktop, tablet from mobile, print from web, embedded from standalone, email from dashboard. Reach for it when the source design is solid but falls apart at other breakpoints, on touch, or in a different container.
+`/adapt` sirve para tomar un diseño creado para un contexto y hacer que funcione en otro. Móvil desde escritorio, tableta desde móvil, impresión desde web, integrado desde independiente, correo electrónico desde panel de control. Utilízalo cuando el diseño de origen sea sólido pero se desmorone en otros puntos de interrupción (breakpoints), al usar controles táctiles o en un contenedor diferente.
 
-Not for building responsive from scratch. For that, start with `/impeccable` and shape the layout responsive-first. Adapt is for the "we never thought about mobile" backfill.
+No es para construir un diseño responsivo desde cero. Para eso, comienza con `/impeccable` y planifica el diseño responsivo desde el principio. `/adapt` está pensado para cuando "nunca pensamos en el móvil" y hay que solucionarlo a posteriori.
 
-## How it works
+## Cómo funciona
 
-The skill works through four dimensions of contextual fit:
+La habilidad trabaja sobre cuatro dimensiones de ajuste contextual:
 
-1. **Breakpoints and fluid layout**: collapse multi-column to single, adjust clamp ranges, introduce new breakpoints where the design genuinely breaks.
-2. **Touch targets**: minimum 44px hit areas, sufficient spacing between adjacent targets, larger tap zones than visual bounds where needed.
-3. **Navigation patterns**: desktop sidebars become mobile bottom nav or slide-outs, dense toolbars collapse into menus, hover states get touch equivalents.
-4. **Content priority**: decide what must be visible, what can collapse into disclosures, what can be removed entirely for that context.
+1. **Puntos de interrupción y diseño fluido**: colapsa múltiples columnas en una sola, ajusta los rangos de tamaño dinámico (`clamp`), introduce nuevos puntos de interrupción cuando el diseño se rompe visualmente.
+2. **Objetivos táctiles**: áreas de contacto mínimas de 44px, espacio suficiente entre objetivos adyacentes, zonas de toque más grandes que los límites visuales cuando sea necesario.
+3. **Patrones de navegación**: las barras laterales de escritorio se convierten en menús inferiores o paneles deslizantes en móviles, las barras de herramientas densas se colapsan en menús, los estados hover reciben equivalentes táctiles.
+4. **Prioridad del contenido**: decide qué debe ser visible de inmediato, qué se puede contraer en elementos desplegables y qué se puede eliminar por completo para ese contexto.
 
-The non-negotiable rule: adapt, do not amputate. Critical functionality cannot disappear on mobile just because it is inconvenient. Find a way to fit it, redesign the interaction, or reconsider whether it was really critical on desktop.
+La regla no negociable: adaptar, no amputar. Las funcionalidades críticas no pueden desaparecer en el móvil solo porque sea incómodo adaptarlas. Encuentra una manera de encajarlas, rediseña la interacción o reconsidera si realmente eran críticas en la versión de escritorio.
 
-## Try it
+## Pruébalo
 
 ```
-/adapt the settings page for mobile
+/adapt la página de configuración para móviles
 ```
 
-Expected changes:
+Cambios esperados:
 
-- Three-column grid becomes single column with section headers acting as sticky dividers
-- Sidebar nav moves to a horizontal scroller above the content
-- Toggles gain 8px vertical padding so they meet 44px touch targets
-- Inline help text moves to tap-to-reveal, not hover
-- The "Danger zone" section expands fully on mobile instead of collapsing, because it contains irreversible actions and we want users to see them clearly
+- Las cuadrículas de tres columnas pasan a ser de una sola columna con encabezados de sección que actúan como divisores pegajosos (sticky).
+- La navegación lateral se mueve a un menú de desplazamiento horizontal sobre el contenido.
+- Los selectores y botones obtienen un espaciado vertical adicional de 8px para cumplir con el objetivo táctil de 44px.
+- El texto de ayuda en línea pasa a revelarse mediante pulsación (tap), no por hover.
+- La sección de "Zona de peligro" se expande por completo en móvil en lugar de colapsarse, porque contiene acciones irreversibles y queremos que los usuarios las vean claramente.
 
-## Pitfalls
+## Problemas comunes
 
-- **Amputating features.** If the mobile version hides things the desktop version can do, that is a regression, not an adaptation. Fight for the feature.
-- **Treating mobile as "smaller desktop".** Mobile is a different context: thumbs, interruption, short sessions. Adapt to the context, not to the viewport width.
-- **Skipping `/harden` afterward.** Responsive layouts reveal edge cases. Run hardening after adapt to catch the ones that only show up at 320px.
+- **Amputar funcionalidades.** Si la versión móvil oculta cosas que la versión de escritorio sí puede hacer, eso es una regresión, no una adaptación. Defiende la funcionalidad.
+- **Tratar el móvil como un "escritorio pequeño".** El móvil es un contexto diferente: pulgares, interrupciones constantes, sesiones cortas. Adáptate al contexto de uso, no solo al ancho del viewport.
+- **Omitir `/harden` después.** Los diseños responsivos suelen revelar casos límite imprevistos. Ejecuta el comando de fortalecimiento después de adaptar para detectar los problemas que solo se muestran en pantallas de 320px.

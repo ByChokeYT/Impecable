@@ -1,129 +1,129 @@
 ---
-title: Critique with the visual overlay
-tagline: "Use /critique plus the browser overlay to review a live page with ground truth."
+title: Crítica con la capa visual
+tagline: "Utiliza /critique junto con la capa del navegador para revisar una página activa con datos reales."
 order: 2
-description: "Run a full design critique that combines LLM assessment, the automated detector, and a live browser overlay so you can see exactly which elements trigger which anti-patterns on the page you're looking at."
+description: "Ejecuta una crítica de diseño completa que combine la evaluación de LLM, el detector determinista y una capa visual en el navegador para ver exactamente qué elementos activan los antipatrones en la página."
 ---
 
-## What you'll build
+## Qué construirás
 
-You will run a complete design critique against a live page in your browser, with every flagged anti-pattern highlighted directly on the element that caused it. No screenshots, no guesswork, no paragraph of findings you have to map back to the code.
+Ejecutarás una crítica de diseño completa contra una página activa en tu navegador, mostrando cada antipatrón señalado directamente en el elemento que lo causó. Sin capturas de pantalla, sin suposiciones y sin largos informes de texto que tengas que mapear manualmente en tu código.
 
-Total time: about ten minutes.
+Tiempo total: unos diez minutos.
 
-## Prerequisites
+## Requisitos previos
 
-- Impeccable installed in your project (see [getting started](/tutorials/getting-started) if you have not).
-- A harness with browser automation available (Claude Code with the Chrome extension, or similar).
-- A page you want to critique, either local (`localhost:3000/pricing`) or deployed.
+- Impeccable instalado en tu proyecto (consulta el tutorial de [primeros pasos](/tutorials/getting-started) si aún no lo has hecho).
+- Un entorno de IA que admita automatización del navegador (como Claude Code con su extensión de Chrome o similares).
+- Una página que quieras criticar, ya sea en local (`localhost:3000/pricing`) o desplegada en producción.
 
-## Step 1. Run /critique
+## Paso 1. Ejecutar /critique
 
-From your harness, run:
+Desde tu asistente de IA, ejecuta:
 
 ```
-/critique the pricing page at localhost:3000/pricing
+/critique la página de precios en localhost:3000/pricing
 ```
 
-The skill kicks off two independent assessments in parallel. They run in separate sub-agents so one does not bias the other.
+La habilidad inicia dos evaluaciones independientes en paralelo. Se ejecutan en subagentes separados para que una no influya en la otra.
 
-### What the LLM assessment does
+### Qué hace la evaluación por LLM
 
-The first assessment reads your source code and, if browser automation is available, opens the live page in a new tab. It walks the full impeccable skill DO/DON'T catalog and scores the page against Nielsen's 10 heuristics, the 8-item cognitive load checklist, and the brand fit from your `.impeccable.md`.
+La primera evaluación analiza tu código fuente y, si tiene automatización del navegador habilitada, abre la página activa en una nueva pestaña. Recorre el catálogo completo de directrices SÍ/NO de Impeccable y califica la página según las 10 heurísticas de Nielsen, la lista de verificación de carga cognitiva de 8 puntos y el ajuste de marca definido en tu `.impeccable.md`.
 
-It labels the tab it opens with `[LLM]` in the title so you can tell which one is which.
+Esta pestaña abierta se etiquetará con `[LLM]` en el título del navegador para que puedas identificarla con facilidad.
 
-### What the automated detector does
+### Qué hace el detector automatizado
 
-The second assessment runs `npx impeccable detect` against the page. This is deterministic: 25 specific pattern checks that fire or do not fire. Gradient text, purple palettes, side-tab borders, nested cards, line length problems, low contrast, tiny body text, and the rest.
+La segunda evaluación ejecuta `npx impeccable detect` sobre la página de forma determinista, evaluando 25 reglas específicas que se activan o no: texto con degradados, paletas moradas, bordes con pestaña lateral, tarjetas anidadas, longitud de línea inadecuada, bajo contraste, texto de cuerpo muy pequeño, entre otras.
 
-You get back a JSON list of every finding with its element selector, the rule that fired, and a short description.
+Recibirás una respuesta estructurada en JSON con cada hallazgo indicando su selector HTML en la página, la regla activada y una breve descripción.
 
-## Step 2. Open the visual overlay
+## Paso 2. Abrir la capa visual (Visual Overlay)
 
-Impeccable ships with a visual mode that highlights every detected anti-pattern directly on the page. Here is what it looks like running on a deliberately-bad synthwave landing page:
+Impeccable incluye un Modo Visual que resalta cada antipatrón detectado directamente en la pantalla de la página. Así es como se ve al ejecutarse en una página de inicio sintética diseñada con estética synthwave (y deliberadamente llena de errores de diseño):
 
 <div class="tutorial-embed">
   <div class="tutorial-embed-header">
     <span class="tutorial-embed-dot red"></span>
     <span class="tutorial-embed-dot yellow"></span>
     <span class="tutorial-embed-dot green"></span>
-    <span class="tutorial-embed-title">Live detection overlay</span>
+    <span class="tutorial-embed-title">Capa de detección en vivo</span>
   </div>
-  <iframe src="/antipattern-examples/visual-mode-demo.html" class="tutorial-embed-iframe" loading="lazy" title="Impeccable visual overlay running on a demo page"></iframe>
+  <iframe src="/antipattern-examples/visual-mode-demo.html" class="tutorial-embed-iframe" loading="lazy" title="Capa visual de Impeccable ejecutándose en una página de demostración"></iframe>
 </div>
 
-Every outlined element has a floating label naming the rule that fired. Hover an outline to see the full finding. This is exactly what you will see on your own page.
+Cada elemento contorneado muestra una etiqueta flotante con el nombre de la regla activada. Pasa el cursor sobre un contorno para ver el informe completo de la regla. Esto es exactamente lo que verás en tu propia página.
 
-You have three ways to open it:
+Dispones de tres formas de abrir esta capa:
 
-1. **[Chrome extension](https://chromewebstore.google.com/detail/impeccable/bdkgmiklpdmaojlpflclinlofgjfpabf)**: one-click activation on any page. Click the Impeccable icon in the toolbar and every anti-pattern gets highlighted instantly.
-2. **Inside `/critique`**: the skill opens a browser tab labeled `[Human]` with the detector active during the browser portion of the assessment. You do not need to do anything extra.
-3. **Standalone CLI**: `npx impeccable live` starts a local server that serves the detector script. You inject it into any page by adding a `<script>` tag.
+1. **[Extensión de Chrome](https://chromewebstore.google.com/detail/impeccable/bdkgmiklpdmaojlpflclinlofgjfpabf)**: activación a un clic en cualquier página. Pulsa el icono de Impeccable en la barra de herramientas y cada antipatrón se resaltará instantáneamente.
+2. **Dentro de `/critique`**: la habilidad abre una pestaña del navegador etiquetada como `[Human]` con el detector activo de forma automática durante la fase del navegador. No necesitas hacer nada adicional.
+3. **CLI independiente**: `npx impeccable live` inicia un servidor local que sirve el script del detector. Puedes inyectarlo en cualquier página añadiendo una etiqueta `<script>`.
 
-For this tutorial, the easiest option is the Chrome extension. Install it, navigate to your pricing page, and click the Impeccable icon. You will see the overlay appear immediately on the live page.
+Para este tutorial, la opción más sencilla es la extensión de Chrome. Instálala, navega a tu página de precios y pulsa el icono de Impeccable. Verás aparecer la capa con los contornos visuales de inmediato.
 
-## Step 3. Merge the two assessments
+## Paso 3. Fusionar las dos evaluaciones
 
-Back in your harness, `/critique` has finished and produced a combined report. It looks something like:
+De vuelta en tu terminal con tu asistente de IA, `/critique` habrá terminado y mostrará un reporte unificado. El resultado se verá parecido a esto:
 
 ```
-AI slop verdict: FAIL
-  Detected tells: gradient-text (2), ai-color-palette (1),
-                  nested-cards (1), side-tab (3)
+Veredicto de basura de IA (AI slop): REPROBADO
+  Indicios detectados: gradient-text (2), ai-color-palette (1),
+                       nested-cards (1), side-tab (3)
 
-Heuristic scores (avg 2.8/4):
-  Visibility of status: 3 (good)
-  Match between system and real world: 2 (partial)
-  Consistency and standards: 2 (partial)
+Puntuación heurística (promedio 2.8/4):
+  Visibilidad del estado del sistema: 3 (bueno)
+  Adecuación entre el sistema y el mundo real: 2 (parcial)
+  Consistencia y estándares: 2 (parcial)
   ...
 
-Cognitive load: 3/8 failures (moderate)
-  Visible options at primary decision: 6 (flag)
-  Decision points stacked at top: yes (flag)
-  Progressive disclosure: absent on advanced pricing toggles
+Carga cognitiva: 3/8 fallos (moderado)
+  Opciones visibles en la decisión principal: 6 (alerta)
+  Puntos de decisión acumulados arriba: sí (alerta)
+  Divulgación progresiva: ausente en los selectores avanzados de precios
 
-What's working:
-  - Clear price hierarchy
-  - Strong headline
+Qué funciona bien:
+  - Jerarquía clara en los precios
+  - Título principal contundente y con fuerza visual
 
-Priority issues:
-  1. Hero uses gradient text on the main price
-     Why: AI tell, reduces contrast, hurts scannability
-     Fix: solid ink color at one weight heavier
-  2. Feature comparison table has 4 nested card levels
-     Why: visual noise, unclear hierarchy
-     Fix: flatten to a table with zebra striping
+Problemas prioritarios:
+  1. El hero utiliza texto con degradado en el precio principal
+     Por qué: indicio típico de IA, reduce el contraste y la legibilidad
+     Corrección: usar color de tinta sólido con un punto más de grosor
+  2. La tabla de comparación de funciones tiene 4 niveles de tarjetas anidadas
+     Por qué: genera ruido visual y confunde la jerarquía
+     Corrección: aplanar la estructura a una tabla simple con filas cebradas
 
-Questions to answer:
-  - Is the free tier a real product or a funnel?
-  - What does a user feel when they land here from an ad vs from search?
+Preguntas a resolver:
+  - ¿El nivel gratuito es un producto real o solo un canal de captación?
+  - ¿Qué siente un usuario al llegar aquí desde un anuncio frente a una búsqueda?
 ```
 
-## Step 4. Fix the findings
+## Paso 4. Corregir los problemas
 
-The report gives you a priority list. You can work through them one at a time, ask the model to fix them all at once, or anything in between. What matters is using the overlay to verify:
+El informe te entrega una lista de tareas prioritarias. Puedes ir resolviéndolas una a una, pedirle al modelo que las corrija todas juntas o seguir cualquier otro flujo. Lo que importa es usar la capa visual para verificar las correcciones:
 
-1. Keep the overlay open in one tab.
-2. Make fixes in code (or ask the model to fix everything).
-3. Reload. The overlay re-scans and resolved findings disappear.
+1. Mantén la pestaña del navegador con la capa abierta.
+2. Realiza las correcciones correspondientes en tu código (o pídele a la IA que lo haga).
+3. Recarga la página. La capa volverá a escanearla y las marcas de los problemas resueltos desaparecerán.
 
-This feedback loop is the reason the overlay matters. You see fixes land in real time, and you never ship a "fix" that did not actually satisfy the rule.
+Este ciclo de retroalimentación inmediata es la razón por la que la capa visual es tan potente. Ves cómo impactan tus cambios en tiempo real y te aseguras de no subir a producción una "solución" que en realidad no resuelva la regla de diseño.
 
-## Step 5. Re-run /critique when you are done
+## Paso 5. Volver a ejecutar /critique al terminar
 
-After you have worked through the priority list, run `/critique` again. The goal is a clean AI slop verdict and at least a 3.5 average on the heuristics. Cognitive load should be below 2 failures.
+Una vez hayas resuelto la lista de problemas prioritarios, ejecuta `/critique` de nuevo. El objetivo es obtener un veredicto limpio en el apartado de "basura de IA" y al menos una media de 3.5 en las puntuaciones heurísticas. Los fallos de carga cognitiva deberían situarse por debajo de 2.
 
-If something still fires, fix it or write a suppression comment explaining why the rule does not apply in your context (the detector respects a small set of opt-out pragmas, but use them sparingly).
+Si alguna regla sigue activándose, corrígela o escribe un comentario de supresión de regla en el código explicando por qué no aplica en tu contexto específico (el detector respeta directivas especiales de supresión de reglas, pero te aconsejamos usarlas con prudencia).
 
-## What to try next
+## Qué probar a continuación
 
-- `/audit the same page` to catch the implementation issues critique does not cover (accessibility, performance, theming).
-- `/polish` if the critique report is clean and you want the last-mile refinement pass.
-- `/distill` if critique flagged "too busy" or "cognitive load". Distill removes what should not be there.
+- `/audit la misma página` para detectar los problemas de implementación que la crítica de diseño no cubre (accesibilidad, rendimiento y temas).
+- `/polish` si el reporte de crítica está limpio y deseas un pase final de refinamiento y detalle.
+- `/distill` si la crítica señala que la página está "muy cargada" o hay problemas de "carga cognitiva". Simplificar elimina lo sobrante.
 
-## Common issues
+## Problemas comunes
 
-- **The overlay shows no findings but critique says there are problems**. The detector catches deterministic patterns. Critique catches judgment calls. They are complementary, not redundant.
-- **The LLM assessment and the detector disagree**. That is normal. The LLM is subjective. The detector is deterministic. When they disagree, look at both and make a call.
-- **The overlay breaks the page layout**. Rare, but some CSS can interact with the injected overlay styles. Use the [Chrome extension](https://chromewebstore.google.com/detail/impeccable/bdkgmiklpdmaojlpflclinlofgjfpabf) for the most reliable experience, or run `npx impeccable detect` from the CLI and apply findings manually.
+- **La capa no muestra fallos pero critique sigue señalando problemas**. El detector determinista encuentra patrones de código e implementación. La crítica por LLM evalúa criterios subjetivos de diseño. Son herramientas complementarias, no redundantes.
+- **La evaluación del LLM y el detector determinista discrepan**. Es normal. El LLM aplica criterios subjetivos de diseño. El detector evalúa reglas deterministas de código. Si discrepan, analiza ambos puntos de vista y toma una decisión.
+- **La capa visual rompe el layout de la página**. Sucede en raras ocasiones si algún estilo CSS propio interfiere con los estilos inyectados de la capa. Utiliza la [extensión de Chrome](https://chromewebstore.google.com/detail/impeccable/bdkgmiklpdmaojlpflclinlofgjfpabf) para tener una experiencia más estable, o ejecuta `npx impeccable detect` desde tu CLI y corrige los problemas a mano.

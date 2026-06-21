@@ -1,42 +1,42 @@
 ---
-tagline: "Purposeful motion that conveys state, not decoration."
+tagline: "Movimiento intencionado que comunica estados, no simple decoración."
 ---
 
-## When to use it
+## Cuándo usarlo
 
-`/animate` is for interfaces that feel lifeless, where state changes are instant and jarring, where loading just pops in, where the user never quite trusts that their click registered. Use it to add the small motions that communicate what is happening: entrances, exits, feedback, transitions between states.
+`/animate` es para interfaces que se sienten sin vida, donde los cambios de estado son instantáneos y bruscos, donde los elementos de carga aparecen de golpe o donde el usuario no llega a confiar en que su clic se haya registrado. Úsalo para añadir pequeños movimientos que comuniquen lo que está sucediendo: entradas, salidas, confirmaciones y transiciones entre estados.
 
-Do not use it to add bounces or elastic springs for the sake of energy. That is decoration, and this skill will not give it to you.
+No lo uses para añadir rebotes o resortes elásticos solo para dar "energía". Eso es decoración, y esta habilidad evitará ese tipo de excesos.
 
-## How it works
+## Cómo funciona
 
-The skill identifies static moments that would benefit from motion, then applies them with strict discipline:
+La habilidad identifica momentos estáticos que se beneficiarían del movimiento y luego los aplica con estricta disciplina:
 
-1. **Entrances and exits**: elements appear and leave with 200 to 300ms fades plus subtle Y or scale, never layout properties.
-2. **State feedback**: hover, active, focus, loading, success all communicate via motion instead of sudden swaps.
-3. **Transitions between views**: shared-element transitions where it makes sense, fade-through otherwise.
-4. **Progress and loading**: skeleton screens, determinate bars, motion that says "still working".
-5. **Reduced motion**: every animation has a `prefers-reduced-motion` fallback.
+1. **Entradas y salidas**: los elementos aparecen y desaparecen con desvanecimientos (`fades`) de 200 a 300ms acompañados de sutiles traslaciones en el eje Y o escalado, nunca modificando propiedades de diseño (layout).
+2. **Retroalimentación de estado**: hover, active, focus, loading y success se comunican mediante movimiento en lugar de cambios bruscos de color o forma.
+3. **Transiciones entre vistas**: transiciones de elementos compartidos (shared-element transitions) donde tenga sentido y desvanecimiento cruzado (`fade-through`) en el resto de casos.
+4. **Progreso y carga**: pantallas con esqueleto (`skeleton screens`), barras determinadas y movimientos que indiquen que el sistema sigue procesando.
+5. **Reducción de movimiento**: cada animación cuenta con una alternativa para usuarios con la preferencia de accesibilidad `prefers-reduced-motion`.
 
-Easing is always exponential (ease-out-quart, quint, or expo) because real objects decelerate smoothly. No bounce, no elastic, no linear for anything except progress indicators.
+La aceleración es siempre exponencial (ease-out-quart, quint o expo) porque los objetos reales desaceleran suavemente. No hay rebotes, ni elasticidad, ni transiciones lineales excepto para indicadores de progreso continuos.
 
-The skill animates `transform` and `opacity` only. If you find yourself animating `width`, `height`, `top`, or `left`, it is doing the wrong thing. Use `grid-template-rows` for height transitions.
+La habilidad anima únicamente `transform` y `opacity`. Si ves que está animando `width`, `height`, `top` o `left`, está haciendo un mal uso. Utiliza `grid-template-rows` para las transiciones de altura.
 
-## Try it
+## Pruébalo
 
 ```
-/animate the sign-up flow
+/animate el flujo de registro
 ```
 
-Typical additions:
+Adiciones típicas:
 
-- Email input gets a focus glow on focus-visible (opacity + shadow, 180ms)
-- Submit button shows a spinner inside itself on loading state, not a separate spinner next to it
-- Success screen enters with opacity + translateY(8px), 260ms, ease-out-quart
-- Error message slides down with grid-template-rows (not height), 220ms
-- `@media (prefers-reduced-motion: reduce)` fallback for every transition
+- El campo de correo obtiene un brillo de enfoque progresivo en focus-visible (opacidad + sombra, 180ms).
+- El botón de envío muestra un indicador de carga en su interior, en lugar de un spinner separado al lado del botón.
+- La pantalla de éxito entra con opacidad y un desplazamiento translateY(8px) en 260ms mediante `ease-out-quart`.
+- El mensaje de error aparece deslizándose hacia abajo usando `grid-template-rows` (no animando height directamente) en 220ms.
+- Alternativa con `@media (prefers-reduced-motion: reduce)` para cada transición.
 
-## Pitfalls
+## Problemas comunes
 
-- **Asking for "more animation".** Animate is not a dial. It adds where motion communicates, not everywhere.
-- **Removing the reduced-motion fallbacks.** The skill adds them automatically. Non-negotiable for accessibility.
+- **Pedir "más animación".** Animar no es un dial que se sube al máximo. Añade movimiento donde sirva para comunicar, no en toda la interfaz.
+- **Eliminar las alternativas de reducción de movimiento.** La habilidad las añade de forma automática. Es un requisito no negociable para la accesibilidad.

@@ -1,43 +1,43 @@
 ---
-tagline: "A design review with scoring, persona tests, and automated detection."
+tagline: "Una revisión de diseño con puntuaciones, pruebas de personas y detección automatizada."
 ---
 
-## When to use it
+## Cuándo usarlo
 
-Reach for `/critique` when you want an honest second opinion on something you already built. Not "does it work" but "is it any good". The skill scores your interface against Nielsen's 10 heuristics, runs cognitive load checks, tests through persona lenses, and cross-references an automated detector for 25 concrete anti-patterns.
+Recurre a `/critique` cuando desees una segunda opinión honesta sobre algo que ya has construido. No para verificar si funciona, sino para evaluar "si es realmente bueno". La habilidad califica tu interfaz según las 10 heurísticas de Nielsen, realiza comprobaciones de carga cognitiva, la evalúa a través de diferentes perfiles de personas (arquetipos de usuario) y la cruza con el detector determinista en busca de 25 antipatrones concretos.
 
-Use it when a page is functionally done and you want to know if it reads as intentional or as AI slop.
+Úsalo cuando una página esté funcionalmente terminada y quieras saber si se lee como algo diseñado intencionalmente o como basura visual de la IA (slop).
 
-## How it works
+## Cómo funciona
 
-`/critique` runs two independent assessments in parallel so they do not bias each other.
+`/critique` ejecuta dos evaluaciones independientes en paralelo para evitar sesgos:
 
-The first is an **LLM design review**: the model reads your source, visually inspects the live page if browser automation is available, and walks the impeccable skill's full DO/DON'T catalog. It scores Nielsen's heuristics, counts cognitive load failures, traces the emotional journey through the flow, and flags AI slop.
+La primera es una **revisión de diseño por LLM**: el modelo lee tu código fuente, inspecciona visualmente la página en vivo si la automatización del navegador está disponible y contrasta todo con el catálogo de directrices SÍ/NO de Impeccable. Evalúa las heurísticas de Nielsen, cuenta los fallos de carga cognitiva, traza el recorrido emocional a través del flujo y señala indicios de diseño genérico de IA.
 
-The second is an **automated detector** (`npx impeccable detect`) that deterministically finds gradient text, purple palettes, side-tab borders, nested cards, line length problems, and the other visible fingerprints of generic AI output.
+La segunda es un **detector automatizado** (`npx impeccable detect`) que encuentra de forma determinista texto con degradados, paletas moradas, bordes con pestaña lateral, tarjetas anidadas, problemas de longitud de línea y otras huellas visibles del diseño genérico de IA.
 
-The two reports merge into one prioritized list: what is working, the three to five things that need fixing, and the provocative questions worth answering before shipping.
+Ambos informes se fusionan en una única lista priorizada: qué está funcionando bien, de tres a cinco aspectos que necesitan corregirse y preguntas de diseño valiosas que vale la pena responder antes del lanzamiento.
 
-## Try it
+## Pruébalo
 
-Point it at a page:
+Apunta a una página:
 
 ```
-/critique the homepage hero
+/critique la sección principal (hero) de la página de inicio
 ```
 
-You get back a scored report. Typical shape:
+Recibirás un informe puntuado. Estructura típica del resultado:
 
-- **AI slop verdict**: pass / fail with the specific tells
-- **Heuristic scores**: 10 numbers, 0 to 4
-- **Cognitive load**: failure count out of 8
-- **Priority issues**: three to five items, each with what, why, and fix
-- **Questions to answer**: the ones the interface itself cannot decide for you
+- **Veredicto de basura de IA (AI slop)**: aprobado / reprobado con los indicios específicos detectados.
+- **Puntuaciones heurísticas**: 10 valores, de 0 a 4.
+- **Carga cognitiva**: recuento de fallos sobre un máximo de 8.
+- **Problemas prioritarios**: de tres a cinco elementos, cada uno explicando qué falla, por qué y cómo corregirlo.
+- **Preguntas a resolver**: aquellas decisiones de diseño que la interfaz por sí sola no puede tomar por ti.
 
-From there, pair with `/polish` or `/distill` to act on the fixes.
+A partir de ahí, puedes apoyarte en `/polish` o `/distill` para implementar las correcciones.
 
-## Pitfalls
+## Problemas comunes
 
-- **Running it on incomplete work.** Critique is for finished pages. An empty state with three TODOs will score badly because it is not done, not because it is bad.
-- **Ignoring the questions at the end.** They are usually the highest-leverage fixes.
-- **Treating the heuristic scores as a grade.** They are diagnostic, not evaluative. A 3/4 on a heuristic that matters less for your context is fine.
+- **Ejecutarlo sobre trabajo incompleto.** `/critique` está diseñado para páginas terminadas. Un boceto vacío con tres TODOs obtendrá una mala puntuación porque está inacabado, no porque el diseño sea malo.
+- **Ignorar las preguntas del final del informe.** Suelen ser las que tienen mayor impacto al resolverse.
+- **Tratar las puntuaciones heurísticas como una calificación escolar.** Son diagnósticos, no evaluaciones punitivas. Obtener un 3/4 en una heurística que importa menos para tu contexto específico es perfectamente aceptable.

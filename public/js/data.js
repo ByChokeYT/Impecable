@@ -1,36 +1,36 @@
 // ============================================
-// DATA: Skill focus areas, command processes, relationships
+// DATOS: Áreas de enfoque de habilidades, procesos de comandos y relaciones
 // ============================================
 
-// Items that are fully complete and ready for public use
-// All others will show "Coming Soon"
+// Habilidades que están completamente listas para uso público
+// Todas las demás mostrarán "Próximamente"
 export const readySkills = [
-  'impeccable'  // Consolidated skill with all design domains
+  'impeccable'  // Habilidad consolidada con todos los dominios de diseño
 ];
 
 export const readyCommands = [
-  'layout'  // First command to be fully completed
+  'layout'  // Primer comando en estar completamente listo
 ];
 
-// Commands marked as beta — shown with a badge in the UI
+// Comandos marcados como beta — mostrados con una insignia en la interfaz
 export const betaCommands = [
   'overdrive'
 ];
 
-// Consolidated impeccable skill with reference domains
+// Habilidad consolidada impeccable con dominios de referencia
 export const skillFocusAreas = {
   'impeccable': [
-    { area: 'Typography', detail: 'Scale, rhythm, hierarchy, expression' },
-    { area: 'Color & Contrast', detail: 'Accessibility, systems, theming' },
-    { area: 'Spatial Design', detail: 'Layout, spacing, composition' },
-    { area: 'Responsive', detail: 'Fluid layouts, touch targets' },
-    { area: 'Interaction', detail: 'States, feedback, affordances' },
-    { area: 'Motion', detail: 'Micro-interactions, transitions' },
-    { area: 'UX Writing', detail: 'Clarity, voice, error messages' }
+    { area: 'Tipografía', detail: 'Escala, ritmo, jerarquía, expresión' },
+    { area: 'Color y Contraste', detail: 'Accesibilidad, sistemas, tematización' },
+    { area: 'Diseño Espacial', detail: 'Diseño (layout), espaciado, composición' },
+    { area: 'Adaptabilidad', detail: 'Diseños fluidos, objetivos táctiles' },
+    { area: 'Interacción', detail: 'Estados, retroalimentación, prestaciones (affordances)' },
+    { area: 'Movimiento', detail: 'Microinteracciones, transiciones' },
+    { area: 'Redacción de UX', detail: 'Claridad, tono de voz, mensajes de error' }
   ]
 };
 
-// Guideline counts per dimension (verified from reference files)
+// Recuentos de pautas por dimensión (verificados a partir de archivos de referencia)
 export const dimensionGuidelineCounts = {
   'Typography': 33,
   'Color & Contrast': 29,
@@ -41,7 +41,7 @@ export const dimensionGuidelineCounts = {
   'UX Writing': 32
 };
 
-// Reference domains within the impeccable skill
+// Dominios de referencia dentro de la habilidad impeccable
 export const skillReferenceDomains = [
   'typography',
   'color-and-contrast',
@@ -53,38 +53,38 @@ export const skillReferenceDomains = [
 ];
 
 export const commandProcessSteps = {
-  'shape': ['Interview', 'Synthesize', 'Brief', 'Confirm'],
-  'impeccable craft': ['Shape', 'Reference', 'Build', 'Iterate'],
-  'impeccable': ['Direct', 'Design', 'Build', 'Refine'],
-  'overdrive': ['Assess', 'Choose', 'Build', 'Polish'],
-  'critique': ['Evaluate', 'Critique', 'Prioritize', 'Suggest'],
-  'audit': ['Scan', 'Document', 'Prioritize', 'Recommend'],
-  'typeset': ['Assess', 'Select', 'Scale', 'Refine'],
-  'layout': ['Assess', 'Grid', 'Rhythm', 'Balance'],
-  'colorize': ['Analyze', 'Strategy', 'Apply', 'Balance'],
-  'animate': ['Identify', 'Design', 'Implement', 'Polish'],
-  'delight': ['Identify', 'Design', 'Implement'],
-  'bolder': ['Analyze', 'Amplify', 'Impact'],
-  'quieter': ['Analyze', 'Reduce', 'Refine'],
-  'distill': ['Audit', 'Remove', 'Clarify'],
-  'clarify': ['Read', 'Simplify', 'Improve', 'Test'],
-  'adapt': ['Analyze', 'Adjust', 'Optimize'],
-  'polish': ['Discover', 'Review', 'Refine', 'Verify'],
-  'optimize': ['Profile', 'Identify', 'Improve', 'Measure'],
-  'harden': ['Test', 'Handle', 'Onboard', 'Validate'],
-  'impeccable teach': ['Explore', 'Interview', 'Synthesize', 'Save'],
-  'impeccable extract': ['Identify', 'Abstract', 'Migrate', 'Document']
+  'shape': ['Entrevista', 'Sintetizar', 'Resumen', 'Confirmar'],
+  'impeccable craft': ['Modelar', 'Referenciar', 'Construir', 'Iterar'],
+  'impeccable': ['Dirigir', 'Diseñar', 'Construir', 'Refinar'],
+  'overdrive': ['Evaluar', 'Elegir', 'Construir', 'Pulir'],
+  'critique': ['Evaluar', 'Criticar', 'Priorizar', 'Sugerir'],
+  'audit': ['Escanear', 'Documentar', 'Priorizar', 'Recomendar'],
+  'typeset': ['Evaluar', 'Seleccionar', 'Escalar', 'Refinar'],
+  'layout': ['Evaluar', 'Cuadrícula', 'Ritmo', 'Equilibrio'],
+  'colorize': ['Analizar', 'Estrategia', 'Aplicar', 'Equilibrio'],
+  'animate': ['Identificar', 'Diseñar', 'Implementar', 'Pulir'],
+  'delight': ['Identificar', 'Diseñar', 'Implementar'],
+  'bolder': ['Analizar', 'Amplificar', 'Impacto'],
+  'quieter': ['Analizar', 'Reducir', 'Refinar'],
+  'distill': ['Auditar', 'Eliminar', 'Clarificar'],
+  'clarify': ['Leer', 'Simplificar', 'Mejorar', 'Probar'],
+  'adapt': ['Analizar', 'Ajustar', 'Optimizar'],
+  'polish': ['Descubrir', 'Revisar', 'Refinar', 'Verificar'],
+  'optimize': ['Perfilador', 'Identificar', 'Mejorar', 'Medir'],
+  'harden': ['Probar', 'Manejar', 'Onboarding', 'Validar'],
+  'impeccable teach': ['Explorar', 'Entrevista', 'Sintetizar', 'Guardar'],
+  'impeccable extract': ['Identificar', 'Abstraer', 'Migrar', 'Documentar']
 };
 
 export const commandCategories = {
-  // CREATE - build something new
+  // CREATE - construir algo nuevo
   'shape': 'create',
   'impeccable craft': 'create',
   'impeccable': 'create',
-  // EVALUATE - review and assess
+  // EVALUATE - revisar y evaluar
   'critique': 'evaluate',
   'audit': 'evaluate',
-  // REFINE - improve existing design
+  // REFINE - mejorar diseño existente
   'typeset': 'refine',
   'layout': 'refine',
   'colorize': 'refine',
@@ -93,48 +93,48 @@ export const commandCategories = {
   'bolder': 'refine',
   'quieter': 'refine',
   'overdrive': 'refine',
-  // SIMPLIFY - reduce and clarify
+  // SIMPLIFY - reducir y clarificar
   'distill': 'simplify',
   'clarify': 'simplify',
   'adapt': 'simplify',
-  // HARDEN - production-ready
+  // HARDEN - listos para producción
   'polish': 'harden',
   'optimize': 'harden',
   'harden': 'harden',
-  // SYSTEM - setup and tooling
+  // SYSTEM - configuración y herramientas
   'impeccable teach': 'system',
   'impeccable extract': 'system'
 };
 
-// Skill relationships - now consolidated into impeccable skill
-// The impeccable skill contains all domains as reference files
+// Relaciones de habilidades - ahora consolidadas en la habilidad impeccable
+// La habilidad impeccable contiene todos los dominios como archivos de referencia
 export const skillRelationships = {
   'impeccable': {
-    description: 'Comprehensive design intelligence with progressive reference loading',
+    description: 'Inteligencia de diseño integral con carga progresiva de referencias',
     referenceDomains: ['typography', 'color-and-contrast', 'spatial-design', 'responsive-design', 'interaction-design', 'motion-design', 'ux-writing']
   }
 };
 
 export const commandRelationships = {
-  'shape': { flow: 'Create: Plan UX and UI through structured discovery' },
-  'impeccable craft': { flow: 'Create: Full shape-then-build flow with visual iteration' },
-  'impeccable': { flow: 'Create: Freeform design with full design intelligence' },
-  'overdrive': { combinesWith: ['animate', 'delight'], flow: 'Refine: Technically extraordinary effects' },
-  'critique': { leadsTo: ['polish', 'distill', 'bolder', 'quieter', 'typeset', 'layout'], flow: 'Evaluate: UX and design review with scoring' },
-  'audit': { leadsTo: ['harden', 'optimize', 'adapt', 'clarify'], flow: 'Evaluate: Technical quality audit' },
-  'typeset': { combinesWith: ['bolder', 'polish'], flow: 'Refine: Fix typography and type hierarchy' },
-  'layout': { combinesWith: ['distill', 'adapt'], flow: 'Refine: Fix layout and spacing' },
-  'colorize': { combinesWith: ['bolder', 'delight'], flow: 'Refine: Add strategic color' },
-  'animate': { combinesWith: ['delight'], flow: 'Refine: Add purposeful motion' },
-  'delight': { combinesWith: ['bolder', 'animate'], flow: 'Refine: Add personality and joy' },
-  'bolder': { pairs: 'quieter', flow: 'Refine: Amplify timid designs' },
-  'quieter': { pairs: 'bolder', flow: 'Refine: Tone down aggressive designs' },
-  'distill': { combinesWith: ['quieter', 'polish'], flow: 'Simplify: Strip to essence' },
-  'clarify': { combinesWith: ['polish', 'adapt'], flow: 'Simplify: Improve UX copy' },
-  'adapt': { combinesWith: ['polish', 'clarify'], flow: 'Simplify: Adapt for different contexts' },
-  'polish': { flow: 'Harden: Final pass and design system alignment' },
-  'optimize': { flow: 'Harden: Performance improvements' },
-  'harden': { combinesWith: ['optimize'], flow: 'Harden: Edge cases, onboarding, and error handling' },
-  'impeccable teach': { flow: 'System: One-time project design context setup' },
-  'impeccable extract': { flow: 'System: Extract design system components and tokens' }
+  'shape': { flow: 'Crear: Planifica la UX y la UI a través de un descubrimiento estructurado' },
+  'impeccable craft': { flow: 'Crear: Flujo completo de modelar y luego construir con iteración visual' },
+  'impeccable': { flow: 'Crear: Diseño libre con inteligencia de diseño integral' },
+  'overdrive': { combinesWith: ['animate', 'delight'], flow: 'Refinar: Efectos técnicamente extraordinarios' },
+  'critique': { leadsTo: ['polish', 'distill', 'bolder', 'quieter', 'typeset', 'layout'], flow: 'Evaluar: Revisión de UX y diseño con puntuación' },
+  'audit': { leadsTo: ['harden', 'optimize', 'adapt', 'clarify'], flow: 'Evaluar: Auditoría de calidad técnica' },
+  'typeset': { combinesWith: ['bolder', 'polish'], flow: 'Refinar: Corrige la tipografía y la jerarquía de fuentes' },
+  'layout': { combinesWith: ['distill', 'adapt'], flow: 'Refinar: Corrige el diseño y el espaciado' },
+  'colorize': { combinesWith: ['bolder', 'delight'], flow: 'Refinar: Añade color estratégico' },
+  'animate': { combinesWith: ['delight'], flow: 'Refinar: Añade movimiento con propósito' },
+  'delight': { combinesWith: ['bolder', 'animate'], flow: 'Refinar: Añade personalidad y alegría' },
+  'bolder': { pairs: 'quieter', flow: 'Refinar: Amplifica diseños tímidos' },
+  'quieter': { pairs: 'bolder', flow: 'Refinar: Atenúa diseños agresivos' },
+  'distill': { combinesWith: ['quieter', 'polish'], flow: 'Simplificar: Reduce a la esencia' },
+  'clarify': { combinesWith: ['polish', 'adapt'], flow: 'Simplificar: Mejora el copy de UX' },
+  'adapt': { combinesWith: ['polish', 'clarify'], flow: 'Simplificar: Adapta para diferentes contextos' },
+  'polish': { flow: 'Consolidar: Pase final y alineación con el sistema de diseño' },
+  'optimize': { flow: 'Consolidar: Mejoras de rendimiento' },
+  'harden': { combinesWith: ['optimize'], flow: 'Consolidar: Casos extremos, onboarding y manejo de errores' },
+  'impeccable teach': { flow: 'Sistema: Configuración única del contexto de diseño del proyecto' },
+  'impeccable extract': { flow: 'Sistema: Extrae componentes y tokens del sistema de diseño' }
 };

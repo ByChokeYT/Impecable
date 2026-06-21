@@ -1,41 +1,41 @@
 ---
-tagline: "Fix layout, spacing, and visual rhythm."
+tagline: "Corrige la distribución, el espaciado y el ritmo visual."
 ---
 
-## When to use it
+## Cuándo usarlo
 
-`/layout` is for pages where nothing is technically wrong but nothing is breathing either. Equal padding everywhere, monotonous card grids, content that runs edge to edge, hierarchy that relies on size alone. Reach for it when a layout "feels off" and you cannot articulate why.
+`/layout` es para páginas donde técnicamente no hay errores, pero el contenido no tiene espacio para respirar. Relleno (`padding`) idéntico en todas partes, cuadrículas de tarjetas monótonas, textos que llegan de borde a borde de la pantalla o una jerarquía visual que depende únicamente del tamaño de la fuente. Úsalo cuando la distribución "se sienta rara" y no logres identificar el motivo exacto.
 
-Good triggers: "everything feels crowded", "it reads like a wall", "I do not know where to look first".
+Buenas razones para usarlo: "todo se siente amontonado", "parece un muro de contenido", "no sé a dónde mirar primero".
 
-## How it works
+## Cómo funciona
 
-The skill runs through five layout dimensions:
+La habilidad analiza y corrige la distribución espacial a través de cinco dimensiones:
 
-1. **Spacing**: is the spacing scale consistent or are there random 13px gaps, are related elements grouped tightly with generous space between groups, is there any rhythm at all.
-2. **Visual hierarchy**: does the eye land on the primary action within 2 seconds, is the hierarchy doing real work or is everything shouting.
-3. **Grid and structure**: is there an underlying grid or is the layout random, are elements aligned to baselines.
-4. **Rhythm**: does the page alternate between tight and generous spacing, or is everything uniform.
-5. **Density**: is the layout cramped or is it wasteful, does density match the content type.
+1. **Espaciado**: ¿La escala de espaciado es consistente o hay huecos aleatorios de 13px? ¿Los elementos relacionados se agrupan estrechamente con espacios generosos entre grupos? ¿Existe algún ritmo visual?
+2. **Jerarquía visual**: ¿La vista del usuario se dirige a la acción principal en menos de 2 segundos? ¿La jerarquía ayuda a estructurar o todos los elementos compiten por la atención?
+3. **Cuadrícula y estructura**: ¿Existe una cuadrícula subyacente o el diseño es aleatorio? ¿Los elementos están alineados correctamente con sus líneas base?
+4. **Ritmo**: ¿La página alterna de forma dinámica entre espaciados ajustados y generosos, o todo es uniforme y monótono?
+5. **Densidad**: ¿La distribución es demasiado apretada o desperdicia espacio? ¿La densidad visual se adapta al tipo de contenido?
 
-Fixes usually involve rebuilding the spacing scale, introducing asymmetry, collapsing monotonous grids into a mixed layout with hero and supporting elements, and giving the primary action real space.
+Las correcciones suelen consistir en reconstruir la escala de espaciado, introducir asimetrías, transformar cuadrículas monótonas en una distribución variada con elementos principales y de apoyo, y dar espacio real a las acciones primarias.
 
-## Try it
+## Pruébalo
 
 ```
-/layout the settings page
+/layout la página de configuración
 ```
 
-Typical changes:
+Cambios típicos:
 
-- Spacing scale unified to 8 / 16 / 24 / 48 / 96px
-- Section breaks at 48px, row gaps at 16px, form field groups at 8px
-- Primary actions pulled out of the form flow with 32px buffer
-- Decorative borders removed, replaced with spacing-driven grouping
-- Sidebar and main column proportions rebalanced (280 / flex vs 25 / 75)
+- La escala de espaciado se unifica en múltiplos de 4pt (8 / 16 / 24 / 48 / 96px).
+- Los saltos de sección se establecen en 48px, los espacios entre filas en 16px y los grupos de campos de formulario en 8px.
+- Las acciones principales se separan del flujo del formulario con un margen de 32px.
+- Se eliminan los bordes decorativos innecesarios, reemplazándolos por agrupaciones basadas en el espaciado.
+- Se reequilibran las proporciones de la barra lateral y la columna principal (ej. 280px / flex en lugar de porcentajes rígidos).
 
-## Pitfalls
+## Problemas comunes
 
-- **Confusing arrange with distill.** If the problem is too many things, run `/distill` first. Layout is for arranging what is already the right set.
-- **Expecting it to rescue a broken grid.** If the page has no grid at all, arrange will build one. Just know that the diff is going to be larger than you expect.
-- **Ignoring the hierarchy verdict.** If arrange says "nothing is primary", no amount of spacing work fixes that. You need a content decision, not a layout tweak.
+- **Confundir ordenar (`layout`) con simplificar (`distill`).** Si el problema es que hay demasiados elementos en pantalla, ejecuta `/distill` primero. `layout` es para organizar un conjunto de elementos que ya es el adecuado.
+- **Esperar que rescate una cuadrícula rota.** Si la página no tiene una estructura de cuadrícula clara, esta habilidad construirá una desde cero. Ten en cuenta que la diferencia en el código (diff) será mayor de lo esperado.
+- **Ignorar el veredicto de jerarquía.** Si la habilidad te indica que "nada es principal", ningún ajuste de espaciado solucionará eso. Necesitas tomar una decisión sobre el contenido, no un ajuste de diseño.

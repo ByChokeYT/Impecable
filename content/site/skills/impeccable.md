@@ -1,51 +1,51 @@
 ---
-tagline: "The design intelligence behind every other skill."
+tagline: "La inteligencia de diseño detrás de cada una de las otras habilidades."
 ---
 
-## When to use it
+## Cuándo usarlo
 
-`/impeccable` is the foundation. It teaches your AI harness how to design, period. Every other command in this pack leans on it for design principles, anti-patterns, typography, color, and layout guidance.
+`/impeccable` es la base. Enseña a tu entorno de IA a diseñar, sin rodeos. Todos los demás comandos de este paquete se apoyan en él para obtener principios de diseño, antipatrones, tipografía, color y guía de distribución (layout).
 
-Call `/impeccable` directly when you want freeform design with the full guidebook loaded. Or use one of the two sub-modes:
+Llama a `/impeccable` directamente cuando desees un diseño libre con el manual completo cargado. O bien usa uno de los submodos:
 
 ### /impeccable craft {#craft}
 
-The full shape-then-build flow. It starts by running `/shape` internally (a structured discovery interview about purpose, audience, and goals), then moves into implementation with visual iteration, checking the result in the browser until the polish is high. Best for brand-new features where you want to think before you build, without managing the steps yourself.
+El flujo completo de planificar y construir (shape-then-build). Comienza ejecutando `/shape` internamente (una entrevista estructurada de descubrimiento sobre el propósito, la audiencia y los objetivos), luego pasa a la implementación con iteración visual, comprobando el resultado en el navegador hasta lograr un acabado pulido y de alta calidad. Es ideal para nuevas funcionalidades desde cero donde deseas pensar antes de construir, sin tener que gestionar cada paso de forma manual.
 
 ### /impeccable teach {#teach}
 
-One-time project setup. Runs a short discovery interview about your brand, audience, and aesthetic direction, then writes a `.impeccable.md` file that every future skill call reads automatically. Run this once per project before doing any design work.
+Configuración única para el proyecto. Realiza una breve entrevista de descubrimiento sobre tu marca, audiencia y dirección estética, y luego escribe un archivo `.impeccable.md` en la raíz del proyecto que cualquier llamada futura a una habilidad leerá de forma automática. Ejecútalo una vez por proyecto antes de realizar cualquier trabajo de diseño.
 
 ### /impeccable extract {#extract}
 
-Pull reusable components, design tokens, and patterns out of your code and into the design system. Finds repeated UI patterns (buttons in 12 places, three card variants, scattered hex colors), extracts them into shared primitives, and migrates all callers. Best used after a product has shipped enough features to reveal the patterns -- premature extraction creates abstractions that do not match reality.
+Extrae componentes reutilizables, tokens de diseño y patrones de tu código directamente al sistema de diseño. Encuentra patrones de UI repetidos (botones en 12 lugares, tres variantes de tarjeta, colores hex dispersos), los extrae en primitivas compartidas y migra todos los elementos que los llaman. Es mejor usarlo una vez que el producto haya madurado lo suficiente como para revelar los patrones reales; una extracción prematura crea abstracciones que no se ajustan a la realidad.
 
-## How it works
+## Cómo funciona
 
-Most AI-generated UIs fail the same way: generic fonts, purple gradients, card grids on card grids, glassmorphism everywhere. `/impeccable` gives your AI a strong point of view. It loads an opinionated design handbook plus a long list of anti-patterns, then pushes the model to commit to a specific aesthetic direction before writing a single line of code.
+La mayoría de las interfaces generadas por IA fallan del mismo modo: fuentes genéricas, degradados morados, cuadrículas de tarjetas repetitivas y glassmorphism en todas partes. `/impeccable` le da a tu IA un punto de vista sólido. Carga un manual de diseño con opinión propia junto a una larga lista de antipatrones, y luego impulsa al modelo a comprometerse con una dirección estética clara antes de escribir una sola línea de código.
 
-The skill has a **Context Gathering Protocol** built in. It will not design anything until it knows who uses the product, what they're trying to do, and how the interface should feel. If no context exists yet, it asks you to run `/impeccable teach` first. This is deliberate: design without context produces slop, and slop is the whole problem this pack exists to solve.
+La habilidad tiene integrado un **Protocolo de Recopilación de Contexto**. No diseñará nada hasta que sepa quién usa el producto, qué intenta lograr y cómo debería sentirse la interfaz. Si aún no existe contexto, te pedirá que ejecutes `/impeccable teach` primero. Esto es intencionado: diseñar sin contexto produce basura visual (slop), y evitar esa basura es la razón por la que existe este paquete.
 
-## Try it
+## Pruébalo
 
-From a clean project, run once:
+Desde un proyecto limpio, ejecuta una vez:
 
 ```
 /impeccable teach
 ```
 
-Answer the discovery questions. The skill writes a `.impeccable.md` file with your brand, audience, and aesthetic direction. Every future skill call reads it automatically.
+Responde a las preguntas de descubrimiento. La habilidad escribirá un archivo `.impeccable.md` con tu marca, audiencia y dirección estética. Cada llamada futura la leerá automáticamente.
 
-Then build something:
+Luego construye algo:
 
 ```
 /impeccable build me a pricing page for a developer tool
 ```
 
-You should get a page that commits to one clear aesthetic direction, uses non-default fonts, avoids the AI color palette, and has a real point of view.
+Deberías obtener una página que se comprometa con una dirección estética clara, utilice fuentes no predeterminadas, evite la paleta de colores de IA y tenga un punto de vista real.
 
-## Pitfalls
+## Problemas comunes
 
-- **Skipping `/impeccable teach`.** Without a `.impeccable.md` file, the skill has to ask you context questions mid-flight. Faster to set it up once.
-- **Treating it like a style guide.** It is an opinionated design partner, not a linter. The defaults exist to raise the floor, not to overrule your judgment. If you have a real reason to push back (brand guideline, accessibility constraint, user research that says otherwise), push back and explain why. The skill will work with you. What produces worse output is ignoring the opinion without a reason.
-- **Expecting it to fix existing code.** For that, reach for `/polish`, `/distill`, or `/critique` instead. `/impeccable` is for creation.
+- **Omitir `/impeccable teach`.** Sin un archivo `.impeccable.md`, la habilidad tendrá que hacerte preguntas sobre el contexto sobre la marcha, interrumpiendo el flujo. Es más rápido configurarlo una vez al principio.
+- **Tratarlo como una guía de estilo rígida.** Es un compañero de diseño con opiniones, no un linter. Las reglas por defecto existen para elevar la calidad mínima, no para anular tu criterio. Si tienes una razón de peso para no seguirlas (guía de marca, restricción de accesibilidad, investigación de usuarios que diga lo contrario), explícalo. La habilidad se adaptará. Lo que produce peor resultado es ignorar las directrices de diseño sin dar una justificación.
+- **Esperar que corrija código existente.** Para eso, es mejor recurrir a `/polish`, `/distill` o `/critique`. `/impeccable` está diseñado para la creación desde cero.

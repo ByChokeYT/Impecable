@@ -1,30 +1,30 @@
 ---
-tagline: "Push an interface past conventional limits. Shaders, physics, 60fps, cinematic transitions."
+tagline: "Lleva una interfaz más allá de los límites convencionales. Shaders, física, 60fps, transiciones cinematográficas."
 ---
 
-## When to use it
+## Cuándo usarlo
 
-`/overdrive` is for the moments where you want to impress. A hero that uses WebGL. A table that handles a million rows. A dialog that morphs out of its trigger element. A form that validates in real-time with streaming feedback. A page transition that feels cinematic. Use it when the project budget allows for technical ambition and the outcome needs to feel extraordinary.
+`/overdrive` es para los momentos en los que deseas impresionar y sorprender. Una sección principal (hero) que utiliza WebGL. Una tabla que gestiona un millón de filas sin inmutarse. Un diálogo que se transforma físicamente a partir de su botón de origen. Una transición de página que se siente de película. Úsalo cuando el presupuesto y el tiempo del proyecto permitan ambición técnica y el resultado final necesite sentirse extraordinario.
 
-Do not use it on operator tools, dashboards, or anything where reliability beats spectacle. Overdrive burns complexity for effect, and that trade-off is only worth it on moments that matter.
+No lo uses en herramientas operativas cotidianas, paneles de configuración o cualquier pantalla donde la fiabilidad y la simplicidad superen al espectáculo. `/overdrive` consume complejidad técnica a cambio de impacto visual, y ese trato solo vale la pena en los momentos verdaderamente importantes.
 
-## How it works
+## Cómo funciona
 
-The skill picks one moment to make extraordinary and commits to it, rather than spreading effort across the whole interface. It then reaches for techniques most AI-generated UIs never touch: WebGL shaders, spring physics, Scroll Timeline, View Transitions, canvas animation, GPU-accelerated filters. Everything is budgeted, profiled, and tested at 60fps, with reduced-motion fallbacks baked in.
+La habilidad selecciona un único momento de la interfaz para hacerlo extraordinario y se compromete a fondo con él, en lugar de diluir el esfuerzo en toda la página. Para lograrlo, recurre a técnicas que la mayoría de las interfaces generadas por IA nunca utilizan: shaders de WebGL, física de resortes, APIs de Scroll Timeline, View Transitions nativas, animaciones en canvas y filtros acelerados por GPU. Todo se presupuesta en rendimiento, se analiza y se prueba a 60fps constantes, incluyendo alternativas para reducción de movimiento.
 
-Overdrive output is announced with `──── ⚡ OVERDRIVE ────` so you know you are entering a more ambitious mode. Expect larger diffs, new dependencies, and implementation depth beyond what other skills produce.
+La salida de este comando viene precedida por la etiqueta `──── ⚡ OVERDRIVE ────` para que sepas que estás entrando en un modo de desarrollo más ambicioso. Espera modificaciones de código más grandes (diffs extensos), nuevas dependencias y una profundidad de implementación muy superior a la de otras habilidades.
 
-## Try it
+## Pruébalo
 
 ```
-/overdrive the landing hero
+/overdrive la sección principal (hero) de la página de inicio
 ```
 
-One concrete run might replace a static hero with a WebGL shader background driven by mouse position, a display headline that reveals with a mask on scroll using the Scroll Timeline API, and a View Transition on the CTA that morphs into the next page. Plus a reduced-motion fallback that swaps all of it for a clean static composition.
+Un pase concreto podría reemplazar un hero estático por un fondo con un shader WebGL reactivo al movimiento del ratón, un encabezado principal que se revela con una máscara al hacer scroll utilizando la API de Scroll Timeline y una View Transition en el botón de llamada a la acción (CTA) que se transforma físicamente en la siguiente página. Todo ello acompañado de una alternativa estática y limpia para cuando el usuario tenga activada la reducción de movimiento.
 
-## Pitfalls
+## Problemas comunes
 
-- **Using it everywhere.** Overdrive works because it is rare. If every page has cinematic moments, none of them are cinematic.
-- **Shipping without reduced-motion fallbacks.** Non-negotiable. Overdrive adds them automatically; do not remove them.
-- **Ignoring performance.** Extraordinary moments still need to hit 60fps. If the effect drops frames, cut it or optimize. Slow spectacle is worse than simple done well.
-- **Running overdrive before the base interface is solid.** Spectacle on a broken foundation reads as distraction, not delight.
+- **Usarlo en todas partes.** El impacto de `/overdrive` funciona porque es inusual. Si cada página tiene transiciones cinematográficas, la experiencia se vuelve agotadora.
+- **Lanzar a producción sin alternativas de reducción de movimiento.** Es un requisito no negociable. `/overdrive` las añade automáticamente; no las elimines del código.
+- **Ignorar el rendimiento.** Los momentos extraordinarios deben mantener los 60fps. Si el efecto ralentiza el navegador o pierde fotogramas, optimízalo o elimínalo. Un espectáculo lento es peor que un diseño simple bien ejecutado.
+- **Ejecutar `overdrive` antes de que la interfaz base sea sólida.** El espectáculo sobre una base rota se percibe como una distracción molesta, no como deleite.

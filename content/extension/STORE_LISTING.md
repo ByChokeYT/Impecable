@@ -1,63 +1,63 @@
-# Chrome Web Store Listing
+# Ficha de Chrome Web Store
 
-## Name
+## Nombre
 Impeccable
 
-## Short description (132 chars max)
-Detect AI slop and design anti-patterns in any web page. Open DevTools and see what needs fixing.
+## Descripción corta (máximo 132 caracteres)
+Detecta basura de IA y antipatrones de diseño en cualquier página web. Abre DevTools y mira qué necesita corregirse.
 
-## Detailed description
+## Descripción detallada
 
-Impeccable detects 24 common UI anti-patterns directly in your browser. Open DevTools on any page and overlays instantly highlight issues, from AI-generated design tells to accessibility and quality problems.
+Impeccable detecta 24 antipatrones de interfaz de usuario (UI) comunes directamente en tu navegador. Abre DevTools en cualquier página y las capas superpuestas resaltarán al instante los problemas, desde indicios de diseño generado por IA hasta problemas de accesibilidad y calidad.
 
-WHAT IT DETECTS
+QUÉ DETECTA
 
-AI slop (design tells that scream "AI made this"):
-- Side-tab accent borders
-- Gradient text on headings
-- Purple/violet AI color palettes
-- Nested cards, monotonous spacing
-- Bounce/elastic easing
-- Dark mode with glowing accents
-- Overused fonts, flat type hierarchy
+Basura de IA (indicios de diseño que gritan "la IA hizo esto"):
+- Bordes de acento de pestaña lateral
+- Texto con degradado en los encabezados
+- Paletas de colores de IA morados/violeta
+- Tarjetas anidadas, espaciado monótono
+- Aceleración elástica o de rebote
+- Modo oscuro con brillos acentuados
+- Fuentes sobreutilizadas, jerarquía tipográfica plana
 
-Quality issues (general design and accessibility):
-- Low contrast text (WCAG AA)
-- Cramped padding, tight line height
-- Skipped heading levels
-- Line length too long
-- Tiny body text, justified text
-- Layout property animations
+Problemas de calidad (diseño general y accesibilidad):
+- Texto de bajo contraste (WCAG AA)
+- Rellenos reducidos, altura de línea ajustada
+- Niveles de encabezado omitidos
+- Longitud de línea excesiva
+- Texto de cuerpo diminuto, texto justificado
+- Animaciones de propiedades de diseño (layout)
 
-HOW IT WORKS
+CÓMO FUNCIONA
 
-1. Install the extension
-2. Open DevTools on any page (Cmd+Opt+I / F12)
-3. Overlays appear automatically, highlighting issues
-4. Click the "Impeccable" panel tab for a structured list of all findings
-5. Click any finding to jump to the element in the Elements panel
+1. Instala la extensión
+2. Abre DevTools en cualquier página (Cmd+Opt+I / F12)
+3. Las capas superpuestas aparecen automáticamente, resaltando los problemas
+4. Haz clic en la pestaña del panel "Impeccable" para ver una lista estructurada de todos los hallazgos
+5. Haz clic en cualquier hallazgo para saltar al elemento en el panel Elements (Elementos)
 
-FEATURES
+CARACTERÍSTICAS
 
-- Auto-scans when DevTools opens, no manual step needed
-- Grouped findings: AI tells vs. quality issues
-- Click-to-inspect: jump from a finding to the element
-- Toggle overlays on/off from the panel or toolbar popup
-- Per-rule settings: disable detections you don't care about
-- Re-scans on navigation, including SPA route changes
-- Works on any website
-- Runs 100% locally, no data sent anywhere
+- Escaneo automático al abrir DevTools, sin necesidad de pasos manuales
+- Hallazgos agrupados: indicios de IA frente a problemas de calidad
+- Clic para inspeccionar: salta directamente desde un hallazgo al elemento
+- Activa o desactiva las capas superpuestas desde el panel o la ventana emergente de la barra de herramientas
+- Configuración por regla: desactiva las detecciones que no te interesen
+- Vuelve a escanear al navegar, incluidos los cambios de ruta en SPAs
+- Funciona en cualquier sitio web
+- Funciona 100% a nivel local, no se envía ningún dato a ningún sitio
 
-Open source at https://github.com/pbakaus/impeccable
+Código abierto en https://github.com/pbakaus/impeccable
 
-## Category
-Developer Tools
+## Categoría
+Herramientas para desarrolladores
 
-## Language
-English
+## Idioma
+Español
 
-## Privacy policy URL
+## URL de política de privacidad
 https://impeccable.style/privacy
 
-## Single purpose description
-Detects and highlights UI anti-patterns (AI-generated design tells and general quality issues) on any web page.
+## Descripción de propósito único
+Detecta y resalta antipatrones de interfaz de usuario (indicios de diseño generados por IA y problemas generales de calidad) en cualquier página web.

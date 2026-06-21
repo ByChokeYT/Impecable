@@ -60,7 +60,7 @@ Luego implementa código funcional que sea:
 
 ## Directrices de Estética Frontend
 
-### Tipografía
+### Tipografía {#tipografia}
 → *Consulta la [referencia de tipografía](reference/typography.md) para características OpenType, carga de fuentes web y material más profundo sobre escalas.*
 
 Elige fuentes que sean hermosas, únicas e interesantes. Combina una fuente de exhibición (display) distintiva con una fuente de cuerpo refinada.
@@ -169,7 +169,7 @@ NO: Establezcas por defecto el modo oscuro con acentos brillantes. Se ve "genial
 NO: Establezcas por defecto el modo claro "para ir a lo seguro". El objetivo es elegir, no refugiarse en una opción segura.
 </color_rules>
 
-### Diseño y Espacio
+### Diseño y Espacio {#diseno-y-espacio}
 → *Consulta la [referencia espacial](reference/spatial-design.md) para material más profundo sobre cuadrículas, consultas de contenedor y ajustes ópticos.*
 
 Crea ritmo visual mediante un espaciado variado, no usando el mismo relleno (padding) en todas partes. Adopta la asimetría y las composiciones inesperadas. Rompe la cuadrícula intencionadamente para dar énfasis.
@@ -235,7 +235,7 @@ Enfócate en momentos de alto impacto: una carga de página bien orquestada con 
 **NO**: Animes propiedades de diseño (width, height, padding, margin). Usa únicamente transform y opacity.
 **NO**: Uses aceleraciones elásticas o de rebote. Se sienten anticuadas y de mal gusto; los objetos reales desaceleran suavemente.
 
-### Interacción
+### Interacción {#interaccion}
 → *Consulta la [referencia de interacción](reference/interaction-design.md) para formularios, enfoque y patrones de carga.*
 
 Haz que las interacciones se sientan rápidas. Usa una UI optimista: actualiza inmediatamente, sincroniza después.

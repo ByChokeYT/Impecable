@@ -1,40 +1,40 @@
 ---
-tagline: "Think before you build. Produce a design brief through discovery, not guesswork."
+tagline: "Piensa antes de construir. Diseña un brief estratégico mediante el descubrimiento, no por adivinación."
 ---
 
-## When to use it
+## Cuándo usarlo
 
-`/shape` is where a feature starts. Before anyone writes code, before anyone argues about the hero treatment, before anyone picks a font. Use it to force a discovery conversation about purpose, users, content, and constraints, then capture the answers as a design brief the implementation skills can lean on.
+`/shape` es el lugar donde nace una funcionalidad. Antes de escribir código, antes de discutir el estilo de la cabecera y antes de elegir cualquier tipografía. Úsalo para forzar una conversación de descubrimiento sobre el propósito, los usuarios, el contenido y las restricciones del sistema, y luego plasma las respuestas en un reporte de diseño (`brief`) en el que las habilidades de implementación puedan apoyarse.
 
-Reach for it whenever a feature is about to start, a ticket is vague, or you catch yourself writing JSX to figure out what the product should be.
+Recurre a él cuando vayas a empezar una funcionalidad, cuando la descripción de una tarea sea vaga o te encuentres escribiendo JSX solo para descubrir qué debería hacer el producto.
 
-## How it works
+## Cómo funciona
 
-Most AI-generated UIs fail not because of bad code, but because of skipped thinking. The model jumps to "here is a card grid" without asking "what is the user trying to accomplish". `/shape` inverts that order.
+La mayoría de las interfaces generadas por IA fallan no debido a un mal código, sino a la falta de reflexión previa. El modelo salta directamente a crear "una cuadrícula de tarjetas" sin preguntar "qué está intentando lograr el usuario". `/shape` invierte ese orden.
 
-The skill runs a structured discovery interview in conversation. It will not write code during this phase. The questions cover:
+La habilidad ejecuta una entrevista estructurada de descubrimiento en el chat. No escribirá código durante esta fase. Las preguntas cubren:
 
-- **Purpose and context**: what the feature is for, who uses it, what state of mind they are in
-- **Content and data**: what is displayed, realistic ranges, edge cases, what is dynamic
-- **Design goals**: the single most important thing, the intended feeling, reference examples
-- **Constraints**: technical, content, accessibility, localization
+- **Propósito y contexto**: para qué sirve la funcionalidad, quién la usa y qué estado de ánimo tiene al usarla.
+- **Contenido y datos**: qué se muestra, rangos realistas de datos, casos límite y qué elementos son dinámicos.
+- **Objetivos de diseño**: la prioridad número uno, el sentimiento que debe evocar la interfaz y ejemplos de referencia.
+- **Restricciones**: técnicas, de contenido, accesibilidad y localización.
 
-You answer naturally. The skill asks follow-ups, not a form. At the end it produces a design brief: a structured artifact you can hand to `/impeccable` or any other implementation skill.
+Responde de forma natural. La habilidad te hará preguntas de seguimiento fluidas, no es un formulario rígido. Al final, genera un `brief` de diseño: un artefacto estructurado que puedes pasar a `/impeccable` o a cualquier otra habilidad de implementación.
 
-Note: if you want the full flow -- discovery interview, then straight into building -- use `/impeccable craft` instead. It runs `/shape` internally, then continues into implementation with visual iteration. `/shape` standalone is for when you want just the brief, so you can take it to whatever implementation approach you prefer.
+Nota: si deseas el flujo completo (entrevista de descubrimiento y luego pasar directo a construir), usa `/impeccable craft`. Este ejecuta `/shape` internamente y luego continúa con la implementación e iteración visual. El comando `/shape` independiente es para cuando solo deseas el `brief`, de modo que puedas usarlo con el enfoque de implementación que prefieras.
 
-## Try it
+## Pruébalo
 
 ```
-/shape a daily digest email preferences page
+/shape una página de preferencias para el boletín de resumen diario
 ```
 
-Expect a 5 to 10 question conversation. The skill asks things like "who is the person opening this, and are they already committed or still curious" and "what happens when the user has unsubscribed from everything, do we hide the feature or show something". You answer, and a brief materializes.
+Espera una conversación de 5 a 10 preguntas. La habilidad te preguntará cosas como "quién es la persona que abre esto, ¿ya está comprometida con el producto o solo tiene curiosidad?" y "¿qué ocurre cuando el usuario se da de baja de todo, ocultamos la función o mostramos algo?". Tú respondes y el `brief` se materializa.
 
-From there you can hand the brief to `/impeccable`, `/polish`, or any other skill. Or just use it as a reference while you build by hand.
+Desde ahí, puedes entregar el informe a `/impeccable`, `/polish` o cualquier otra habilidad, o usarlo como referencia mientras programas a mano.
 
-## Pitfalls
+## Problemas comunes
 
-- **Skipping it because it feels slow.** The interview is maybe 5 minutes. The rewrites you avoid are measured in hours.
-- **Treating the brief as a spec.** It is a compass, not a checklist. It captures intent, not UI.
-- **Answering with "standard" or "normal".** Specificity is the whole point. If a user is "rushed, on mobile, between meetings", say so. That changes everything downstream.
+- **Omitirlo porque parece lento.** La entrevista toma unos 5 minutos. Las reescrituras de código que te ahorras se miden en horas.
+- **Tratar el `brief` como una especificación técnica estricta.** Es una brújula, no una lista de verificación inflexible. Captura la intención de diseño, no la interfaz de usuario final.
+- **Responder con "estándar" o "normal".** La clave de este paso es la especificidad. Si un usuario está "con prisa, en el móvil y entre reuniones", dilo. Eso cambia todas las decisiones de diseño posteriores.

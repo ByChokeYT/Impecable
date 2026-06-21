@@ -1,42 +1,42 @@
 ---
-tagline: "Fix typography that feels generic, inconsistent, or accidental."
+tagline: "Corrige la tipografía que se siente genérica, inconsistente o accidental."
 ---
 
-## When to use it
+## Cuándo usarlo
 
-Reach for `/typeset` when the text on a page looks like default typography instead of designed typography. Muddy hierarchy, three sizes that look the same, body copy at 14px, a display font that is actually just Inter bold, headlines with no kerning attention.
+Recurre a `/typeset` cuando el texto de una página parezca tipografía predeterminada del navegador en lugar de una diseñada con intención. Jerarquía confusa, tres tamaños de letra que parecen iguales, texto de cuerpo a 14px, una fuente de exhibición (`display`) que en realidad es solo Inter en negrita, o titulares con el interlineado descuidado.
 
-Common triggers: "hierarchy feels flat", "readability is off", "fonts look generic".
+Razones comunes de uso: "la jerarquía se siente plana", "la legibilidad es mala", "las fuentes se ven genéricas".
 
-## How it works
+## Cómo funciona
 
-The skill assesses typography across five dimensions:
+La habilidad evalúa la tipografía a través de cinco dimensiones:
 
-1. **Font choices**: are you using invisible defaults (Inter, Roboto, Arial, Open Sans), does the typeface match the brand, are there more than 2 to 3 families.
-2. **Hierarchy**: are heading, body, and caption clearly different at a glance, is the size contrast at least 1.25x between steps, are weight contrasts legible.
-3. **Sizing and scale**: is there a coherent type scale, does body text meet 16px minimum, is the scale fixed-rem for app UIs or fluid-clamp for marketing pages.
-4. **Readability**: line length 45 to 75 characters, line-height tuned for font and context, contrast.
-5. **Consistency**: same element uses same treatment everywhere, no one-off font-size overrides.
+1. **Selección de fuentes**: ¿Estás usando opciones predeterminadas e invisibles (Inter, Roboto, Arial, Open Sans)? ¿La tipografía se adapta a la marca? ¿Hay más de 2 o 3 familias tipográficas en uso?
+2. **Jerarquía**: ¿El encabezado, el cuerpo y el pie de foto se diferencian claramente a simple vista? ¿El contraste de tamaño es de al menos 1.25x entre pasos? ¿Los contrastes de grosor son legibles?
+3. **Escala y tamaño**: ¿Existe una escala tipográfica coherente? ¿El texto del cuerpo tiene al menos 16px de tamaño? ¿La escala es fija en `rem` para UIs de productos o fluida con `clamp` para páginas de marketing y contenido?
+4. **Legibilidad**: Longitud de línea restringida a entre 45 y 75 caracteres, altura de línea (`line-height`) ajustada para la tipografía y el contexto, y contraste de color óptimo.
+5. **Consistencia**: El mismo elemento utiliza el mismo tratamiento en todas partes; sin anulaciones manuales de tamaño de fuente (`font-size`) aisladas en el código.
 
-It then fixes what it finds: picks distinctive typefaces, builds a modular scale, widens hierarchy contrast, sets proper line length and leading.
+A continuación, corrige lo que encuentra: selecciona tipografías distintivas, construye una escala tipográfica modular, amplía el contraste de jerarquía y define la longitud de línea y el interlineado adecuados.
 
-## Try it
+## Pruébalo
 
 ```
-/typeset the article layout
+/typeset la maquetación del artículo
 ```
 
-Expected diff:
+Cambios esperados:
 
-- Display font swapped from Inter 700 to a real display face
-- Type scale rebuilt: 3rem / 2rem / 1.25rem / 1rem / 0.875rem, ratio 1.333
-- Body text bumped from 14px to 16px
-- Line length clamped to 68ch on the article column
-- Line-height 1.6 for body, 1.1 for display
-- Removed four one-off `font-size` values scattered in component styles
+- La fuente display cambia de Inter 700 a una tipografía display con carácter real.
+- La escala tipográfica se reconstruye: 3rem / 2rem / 1.25rem / 1rem / 0.875rem (proporción de 1.333).
+- El texto del cuerpo se incrementa de 14px a 16px.
+- La longitud de la línea se limita a `max-width: 68ch` en la columna del artículo.
+- Altura de línea de 1.6 para el cuerpo y 1.1 para el texto display principal.
+- Se eliminan los valores manuales de `font-size` dispersos en los estilos de los componentes.
 
-## Pitfalls
+## Problemas comunes
 
-- **Asking for a new font without context.** Typeset will pick based on the `.impeccable.md` brand voice. If you have not run `/impeccable teach`, the suggestion will be generic.
-- **Reaching for typeset when the issue is layout.** If paragraphs are fine but the page feels cramped, you want `/layout`.
-- **Expecting fluid clamp scales on app UIs.** Typeset uses fixed rem scales for app interfaces. Fluid typography is for marketing and content pages where line length varies dramatically.
+- **Pedir una nueva fuente sin contexto.** `typeset` elegirá las fuentes basándose en la voz de marca definida en `.impeccable.md`. Si no has ejecutado `/impeccable teach`, las recomendaciones serán genéricas.
+- **Usar `typeset` cuando el problema real es la distribución.** Si los párrafos se leen bien pero la página se siente apretada, necesitas `/layout`.
+- **Esperar escalas fluidas con `clamp` en interfaces de aplicaciones.** `typeset` utiliza escalas fijas basadas en `rem` para interfaces de productos y paneles de control. La tipografía fluida se reserva para páginas de marketing y artículos donde el ancho de la columna varía significativamente.

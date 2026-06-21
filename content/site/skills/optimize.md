@@ -1,56 +1,56 @@
 ---
-tagline: "Diagnose and fix UI performance from LCP to bundle size."
+tagline: "Diagnostica y corrige el rendimiento de la interfaz de usuario, desde LCP hasta el tamaño del paquete."
 ---
 
-## When to use it
+## Cuándo usarlo
 
-`/optimize` is for interfaces that feel slow. First paint takes forever, scrolling janks, images pop in late, interactions feel laggy, the bundle ships 800KB of JavaScript. Use it when the Web Vitals are bad or when users are complaining that things are sluggish.
+`/optimize` es para interfaces que se sienten lentas. El primer renderizado tarda demasiado, el scroll da tirones, las imágenes aparecen tarde, las interacciones van con lag o el paquete del cliente descarga 800KB de JavaScript. Úsalo cuando las métricas Web Vitals sean deficientes o cuando los usuarios se quejen de que la aplicación va lenta.
 
-Do not use it as premature optimization. If LCP is 1.1s and INP is 80ms, stop. The design work matters more.
+No lo uses como una optimización prematura. Si la métrica LCP es de 1.1s y el INP es de 80ms, detente. En ese punto, el trabajo de diseño y funcionalidad importa más.
 
-## How it works
+## Cómo funciona
 
-The skill works through five perf dimensions:
+La habilidad trabaja sobre cinco dimensiones de rendimiento:
 
-1. **Loading and Web Vitals**: LCP, INP, CLS. Identify what is blocking the first paint, what is delaying interaction, what is shifting layout.
-2. **Rendering**: unnecessary re-renders, missing memoization, expensive reconciliation, layout thrash in loops.
-3. **Animations**: is anything animating layout properties, are transforms and opacity the only thing touched, does `will-change` help or hurt here.
-4. **Images and assets**: lazy loading, responsive images (`srcset`, `sizes`), modern formats (WebP, AVIF), dimensions set to prevent CLS.
-5. **Bundle size**: unused imports, oversized dependencies, missing code-splitting, dead code.
+1. **Carga y Web Vitals**: LCP, INP, CLS. Identifica qué está bloqueando el primer renderizado, qué retrasa la interacción y qué provoca cambios acumulativos de diseño.
+2. **Renderizado**: Re-renders innecesarios, falta de memorización, reconciliaciones costosas en el DOM o lecturas repetidas de propiedades de diseño (layout thrash) dentro de bucles.
+3. **Animaciones**: Comprueba si se están animando propiedades de diseño. Asegura que solo se utilicen `transform` y `opacity` y evalúa si la propiedad `will-change` beneficia o perjudica el rendimiento.
+4. **Imágenes y recursos**: Carga diferida (`lazy loading`), imágenes responsivas (`srcset`, `sizes`), formatos modernos (WebP, AVIF) y definición explícita de dimensiones para evitar el CLS.
+5. **Tamaño del paquete (Bundle size)**: Importaciones no utilizadas, dependencias excesivamente grandes, falta de división de código (`code-splitting`) y código muerto.
 
-The skill measures before and after. Every fix gets quantified. If a change does not move a metric, it gets rolled back.
+La habilidad mide el rendimiento antes y después. Cada corrección se cuantifica. Si un cambio no mejora una métrica, se revierte.
 
-## Try it
+## Pruébalo
 
 ```
-/optimize the homepage
+/optimize la página de inicio
 ```
 
-Expected shape:
+Resultado esperado:
 
 ```
 LCP: 3.2s → 1.4s
-  - Hero image preloaded (-800ms)
-  - Removed render-blocking font stylesheet (-240ms)
-  - Deferred analytics script (-180ms)
+  - Imagen de portada precargada (preload) (-800ms)
+  - Eliminada hoja de estilos de fuentes que bloqueaba el renderizado (-240ms)
+  - Script de analíticas pospuesto (defer) (-180ms)
 
 INP: 240ms → 90ms
-  - Debounced scroll handler
-  - Memoized expensive list render
-  - Removed synchronous layout read in event loop
+  - Función de scroll controlada con debounce
+  - Memorización aplicada al renderizado de listas costosas
+  - Eliminada lectura síncrona del layout en el bucle de eventos
 
 CLS: 0.18 → 0.02
-  - Set dimensions on hero image and logo
-  - Reserved space for async header badge
+  - Dimensiones explícitas añadidas a la imagen de portada y al logo
+  - Espacio reservado para la etiqueta asíncrona del encabezado
 
-Bundle: 340KB → 180KB
-  - Removed unused lodash import (52KB)
-  - Code-split the playground route (78KB)
-  - Dropped deprecated icon set (30KB)
+Paquete (Bundle): 340KB → 180KB
+  - Eliminada importación completa de lodash no utilizada (52KB)
+  - División de código en la ruta del playground (78KB)
+  - Eliminado conjunto de iconos obsoletos (30KB)
 ```
 
-## Pitfalls
+## Problemas comunes
 
-- **Optimizing before measuring.** Without baseline metrics, you cannot tell what helped. Run `/optimize` with specific Web Vitals numbers, not vibes.
-- **Chasing tiny wins.** A 20ms improvement in INP that takes a week is rarely worth it. Optimize has diminishing returns; know when to stop.
-- **Forgetting to re-measure after every change.** The build could have made things worse in a way the skill did not predict. Verify.
+- **Optimizar antes de medir.** Sin métricas de base, es imposible saber qué ha funcionado. Ejecuta `/optimize` basándote en números de Web Vitals reales, no en sensaciones.
+- **Perseguir mejoras insignificantes.** Una mejora de 20ms en el INP que requiere una semana de trabajo rara vez compensa. La optimización tiene un retorno decreciente; aprende cuándo detenerte.
+- **Olvidar volver a medir tras cada cambio.** La compilación final podría haber empeorado el rendimiento de una forma que la habilidad no predijo. Verifica siempre.

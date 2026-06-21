@@ -1,42 +1,42 @@
 ---
-tagline: "Rewrite confusing UX copy so interfaces explain themselves."
+tagline: "Reescribe textos de UX confusos para que las interfaces se expliquen solas."
 ---
 
-## When to use it
+## Cuándo usarlo
 
-`/clarify` is for interface text that makes people stop and think. Confusing labels, ambiguous button copy, error messages that blame the user, tooltips that repeat the label, empty states that say nothing useful. Use it when the problem is not the layout or the color, it is the words.
+`/clarify` es para textos de interfaz que hacen dudar al usuario. Etiquetas confusas, textos de botones ambiguos, mensajes de error que culpan al usuario, cuadros de información (`tooltips`) que repiten la misma etiqueta o estados vacíos que no aportan utilidad. Úsalo cuando el problema no sea la distribución ni el color, sino las palabras.
 
-Good triggers: "users do not understand this field", "the error message is not helpful", "I cannot write good button copy", "this tooltip is a waste".
+Buenas razones para usarlo: "los usuarios no entienden este campo", "el mensaje de error no ayuda", "no sé qué poner en este botón", "este tooltip es redundante".
 
-## How it works
+## Cómo funciona
 
-The skill rewrites text across the surfaces where most UX copy problems live:
+La habilidad reescribe textos en las superficies donde suelen aparecer los problemas de copy en UX:
 
-1. **Labels and field hints**: direct, specific, say what is expected.
-2. **Button copy**: verb-first, describes the outcome, not the action. "Save changes" not "OK".
-3. **Error messages**: explain what went wrong, whose fault it is, and what to do next. Never blame the user.
-4. **Empty states**: orient the user, explain why the state is empty, offer a next step.
-5. **Tooltips and helper text**: add information the label cannot carry, never restate it.
-6. **Confirmation dialogs**: name the consequences, not the action.
+1. **Etiquetas e indicaciones**: directas, específicas, indicando exactamente qué se espera.
+2. **Textos en botones**: comenzando con un verbo de acción y describiendo el resultado, no la acción técnica. "Guardar cambios" en lugar de "Aceptar" u "OK".
+3. **Mensajes de error**: explican qué salió mal, de quién es la responsabilidad (sistema/servidor) y qué hacer a continuación. Nunca culpan al usuario.
+4. **Estados vacíos**: orientan al usuario, explican por qué la pantalla está vacía y ofrecen un siguiente paso de acción.
+5. **Tooltips y textos de ayuda**: añaden información de valor que la etiqueta principal no puede contener; nunca repiten el título.
+6. **Diálogos de confirmación**: nombran las consecuencias exactas del proceso, no solo la acción.
 
-The skill uses the audience and mental state from `.impeccable.md` to tune voice. Technical audience gets precise language. Consumer audience gets plain speech. Rushed users get short text. Anxious users (payment, delete) get reassurance.
+La habilidad utiliza la audiencia y el estado mental definidos en `.impeccable.md` para ajustar el tono. Una audiencia técnica obtiene un lenguaje preciso y especializado. Una audiencia general obtiene explicaciones simples. Usuarios con prisa obtienen textos cortos. Usuarios ansiosos (en pagos o eliminaciones) obtienen mensajes de seguridad y calma.
 
-## Try it
+## Pruébalo
 
 ```
-/clarify the billing form
+/clarify el formulario de facturación
 ```
 
-Before and after, typical:
+Antes y después típicos:
 
-- Label "Billing address" → "Address on your card"
-- Placeholder "Enter your VAT ID" → "VAT ID (optional, for business)"
-- Error "Invalid input" → "This card number is 15 digits. You entered 14."
-- Button "Submit" → "Charge $29 and subscribe"
-- Empty state "No transactions yet" → "Your first charge will show up here after your first order."
+- Etiqueta "Dirección de facturación" → "Dirección registrada en tu tarjeta"
+- Marcador de posición "Introduce tu número de IVA" → "Número de IVA (opcional, para empresas)"
+- Error "Entrada no válida" → "Este número de tarjeta debe tener 15 dígitos. Introdujiste 14."
+- Botón "Enviar" → "Pagar $29 y suscribirse"
+- Estado vacío "No hay transacciones aún" → "Los cobros de tus compras aparecerán aquí después de tu primer pedido."
 
-## Pitfalls
+## Problemas comunes
 
-- **Writing cleverer, not clearer.** Clarify is not for voice upgrades. If the copy is already clear, do not reach for this skill. Use `/delight` instead when you want personality.
-- **Skipping the audience question.** Clarify needs to know who is reading. If `.impeccable.md` does not specify audience technical level, the rewrites will be generic.
-- **Running clarify on marketing copy.** Clarify is for functional UX text: labels, errors, instructions. Marketing copy needs a different set of moves and a human writer.
+- **Escribir de forma ingeniosa en lugar de clara.** `clarify` no es para añadir adornos de marca. Si el texto ya es claro, no uses esta habilidad. Elige `/delight` si buscas dar más personalidad.
+- **Omitir la definición de la audiencia.** `clarify` necesita saber quién está leyendo. Si tu `.impeccable.md` no especifica el nivel técnico de la audiencia, las reescrituras serán genéricas.
+- **Ejecutar `clarify` en textos de marketing.** Esta habilidad es para textos UX funcionales: etiquetas, errores e instrucciones. Los textos publicitarios o comerciales requieren otra estructura y un redactor humano.

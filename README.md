@@ -65,13 +65,6 @@ Una habilidad de diseño integral con 7 referencias de dominios específicos ([v
 ```
 *Cuándo usarlo:* Antes de realizar cambios, para entender qué necesita corregirse.
 
-**`/normalize`** - Alinea con el sistema de diseño
-```
-/normalize blog          # Aplica tokens de diseño, corrige el espaciado
-/normalize buttons       # Estandariza los estilos de los botones
-```
-*Cuándo usarlo:* Después de una auditoría, para corregir inconsistencias.
-
 **`/critique`** - Revisión de diseño de UX
 ```
 /critique landing page   # Revisa la UX de la página de destino
@@ -88,7 +81,7 @@ Una habilidad de diseño integral con 7 referencias de dominios específicos ([v
 
 **Combinando comandos:**
 ```
-/audit /normalize /polish blog    # Flujo completo: auditar → corregir → pulir
+/audit /polish blog    # Flujo completo: auditar → pulir
 /critique /harden checkout        # Revisión de UX + añadir manejo de errores
 ```
 
@@ -191,7 +184,7 @@ Una vez instalado, usa los comandos en tu entorno de IA:
 
 ```
 /audit           # Encuentra problemas
-/normalize       # Corrige inconsistencias
+/critique        # Revisa la UX de diseño
 /polish          # Limpieza final
 /distill         # Elimina la complejidad
 ```

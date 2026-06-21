@@ -1,40 +1,40 @@
 ---
-tagline: "Tone down designs that are shouting without losing their intent."
+tagline: "Atenúa los diseños que resultan demasiado agresivos o estridentes sin perder su intención original."
 ---
 
-## When to use it
+## Cuándo usarlo
 
-`/quieter` is the counterweight to `/bolder`. Reach for it when an interface is visually aggressive, overstimulating, or trying to do too many things at full volume. Neon on dark, gradient text everywhere, 6 accent colors, everything animated, 20px shadows. Use quieter when the design needs to breathe and you want refinement without losing the point of view.
+`/quieter` es el contrapeso a `/bolder`. Recurre a él cuando una interfaz sea visualmente agresiva, sobreestimulante o intente llamar la atención en todas partes con la máxima intensidad. Colores neón sobre fondo oscuro, texto con degradados por doquier, 6 colores de acento, animaciones en cada elemento y sombras exageradas de 20px. Usa `/quieter` cuando el diseño necesite respirar y desees refinamiento sin perder el punto de vista inicial.
 
-Also useful after `/bolder` goes a little too far.
+También es muy útil si has ejecutado `/bolder` previamente y el resultado ha quedado un poco exagerado.
 
-## How it works
+## Cómo funciona
 
-The skill works by reduction across four axes:
+La habilidad trabaja reduciendo la intensidad en cuatro ejes:
 
-1. **Color**: desaturate, lower chroma in OKLCH, pull accents back to a single primary plus muted support. No more than two intentional colors.
-2. **Contrast**: soften extreme darks and lights, pull the range in. Backgrounds move from pure white and pure black to paper and ink.
-3. **Decoration**: remove shadows that are not doing work, drop borders that are not carrying structure, retire gradients that exist for energy rather than hierarchy.
-4. **Motion and effect**: slow animations down, remove anything that auto-plays, drop parallax and blur unless they serve readability.
+1. **Color**: desatura, reduce la croma en OKLCH y repliega los acentos a un único color principal más un soporte atenuado. No se permiten más de dos colores intencionados.
+2. **Contraste**: suaviza los contrastes extremos entre luces y sombras acortando el rango. Los fondos pasan de negro o blanco puro a tonos papel y tinta.
+3. **Decoración**: elimina sombras que no aporten nada, quita bordes que no estructuren y retira degradados que solo aporten "energía" pero no aporten jerarquía real.
+4. **Movimiento y efectos**: ralentiza y suaviza las animaciones, elimina cualquier reproducción automática y prescinde de efectos parallax o desenfoques a menos que sirvan a la legibilidad.
 
-The skill preserves the design's intent. If the original had a point of view, the quieter version has the same point of view with more confidence. Refinement, not neutralization.
+La habilidad conserva la intención del diseño. Si el original tenía un punto de vista claro, la versión atenuada mantiene el mismo punto de vista pero con mayor madurez y confianza. Busca refinamiento, no neutralización total.
 
-## Try it
+## Pruébalo
 
 ```
-/quieter the pricing page
+/quieter la página de precios
 ```
 
-Typical diff:
+Cambios esperados:
 
-- Gradient text on the price removed, replaced with solid ink at one weight heavier
-- Three accent colors reduced to one (magenta), the other two become neutral variants
-- Card shadows reduced from `0 20px 40px rgba(0,0,0,0.2)` to `0 1px 0 var(--color-mist)` (a hairline)
-- Background switches from dark gradient to paper with a subtle cream wash at the top
-- Hero animation from 1.2s easeOut with 3 staggered elements to a single 260ms fade-in
+- Se elimina el texto con degradado en los precios, reemplazándolo por un color de tinta sólido con un punto más de grosor.
+- Los tres colores de acento se reducen a uno solo (ej. magenta) y los otros dos se convierten en variantes neutras.
+- Las sombras de las tarjetas pasan de `0 20px 40px rgba(0,0,0,0.2)` a un sutil borde de un píxel (`0 1px 0 var(--color-mist)`).
+- El fondo cambia de un degradado oscuro a un color papel con un suave tono crema en la cabecera.
+- La animación del hero de 1.2s y 3 elementos escalonados se simplifica a un único desvanecimiento de 260ms.
 
-## Pitfalls
+## Problemas comunes
 
-- **Over-applying.** Quieter can strip personality if you run it on something that was already measured. Use it when the design is too loud, not when it is correctly assertive.
-- **Confusing quieter with distill.** Quieter reduces intensity. Distill removes elements. They are different moves.
-- **Running it in response to a critique that says "too busy".** Busy usually means too many things, not too loud. Try `/distill` first.
+- **Aplicarlo en exceso.** `/quieter` puede eliminar la personalidad si lo ejecutas sobre algo que ya estaba medido y equilibrado. Úsalo cuando el diseño sea realmente estridente, no cuando sea simplemente asertivo.
+- **Confundir atenuar (`quieter`) con simplificar (`distill`).** `quieter` reduce la intensidad visual. `distill` elimina elementos físicos de la interfaz. Son procesos diferentes.
+- **Ejecutarlo ante una crítica que dice que la página está "muy cargada".** "Cargada" suele significar que hay demasiados elementos en pantalla, no que sean demasiado intensos. Prueba primero con `/distill`.
