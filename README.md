@@ -236,4 +236,4 @@ La habilidad impeccable se basa en la [habilidad original de diseño frontend de
 
 ---
 
-Creado por [ByChoke](https://github.com/ByChokeYT) (Basado en el trabajo original de [Paul Bakaus](https://www.paulbakaus.com))
+Creado por [ByChoke](https://github.com/ByChokeYT) | [Buy Me a Coffee](https://buymeacoffee.com/choque151jr) (Basado en el trabajo original de [Paul Bakaus](https://www.paulbakaus.com))
