@@ -68,14 +68,14 @@ export const DETECTION_LAYERS = {
 
 export const LAYER_LABELS = {
   cli: 'CLI',
-  browser: 'Browser',
-  llm: 'LLM only',
+  browser: 'Navegador',
+  llm: 'Solo LLM',
 };
 
 export const LAYER_DESCRIPTIONS = {
-  cli: 'Deterministic. Runs from `npx impeccable detect` on files, no browser required.',
-  browser: 'Deterministic, but needs real browser layout. Runs via the browser extension or Puppeteer, not the plain CLI.',
-  llm: 'Not caught by any deterministic detector. Flagged by /critique during its LLM design review.',
+  cli: 'Determinista. Se ejecuta mediante `npx impeccable detect` en archivos, sin requerir un navegador.',
+  browser: 'Determinista, pero requiere el diseño real del navegador. Se ejecuta mediante la extensión de navegador o Puppeteer, no desde el CLI simple.',
+  llm: 'No es detectado por ningún detector determinista. Es señalado por /critique durante su revisión de diseño por LLM.',
 };
 
 // ─── Visual examples ─────────────────────────────────────────────────
@@ -163,15 +163,6 @@ export const VISUAL_EXAMPLES = {
   'mobile-amputation': `<div style="font-family: system-ui, sans-serif;"><div style="display: flex; align-items: center; gap: 8px; padding: 8px 10px; background: #fff; border: 1px solid #e8e4df; border-radius: 6px; margin-bottom: 4px; font-size: 12px; color: #999; text-decoration: line-through;"><span>Export to CSV</span></div><div style="font-size: 10px; color: #888; margin-top: 4px;">"Not available on mobile."</div></div>`,
 };
 
-/**
- * Anti-patterns that live in the /impeccable skill's DON'T list but
- * don't have a deterministic detector. These can only be caught by
- * /critique running an LLM assessment pass.
- *
- * Each entry looks like a detection rule: id, category, name,
- * description, skillSection. The generator merges these into the
- * grouped sections alongside detected rules with an 'llm' layer badge.
- */
 // ─── Gallery: real examples in the wild ──────────────────────────────
 
 /**
@@ -185,69 +176,69 @@ export const VISUAL_EXAMPLES = {
 export const GALLERY_ITEMS = [
   {
     id: 'purple-gradients',
-    title: 'Purple Gradients Everywhere',
+    title: 'Degradados de color púrpura por todas partes',
     desc:
-      'The AI color palette: purple-to-blue gradients on everything. Buttons, text, backgrounds, orbs. The new "make it pop."',
+      'La paleta de colores de la IA: degradados de púrpura a azul en todo. Botones, texto, fondos, orbes. El nuevo "haz que resalte."',
   },
   {
     id: 'lazy-cool',
-    title: 'Lazy "Cool"',
+    title: 'El falso "Cool"',
     desc:
-      'Glassmorphism, neon glows, blurred orbs, monospace everything. Looks like a hackathon project, not a product.',
+      'Vitromorfosis, brillos de neón, orbes borrosos, todo monoespaciado. Parece un proyecto de hackathon, no un producto.',
   },
   {
     id: 'lazy-impact',
-    title: 'Lazy "Impact"',
+    title: 'El falso "Impacto"',
     desc:
-      'When in doubt, animate everything. Bouncing buttons, wiggling icons, gradient text, floating badges. Motion without meaning.',
+      'En caso de duda, anímalo todo. Botones que rebotan, iconos que se mueven, texto con degradados, insignias flotantes. Movimiento sin significado.',
   },
   {
     id: 'thick-border-cards',
-    title: 'Side-Tab Cards',
+    title: 'Tarjetas con pestaña lateral',
     desc:
-      'A thick colored border on one side of a rounded card. The single most recognizable tell of AI-generated UI.',
+      'Un borde grueso de color en un lado de una tarjeta redondeada. El indicio más reconocible de interfaz generada por IA.',
   },
   {
     id: 'cardocalypse',
-    title: 'Cardocalypse',
+    title: 'Cardocalipsis',
     desc:
-      'Cards inside cards inside cards. Five levels of nesting, each with its own padding and shadow.',
+      'Tarjetas dentro de tarjetas dentro de tarjetas. Cinco niveles de anidamiento, cada uno con su propio relleno y sombra.',
   },
   {
     id: 'layout-templates',
-    title: 'Copy-Paste Layouts',
+    title: 'Diseños de copiar y pegar',
     desc:
-      'The same hero-metric-features template repeated with different colors. When every section looks the same, nothing stands out.',
+      'La misma plantilla de cabecera-métricas-características repetida con diferentes colores. Cuando cada sección se ve igual, nada destaca.',
   },
   {
     id: 'inter-everywhere',
-    title: 'Inter Everywhere',
+    title: 'Inter en todas partes',
     desc:
-      'One font for everything. Headings, body, labels, buttons. No typographic hierarchy, no personality, no design.',
+      'Una sola fuente para todo. Encabezados, cuerpo, etiquetas, botones. Sin jerarquía tipográfica, sin personalidad, sin diseño.',
   },
   {
     id: 'massive-icons',
-    title: 'Massive Icons',
+    title: 'Iconos gigantes',
     desc:
-      'Icon containers larger than the content they introduce. When the decoration is bigger than the message, priorities are backwards.',
+      'Contenedores de iconos más grandes que el contenido que introducen. Cuando la decoración es más grande que el mensaje, las prioridades están invertidas.',
   },
   {
     id: 'bad-contrast',
-    title: 'Bad Contrast Choices',
+    title: 'Malas decisiones de contraste',
     desc:
-      'Gray text on colored backgrounds, low-contrast labels, unreadable combinations. Looking good and being readable should not conflict.',
+      'Texto gris sobre fondos de color, etiquetas de bajo contraste, combinaciones ilegibles. Verse bien y ser legible no debería entrar en conflicto.',
   },
   {
     id: 'redundant-ux-writing',
-    title: 'Redundant UX Writing',
+    title: 'Redacción redundante en UX',
     desc:
-      'Label, sublabel, helper text, and hint text all saying the same thing in slightly different words. Say it once, say it well.',
+      'Etiqueta, subetiqueta, texto de ayuda y texto de sugerencia diciendo lo mismo en palabras ligeramente diferentes. Dilo una vez, dilo bien.',
   },
   {
     id: 'modal-abuse',
-    title: 'Modal Abuse',
+    title: 'Abuso de modales',
     desc:
-      'Complex settings crammed into a modal. If it needs a scroll bar and three columns, it deserves its own page.',
+      'Configuraciones complejas amontonadas en un modal. Si necesita una barra de desplazamiento y tres columnas, merece su propia página.',
   },
 ];
 
@@ -257,97 +248,97 @@ export const LLM_ONLY_RULES = [
   {
     id: 'monospace-as-technical',
     category: 'slop',
-    name: 'Monospace as "technical" shorthand',
+    name: 'Monoespaciado como atajo para lo "técnico"',
     description:
-      'Using a monospace typeface to signal "developer / technical" vibes. Reach for real type choices instead of a lazy stereotype.',
+      'Usar una tipografía monoespaciada para transmitir vibras de "desarrollador / técnico". Opta por decisiones tipográficas reales en lugar de un estereotipo flojo.',
     skillSection: 'Typography',
   },
   {
     id: 'dark-mode-default',
     category: 'slop',
-    name: 'Defaulting to dark mode for "safety"',
+    name: 'Usar modo oscuro por defecto como "seguridad"',
     description:
-      'Defaulting to light mode to be safe is the inverse of defaulting to dark mode to look cool. Either way you are retreating from a decision.',
+      'Establecer por defecto el modo oscuro para verse moderno es el inverso de establecer el modo claro por defecto para estar seguro. En cualquier caso, estás evadiendo una decisión.',
     skillSection: 'Color & Contrast',
   },
   {
     id: 'everything-in-cards',
     category: 'slop',
-    name: 'Wrapping everything in cards',
+    name: 'Envolver todo en tarjetas',
     description:
-      'Not every piece of content needs a bordered container. Spacing and alignment create visual grouping without the overhead of a card.',
+      'No cada fragmento de contenido necesita un contenedor con bordes. El espaciado y la alineación crean agrupaciones visuales sin la sobrecarga de una tarjeta.',
     skillSection: 'Layout & Space',
   },
   {
     id: 'identical-card-grids',
     category: 'slop',
-    name: 'Identical card grids',
+    name: 'Cuadrículas de tarjetas idénticas',
     description:
-      'Same-sized cards with icon + heading + text repeated endlessly. The default AI homepage layout.',
+      'Tarjetas del mismo tamaño con icono + encabezado + texto repetidas indefinidamente. El diseño por defecto de las páginas de inicio generadas por IA.',
     skillSection: 'Layout & Space',
   },
   {
     id: 'hero-metric-layout',
     category: 'slop',
-    name: 'Hero metric layout',
+    name: 'Diseño de métrica hero',
     description:
-      'Big number, small label, three supporting stats, gradient accent. Used everywhere, trusted nowhere.',
+      'Número grande, etiqueta pequeña, tres estadísticas de soporte, acento con degradado. Usado en todas partes, confiable en ninguna.',
     skillSection: 'Layout & Space',
   },
   {
     id: 'glassmorphism',
     category: 'slop',
-    name: 'Glassmorphism everywhere',
+    name: 'Vitromorfosis (glassmorphic) en todas partes',
     description:
-      'Blur effects, glass cards, and glow borders used as decoration rather than to solve a real layering problem.',
+      'Efectos de desenfoque, tarjetas de vidrio y bordes brillantes usados como decoración en lugar de resolver un problema real de capas.',
     skillSection: 'Visual Details',
   },
   {
     id: 'sparkline-decoration',
     category: 'slop',
-    name: 'Sparklines as decoration',
+    name: 'Gráficos de líneas (sparklines) como decoración',
     description:
-      'Tiny charts that look sophisticated but convey no meaningful information. If the data matters, give it room.',
+      'Gráficos diminutos que parecen sofisticados pero no aportan información significativa. Si los datos importan, dales espacio.',
     skillSection: 'Visual Details',
   },
   {
     id: 'generic-drop-shadows',
     category: 'slop',
-    name: 'Rounded rectangles with generic drop shadows',
+    name: 'Rectángulos redondeados con sombras paralelas genéricas',
     description:
-      'The safest, most forgettable shape on the web. Could be the output of any AI. Commit to a stronger visual treatment.',
+      'La forma más segura y olvidable de la web. Podría ser el resultado de cualquier IA. Apuesta por un tratamiento visual más fuerte.',
     skillSection: 'Visual Details',
   },
   {
     id: 'modal-reflex',
     category: 'slop',
-    name: 'Reaching for modals by reflex',
+    name: 'Recurrir a modales por reflejo',
     description:
-      'Modals interrupt the user and are lazy as a design default. Use them only when there is truly no better place for the interaction.',
+      'Los modales interrumpen al usuario y son flojos como opción por defecto en el diseño. Úsalos únicamente cuando no haya un mejor lugar para la interacción.',
     skillSection: 'Visual Details',
   },
   {
     id: 'every-button-primary',
     category: 'quality',
-    name: 'Every button is a primary button',
+    name: 'Cada botón es un botón primario',
     description:
-      'When every button looks equally important, nothing reads as the primary action. Use ghost buttons, text links, and secondary styles to build hierarchy.',
+      'Cuando cada botón parece igual de importante, nada se lee como la acción principal. Usa botones fantasma, enlaces de texto y estilos secundarios para construir jerarquía.',
     skillSection: 'Interaction',
   },
   {
     id: 'redundant-headers',
     category: 'quality',
-    name: 'Redundant information',
+    name: 'Información redundante',
     description:
-      'Intros that restate the heading. Section labels that repeat the page title. Cards that echo their own caption. Make every word earn its place.',
+      'Introducciones que repiten el encabezado. Etiquetas de sección que repiten el título de la página. Tarjetas que hacen eco de su propia leyenda. Haz que cada palabra se gane su lugar.',
     skillSection: 'Interaction',
   },
   {
     id: 'mobile-amputation',
     category: 'quality',
-    name: 'Amputating features on mobile',
+    name: 'Amputar características en móvil',
     description:
-      'Hiding critical functionality on mobile because it is inconvenient. Adapt the interface to the context, do not strip it.',
+      'Ocultar funcionalidad crítica en dispositivos móviles por conveniencia. Adapta la interfaz al contexto, no la recortes.',
     skillSection: 'Responsive',
   },
 ];

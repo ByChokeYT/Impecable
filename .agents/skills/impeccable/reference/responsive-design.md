@@ -1,44 +1,44 @@
-# Responsive Design
+# Diseño Responsivo (Responsive Design)
 
-## Mobile-First: Write It Right
+## Mobile-First: Escríbelo Correctamente
 
-Start with base styles for mobile, use `min-width` queries to layer complexity. Desktop-first (`max-width`) means mobile loads unnecessary styles first.
+Comienza con los estilos base para dispositivos móviles y usa consultas `min-width` para añadir capas de complejidad. Diseñar primero para escritorio (usando `max-width`) provoca que los dispositivos móviles carguen estilos innecesarios en primer lugar.
 
-## Breakpoints: Content-Driven
+## Breakpoints: Guiados por el Contenido
 
-Don't chase device sizes—let content tell you where to break. Start narrow, stretch until design breaks, add breakpoint there. Three breakpoints usually suffice (640, 768, 1024px). Use `clamp()` for fluid values without breakpoints.
+No intentes adaptarte a tamaños de dispositivos específicos — deja que el contenido te indique dónde realizar el salto. Empieza con un diseño estrecho, ensánchalo hasta que el diseño se rompa, y añade un breakpoint en ese punto. Tres breakpoints suelen ser suficientes (640, 768, 1024px). Usa `clamp()` para lograr valores fluidos sin breakpoints.
 
-## Detect Input Method, Not Just Screen Size
+## Detectar el Método de Entrada, no solo el Tamaño de Pantalla
 
-**Screen size doesn't tell you input method.** A laptop with touchscreen, a tablet with keyboard—use pointer and hover queries:
+**El tamaño de la pantalla no te indica el método de entrada.** Un ordenador portátil con pantalla táctil, una tableta con teclado — usa consultas de puntero y de hover:
 
 ```css
-/* Fine pointer (mouse, trackpad) */
+/* Puntero fino (ratón, trackpad) */
 @media (pointer: fine) {
   .button { padding: 8px 16px; }
 }
 
-/* Coarse pointer (touch, stylus) */
+/* Puntero grueso (pantalla táctil, lápiz óptico) */
 @media (pointer: coarse) {
-  .button { padding: 12px 20px; }  /* Larger touch target */
+  .button { padding: 12px 20px; }  /* Área táctil más grande */
 }
 
-/* Device supports hover */
+/* El dispositivo soporta hover */
 @media (hover: hover) {
   .card:hover { transform: translateY(-2px); }
 }
 
-/* Device doesn't support hover (touch) */
+/* El dispositivo no soporta hover (táctil) */
 @media (hover: none) {
-  .card { /* No hover state - use active instead */ }
+  .card { /* Sin estado hover; usa active en su lugar */ }
 }
 ```
 
-**Critical**: Don't rely on hover for functionality. Touch users can't hover.
+**Crítico**: No confíes en el estado hover para proporcionar funcionalidad interactiva. Los usuarios táctiles no pueden realizar hover.
 
-## Safe Areas: Handle the Notch
+## Áreas Seguras: Gestionar la Muesca (Notch)
 
-Modern phones have notches, rounded corners, and home indicators. Use `env()`:
+Los teléfonos modernos tienen muescas (notches), esquinas redondeadas e indicadores de inicio. Usa la función `env()`:
 
 ```css
 body {
@@ -48,20 +48,20 @@ body {
   padding-right: env(safe-area-inset-right);
 }
 
-/* With fallback */
+/* Con valor de seguridad (fallback) */
 .footer {
   padding-bottom: max(1rem, env(safe-area-inset-bottom));
 }
 ```
 
-**Enable viewport-fit** in your meta tag:
+**Habilita `viewport-fit`** en tu etiqueta meta:
 ```html
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 ```
 
-## Responsive Images: Get It Right
+## Imágenes Responsivas: Hazlo Bien
 
-### srcset with Width Descriptors
+### srcset con Descriptores de Ancho
 
 ```html
 <img
@@ -72,18 +72,18 @@ body {
     hero-1200.jpg 1200w
   "
   sizes="(max-width: 768px) 100vw, 50vw"
-  alt="Hero image"
+  alt="Imagen principal (Hero)"
 >
 ```
 
-**How it works**:
-- `srcset` lists available images with their actual widths (`w` descriptors)
-- `sizes` tells the browser how wide the image will display
-- Browser picks the best file based on viewport width AND device pixel ratio
+**Cómo funciona**:
+- `srcset` enumera las imágenes disponibles junto con sus anchos reales (descriptores `w`).
+- `sizes` indica al navegador el ancho al que se mostrará la imagen.
+- El navegador selecciona el mejor archivo basándose en el ancho del viewport Y en la densidad de píxeles del dispositivo.
 
-### Picture Element for Art Direction
+### Elemento Picture para Dirección de Arte
 
-When you need different crops/compositions (not just resolutions):
+Cuando necesites diferentes encuadres o composiciones de una imagen (no solo cambiar la resolución):
 
 ```html
 <picture>
@@ -93,22 +93,22 @@ When you need different crops/compositions (not just resolutions):
 </picture>
 ```
 
-## Layout Adaptation Patterns
+## Patrones de Adaptación del Diseño (Layout)
 
-**Navigation**: Three stages—hamburger + drawer on mobile, horizontal compact on tablet, full with labels on desktop. **Tables**: Transform to cards on mobile using `display: block` and `data-label` attributes. **Progressive disclosure**: Use `<details>/<summary>` for content that can collapse on mobile.
+**Navegación**: Tres etapas — menú hamburguesa + panel lateral en móvil, menú horizontal compacto en tablet, y menú completo con etiquetas en escritorio. **Tablas**: Transfórmalas en tarjetas en móvil usando `display: block` y atributos `data-label`. **Divulgación progresiva**: Usa `<details>/<summary>` para contenido que se pueda contraer en móvil.
 
-## Testing: Don't Trust DevTools Alone
+## Pruebas: No Confíes Únicamente en las DevTools
 
-DevTools device emulation is useful for layout but misses:
+La emulación de dispositivos de las DevTools es de utilidad para el diseño, pero no detecta:
 
-- Actual touch interactions
-- Real CPU/memory constraints
-- Network latency patterns
-- Font rendering differences
-- Browser chrome/keyboard appearances
+- Interacciones táctiles reales.
+- Restricciones reales de CPU/memoria.
+- Patrones de latencia de red.
+- Diferencias en el renderizado de fuentes.
+- La aparición del teclado en pantalla o la barra del navegador.
 
-**Test on at least**: One real iPhone, one real Android, a tablet if relevant. Cheap Android phones reveal performance issues you'll never see on simulators.
+**Realiza pruebas al menos en**: Un iPhone real, un Android real y una tableta si aplica. Los teléfonos Android de gama baja revelan problemas de rendimiento que nunca verás en los simuladores de desarrollo.
 
 ---
 
-**Avoid**: Desktop-first design. Device detection instead of feature detection. Separate mobile/desktop codebases. Ignoring tablet and landscape. Assuming all mobile devices are powerful.
+**Evita**: Diseñar primero para escritorio. Detectar el dispositivo en lugar de detectar las características disponibles. Mantener bases de código separadas para móvil y escritorio. Ignorar las tabletas y la orientación horizontal (landscape). Asumir que todos los dispositivos móviles son potentes.

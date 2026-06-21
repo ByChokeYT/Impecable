@@ -1,96 +1,96 @@
-# Interaction Design
+# Diseño de Interacción (Interaction Design)
 
-## The Eight Interactive States
+## Los Ocho Estados Interactivos
 
-Every interactive element needs these states designed:
+Cada elemento interactivo necesita el diseño de estos estados:
 
-| State | When | Visual Treatment |
-|-------|------|------------------|
-| **Default** | At rest | Base styling |
-| **Hover** | Pointer over (not touch) | Subtle lift, color shift |
-| **Focus** | Keyboard/programmatic focus | Visible ring (see below) |
-| **Active** | Being pressed | Pressed in, darker |
-| **Disabled** | Not interactive | Reduced opacity, no pointer |
-| **Loading** | Processing | Spinner, skeleton |
-| **Error** | Invalid state | Red border, icon, message |
-| **Success** | Completed | Green check, confirmation |
+| Estado | Cuándo ocurre | Tratamiento Visual |
+|--------|---------------|-------------------|
+| **Predeterminado (Default)** | En reposo | Estilo base |
+| **Hover** | Cursor encima (no táctil) | Elevación sutil, cambio de color |
+| **Enfoque (Focus)** | Enfoque por teclado o código | Anillo visible (ver abajo) |
+| **Activo (Active)** | Al ser pulsado/clicado | Efecto presionado, color más oscuro |
+| **Desactivado (Disabled)** | No es interactivo | Opacidad reducida, cursor por defecto |
+| **Cargando (Loading)** | Procesando acción | Spinner de carga, esqueleto (skeleton) |
+| **Error** | Estado no válido | Borde rojo, icono, mensaje de error |
+| **Éxito (Success)** | Acción completada | Check verde, confirmación |
 
-**The common miss**: Designing hover without focus, or vice versa. They're different. Keyboard users never see hover states.
+**La omisión común**: Diseñar el estado hover sin diseñar el focus, o viceversa. Son estados distintos. Los usuarios de teclado nunca ven el estado hover.
 
-## Focus Rings: Do Them Right
+## Anillos de Enfoque: Hazlos Bien
 
-**Never `outline: none` without replacement.** It's an accessibility violation. Instead, use `:focus-visible` to show focus only for keyboard users:
+**Nunca apliques `outline: none` sin proporcionar un reemplazo.** Es una infracción de accesibilidad. En su lugar, usa `:focus-visible` para mostrar el anillo de enfoque únicamente a los usuarios de teclado:
 
 ```css
-/* Hide focus ring for mouse/touch */
+/* Ocultar el anillo de enfoque para ratón o pantallas táctiles */
 button:focus {
   outline: none;
 }
 
-/* Show focus ring for keyboard */
+/* Mostrar el anillo de enfoque para teclado */
 button:focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
 }
 ```
 
-**Focus ring design**:
-- High contrast (3:1 minimum against adjacent colors)
-- 2-3px thick
-- Offset from element (not inside it)
-- Consistent across all interactive elements
+**Diseño del anillo de enfoque**:
+- Alto contraste (mínimo 3:1 respecto a los colores adyacentes).
+- Grosor de 2-3px.
+- Desfase (offset) desde el elemento (fuera de él, no adentro).
+- Consistente en todos los elementos interactivos.
 
-## Form Design: The Non-Obvious
+## Diseño de Formularios: Lo No Obvio
 
-**Placeholders aren't labels**—they disappear on input. Always use visible `<label>` elements. **Validate on blur**, not on every keystroke (exception: password strength). Place errors **below** fields with `aria-describedby` connecting them.
+**Los marcadores de posición (placeholders) no son etiquetas** — desaparecen en cuanto se empieza a escribir. Usa siempre elementos `<label>` visibles. **Valida al perder el foco (on blur)**, no en cada pulsación de tecla (excepción: la fortaleza de una contraseña). Coloca los mensajes de error **debajo** de los campos de entrada y conéctalos utilizando `aria-describedby`.
 
-## Loading States
+## Estados de Carga
 
-**Optimistic updates**: Show success immediately, rollback on failure. Use for low-stakes actions (likes, follows), not payments or destructive actions. **Skeleton screens > spinners**—they preview content shape and feel faster than generic spinners.
+**Actualizaciones optimistas**: Muestra el éxito de la acción de inmediato y vuelve atrás si falla. Úsalas para acciones de bajo riesgo (me gusta, seguir), nunca para pagos o acciones destructivas. **Pantallas con esqueleto (skeleton screens) > spinners de carga**: las primeras ofrecen una vista previa de la forma del contenido y se perciben más rápidas que los spinners de carga genéricos.
 
-## Modals: The Inert Approach
+## Modales: El Enfoque Inerte
 
-Focus trapping in modals used to require complex JavaScript. Now use the `inert` attribute:
+Para atrapar el enfoque (focus trap) dentro de los modales solía requerirse un código complejo de JavaScript. Ahora puedes usar el atributo `inert`:
 
 ```html
-<!-- When modal is open -->
+<!-- Cuando el modal está abierto -->
 <main inert>
-  <!-- Content behind modal can't be focused or clicked -->
+  <!-- El contenido detrás del modal no puede recibir enfoque ni clics -->
 </main>
 <dialog open>
-  <h2>Modal Title</h2>
-  <!-- Focus stays inside modal -->
+  <h2>Título del modal</h2>
+  <!-- El enfoque permanece dentro del modal -->
 </dialog>
 ```
 
-Or use the native `<dialog>` element:
+O bien utiliza el elemento nativo `<dialog>`:
 
 ```javascript
 const dialog = document.querySelector('dialog');
-dialog.showModal();  // Opens with focus trap, closes on Escape
+dialog.showModal();  // Abre el modal con focus trap e implementa el cierre con Escape
 ```
 
-## The Popover API
+## La API de Popover
 
-For tooltips, dropdowns, and non-modal overlays, use native popovers:
+Para bocadillos de información (tooltips), menús desplegables y superposiciones no modales, usa los popovers nativos:
 
 ```html
-<button popovertarget="menu">Open menu</button>
+<button popovertarget="menu">Abrir menú</button>
 <div id="menu" popover>
-  <button>Option 1</button>
-  <button>Option 2</button>
+  <button>Opción 1</button>
+  <button>Opción 2</button>
 </div>
 ```
 
-**Benefits**: Light-dismiss (click outside closes), proper stacking, no z-index wars, accessible by default.
+**Beneficios**: Cierre ligero (hacer clic fuera lo cierra), apilamiento correcto sin batallas de `z-index`, y accesible de forma predeterminada.
 
-## Dropdown & Overlay Positioning
+## Posicionamiento de Menús Desplegables y Superposiciones
 
-Dropdowns rendered with `position: absolute` inside a container that has `overflow: hidden` or `overflow: auto` will be clipped. This is the single most common dropdown bug in generated code.
+Los menús desplegables renderizados con `position: absolute` dentro de un contenedor que tenga `overflow: hidden` u `overflow: auto` se verán recortados. Este es el fallo de posicionamiento de menús desplegables más común en el código generado por IA.
 
-### CSS Anchor Positioning
+### Posicionamiento por Anclaje en CSS (CSS Anchor Positioning)
 
-The modern solution uses the CSS Anchor Positioning API to tether an overlay to its trigger without JavaScript:
+La solución moderna utiliza la API de CSS Anchor Positioning para anclar una superposición a su activador (trigger) sin recurrir a JavaScript:
 
 ```css
 .trigger {
@@ -104,92 +104,92 @@ The modern solution uses the CSS Anchor Positioning API to tether an overlay to 
   margin-top: 4px;
 }
 
-/* Flip above if no room below */
+/* Cambiar arriba si no hay espacio abajo */
 @position-try --flip-above {
   position-area: block-start span-inline-end;
   margin-bottom: 4px;
 }
 ```
 
-Because the dropdown uses `position: fixed`, it escapes any `overflow` clipping on ancestor elements. The `@position-try` block handles viewport edges automatically. **Browser support**: Chrome 125+, Edge 125+. Not yet in Firefox or Safari - use a fallback for those browsers.
+Debido a que el menú desplegable utiliza `position: fixed`, escapa a cualquier recorte por `overflow` en los elementos ancestros. El bloque `@position-try` gestiona de forma automática los límites de la pantalla. **Soporte de navegadores**: Chrome 125+, Edge 125+. Sin soporte aún en Firefox o Safari; usa una alternativa para ellos.
 
-### Popover + Anchor Combo
+### Combo Popover + Ancla
 
-Combining the Popover API with anchor positioning gives you stacking, light-dismiss, accessibility, and correct positioning in one pattern:
+Combinar la API de Popover con el posicionamiento por anclaje te ofrece apilamiento, cierre ligero, accesibilidad y posicionamiento correcto en un único patrón:
 
 ```html
-<button popovertarget="menu" class="trigger">Open</button>
+<button popovertarget="menu" class="trigger">Abrir</button>
 <div id="menu" popover class="dropdown">
-  <button>Option 1</button>
-  <button>Option 2</button>
+  <button>Opción 1</button>
+  <button>Opción 2</button>
 </div>
 ```
 
-The `popover` attribute places the element in the **top layer**, which sits above all other content regardless of z-index or overflow. No portal needed.
+El atributo `popover` coloca al elemento en la **capa superior** (top layer), la cual se sitúa por encima de cualquier otro contenido independientemente del `z-index` o el `overflow`. No requiere crear un portal.
 
-### Portal / Teleport Pattern
+### Patrón Portal / Teleport
 
-In component frameworks, render the dropdown at the document root and position it with JavaScript:
+En frameworks de componentes, renderiza el menú desplegable en la raíz del documento y posiciónalo usando JavaScript:
 
 - **React**: `createPortal(dropdown, document.body)`
 - **Vue**: `<Teleport to="body">`
-- **Svelte**: Use a portal library or mount to `document.body`
+- **Svelte**: Utiliza una librería de portales o móntalo en `document.body`
 
-Calculate position from the trigger's `getBoundingClientRect()`, then apply `position: fixed` with `top` and `left` values. Recalculate on scroll and resize.
+Calcula la posición utilizando el método `getBoundingClientRect()` del activador (trigger), y luego aplica `position: fixed` con las coordenadas `top` y `left`. Vuelve a calcular al hacer scroll y al redimensionar la ventana.
 
-### Fixed Positioning Fallback
+### Alternativa con Posicionamiento Fijo (Fixed Positioning Fallback)
 
-For browsers without anchor positioning support, `position: fixed` with manual coordinates avoids overflow clipping:
+Para navegadores sin soporte para el posicionamiento por anclaje, el uso de `position: fixed` con coordenadas calculadas de forma manual evita el recorte por overflow:
 
 ```css
 .dropdown {
   position: fixed;
-  /* top/left set via JS from trigger's getBoundingClientRect() */
+  /* top/left definidos mediante JS a partir del getBoundingClientRect() del activador */
 }
 ```
 
-Check viewport boundaries before rendering. If the dropdown would overflow the bottom edge, flip it above the trigger. If it would overflow the right edge, align it to the trigger's right side instead.
+Verifica los límites de la pantalla antes de renderizar. Si el menú desplegable supera el borde inferior, colócalo por encima del activador (trigger). Si supera el borde derecho, alinéalo con el lado derecho del activador.
 
-### Anti-Patterns
+### Antipatrones
 
-- **`position: absolute` inside `overflow: hidden`** - The dropdown will be clipped. Use `position: fixed` or the top layer instead.
-- **Arbitrary z-index values** like `z-index: 9999` - Use a semantic z-index scale: `dropdown (100) -> sticky (200) -> modal-backdrop (300) -> modal (400) -> toast (500) -> tooltip (600)`.
-- **Rendering dropdown markup inline** without an escape hatch from the parent's stacking context. Either use `popover` (top layer), a portal, or `position: fixed`.
+- **`position: absolute` dentro de `overflow: hidden`**: El menú desplegable se recortará. Usa `position: fixed` o la capa superior en su lugar.
+- **Valores arbitrarios de z-index** del tipo `z-index: 9999`: Usa una escala semántica para z-index: `dropdown (100) -> sticky (200) -> modal-backdrop (300) -> modal (400) -> toast (500) -> tooltip (600)`.
+- **Renderizar el marcado del menú desplegable directamente en línea** sin una vía de escape del contexto de apilamiento del elemento padre. Utiliza `popover` (capa superior), un portal, o `position: fixed`.
 
-## Destructive Actions: Undo > Confirm
+## Acciones Destructivas: Deshacer (Undo) > Confirmar
 
-**Undo is better than confirmation dialogs**—users click through confirmations mindlessly. Remove from UI immediately, show undo toast, actually delete after toast expires. Use confirmation only for truly irreversible actions (account deletion), high-cost actions, or batch operations.
+**Ofrecer deshacer es mejor que usar ventanas de diálogo de confirmación** — los usuarios hacen clic en las confirmaciones sin pensarlo dos veces. Elimina el elemento de la UI de inmediato, muestra un aviso (toast) con la opción de deshacer y realiza la eliminación real una vez que el aviso expire. Usa la confirmación únicamente para acciones verdaderamente irreversibles (eliminar la cuenta), acciones de muy alto coste o procesos por lotes.
 
-## Keyboard Navigation Patterns
+## Patrones de Navegación por Teclado
 
-### Roving Tabindex
+### Índice de Tabulación Móvil (Roving Tabindex)
 
-For component groups (tabs, menu items, radio groups), one item is tabbable; arrow keys move within:
+Para grupos de componentes (pestañas, elementos de menú, grupos de botones de opción), solo un elemento puede recibir foco mediante tabulación; las teclas de dirección (flechas) permiten moverse entre ellos:
 
 ```html
 <div role="tablist">
-  <button role="tab" tabindex="0">Tab 1</button>
-  <button role="tab" tabindex="-1">Tab 2</button>
-  <button role="tab" tabindex="-1">Tab 3</button>
+  <button role="tab" tabindex="0">Pestaña 1</button>
+  <button role="tab" tabindex="-1">Pestaña 2</button>
+  <button role="tab" tabindex="-1">Pestaña 3</button>
 </div>
 ```
 
-Arrow keys move `tabindex="0"` between items. Tab moves to the next component entirely.
+Las teclas de dirección mueven el atributo `tabindex="0"` de un elemento a otro. Al pulsar Tab, el foco salta directamente al siguiente componente de la página.
 
-### Skip Links
+### Enlaces de Salto (Skip Links)
 
-Provide skip links (`<a href="#main-content">Skip to main content</a>`) for keyboard users to jump past navigation. Hide off-screen, show on focus.
+Proporciona enlaces de salto (`<a href="#main-content">Saltar al contenido principal</a>`) para permitir a los usuarios de teclado saltarse los menús de navegación. Manténlos ocultos fuera de la pantalla y muéstralos únicamente al recibir el enfoque (focus).
 
-## Gesture Discoverability
+## Descubrimiento de Gestos
 
-Swipe-to-delete and similar gestures are invisible. Hint at their existence:
+Acciones como deslizar para eliminar y gestos similares son invisibles. Ofrece pistas de su existencia:
 
-- **Partially reveal**: Show delete button peeking from edge
-- **Onboarding**: Coach marks on first use
-- **Alternative**: Always provide a visible fallback (menu with "Delete")
+- **Revelación parcial**: Deja que el botón de eliminar asome ligeramente en el borde.
+- **Instrucción de inicio (Onboarding)**: Muestra indicaciones de ayuda al usarse por primera vez.
+- **Alternativa**: Proporciona siempre una alternativa visual visible (un menú con la opción "Eliminar").
 
-Don't rely on gestures as the only way to perform actions.
+No confíes en los gestos como la única vía para realizar acciones.
 
 ---
 
-**Avoid**: Removing focus indicators without alternatives. Using placeholder text as labels. Touch targets <44x44px. Generic error messages. Custom controls without ARIA/keyboard support.
+**Evita**: Eliminar los indicadores de enfoque sin proporcionar alternativas. Usar texto de marcador de posición (placeholder) como etiquetas. Áreas táctiles de tamaño menor a 44x44px. Mensajes de error genéricos. Controles personalizados que no tengan soporte de teclado/ARIA.

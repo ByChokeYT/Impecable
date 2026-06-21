@@ -1,70 +1,70 @@
-# Extract Flow
+# Flujo de Extracción (Extract Flow)
 
-Identify reusable patterns, components, and design tokens, then extract and consolidate them into the design system for systematic reuse.
+Identifica patrones reutilizables, componentes y tokens de diseño, y luego extráelos y consolídalos dentro del sistema de diseño para su reutilización sistemática.
 
-## Step 1: Discover the Design System
+## Paso 1: Descubrir el Sistema de Diseño
 
-Find the design system, component library, or shared UI directory. Understand its structure: component organization, naming conventions, design token structure, import/export conventions.
+Encuentra el sistema de diseño, la librería de componentes o el directorio de UI compartido. Comprende su estructura: organización de los componentes, convenciones de nomenclatura, estructura de los tokens de diseño y convenciones de importación/exportación.
 
-**CRITICAL**: If no design system exists, {{ask_instruction}} before creating one. Understand the preferred location and structure first.
+**CRÍTICO**: Si no existe un sistema de diseño, {{ask_instruction}} antes de crear uno. Comprende primero la ubicación y estructura de preferencia.
 
-## Step 2: Identify Patterns
+## Paso 2: Identificar Patrones
 
-Look for extraction opportunities in the target area:
+Busca oportunidades de extracción en el área objetivo:
 
-- **Repeated components**: Similar UI patterns used 3+ times (buttons, cards, inputs)
-- **Hard-coded values**: Colors, spacing, typography, shadows that should be tokens
-- **Inconsistent variations**: Multiple implementations of the same concept
-- **Composition patterns**: Layout or interaction patterns that repeat (form rows, toolbar groups, empty states)
-- **Type styles**: Repeated font-size + weight + line-height combinations
-- **Animation patterns**: Repeated easing, duration, or keyframe combinations
+- **Componentes repetidos**: Patrones de UI similares que se utilicen 3 o más veces (botones, tarjetas, campos de entrada).
+- **Valores fijos (hardcoded)**: Colores, espaciado, tipografía o sombras que deberían ser tokens de diseño.
+- **Variaciones inconsistentes**: Múltiples implementaciones de un mismo concepto.
+- **Patrones de composición**: Patrones de diseño (layout) o interacción que se repitan (filas de formularios, grupos de barras de herramientas, estados vacíos).
+- **Estilos tipográficos**: Combinaciones repetidas de tamaño de fuente + peso + altura de línea.
+- **Patrones de animación**: Combinaciones repetidas de suavizado (easing), duración o fotogramas clave (keyframes).
 
-Assess value: only extract things used 3+ times with the same intent. Premature abstraction is worse than duplication.
+Evalúa el valor: solo extrae elementos que se utilicen 3 o más veces con la misma intención. La abstracción prematura es peor que la duplicación.
 
-## Step 3: Plan Extraction
+## Paso 3: Planificar la Extracción
 
-Create a systematic plan:
+Crea un plan sistemático:
 
-- **Components to extract**: Which UI elements become reusable components?
-- **Tokens to create**: Which hard-coded values become design tokens?
-- **Variants to support**: What variations does each component need?
-- **Naming conventions**: Component names, token names, prop names that match existing patterns
-- **Migration path**: How to refactor existing uses to consume the new shared versions
+- **Componentes a extraer**: ¿Qué elementos de UI se convertirán en componentes reutilizables?
+- **Tokens a crear**: ¿Qué valores fijos se convertirán en tokens de diseño?
+- **Variantes a soportar**: ¿Qué variaciones necesita cada componente?
+- **Convenciones de nomenclatura**: Nombres de componentes, de tokens y de propiedades (props) que coincidan con los patrones existentes.
+- **Ruta de migración**: Cómo refactorizar los usos actuales para consumir las nuevas versiones compartidas.
 
-**IMPORTANT**: Design systems grow incrementally. Extract what is clearly reusable now, not everything that might someday be reusable.
+**IMPORTANTE**: Los sistemas de diseño crecen de manera incremental. Extrae lo que sea claramente reutilizable ahora, no todo lo que podría llegar a serlo en el futuro.
 
-## Step 4: Extract & Enrich
+## Paso 4: Extraer y Enriquecer
 
-Build improved, reusable versions:
+Construye versiones mejoradas y reutilizables:
 
-- **Components**: Clear props API with sensible defaults, proper variants for different use cases, accessibility built in (ARIA, keyboard navigation, focus management), documentation and usage examples
-- **Design tokens**: Clear naming (primitive vs semantic), proper hierarchy and organization, documentation of when to use each token
-- **Patterns**: When to use this pattern, code examples, variations and combinations
+- **Componentes**: API de propiedades clara y con valores predeterminados sensatos, variantes adecuadas para diferentes casos de uso, accesibilidad integrada (ARIA, navegación por teclado, gestión de enfoque), documentación y ejemplos de uso.
+- **Tokens de diseño**: Nomenclatura clara (primitivos frente a semánticos), jerarquía y organización adecuadas, documentación de cuándo usar cada token.
+- **Patrones**: Cuándo utilizar cada patrón, ejemplos de código, variaciones y combinaciones.
 
-## Step 5: Migrate
+## Paso 5: Migrar
 
-Replace existing uses with the new shared versions:
+Reemplaza los usos existentes con las nuevas versiones compartidas:
 
-- **Find all instances**: Search for the patterns you extracted
-- **Replace systematically**: Update each use to consume the shared version
-- **Test thoroughly**: Ensure visual and functional parity
-- **Delete dead code**: Remove the old implementations
+- **Buscar todas las instancias**: Localiza los patrones que has extraído.
+- **Reemplazar sistemáticamente**: Actualiza cada uso para que consuma la versión compartida.
+- **Probar exhaustivamente**: Asegura la paridad visual y funcional.
+- **Eliminar código muerto**: Quita las implementaciones antiguas.
 
-## Step 6: Document
+## Paso 6: Documentar
 
-Update design system documentation:
+Actualiza la documentación del sistema de diseño:
 
-- Add new components to the component library
-- Document token usage and values
-- Add examples and guidelines
-- Update any Storybook or component catalog
+- Añade los nuevos componentes a la librería de componentes.
+- Documenta el uso y los valores de los tokens.
+- Añade ejemplos y directrices de uso.
+- Actualiza cualquier Storybook o catálogo de componentes existente.
 
-**NEVER**:
-- Extract one-off, context-specific implementations without generalization
-- Create components so generic they are useless
-- Extract without considering existing design system conventions
-- Skip proper TypeScript types or prop documentation
-- Create tokens for every single value (tokens should have semantic meaning)
-- Extract things that differ in intent (two buttons that look similar but serve different purposes should stay separate)
+**NUNCA**:
+- Extraigas implementaciones de un solo uso o específicas de un contexto sin generalizarlas previamente.
+- Crees componentes tan genéricos que acaben resultando inútiles.
+- Extraigas sin tener en cuenta las convenciones del sistema de diseño existente.
+- Omitas los tipos de TypeScript adecuados o la documentación de las propiedades (props).
+- Crees tokens para absolutamente cada valor individual (los tokens deben tener un significado semántico).
+- Extraigas elementos que difieran en su intención (dos botones que se ven similares pero cumplen funciones distintas deben permanecer separados).
 
-Remember: A good design system is a living system. Extract patterns as they emerge, enrich them thoughtfully, and maintain them consistently.
+Recuerda: Un buen sistema de diseño es un sistema vivo. Extrae patrones a medida que surjan, enriquécelos con criterio y mantenlos de forma consistente.

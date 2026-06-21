@@ -1,76 +1,76 @@
 # Impeccable CLI
 
-Detect UI anti-patterns and design quality issues from the command line. Scans HTML, CSS, JSX, TSX, Vue, and Svelte files for 25 specific patterns including AI-generated UI tells, accessibility violations, and general design quality problems.
+Detecta anti-patrones de interfaz de usuario (UI) y problemas de calidad de diseño desde la línea de comandos. Escanea archivos HTML, CSS, JSX, TSX, Vue y Svelte en busca de 25 patrones específicos que incluyen indicios de interfaz generada por IA, violaciones de accesibilidad y problemas generales de calidad del diseño.
 
-## Quick Start
+## Inicio rápido
 
 ```bash
-# Install skills into your AI harness (Claude, Cursor, Gemini, etc.)
+# Instala las habilidades en tu entorno de IA (Claude, Cursor, Gemini, etc.)
 npx impeccable skills install
 
-# Update skills to the latest version
+# Actualiza las habilidades a la última versión
 npx impeccable skills update
 
-# List all available commands
+# Muestra la lista de todos los comandos disponibles
 npx impeccable skills help
 
-# Scan files or directories for anti-patterns
+# Escanea archivos o directorios en busca de anti-patrones
 npx impeccable detect src/
 
-# Scan a live URL (requires Puppeteer)
+# Escanea una URL activa (requiere Puppeteer)
 npx impeccable detect https://example.com
 
-# JSON output for CI/tooling
+# Salida JSON para CI/herramientas
 npx impeccable detect --json src/
 
-# Regex-only mode (faster, no jsdom)
+# Modo de solo expresiones regulares (más rápido, sin jsdom)
 npx impeccable detect --fast src/
 ```
 
-## What It Detects
+## Qué detecta
 
-**AI Slop Tells**: patterns that scream "AI generated this":
-- Side-tab accent borders, gradient text on headings
-- Purple/violet gradients and cyan-on-dark palettes
-- Dark mode with glowing accents, border + border-radius clashes
+**Indicios de basura de IA**: patrones que gritan "la IA generó esto":
+- Bordes de acento de pestaña lateral, texto con degradado en los encabezados
+- Degradados morados/violeta y paletas de cian sobre fondo oscuro
+- Modo oscuro con brillos acentuados, conflictos entre bordes y border-radius
 
-**Typography Issues**: overused fonts (Inter, Roboto), flat type hierarchy, single font families
+**Problemas de tipografía**: fuentes sobreutilizadas (Inter, Roboto), jerarquía de tipos plana, familias tipográficas únicas
 
-**Color & Contrast**: WCAG AA violations, gray text on colored backgrounds, pure black/white
+**Color y Contraste**: violaciones de WCAG AA, texto gris sobre fondos de color, negro/blanco puro
 
-**Layout & Composition**: nested cards, monotonous spacing, everything-centered layouts
+**Diseño y composición**: tarjetas anidadas, espaciado monótono, diseños con todo centrado
 
-**Motion**: bounce/elastic easing, layout property transitions
+**Movimiento**: aceleración elástica o de rebote, transiciones de propiedades de diseño (layout)
 
-**Quality**: tiny body text, cramped padding, long line lengths, small touch targets
+**Calidad**: texto de cuerpo diminuto, rellenos reducidos, líneas de longitud excesiva, objetivos táctiles pequeños
 
-25 detections in total. See the full list at [impeccable.style](https://impeccable.style).
+25 detecciones en total. Consulta la lista completa en [impeccable.style](https://impeccable.style).
 
-## Exit Codes
+## Códigos de salida
 
-- `0`: no issues found
-- `2`: anti-patterns detected
+- `0`: no se encontraron problemas
+- `2`: se detectaron anti-patrones
 
-## Options
+## Opciones
 
 ```
-impeccable detect [options] [file-or-dir-or-url...]
+impeccable detect [opciones] [archivo-o-directorio-o-url...]
 
-  --fast    Regex-only mode (skip jsdom, faster but less accurate)
-  --json    Output findings as JSON
-  --help    Show help
+  --fast    Modo de solo expresiones regulares (omite jsdom, más rápido pero menos preciso)
+  --json    Muestra los hallazgos en formato JSON
+  --help    Muestra la ayuda
 ```
 
-## Requirements
+## Requisitos
 
 - Node.js 18+
-- `jsdom` (included as dependency, used for HTML scanning)
-- `puppeteer` (optional, only needed for URL scanning)
+- `jsdom` (incluido como dependencia, utilizado para el escaneo de HTML)
+- `puppeteer` (opcional, solo necesario para el escaneo de URLs)
 
-## Part of Impeccable
+## Parte de Impeccable
 
-This CLI is part of [Impeccable](https://impeccable.style), a cross-provider design skill pack for AI-powered development tools. The full suite includes 22 steering commands for Claude, Cursor, Gemini, Codex, and more.
+Esta CLI es parte de [Impeccable](https://impeccable.style), un paquete de habilidades de diseño entre proveedores para herramientas de desarrollo impulsadas por IA. La suite completa incluye 22 comandos de dirección para Claude, Cursor, Gemini, Codex y más.
 
-## License
+## Licencia
 
 [Apache 2.0](https://github.com/pbakaus/impeccable/blob/main/LICENSE)

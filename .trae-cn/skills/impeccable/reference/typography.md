@@ -1,87 +1,87 @@
-# Typography
+# Tipografía (Typography)
 
-## Classic Typography Principles
+## Principios Clásicos de Tipografía
 
-### Vertical Rhythm
+### Ritmo Vertical
 
-Your line-height should be the base unit for ALL vertical spacing. If body text has `line-height: 1.5` on `16px` type (= 24px), spacing values should be multiples of 24px. This creates subconscious harmony—text and space share a mathematical foundation.
+La altura de línea (line-height) debe ser la unidad base para TODO el espaciado vertical. Si el texto del cuerpo tiene `line-height: 1.5` en una fuente de `16px` (= 24px), los valores de espaciado deben ser múltiplos de 24px. Esto crea una armonía subconsciente — el texto y el espacio comparten una base matemática común.
 
-### Modular Scale & Hierarchy
+### Escala Modular y Jerarquía
 
-The common mistake: too many font sizes that are too close together (14px, 15px, 16px, 18px...). This creates muddy hierarchy.
+El error común: demasiados tamaños de fuente que están demasiado cerca unos de otros (14px, 15px, 16px, 18px...). Esto empaña la jerarquía visual.
 
-**Use fewer sizes with more contrast.** A 5-size system covers most needs:
+**Usa menos tamaños pero con más contraste.** Un sistema de 5 tamaños cubre la mayoría de las necesidades:
 
-| Role | Typical Ratio | Use Case |
-|------|---------------|----------|
-| xs | 0.75rem | Captions, legal |
-| sm | 0.875rem | Secondary UI, metadata |
-| base | 1rem | Body text |
-| lg | 1.25-1.5rem | Subheadings, lead text |
-| xl+ | 2-4rem | Headlines, hero text |
+| Rol | Relación Típica | Caso de Uso |
+|-----|-----------------|-------------|
+| xs | 0.75rem | Leyendas, textos legales |
+| sm | 0.875rem | UI secundaria, metadatos |
+| base | 1rem | Texto del cuerpo |
+| lg | 1.25-1.5rem | Subencabezados, texto introductorio |
+| xl+ | 2-4rem | Titulares, texto principal (hero) |
 
-Popular ratios: 1.25 (major third), 1.333 (perfect fourth), 1.5 (perfect fifth). Pick one and commit.
+Relaciones populares: 1.25 (tercera mayor), 1.333 (cuarta perfecta), 1.5 (quinta perfecta). Elige una relación y comprométete con ella.
 
-### Readability & Measure
+### Legibilidad y Longitud de Línea (Measure)
 
-Use `ch` units for character-based measure (`max-width: 65ch`). Line-height scales inversely with line length—narrow columns need tighter leading, wide columns need more.
+Usa unidades `ch` para limitar el ancho de las cajas de texto basándote en caracteres (`max-width: 65ch`). La altura de línea escala de forma inversa con respecto a la longitud de la línea — las columnas estrechas necesitan menos interlineado, las columnas anchas necesitan más.
 
-**Non-obvious**: Increase line-height for light text on dark backgrounds. The perceived weight is lighter, so text needs more breathing room. Add 0.05-0.1 to your normal line-height.
+**Detalle no obvio**: Incrementa la altura de línea para texto claro sobre fondos oscuros. El peso tipográfico percibido es menor, por lo que el texto necesita más espacio para respirar. Añade entre 0.05 y 0.1 a tu altura de línea habitual.
 
-## Font Selection & Pairing
+## Selección y Combinación de Fuentes
 
-### Choosing Distinctive Fonts
+### Elegir Fuentes con Personalidad
 
-**Avoid the invisible defaults**: Inter, Roboto, Open Sans, Lato, Montserrat. These are everywhere, making your design feel generic. They're fine for documentation or tools where personality isn't the goal—but if you want distinctive design, look elsewhere.
+**Evita las fuentes predeterminadas invisibles**: Inter, Roboto, Open Sans, Lato, Montserrat. Están por todas partes, lo que hace que tu diseño se sienta genérico. Son aceptables para documentación o herramientas técnicas donde la personalidad de la marca no es el objetivo — pero si buscas un diseño con carácter, busca en otro lado.
 
-**Pick the font from the brief, not from a category preset.** The most common AI typography failure is reaching for the same "tasteful" font for every editorial brief, the same "modern" font for every tech brief, the same "elegant serif" for every premium brief. Those reflexes produce monoculture across projects. The right font is one whose physical character matches *this specific* brand, audience, and moment.
+**Elige la fuente basándote en la marca de la funcionalidad, no en preajustes de categoría.** El error más común de la tipografía generada por IA es recurrir siempre a la misma serif "elegante" para cada marca editorial, la misma sans "moderna" para cada proyecto tecnológico, o la misma serif de revista para cada marca premium. Esos reflejos automáticos uniformizan el diseño de los proyectos. La fuente correcta es aquella cuyo carácter físico coincide con *esta marca específica*, su audiencia y su momento.
 
-A working selection process:
+Un proceso de selección efectivo:
 
-1. Read the brief once. Write down three concrete words for the brand voice. Not "modern" or "elegant" — those are dead categories. Try "warm and mechanical and opinionated" or "calm and clinical and careful" or "fast and dense and unimpressed" or "handmade and a little weird."
-2. Now imagine the font as a physical object the brand could ship: a typewriter ribbon, a hand-lettered shop sign, a 1970s mainframe terminal manual, a fabric label on the inside of a coat, a museum exhibit caption, a tax form, a children's book printed on cheap newsprint. Whichever physical object fits the three words is pointing at the right *kind* of typeface.
-3. Browse a font catalog (Google Fonts, Pangram Pangram, Adobe Fonts, Future Fonts, ABC Dinamo) with that physical object in mind. **Reject the first thing that "looks designy."** That's your trained-everywhere reflex. Keep looking.
-4. Avoid your defaults from previous projects. If you find yourself reaching for the same display font you used last time, make yourself pick something else.
+1. Lee la descripción de la marca o funcionalidad. Escribe tres palabras concretas para definir la voz de la marca. Evita palabras vacías como "moderno" o "elegante". Intenta cosas como: "cálido, mecánico y de opinión clara", "calmo, clínico y cuidadoso", "rápido, denso y directo" o "artesanal y un poco extraño".
+2. Imagina la fuente como un objeto físico que la marca pudiera fabricar o distribuir: una cinta de máquina de escribir, un cartel de tienda pintado a mano, un manual de terminal de ordenador de los años 70, una etiqueta de tela cosida en el interior de un abrigo, la leyenda de una vitrina de museo, un formulario de impuestos, o un libro infantil impreso en papel de periódico barato. El objeto físico que mejor encaje con las tres palabras te indicará el *tipo* de tipografía adecuado.
+3. Explora un catálogo de fuentes (Google Fonts, Pangram Pangram, Adobe Fonts, Future Fonts, ABC Dinamo) con ese objeto físico en mente. **Rechaza lo primero que "parezca de diseñador".** Ese es tu reflejo aprendido de diseño genérico. Sigue buscando.
+4. Evita tus fuentes por defecto de proyectos anteriores. Si te descubres seleccionando la misma tipografía destacada (display) que usaste la última vez, oblígate a elegir algo diferente.
 
-**Anti-reflexes worth defending against**:
-- A technical/utilitarian brief does NOT need a serif "for warmth." Most tech tools should look like tech tools.
-- An editorial/premium brief does NOT need the same expressive serif everyone is using right now. Premium can be Swiss-modern, can be neo-grotesque, can be a literal monospace, can be a quiet humanist sans.
-- A children's product does NOT need a rounded display font. Kids' books use real type.
-- A "modern" brief does NOT need a geometric sans. The most modern thing you can do in 2026 is not use the font everyone else is using.
+**Reflejos contra los que debes luchar**:
+- Un proyecto técnico o de utilidad NO necesita una serif "para dar calidez". La mayoría de las herramientas técnicas deben verse como herramientas técnicas.
+- Un proyecto editorial o premium NO necesita la misma serif expresiva que todo el mundo usa en este momento. Lo premium puede ser moderno de estilo suizo, neogrotesco, una tipografía monoespaciada literal, o una sans humanista discreta.
+- Un producto infantil NO necesita una fuente display redondeada infantil. Los libros para niños usan tipografías reales de calidad.
+- Un proyecto "moderno" NO necesita una sans geométrica. Lo más moderno que puedes hacer hoy en día es no usar la fuente que usa todo el mundo.
 
-**System fonts are underrated**: `-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui` looks native, loads instantly, and is highly readable. Consider this for apps where performance > personality.
+**Las fuentes del sistema están infravaloradas**: `-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui` se ven integradas en el sistema operativo, se cargan al instante y son extremadamente legibles. Considéralas para aplicaciones donde el rendimiento sea prioritario frente a la personalidad.
 
-### Pairing Principles
+### Principios de Combinación (Pairing)
 
-**The non-obvious truth**: You often don't need a second font. One well-chosen font family in multiple weights creates cleaner hierarchy than two competing typefaces. Only add a second font when you need genuine contrast (e.g., display headlines + body serif).
+**La verdad no obvia**: Con frecuencia no necesitas una segunda fuente. Una familia tipográfica bien elegida en múltiples pesos crea una jerarquía más limpia que dos familias compitiendo entre sí. Añade una segunda fuente únicamente cuando necesites un contraste real y deliberado (por ejemplo, titulares llamativos en display + cuerpo en serif).
 
-When pairing, contrast on multiple axes:
-- Serif + Sans (structure contrast)
-- Geometric + Humanist (personality contrast)
-- Condensed display + Wide body (proportion contrast)
+Al combinar fuentes, busca el contraste en múltiples ejes:
+- Serif + Sans (contraste de estructura).
+- Geométrica + Humanista (contraste de personalidad).
+- Display condensada + Cuerpo ancho (contraste de proporción).
 
-**Never pair fonts that are similar but not identical** (e.g., two geometric sans-serifs). They create visual tension without clear hierarchy.
+**Nunca combines fuentes que sean similares pero no idénticas** (por ejemplo, dos sans-serif geométricas). Crean tensión visual sin establecer una jerarquía clara.
 
-### Web Font Loading
+### Carga de Fuentes Web
 
-The layout shift problem: fonts load late, text reflows, and users see content jump. Here's the fix:
+El problema del salto de diseño (layout shift): las fuentes cargan tarde, el texto se reajusta y los usuarios ven cómo salta el contenido. Aquí está la solución:
 
 ```css
-/* 1. Use font-display: swap for visibility */
+/* 1. Usar font-display: swap para visibilidad inmediata */
 @font-face {
   font-family: 'CustomFont';
   src: url('font.woff2') format('woff2');
   font-display: swap;
 }
 
-/* 2. Match fallback metrics to minimize shift */
+/* 2. Coincidir las métricas de la fuente de fallback para minimizar el salto */
 @font-face {
   font-family: 'CustomFont-Fallback';
   src: local('Arial');
-  size-adjust: 105%;        /* Scale to match x-height */
-  ascent-override: 90%;     /* Match ascender height */
-  descent-override: 20%;    /* Match descender depth */
-  line-gap-override: 10%;   /* Match line spacing */
+  size-adjust: 105%;        /* Escalar para coincidir con la altura de la x */
+  ascent-override: 90%;     /* Coincidir con la altura de los ascendentes */
+  descent-override: 20%;    /* Coincidir con la profundidad de los descendentes */
+  line-gap-override: 10%;   /* Coincidir con el interlineado */
 }
 
 body {
@@ -89,54 +89,54 @@ body {
 }
 ```
 
-Tools like [Fontaine](https://github.com/unjs/fontaine) calculate these overrides automatically.
+Herramientas como [Fontaine](https://github.com/unjs/fontaine) calculan estos valores de superposición de métricas de forma automática.
 
-## Modern Web Typography
+## Tipografía Web Moderna
 
-### Fluid Type
+### Tipografía Fluida
 
-Fluid typography via `clamp(min, preferred, max)` scales text smoothly with the viewport. The middle value (e.g., `5vw + 1rem`) controls scaling rate—higher vw = faster scaling. Add a rem offset so it doesn't collapse to 0 on small screens.
+La tipografía fluida mediante `clamp(mín, preferido, máx)` escala el texto de forma gradual con respecto al tamaño de la pantalla (viewport). El valor intermedio (por ejemplo, `5vw + 1rem`) controla el ritmo de escalado — a mayor `vw`, más rápido escala. Añade un desfase en `rem` para evitar que el texto colapse a cero en pantallas pequeñas.
 
-**Use fluid type for**: Headings and display text on marketing/content pages where text dominates the layout and needs to breathe across viewport sizes.
+**Usa tipografía fluida para**: Encabezados y textos destacados en páginas de marketing o de contenidos donde el texto domine el diseño y necesite respirar a través de los diferentes tamaños de pantalla.
 
-**Use fixed `rem` scales for**: App UIs, dashboards, and data-dense interfaces. No major app design system (Material, Polaris, Primer, Carbon) uses fluid type in product UI — fixed scales with optional breakpoint adjustments give the spatial predictability that container-based layouts need. Body text should also be fixed even on marketing pages, since the size difference across viewports is too small to warrant it.
+**Usa escalas fijas en `rem` para**: Interfaces de aplicaciones, paneles de control (dashboards) e interfaces densas en datos. Ningún sistema de diseño de aplicaciones importante (Material, Polaris, Primer, Carbon) utiliza tipografía fluida en la UI de su producto — las escalas fijas con ajustes opcionales mediante breakpoints ofrecen la predictibilidad espacial que necesitan los diseños basados en contenedores. El texto del cuerpo también debe mantenerse fijo, incluso en páginas de marketing, ya que la diferencia de tamaño en las pantallas es demasiado pequeña como para justificar su escalado fluido.
 
-### OpenType Features
+### Características OpenType
 
-Most developers don't know these exist. Use them for polish:
+La mayoría de los desarrolladores desconocen su existencia. Úsalas para pulir los detalles:
 
 ```css
-/* Tabular numbers for data alignment */
+/* Números tabulares para alineación de datos */
 .data-table { font-variant-numeric: tabular-nums; }
 
-/* Proper fractions */
+/* Fracciones tipográficas correctas */
 .recipe-amount { font-variant-numeric: diagonal-fractions; }
 
-/* Small caps for abbreviations */
+/* Versalitas para abreviaturas */
 abbr { font-variant-caps: all-small-caps; }
 
-/* Disable ligatures in code */
+/* Desactivar ligaduras en código */
 code { font-variant-ligatures: none; }
 
-/* Enable kerning (usually on by default, but be explicit) */
-body { font-kerning: normal; }
+/* Habilitar interletraje (normalmente activado por defecto, pero sé explícito) */
+body { font-kern-style: normal; }
 ```
 
-Check what features your font supports at [Wakamai Fondue](https://wakamaifondue.com/).
+Comprueba qué características soporta tu fuente en [Wakamai Fondue](https://wakamaifondue.com/).
 
-## Typography System Architecture
+## Arquitectura del Sistema Tipográfico
 
-Name tokens semantically (`--text-body`, `--text-heading`), not by value (`--font-size-16`). Include font stacks, size scale, weights, line-heights, and letter-spacing in your token system.
+Nombra tus tokens tipográficos semánticamente (`--text-body`, `--text-heading`), nunca por su valor absoluto (`--font-size-16`). Incluye familias de fuentes, escalas de tamaño, pesos, alturas de línea y espaciados de letras en tu sistema de tokens.
 
-## Accessibility Considerations
+## Consideraciones de Accesibilidad
 
-Beyond contrast ratios (which are well-documented), consider:
+Más allá de las relaciones de contraste habituales, ten en cuenta:
 
-- **Never disable zoom**: `user-scalable=no` breaks accessibility. If your layout breaks at 200% zoom, fix the layout.
-- **Use rem/em for font sizes**: This respects user browser settings. Never `px` for body text.
-- **Minimum 16px body text**: Smaller than this strains eyes and fails WCAG on mobile.
-- **Adequate touch targets**: Text links need padding or line-height that creates 44px+ tap targets.
+- **Nunca desactives el zoom**: El atributo `user-scalable=no` rompe la accesibilidad. Si tu diseño se rompe con un zoom del 200%, corrige el diseño.
+- **Usa rem/em para los tamaños de fuente**: Esto respeta las preferencias y configuraciones del navegador de tus usuarios. Nunca uses `px` para el texto del cuerpo.
+- **Texto del cuerpo mínimo a 16px**: Los tamaños inferiores cansan la vista y no cumplen con las WCAG en dispositivos móviles.
+- **Áreas de pulsación adecuadas**: Los enlaces de texto necesitan un padding o un interlineado que cree un área de contacto mínima de 44px.
 
 ---
 
-**Avoid**: More than 2-3 font families per project. Skipping fallback font definitions. Ignoring font loading performance (FOUT/FOIT). Using decorative fonts for body text.
+**Evita**: Más de 2 o 3 familias tipográficas por proyecto. Omitir las definiciones de fuentes de fallback. Ignorar el rendimiento en la carga de fuentes (FOUT/FOIT). Usar fuentes decorativas para el texto del cuerpo.

@@ -1,223 +1,223 @@
 ---
 name: critique
-description: Evaluate design from a UX perspective, assessing visual hierarchy, information architecture, emotional resonance, cognitive load, and overall quality with quantitative scoring, persona-based testing, automated anti-pattern detection, and actionable feedback. Use when the user asks to review, critique, evaluate, or give feedback on a design or component.
+description: Evalúa el diseño desde una perspectiva de UX, evaluando la jerarquía visual, la arquitectura de la información, la resonancia emocional, la carga cognitiva y la calidad general con puntuación cuantitativa, pruebas basadas en personas, detección automatizada de antipatrones y retroalimentación accionable. Úsalo cuando el usuario pida revisar, criticar, evaluar o dar feedback sobre un diseño o componente.
 version: 2.1.1
 ---
 
-## STEPS
+## PASOS
 
-### Step 1: Preparation
+### Paso 1: Preparación
 
-Invoke /impeccable, which contains design principles, anti-patterns, and the **Context Gathering Protocol**. Follow the protocol before proceeding. If no design context exists yet, you MUST run /impeccable teach first. Additionally gather: what the interface is trying to accomplish.
+Invoca /impeccable — contiene los principios de diseño, antipatrones y el **Protocolo de Recopilación de Contexto**. Sigue el protocolo antes de proceder. Si aún no existe un contexto de diseño, DEBES ejecutar /impeccable teach primero. Adicionalmente, recopila: qué intenta lograr la interfaz.
 
-### Step 2: Gather Assessments
+### Paso 2: Recopilar Evaluaciones
 
-Launch two independent assessments. **Neither must see the other's output** to avoid bias.
+Lanza dos evaluaciones independientes. **Ninguna debe ver los resultados de la otra** para evitar sesgos.
 
-You SHOULD delegate each assessment to a separate sub-agent for independence. Use your environment's agent spawning mechanism (e.g., Claude Code's `Agent` tool, or Codex's subagent spawning). Sub-agents should return their findings as structured text. Do NOT output findings to the user yet.
+DEBERÍAS delegar cada evaluación a un subagente independiente para garantizar la neutralidad. Usa el mecanismo de creación de agentes de tu entorno (por ejemplo, la herramienta `Agent` de Claude Code o la invocación de subagentes en Codex). Los subagentes deben devolver sus hallazgos como texto estructurado. NO muestres los resultados al usuario todavía.
 
-If sub-agents are not available in the current environment, complete each assessment sequentially, writing findings to internal notes before proceeding.
+Si no hay subagentes disponibles en el entorno actual, completa cada evaluación de manera secuencial, anotando las conclusiones de forma interna antes de proceder.
 
-**Tab isolation**: When browser automation is available, each assessment MUST create its own new tab. Never reuse an existing tab, even if one is already open at the correct URL. This prevents the two assessments from interfering with each other's page state.
+**Aislamiento de pestañas**: Cuando la automatización del navegador esté disponible, cada evaluación DEBE crear su propia pestaña nueva. Nunca reutilices una pestaña existente, incluso si ya está abierta en la URL correcta. Esto evita que las dos evaluaciones interfieran con el estado de página de la otra.
 
-#### Assessment A: LLM Design Review
+#### Evaluación A: Revisión de Diseño por el LLM
 
-Read the relevant source files (HTML, CSS, JS/TS) and, if browser automation is available, visually inspect the live page. **Create a new tab** for this; do not reuse existing tabs. After navigation, label the tab by setting the document title:
+Lee los archivos fuente relevantes (HTML, CSS, JS/TS) y, si dispones de automatización del navegador, inspecciona visualmente la página en vivo. **Crea una nueva pestaña** para esto; no reutilices pestañas existentes. Después de navegar, etiqueta la pestaña cambiando el título del documento:
 ```javascript
 document.title = '[LLM] ' + document.title;
 ```
-Think like a design director. Evaluate:
+Piensa como un director de diseño. Evalúa:
 
-**AI Slop Detection (CRITICAL)**: Does this look like every other AI-generated interface? Review against ALL **DON'T** guidelines in the impeccable skill. Check for AI color palette, gradient text, dark glows, glassmorphism, hero metric layouts, identical card grids, generic fonts, and all other tells. **The test**: If someone said "AI made this," would you believe them immediately?
+**Detección de Basura de IA (CRÍTICO)**: ¿Se ve esto como cualquier otra interfaz generada por IA? Realiza la evaluación con respecto a TODAS las directrices de **NO** en la habilidad impeccable. Comprueba si hay paletas de colores de IA, texto con degradado, brillos oscuros, glassmorphism, diseños de métricas hero, cuadrículas de tarjetas idénticas, fuentes genéricas y cualquier otro indicador. **La prueba**: Si alguien te dijera "la IA hizo esto", ¿lo creerías de inmediato?
 
-**Holistic Design Review**: visual hierarchy (eye flow, primary action clarity), information architecture (structure, grouping, cognitive load), emotional resonance (does it match brand and audience?), discoverability (are interactive elements obvious?), composition (balance, whitespace, rhythm), typography (hierarchy, readability, font choices), color (purposeful use, cohesion, accessibility), states & edge cases (empty, loading, error, success), microcopy (clarity, tone, helpfulness).
+**Revisión Integral de Diseño**: Jerarquía visual (flujo de lectura, claridad de la acción principal), arquitectura de la información (estructura, agrupación, carga cognitiva), resonancia emocional (¿coincide con la marca y la audiencia?), descubribilidad (¿son obvios los elementos interactivos?), composición (equilibrio, espacio en blanco, ritmo), tipografía (jerarquía, legibilidad, elección de fuentes), color (uso intencional, cohesión, accesibilidad), estados y casos extremos (vacío, carga, error, éxito), textos de interfaz/microcopy (claridad, tono, utilidad).
 
-**Cognitive Load** (consult [cognitive-load](reference/cognitive-load.md)):
-- Run the 8-item cognitive load checklist. Report failure count: 0-1 = low (good), 2-3 = moderate, 4+ = critical.
-- Count visible options at each decision point. If >4, flag it.
-- Check for progressive disclosure: is complexity revealed only when needed?
+**Carga Cognitiva** (consulta la [referencia de carga cognitiva](reference/cognitive-load.md)):
+- Ejecuta la lista de verificación de carga cognitiva de 8 elementos. Reporta la cantidad de fallos: 0-1 = baja (bueno), 2-3 = moderada, 4+ = crítica.
+- Cuenta las opciones visibles en cada punto de decisión. Si es >4, indícalo.
+- Comprueba la divulgación progresiva: ¿se revela la complejidad solo cuando es necesario?
 
-**Emotional Journey**:
-- What emotion does this interface evoke? Is that intentional?
-- **Peak-end rule**: Is the most intense moment positive? Does the experience end well?
-- **Emotional valleys**: Check for anxiety spikes at high-stakes moments (payment, delete, commit). Are there design interventions (progress indicators, reassurance copy, undo options)?
+**Viaje Emocional**:
+- ¿Qué emoción evoca esta interfaz? ¿Es intencional?
+- **Regla del pico y el fin (Peak-end rule)**: ¿El momento más intenso es positivo? ¿La experiencia termina bien?
+- **Valles emocionales**: Comprueba si hay picos de ansiedad en momentos de alta importancia (pagos, eliminación de datos, confirmaciones). ¿Existen intervenciones de diseño (indicadores de progreso, textos de tranquilidad, opciones de deshacer)?
 
-**Nielsen's Heuristics** (consult [heuristics-scoring](reference/heuristics-scoring.md)):
-Score each of the 10 heuristics 0-4. This scoring will be presented in the report.
+**Heurísticas de Nielsen** (consulta la [referencia de puntuación de heurísticas](reference/heuristics-scoring.md)):
+Califica cada una de las 10 heurísticas del 0 al 4. Esta puntuación se presentará en el informe final.
 
-Return structured findings covering: AI slop verdict, heuristic scores, cognitive load assessment, what's working (2-3 items), priority issues (3-5 with what/why/fix), minor observations, and provocative questions.
+Devuelve conclusiones estructuradas que cubran: veredicto de basura de IA, puntuaciones heurísticas, evaluación de carga cognitiva, qué está funcionando (2-3 elementos), problemas prioritarios (3-5 con qué/por qué/corrección), observaciones menores y preguntas provocadoras.
 
-#### Assessment B: Automated Detection
+#### Evaluación B: Detección Automatizada
 
-Run the bundled deterministic detector, which flags 25 specific patterns (AI slop tells + general design quality).
+Ejecuta el detector determinista integrado, que marca 25 patrones específicos (indicadores de basura de IA + calidad general del diseño).
 
-**CLI scan**:
+**Escaneo por CLI**:
 ```bash
-npx impeccable --json [--fast] [target]
+npx impeccable --json [--fast] [objetivo]
 ```
 
-- Pass HTML/JSX/TSX/Vue/Svelte files or directories as `[target]` (anything with markup). Do not pass CSS-only files.
-- For URLs, skip the CLI scan (it requires Puppeteer). Use browser visualization instead.
-- For large directories (200+ scannable files), use `--fast` (regex-only, skips jsdom)
-- For 500+ files, narrow scope or ask the user
-- Exit code 0 = clean, 2 = findings
+- Pasa archivos HTML/JSX/TSX/Vue/Svelte o directorios como `[objetivo]` (cualquier archivo con etiquetas de marcado). No pases archivos únicamente de CSS.
+- Para URLs, omite el escaneo por CLI (requiere Puppeteer). Usa la visualización del navegador en su lugar.
+- Para directorios grandes (más de 200 archivos analizables), usa `--fast` (solo expresiones regulares, omite jsdom).
+- Para más de 500 archivos, limita el alcance o consulta al usuario.
+- Código de salida 0 = limpio, 2 = hallazgos detectados.
 
-**Browser visualization** (when browser automation tools are available AND the target is a viewable page):
+**Visualización en navegador** (cuando las herramientas de automatización del navegador están disponibles Y el objetivo es una página visible):
 
-The overlay is a **visual aid for the user**. It highlights issues directly in their browser. Do NOT scroll through the page to screenshot overlays. Instead, read the console output to get the results programmatically.
+La superposición (overlay) es una **ayuda visual para el usuario**. Destaca los problemas directamente en su navegador. NO te desplaces por la página para tomar capturas de pantalla de las superposiciones. En su lugar, lee la salida de la consola para obtener los resultados mediante código.
 
-1. **Start the live detection server**:
+1. **Inicia el servidor de detección en vivo**:
    ```bash
    npx impeccable live &
    ```
-   Note the port printed to stdout (auto-assigned). Use `--port=PORT` to fix it.
-2. **Create a new tab** and navigate to the page (use dev server URL for local files, or direct URL). Do not reuse existing tabs.
-3. **Label the tab** via `javascript_tool` so the user can distinguish it:
+   Anota el puerto impreso en stdout (asignado automáticamente). Usa `--port=PORT` para definir uno fijo.
+2. **Crea una nueva pestaña** y navega a la página (usa la URL del servidor de desarrollo para archivos locales, o la URL directa). No reutilices pestañas existentes.
+3. **Etiqueta la pestaña** mediante la herramienta de javascript para que el usuario pueda distinguirla:
    ```javascript
    document.title = '[Human] ' + document.title;
    ```
-4. **Scroll to top** to ensure the page is scrolled to the very top before injection
-5. **Inject** via `javascript_tool` (replace PORT with the port from step 1):
+4. **Desplázate al inicio** para asegurarte de que la página esté en la parte superior antes de realizar la inyección.
+5. **Inyecta** mediante la herramienta de javascript (reemplaza PORT con el puerto obtenido en el paso 1):
    ```javascript
    const s = document.createElement('script'); s.src = 'http://localhost:PORT/detect.js'; document.head.appendChild(s);
    ```
-6. Wait 2-3 seconds for the detector to render overlays
-7. **Read results from console** using `read_console_messages` with pattern `impeccable`. The detector logs all findings with the `[impeccable]` prefix. Do NOT scroll through the page to take screenshots of the overlays.
-8. **Cleanup**: Stop the live server when done:
+6. Espera 2-3 segundos para que el detector renderice las superposiciones.
+7. **Lee los resultados de la consola** usando la herramienta para leer mensajes de consola con el patrón `impeccable`. El detector registra todos los hallazgos con el prefijo `[impeccable]`. NO te desplaces por la página para tomar capturas de pantalla de las superposiciones.
+8. **Limpieza**: Detén el servidor en vivo cuando termines:
    ```bash
    npx impeccable live stop
    ```
 
-For multi-view targets, inject on 3-5 representative pages. If injection fails, continue with CLI results only.
+Para objetivos con múltiples vistas, inyecta en 3-5 páginas representativas. Si la inyección falla, continúa únicamente con los resultados de la CLI.
 
-Return: CLI findings (JSON), browser console findings (if applicable), and any false positives noted.
+Devuelve: hallazgos de la CLI (JSON), hallazgos de la consola del navegador (si aplica) y cualquier falso positivo identificado.
 
-### Step 3: Generate Combined Critique Report
+### Paso 3: Generar Informe Combinado de Crítica
 
-Synthesize both assessments into a single report. Do NOT simply concatenate. Weave the findings together, noting where the LLM review and detector agree, where the detector caught issues the LLM missed, and where detector findings are false positives.
+Sintetiza ambas evaluaciones en un único informe. NO te limites a concatenar. Entrelaza los hallazgos señalando dónde coinciden la revisión del LLM y el detector, dónde el detector capturó problemas que el LLM pasó por alto y dónde los hallazgos del detector son falsos positivos.
 
-Structure your feedback as a design director would:
+Estructura tus comentarios como lo haría un director de diseño:
 
-#### Design Health Score
-> *Consult [heuristics-scoring](reference/heuristics-scoring.md)*
+#### Puntuación de Salud del Diseño
+> *Consulta la [referencia de puntuación de heurísticas](reference/heuristics-scoring.md)*
 
-Present the Nielsen's 10 heuristics scores as a table:
+Presenta las puntuaciones de las 10 heurísticas de Nielsen en una tabla:
 
-| # | Heuristic | Score | Key Issue |
-|---|-----------|-------|-----------|
-| 1 | Visibility of System Status | ? | [specific finding or "n/a" if solid] |
-| 2 | Match System / Real World | ? | |
-| 3 | User Control and Freedom | ? | |
-| 4 | Consistency and Standards | ? | |
-| 5 | Error Prevention | ? | |
-| 6 | Recognition Rather Than Recall | ? | |
-| 7 | Flexibility and Efficiency | ? | |
-| 8 | Aesthetic and Minimalist Design | ? | |
-| 9 | Error Recovery | ? | |
-| 10 | Help and Documentation | ? | |
-| **Total** | | **??/40** | **[Rating band]** |
+| # | Heurística | Puntuación | Problema Clave |
+|---|------------|------------|----------------|
+| 1 | Visibilidad del Estado del Sistema | ? | [hallazgo específico o "n/a" si es sólido] |
+| 2 | Relación entre el Sistema y el Mundo Real | ? | |
+| 3 | Control y Libertad del Usuario | ? | |
+| 4 | Consistencia y Estándares | ? | |
+| 5 | Prevención de Errores | ? | |
+| 6 | Reconocimiento antes que Recuerdo | ? | |
+| 7 | Flexibilidad y Eficiencia de Uso | ? | |
+| 8 | Estética y Diseño Minimalista | ? | |
+| 9 | Recuperación frente a Errores | ? | |
+| 10 | Ayuda y Documentación | ? | |
+| **Total** | | **??/40** | **[Rango de Calificación]** |
 
-Be honest with scores. A 4 means genuinely excellent. Most real interfaces score 20-32.
+Sé honesto con las puntuaciones. Un 4 significa genuinamente excelente. La mayoría de las interfaces reales obtienen entre 20 y 32 puntos.
 
-#### Anti-Patterns Verdict
+#### Veredicto de Antipatrones
 
-**Start here.** Does this look AI-generated?
+**Comienza aquí.** ¿Esto parece generado por IA?
 
-**LLM assessment**: Your own evaluation of AI slop tells. Cover overall aesthetic feel, layout sameness, generic composition, missed opportunities for personality.
+**Evaluación del LLM**: Tu propia valoración sobre los indicadores de basura de IA. Analiza la sensación estética general, la similitud de los diseños, la composición genérica y las oportunidades perdidas para aportar personalidad.
 
-**Deterministic scan**: Summarize what the automated detector found, with counts and file locations. Note any additional issues the detector caught that you missed, and flag any false positives.
+**Escaneo determinista**: Resume lo que encontró el detector automatizado, indicando cantidades y ubicaciones de archivos. Señala cualquier problema adicional que el detector haya identificado y que tú hayas pasado por alto, e indica los falsos positivos.
 
-**Visual overlays** (if browser was used): Tell the user that overlays are now visible in the **[Human]** tab in their browser, highlighting the detected issues. Summarize what the console output reported.
+**Superposiciones visuales** (si se utilizó el navegador): Dile al usuario que las superposiciones ahora son visibles en la pestaña **[Human]** en su navegador, destacando los problemas detectados. Resume la información reportada en la consola.
 
-#### Overall Impression
-A brief gut reaction: what works, what doesn't, and the single biggest opportunity.
+#### Impresión General
+Una breve reacción intuitiva: qué funciona, qué no y cuál es la mayor oportunidad de mejora.
 
-#### What's Working
-Highlight 2-3 things done well. Be specific about why they work.
+#### Qué está Funcionando
+Destaca 2-3 aspectos bien resueltos. Sé específico sobre por qué funcionan.
 
-#### Priority Issues
-The 3-5 most impactful design problems, ordered by importance.
+#### Problemas Prioritarios
+Los 3-5 problemas de diseño más importantes, ordenados por relevancia.
 
-For each issue, tag with **P0-P3 severity** (consult [heuristics-scoring](reference/heuristics-scoring.md) for severity definitions):
-- **[P?] What**: Name the problem clearly
-- **Why it matters**: How this hurts users or undermines goals
-- **Fix**: What to do about it (be concrete)
-- **Suggested command**: Which command could address this (from: /animate, /quieter, /shape, /optimize, /adapt, /clarify, /layout, /distill, /delight, /audit, /harden, /polish, /bolder, /typeset, /critique, /colorize, /overdrive)
+Para cada problema, añade una etiqueta de **severidad P0-P3** (consulta las definiciones en la referencia correspondientes):
+- **[P?] Qué**: Nombra el problema claramente.
+- **Por qué importa**: Cómo perjudica al usuario o afecta a los objetivos.
+- **Solución**: Qué hacer al respecto (sé concreto).
+- **Comando sugerido**: Qué comando podría resolverlo (tomado de: /adapt, /animate, /audit, /bolder, /clarify, /colorize, /critique, /delight, /distill, /harden, /layout, /optimize, /overdrive, /polish, /quieter, /shape, /typeset).
 
-#### Persona Red Flags
-> *Consult [personas](reference/personas.md)*
+#### Señales de Alerta de Personas
+> *Consulta la [referencia de personas](reference/personas.md)*
 
-Auto-select 2-3 personas most relevant to this interface type (use the selection table in the reference). If `.cursorrules` contains a `## Design Context` section from `impeccable teach`, also generate 1-2 project-specific personas from the audience/brand info.
+Selecciona automáticamente las 2-3 personas más relevantes para este tipo de interfaz (usa la tabla de selección en la referencia). Si el archivo `.cursorrules` contiene una sección `## Contexto de diseño` proveniente de `impeccable teach`, genera también 1-2 personas específicas del proyecto basándote en la información de la audiencia y de la marca.
 
-For each selected persona, walk through the primary user action and list specific red flags found:
+Para cada persona seleccionada, simula la acción principal del usuario y enumera las señales de alerta específicas detectadas:
 
-**Alex (Power User)**: No keyboard shortcuts detected. Form requires 8 clicks for primary action. Forced modal onboarding. High abandonment risk.
+**Alex (Usuario Avanzado)**: No se detectaron atajos de teclado. El formulario requiere 8 clics para la acción principal. Onboarding forzado mediante modal. Alto riesgo de abandono.
 
-**Jordan (First-Timer)**: Icon-only nav in sidebar. Technical jargon in error messages ("404 Not Found"). No visible help. Will abandon at step 2.
+**Jordan (Primerizo)**: Navegación basada solo en iconos en la barra lateral. Jerga técnica en los mensajes de error ("404 Not Found"). Sin ayuda visible. Abandonará en el paso 2.
 
-Be specific. Name the exact elements and interactions that fail each persona. Don't write generic persona descriptions; write what broke for them.
+Sé específico. Nombra los elementos e interacciones exactos que fallan para cada persona. No escribas descripciones genéricas de las personas; detalla qué se rompió específicamente para ellas.
 
-#### Minor Observations
-Quick notes on smaller issues worth addressing.
+#### Observaciones Menores
+Notas rápidas sobre problemas más pequeños que vale la pena abordar.
 
-#### Questions to Consider
-Provocative questions that might unlock better solutions:
-- "What if the primary action were more prominent?"
-- "Does this need to feel this complex?"
-- "What would a confident version of this look like?"
+#### Preguntas para Considerar
+Preguntas provocadoras que podrían inspirar mejores soluciones:
+- "¿Qué pasaría si la acción principal fuera más prominente?"
+- "¿Es necesario que esto se sienta tan complejo?"
+- "¿Cómo se vería una versión con mayor personalidad y seguridad?"
 
-**Remember**:
-- Be direct. Vague feedback wastes everyone's time.
-- Be specific. "The submit button," not "some elements."
-- Say what's wrong AND why it matters to users.
-- Give concrete suggestions, not just "consider exploring..."
-- Prioritize ruthlessly. If everything is important, nothing is.
-- Don't soften criticism. Developers need honest feedback to ship great design.
+**Recuerda**:
+- Sé directo. Los comentarios imprecisos hacen perder el tiempo a todos.
+- Sé específico. "El botón de enviar", no "algunos elementos".
+- Explica qué está mal Y por qué es importante para los usuarios.
+- Ofrece sugerencias concretas, evita frases vagas como "considera explorar...".
+- Prioriza sin piedad. Si todo es importante, nada lo es.
+- No suavices las críticas. Los desarrolladores necesitan comentarios honestos para entregar un gran diseño.
 
-### Step 4: Ask the User
+### Paso 4: Preguntar al Usuario
 
-**After presenting findings**, use targeted questions based on what was actually found. ask the user directly to clarify what you cannot infer. These answers will shape the action plan.
+**Después de presentar las conclusiones**, realiza preguntas dirigidas basándote en lo que realmente encontraste. ask the user directly to clarify what you cannot infer. Estas respuestas darán forma al plan de acción.
 
-Ask questions along these lines (adapt to the specific findings; do NOT ask generic questions):
+Haz preguntas similares a estas (adáctalas a los hallazgos reales; NO hagas preguntas genéricas):
 
-1. **Priority direction**: Based on the issues found, ask which category matters most to the user right now. For example: "I found problems with visual hierarchy, color usage, and information overload. Which area should we tackle first?" Offer the top 2-3 issue categories as options.
+1. **Dirección prioritaria**: Basándote en los problemas detectados, pregunta qué categoría le importa más al usuario en este momento. Por ejemplo: "Detecté problemas con la jerarquía visual, el uso de color y el exceso de información. ¿Qué área deberíamos abordar primero?". Ofrece las 2-3 categorías principales de problemas como opciones.
 
-2. **Design intent**: If the critique found a tonal mismatch, ask whether it was intentional. For example: "The interface feels clinical and corporate. Is that the intended tone, or should it feel warmer/bolder/more playful?" Offer 2-3 tonal directions as options based on what would fix the issues found.
+2. **Intención de diseño**: Si la crítica detectó una incoherencia de tono, pregunta si fue intencional. Por ejemplo: "La interfaz se siente fría y corporativa. ¿Es este el tono deseado, o debería sentirse más cálida/atrevida/juguetona?". Ofrece 2-3 direcciones de tono como opciones basadas en lo que resolvería los problemas detectados.
 
-3. **Scope**: Ask how much the user wants to take on. For example: "I found N issues. Want to address everything, or focus on the top 3?" Offer scope options like "Top 3 only", "All issues", "Critical issues only".
+3. **Alcance**: Pregunta cuánto desea abarcar el usuario. Por ejemplo: "Encontré N problemas. ¿Quieres abordarlos todos o enfocarnos en los 3 principales?". Ofrece opciones de alcance como "Solo los 3 principales", "Todos los problemas", "Solo problemas críticos".
 
-4. **Constraints** (optional; only ask if relevant): If the findings touch many areas, ask if anything is off-limits. For example: "Should any sections stay as-is?" This prevents the plan from touching things the user considers done.
+4. **Restricciones** (opcional; preguntar solo si es relevante): Si los hallazgos afectan a muchas áreas, pregunta si hay alguna zona intocable. Por ejemplo: "¿Debería mantenerse alguna sección tal como está?". Esto evita que el plan modifique elementos que el usuario da por terminados.
 
-**Rules for questions**:
-- Every question must reference specific findings from the report. Never ask generic "who is your audience?" questions.
-- Keep it to 2-4 questions maximum. Respect the user's time.
-- Offer concrete options, not open-ended prompts.
-- If findings are straightforward (e.g., only 1-2 clear issues), skip questions and go directly to Step 5.
+**Reglas para las preguntas**:
+- Cada pregunta debe hacer referencia a hallazgos específicos del informe. Nunca hagas preguntas genéricas del tipo "¿quién es tu audiencia?".
+- Limítate a un máximo de 2-4 preguntas. Respeta el tiempo del usuario.
+- Ofrece opciones concretas, no preguntas abiertas.
+- Si las conclusiones son sencillas (por ejemplo, solo 1-2 problemas claros), omite las preguntas y ve directamente al Paso 5.
 
-### Step 5: Recommended Actions
+### Paso 5: Acciones Recomendadas
 
-**After receiving the user's answers**, present a prioritized action summary reflecting the user's priorities and scope from Step 4.
+**Después de recibir las respuestas del usuario**, presenta un resumen de acciones priorizado que refleje las prioridades y el alcance definidos en el Paso 4.
 
-#### Action Summary
+#### Resumen de Acciones
 
-List recommended commands in priority order, based on the user's answers:
+Enumera los comandos recomendados en orden de prioridad, según las respuestas del usuario:
 
-1. **`/command-name`**: Brief description of what to fix (specific context from critique findings)
-2. **`/command-name`**: Brief description (specific context)
+1. **`/nombre-del-comando`**: Breve descripción de qué corregir (contexto específico basado en los hallazgos de la crítica).
+2. **`/nombre-del-comando`**: Breve descripción (contexto específico).
 ...
 
-**Rules for recommendations**:
-- Only recommend commands from: /animate, /quieter, /shape, /optimize, /adapt, /clarify, /layout, /distill, /delight, /audit, /harden, /polish, /bolder, /typeset, /critique, /colorize, /overdrive
-- Order by the user's stated priorities first, then by impact
-- Each item's description should carry enough context that the command knows what to focus on
-- Map each Priority Issue to the appropriate command
-- Skip commands that would address zero issues
-- If the user chose a limited scope, only include items within that scope
-- If the user marked areas as off-limits, exclude commands that would touch those areas
-- End with `/polish` as the final step if any fixes were recommended
+**Reglas para las recomendaciones**:
+- Recomienda solo comandos de: /adapt, /animate, /audit, /bolder, /clarify, /colorize, /critique, /delight, /distill, /harden, /layout, /optimize, /overdrive, /polish, /quieter, /shape, /typeset.
+- Ordena primero según las prioridades indicadas por el usuario, y luego por el impacto.
+- La descripción de cada elemento debe aportar suficiente contexto para que el comando sepa en qué concentrarse.
+- Asocia cada Problema Prioritario al comando adecuado.
+- Omite los comandos que no vayan a solucionar ningún problema detectado.
+- Si el usuario eligió un alcance limitado, incluye únicamente los elementos dentro de ese alcance.
+- Si el usuario marcó zonas como intocables, excluye los comandos que afectarían a dichas áreas.
+- Finaliza con `/polish` como paso final si se recomendaron correcciones.
 
-After presenting the summary, tell the user:
+Después de presentar el resumen, dile al usuario:
 
-> You can ask me to run these one at a time, all at once, or in any order you prefer.
+> Puedes pedirme que ejecute estos comandos uno por uno, todos a la vez o en el orden que prefieras.
 >
-> Re-run `/critique` after fixes to see your score improve.
+> Vuelve a ejecutar `/critique` después de las correcciones para ver cómo mejora tu puntuación.

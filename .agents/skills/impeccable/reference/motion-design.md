@@ -1,69 +1,69 @@
-# Motion Design
+# Diseño de Movimiento (Motion Design)
 
-## Duration: The 100/300/500 Rule
+## Duración: La Regla 100/300/500
 
-Timing matters more than easing. These durations feel right for most UI:
+El ritmo (timing) importa más que la curva de suavizado (easing). Estas duraciones se sienten correctas para la mayoría de las interfaces:
 
-| Duration | Use Case | Examples |
-|----------|----------|----------|
-| **100-150ms** | Instant feedback | Button press, toggle, color change |
-| **200-300ms** | State changes | Menu open, tooltip, hover states |
-| **300-500ms** | Layout changes | Accordion, modal, drawer |
-| **500-800ms** | Entrance animations | Page load, hero reveals |
+| Duración | Caso de Uso | Ejemplos |
+|----------|-------------|----------|
+| **100-150ms** | Retroalimentación instantánea | Pulsación de botón, toggle, cambio de color |
+| **200-300ms** | Cambios de estado | Abrir menú, tooltip, estados hover |
+| **300-500ms** | Cambios de diseño (layout) | Acordeón, modal, panel lateral (drawer) |
+| **500-800ms** | Animaciones de entrada | Carga de página, revelaciones de sección principal |
 
-**Exit animations are faster than entrances**—use ~75% of enter duration.
+**Las animaciones de salida son más rápidas que las de entrada** — usa aproximadamente el 75% de la duración de entrada.
 
-## Easing: Pick the Right Curve
+## Suavizado (Easing): Elige la Curva Adecuada
 
-**Don't use `ease`.** It's a compromise that's rarely optimal. Instead:
+**No utilices `ease`.** Es una solución intermedia que rara vez resulta óptima. En su lugar:
 
-| Curve | Use For | CSS |
-|-------|---------|-----|
-| **ease-out** | Elements entering | `cubic-bezier(0.16, 1, 0.3, 1)` |
-| **ease-in** | Elements leaving | `cubic-bezier(0.7, 0, 0.84, 0)` |
-| **ease-in-out** | State toggles (there → back) | `cubic-bezier(0.65, 0, 0.35, 1)` |
+| Curva | Para qué usarla | CSS |
+|-------|-----------------|-----|
+| **ease-out** | Elementos que entran | `cubic-bezier(0.16, 1, 0.3, 1)` |
+| **ease-in** | Elementos que salen | `cubic-bezier(0.7, 0, 0.84, 0)` |
+| **ease-in-out** | Alternancia de estados (ir y volver) | `cubic-bezier(0.65, 0, 0.35, 1)` |
 
-**For micro-interactions, use exponential curves**—they feel natural because they mimic real physics (friction, deceleration):
+**Para microinteracciones, usa curvas exponenciales** — se sienten naturales porque imitan la física real (fricción, desaceleración):
 
 ```css
-/* Quart out - smooth, refined (recommended default) */
+/* Quart out - suave, refinada (recomendada por defecto) */
 --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
 
-/* Quint out - slightly more dramatic */
+/* Quint out - ligeramente más dramática */
 --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
 
-/* Expo out - snappy, confident */
+/* Expo out - rápida, decidida */
 --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 ```
 
-**Avoid bounce and elastic curves.** They were trendy in 2015 but now feel tacky and amateurish. Real objects don't bounce when they stop—they decelerate smoothly. Overshoot effects draw attention to the animation itself rather than the content.
+**Evita las curvas con rebote (bounce) y elásticas.** Estuvieron de moda en 2015, pero ahora se perciben vulgares y poco profesionales. Los objetos reales no rebotan al detenerse — desaceleran suavemente. Los efectos de rebote (overshoot) desvían la atención hacia la propia animación en lugar de enfocarla en el contenido.
 
-## The Only Two Properties You Should Animate
+## Las Únicas Dos Propiedades que Debes Animar
 
-**transform** and **opacity** only—everything else causes layout recalculation. For height animations (accordions), use `grid-template-rows: 0fr → 1fr` instead of animating `height` directly.
+Usa únicamente **transform** y **opacity** — cualquier otra propiedad provoca un nuevo cálculo del diseño de la página (layout recalculation). Para animaciones de altura (acordeones), usa `grid-template-rows: 0fr → 1fr` en lugar de animar `height` directamente.
 
-## Staggered Animations
+## Animaciones Escalonadas (Staggered)
 
-Use CSS custom properties for cleaner stagger: `animation-delay: calc(var(--i, 0) * 50ms)` with `style="--i: 0"` on each item. **Cap total stagger time**—10 items at 50ms = 500ms total. For many items, reduce per-item delay or cap staggered count.
+Usa propiedades personalizadas de CSS para lograr un escalonamiento más limpio: `animation-delay: calc(var(--i, 0) * 50ms)` con `style="--i: 0"` en cada elemento. **Limita el tiempo total de escalonamiento** — 10 elementos a 50ms = 500ms en total. Para muchos elementos, reduce el retraso por elemento o limita el número de elementos escalonados.
 
-## Reduced Motion
+## Movimiento Reducido
 
-This is not optional. Vestibular disorders affect ~35% of adults over 40.
+Esto no es opcional. Los trastornos vestibulares afectan aproximadamente al 35% de los adultos mayores de 40 años.
 
 ```css
-/* Define animations normally */
+/* Definir animaciones de forma normal */
 .card {
   animation: slide-up 500ms ease-out;
 }
 
-/* Provide alternative for reduced motion */
+/* Proporcionar alternativa para movimiento reducido */
 @media (prefers-reduced-motion: reduce) {
   .card {
-    animation: fade-in 200ms ease-out;  /* Crossfade instead of motion */
+    animation: fade-in 200ms ease-out;  /* Transición de desvanecimiento en lugar de movimiento */
   }
 }
 
-/* Or disable entirely */
+/* O desactivar por completo */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -72,28 +72,28 @@ This is not optional. Vestibular disorders affect ~35% of adults over 40.
 }
 ```
 
-**What to preserve**: Functional animations like progress bars, loading spinners (slowed down), and focus indicators should still work—just without spatial movement.
+**Qué conservar**: Las animaciones funcionales como barras de progreso, spinners de carga (ralentizados) e indicadores de enfoque deben seguir funcionando, solo que sin movimiento espacial.
 
-## Perceived Performance
+## Rendimiento Percibido
 
-**Nobody cares how fast your site is—just how fast it feels.** Perception can be as effective as actual performance.
+**A nadie le importa lo rápido que sea tu sitio — sino lo rápido que se perciba.** La percepción puede ser tan efectiva como el rendimiento real.
 
-**The 80ms threshold**: Our brains buffer sensory input for ~80ms to synchronize perception. Anything under 80ms feels instant and simultaneous. This is your target for micro-interactions.
+**El umbral de los 80ms**: Nuestro cerebro almacena la información sensorial durante unos 80ms para sincronizar la percepción. Cualquier acción por debajo de 80ms se siente instantánea y simultánea. Este es tu objetivo para las microinteracciones.
 
-**Active vs passive time**: Passive waiting (staring at a spinner) feels longer than active engagement. Strategies to shift the balance:
+**Tiempo activo frente a pasivo**: La espera pasiva (observar un spinner de carga) se siente más larga que el compromiso activo. Estrategias para equilibrar la balanza:
 
-- **Preemptive start**: Begin transitions immediately while loading (iOS app zoom, skeleton UI). Users perceive work happening.
-- **Early completion**: Show content progressively—don't wait for everything. Video buffering, progressive images, streaming HTML.
-- **Optimistic UI**: Update the interface immediately, handle failures gracefully. Instagram likes work offline—the UI updates instantly, syncs later. Use for low-stakes actions; avoid for payments or destructive operations.
+- **Inicio preventivo**: Comienza las transiciones de inmediato mientras se realiza la carga (zoom de aplicaciones iOS, UI de esqueleto). El usuario percibe que el trabajo ya se está realizando.
+- **Finalización temprana**: Muestra el contenido de forma progresiva — no esperes a que esté todo listo (almacenamiento de vídeo en búfer, imágenes progresivas, streaming de HTML).
+- **UI optimista**: Actualiza la interfaz de inmediato y gestiona los fallos de forma elegante. Los "me gusta" de Instagram funcionan sin conexión — la interfaz se actualiza al instante y se sincroniza después. Úsalo para acciones de bajo riesgo; evítalo en pagos o procesos destructivos.
 
-**Easing affects perceived duration**: Ease-in (accelerating toward completion) makes tasks feel shorter because the peak-end effect weights final moments heavily. Ease-out feels satisfying for entrances, but ease-in toward a task's end compresses perceived time.
+**El suavizado (easing) afecta a la duración percibida**: El suavizado de entrada (acelerar hacia el final) hace que las tareas se sientan más cortas debido a que el efecto de pico-fin pondera con fuerza los momentos finales. El suavizado de salida se siente satisfactorio para las entradas de elementos, pero el suavizado de entrada hacia el final de una tarea comprime el tiempo percibido.
 
-**Caution**: Too-fast responses can decrease perceived value. Users may distrust instant results for complex operations (search, analysis). Sometimes a brief delay signals "real work" is happening.
+**Precaución**: Las respuestas demasiado rápidas pueden disminuir el valor percibido. Los usuarios pueden desconfiar de resultados instantáneos en operaciones complejas (búsquedas, análisis). A veces, un breve retraso transmite que se está realizando un "trabajo real".
 
-## Performance
+## Rendimiento
 
-Don't use `will-change` preemptively—only when animation is imminent (`:hover`, `.animating`). For scroll-triggered animations, use Intersection Observer instead of scroll events; unobserve after animating once. Create motion tokens for consistency (durations, easings, common transitions).
+No uses `will-change` de manera preventiva — úsalo únicamente cuando la animación sea inminente (`:hover`, `.animating`). Para animaciones activadas por scroll, usa Intersection Observer en lugar de eventos de scroll; deja de observar tras animar una vez. Crea tokens de movimiento para mantener la consistencia (duraciones, curvas de suavizado y transiciones comunes).
 
 ---
 
-**Avoid**: Animating everything (animation fatigue is real). Using >500ms for UI feedback. Ignoring `prefers-reduced-motion`. Using animation to hide slow loading.
+**Evita**: Animar todo (la fatiga por animación es real). Usar más de 500ms para la retroalimentación de la interfaz. Ignorar `prefers-reduced-motion`. Usar animaciones para ocultar una carga lenta.

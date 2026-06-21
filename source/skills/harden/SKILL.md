@@ -1,58 +1,58 @@
 ---
 name: harden
-description: "Make interfaces production-ready: error handling, empty states, onboarding flows, i18n, text overflow, and edge case management. Use when the user asks to harden, make production-ready, handle edge cases, add error states, design empty states, improve onboarding, or fix overflow and i18n issues."
-argument-hint: "[target]"
+description: "Prepara las interfaces para producción: manejo de errores, estados vacíos, flujos de inducción (onboarding), internacionalización (i18n), desbordamiento de texto y gestión de casos extremos. Úsalo cuando el usuario pida robustecer, preparar para producción, manejar casos extremos, añadir estados de error, diseñar estados vacíos, mejorar la inducción o corregir problemas de desbordamiento e i18n."
+argument-hint: "[objetivo]"
 user-invocable: true
 ---
 
-Strengthen interfaces against edge cases, errors, internationalization issues, and real-world usage scenarios that break idealized designs.
+Fortalece las interfaces frente a casos extremos, errores, problemas de internacionalización y escenarios de uso del mundo real que suelen romper los diseños idealizados.
 
-## Assess Hardening Needs
+## Evaluar Necesidades de Robustecimiento (Hardening)
 
-Identify weaknesses and edge cases:
+Identifica debilidades y casos extremos:
 
-1. **Test with extreme inputs**:
-   - Very long text (names, descriptions, titles)
-   - Very short text (empty, single character)
-   - Special characters (emoji, RTL text, accents)
-   - Large numbers (millions, billions)
-   - Many items (1000+ list items, 50+ options)
-   - No data (empty states)
+1. **Probar con entradas extremas**:
+   - Texto muy largo (nombres, descripciones, títulos).
+   - Texto muy corto (vacío, un solo carácter).
+   - Caracteres especiales (emojis, texto RTL de derecha a izquierda, acentos).
+   - Números grandes (millones, miles de millones).
+   - Gran cantidad de elementos (más de 1000 elementos de lista, más de 50 opciones).
+   - Sin datos (estados vacíos).
 
-2. **Test error scenarios**:
-   - Network failures (offline, slow, timeout)
-   - API errors (400, 401, 403, 404, 500)
-   - Validation errors
-   - Permission errors
-   - Rate limiting
-   - Concurrent operations
+2. **Probar escenarios de error**:
+   - Fallos de red (sin conexión, conexión lenta, tiempo de espera agotado).
+   - Errores de API (400, 401, 403, 404, 500).
+   - Errores de validación.
+   - Errores de permisos.
+   - Límite de peticiones superado (rate limiting).
+   - Operaciones concurrentes.
 
-3. **Test internationalization**:
-   - Long translations (German is often 30% longer than English)
-   - RTL languages (Arabic, Hebrew)
-   - Character sets (Chinese, Japanese, Korean, emoji)
-   - Date/time formats
-   - Number formats (1,000 vs 1.000)
-   - Currency symbols
+3. **Probar la internacionalización (i18n)**:
+   - Traducciones largas (el alemán suele ser un 30% más largo que el inglés).
+   - Idiomas RTL (árabe, hebreo).
+   - Juegos de caracteres (chino, japonés, coreano, emojis).
+   - Formatos de fecha y hora.
+   - Formatos numéricos (1,000 frente a 1.000).
+   - Símbolos de moneda.
 
-**CRITICAL**: Designs that only work with perfect data aren't production-ready. Harden against reality.
+**CRÍTICO**: Los diseños que solo funcionan con datos perfectos no están listos para producción. Hazlos robustos frente a la realidad.
 
-## Hardening Dimensions
+## Dimensiones del Robustecimiento
 
-Systematically improve resilience:
+Mejora la resiliencia sistemáticamente:
 
-### Text Overflow & Wrapping
+### Desbordamiento de Texto y Ajuste de Línea (Wrapping)
 
-**Long text handling**:
+**Manejo de texto largo**:
 ```css
-/* Single line with ellipsis */
+/* Una sola línea con puntos suspensivos */
 .truncate {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-/* Multi-line with clamp */
+/* Varias líneas con recorte */
 .line-clamp {
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -60,7 +60,7 @@ Systematically improve resilience:
   overflow: hidden;
 }
 
-/* Allow wrapping */
+/* Permitir ajuste/salto de palabra */
 .wrap {
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -68,214 +68,214 @@ Systematically improve resilience:
 }
 ```
 
-**Flex/Grid overflow**:
+**Desbordamiento en Flex/Grid**:
 ```css
-/* Prevent flex items from overflowing */
+/* Evitar que los elementos flex se desborden */
 .flex-item {
-  min-width: 0; /* Allow shrinking below content size */
+  min-width: 0; /* Permitir encogerse por debajo del tamaño del contenido */
   overflow: hidden;
 }
 
-/* Prevent grid items from overflowing */
+/* Evitar que los elementos grid se desborden */
 .grid-item {
   min-width: 0;
   min-height: 0;
 }
 ```
 
-**Responsive text sizing**:
-- Use `clamp()` for fluid typography
-- Set minimum readable sizes (14px on mobile)
-- Test text scaling (zoom to 200%)
-- Ensure containers expand with text
+**Tamaño de texto responsivo**:
+- Usa `clamp()` para una tipografía fluida.
+- Establece tamaños mínimos legibles (14px en móvil).
+- Prueba el escalado del texto (zoom al 200%).
+- Asegúrate de que los contenedores se expandan junto con el texto.
 
-### Internationalization (i18n)
+### Internacionalización (i18n)
 
-**Text expansion**:
-- Add 30-40% space budget for translations
-- Use flexbox/grid that adapts to content
-- Test with longest language (usually German)
-- Avoid fixed widths on text containers
+**Expansión del texto**:
+- Añade un margen de espacio del 30-40% para las traducciones.
+- Usa flexbox/grid que se adapte al contenido.
+- Prueba con el idioma más largo (normalmente el alemán).
+- Evita anchos fijos en los contenedores de texto.
 
 ```jsx
-// ❌ Bad: Assumes short English text
+// ❌ Mal: Asume texto corto en inglés
 <button className="w-24">Submit</button>
 
-// ✅ Good: Adapts to content
+// ✅ Bien: Se adapta al contenido
 <button className="px-4 py-2">Submit</button>
 ```
 
-**RTL (Right-to-Left) support**:
+**Soporte RTL (derecha a izquierda)**:
 ```css
-/* Use logical properties */
-margin-inline-start: 1rem; /* Not margin-left */
-padding-inline: 1rem; /* Not padding-left/right */
-border-inline-end: 1px solid; /* Not border-right */
+/* Usa propiedades lógicas */
+margin-inline-start: 1rem; /* No margin-left */
+padding-inline: 1rem; /* No padding-left/right */
+border-inline-end: 1px solid; /* No border-right */
 
-/* Or use dir attribute */
+/* O usa el atributo dir */
 [dir="rtl"] .arrow { transform: scaleX(-1); }
 ```
 
-**Character set support**:
-- Use UTF-8 encoding everywhere
-- Test with Chinese/Japanese/Korean (CJK) characters
-- Test with emoji (they can be 2-4 bytes)
-- Handle different scripts (Latin, Cyrillic, Arabic, etc.)
+**Soporte de juegos de caracteres**:
+- Usa codificación UTF-8 en todas partes.
+- Prueba con caracteres chinos, japoneses y coreanos (CJK).
+- Prueba con emojis (pueden ocupar entre 2 y 4 bytes).
+- Maneja diferentes alfabetos (latino, cirílico, árabe, etc.).
 
-**Date/Time formatting**:
+**Formato de Fecha/Hora y Números**:
 ```javascript
-// ✅ Use Intl API for proper formatting
-new Intl.DateTimeFormat('en-US').format(date); // 1/15/2024
+// ✅ Usa la API Intl para formatear correctamente
+new Intl.DateTimeFormat('es-ES').format(date); // 15/1/2024
 new Intl.DateTimeFormat('de-DE').format(date); // 15.1.2024
 
-new Intl.NumberFormat('en-US', { 
+new Intl.NumberFormat('es-ES', { 
   style: 'currency', 
-  currency: 'USD' 
-}).format(1234.56); // $1,234.56
+  currency: 'EUR' 
+}).format(1234.56); // 1.234,56 €
 ```
 
-**Pluralization**:
+**Pluralización**:
 ```javascript
-// ❌ Bad: Assumes English pluralization
+// ❌ Mal: Asume la pluralización del inglés
 `${count} item${count !== 1 ? 's' : ''}`
 
-// ✅ Good: Use proper i18n library
-t('items', { count }) // Handles complex plural rules
+// ✅ Bien: Usa una biblioteca de i18n adecuada
+t('items', { count }) // Maneja reglas de plural complejas
 ```
 
-### Error Handling
+### Manejo de Errores
 
-**Network errors**:
-- Show clear error messages
-- Provide retry button
-- Explain what happened
-- Offer offline mode (if applicable)
-- Handle timeout scenarios
+**Errores de red**:
+- Muestra mensajes de error claros.
+- Proporciona un botón de reintento.
+- Explica qué sucedió.
+- Ofrece modo sin conexión (si aplica).
+- Maneja escenarios de tiempo de espera agotado (timeout).
 
 ```jsx
-// Error states with recovery
+// Estados de error con recuperación
 {error && (
   <ErrorMessage>
-    <p>Failed to load data. {error.message}</p>
-    <button onClick={retry}>Try again</button>
+    <p>No se pudieron cargar los datos. {error.message}</p>
+    <button onClick={retry}>Intentar de nuevo</button>
   </ErrorMessage>
 )}
 ```
 
-**Form validation errors**:
-- Inline errors near fields
-- Clear, specific messages
-- Suggest corrections
-- Don't block submission unnecessarily
-- Preserve user input on error
+**Errores de validación de formulario**:
+- Errores integrados (inline) cerca de los campos correspondientes.
+- Mensajes claros y específicos.
+- Sugiere correcciones.
+- No bloquees el envío de forma innecesaria.
+- Preserva la entrada de datos del usuario en caso de error.
 
-**API errors**:
-- Handle each status code appropriately
-  - 400: Show validation errors
-  - 401: Redirect to login
-  - 403: Show permission error
-  - 404: Show not found state
-  - 429: Show rate limit message
-  - 500: Show generic error, offer support
+**Errores de API**:
+- Maneja cada código de estado de forma adecuada:
+  - 400: Muestra errores de validación.
+  - 401: Redirige a la página de inicio de sesión.
+  - 403: Muestra error de falta de permisos.
+  - 404: Muestra estado de elemento no encontrado.
+  - 429: Muestra mensaje de límite de peticiones superado.
+  - 500: Muestra un error genérico y ofrece opciones de soporte.
 
-**Graceful degradation**:
-- Core functionality works without JavaScript
-- Images have alt text
-- Progressive enhancement
-- Fallbacks for unsupported features
+**Degradación aceptable (Graceful degradation)**:
+- La funcionalidad principal debe funcionar sin JavaScript.
+- Las imágenes deben tener texto alternativo (alt).
+- Mejora progresiva (progressive enhancement).
+- Alternativas (fallbacks) para funciones no soportadas.
 
-### Edge Cases & Boundary Conditions
+### Casos Extremos y Condiciones de Límite
 
-**Empty states**:
-- No items in list
-- No search results
-- No notifications
-- No data to display
-- Provide clear next action
+**Estados vacíos (Empty states)**:
+- Sin elementos en la lista.
+- Sin resultados de búsqueda.
+- Sin notificaciones.
+- Sin datos que mostrar.
+- Proporciona una acción siguiente clara.
 
-**Loading states**:
-- Initial load
-- Pagination load
-- Refresh
-- Show what's loading ("Loading your projects...")
-- Time estimates for long operations
+**Estados de carga**:
+- Carga inicial.
+- Carga de paginación.
+- Actualización (refresh).
+- Muestra qué se está cargando ("Cargando tus proyectos...").
+- Estimaciones de tiempo para operaciones largas.
 
-**Large datasets**:
-- Pagination or virtual scrolling
-- Search/filter capabilities
-- Performance optimization
-- Don't load all 10,000 items at once
+**Grandes conjuntos de datos**:
+- Paginación o desplazamiento virtual (virtual scrolling).
+- Capacidades de búsqueda/filtrado.
+- Optimización del rendimiento.
+- No cargues los 10,000 elementos a la vez.
 
-**Concurrent operations**:
-- Prevent double-submission (disable button while loading)
-- Handle race conditions
-- Optimistic updates with rollback
-- Conflict resolution
+**Operaciones concurrentes**:
+- Evita el doble envío (desactiva el botón mientras se realiza la carga).
+- Controla las condiciones de carrera (race conditions).
+- Actualizaciones optimistas con opción de revertir (rollback).
+- Resolución de conflictos.
 
-**Permission states**:
-- No permission to view
-- No permission to edit
-- Read-only mode
-- Clear explanation of why
+**Estados de permisos**:
+- Sin permisos para ver.
+- Sin permisos para editar.
+- Modo de solo lectura.
+- Explicación clara del motivo.
 
-**Browser compatibility**:
-- Polyfills for modern features
-- Fallbacks for unsupported CSS
-- Feature detection (not browser detection)
-- Test in target browsers
+**Compatibilidad de navegadores**:
+- Polyfills para características modernas.
+- Alternativas para CSS no soportado.
+- Detección de características (no detección de navegador).
+- Prueba en los navegadores objetivo.
 
-### Onboarding & First-Run Experience
+### Inducción (Onboarding) y Primera Experiencia
 
-Production-ready features work for first-time users, not just power users. Design the paths that get new users to value:
+Las funciones preparadas para producción funcionan para los usuarios novatos, no solo para los usuarios expertos. Diseña los flujos que guían a los nuevos usuarios a encontrar valor en el producto:
 
-**Empty states**: Every zero-data screen needs:
-- What will appear here (description or illustration)
-- Why it matters to the user
-- Clear CTA to create the first item or start from a template
-- Visual interest (not just blank space with "No items yet")
+**Estados vacíos**: Cada pantalla sin datos necesita:
+- Qué aparecerá aquí (descripción o ilustración).
+- Por qué le importa al usuario.
+- Un CTA claro para crear el primer elemento o comenzar desde una plantilla.
+- Interés visual (no solo un espacio en blanco con la frase "Aún no hay elementos").
 
-Empty state types to handle:
-- **First use**: emphasize value, provide templates
-- **User cleared**: light touch, easy to recreate
-- **No results**: suggest a different query, offer to clear filters
-- **No permissions**: explain why, how to get access
+Tipos de estados vacíos a gestionar:
+- **Primer uso**: enfatizar el valor, proporcionar plantillas.
+- **Limpiado por el usuario**: toque ligero, fácil de recrear.
+- **Sin resultados**: sugerir una búsqueda diferente, ofrecer limpiar los filtros.
+- **Sin permisos**: explicar el motivo y cómo obtener acceso.
 
-**First-run experience**: Get users to their "aha moment" as quickly as possible.
-- Show, don't tell -- working examples over descriptions
-- Progressive disclosure -- teach one thing at a time, not everything upfront
-- Make onboarding optional -- let experienced users skip
-- Provide smart defaults so required setup is minimal
+**Primera experiencia**: Lleva a los usuarios a su momento de revelación ("aha moment") lo más rápido posible.
+- Muestra, no cuentes: prefiere ejemplos prácticos sobre descripciones largas.
+- Divulgación progresiva: enseña una cosa a la vez, no todo al principio.
+- Haz que la inducción sea opcional: permite omitirla a los usuarios experimentados.
+- Proporciona valores predeterminados inteligentes para que la configuración obligatoria sea mínima.
 
-**Feature discovery**: Teach features when users need them, not upfront.
-- Contextual tooltips at point of use (brief, dismissable, one-time)
-- Badges or indicators on new or unused features
-- Celebrate activation events quietly (a toast, not a modal)
+**Descubrimiento de funcionalidades**: Enseña las funciones cuando los usuarios las necesiten, no antes.
+- Tooltips contextuales en el punto de uso (breves, descartables, de una sola vez).
+- Insignias o indicadores en funciones nuevas o que no se han utilizado.
+- Celebra los eventos de activación de forma sutil (un mensaje emergente/toast, no un modal).
 
-**NEVER**:
-- Force long onboarding before users can touch the product
-- Show the same tooltip repeatedly (track and respect dismissals)
-- Block the entire UI during a guided tour
-- Create separate tutorial modes disconnected from the real product
-- Design empty states that just say "No items" with no next action
+**NUNCA**:
+- Obligues a pasar por un onboarding largo antes de poder tocar el producto.
+- Muestres el mismo tooltip repetidamente (registra y respeta cuando un usuario los descarte).
+- Bloquees toda la interfaz durante una guía interactiva.
+- Crees tutoriales aislados desconectados del producto real.
+- Diseñes estados vacíos que solo digan "Sin elementos" sin ofrecer una acción siguiente.
 
-### Input Validation & Sanitization
+### Validación y Desinfección de Entradas
 
-**Client-side validation**:
-- Required fields
-- Format validation (email, phone, URL)
-- Length limits
-- Pattern matching
-- Custom validation rules
+**Validación del lado del cliente**:
+- Campos obligatorios.
+- Validación de formato (correo, teléfono, URL).
+- Límites de longitud.
+- Coincidencia de patrones (regex).
+- Reglas de validación personalizadas.
 
-**Server-side validation** (always):
-- Never trust client-side only
-- Validate and sanitize all inputs
-- Protect against injection attacks
-- Rate limiting
+**Validación del lado del servidor** (siempre):
+- Nunca confíes únicamente en el lado del cliente.
+- Valida y desinfecta todas las entradas.
+- Protege contra ataques de inyección (SQL, XSS, etc.).
+- Límite de peticiones (rate limiting).
 
-**Constraint handling**:
+**Manejo de restricciones**:
 ```html
-<!-- Set clear constraints -->
+<!-- Establece restricciones claras -->
 <input 
   type="text"
   maxlength="100"
@@ -284,25 +284,25 @@ Empty state types to handle:
   aria-describedby="username-hint"
 />
 <small id="username-hint">
-  Letters and numbers only, up to 100 characters
+  Solo letras y números, hasta 100 caracteres
 </small>
 ```
 
-### Accessibility Resilience
+### Resiliencia en Accesibilidad
 
-**Keyboard navigation**:
-- All functionality accessible via keyboard
-- Logical tab order
-- Focus management in modals
-- Skip links for long content
+**Navegación por teclado**:
+- Toda la funcionalidad debe ser accesible mediante el teclado.
+- Orden de tabulación lógico.
+- Gestión del enfoque en ventanas modales.
+- Enlaces de salto (skip links) para contenido largo.
 
-**Screen reader support**:
-- Proper ARIA labels
-- Announce dynamic changes (live regions)
-- Descriptive alt text
-- Semantic HTML
+**Soporte de lectores de pantalla**:
+- Etiquetas ARIA adecuadas.
+- Anuncia los cambios dinámicos (regiones activas / live regions).
+- Texto alternativo descriptivo.
+- HTML semántico.
 
-**Motion sensitivity**:
+**Sensibilidad al movimiento**:
 ```css
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -313,77 +313,76 @@ Empty state types to handle:
 }
 ```
 
-**High contrast mode**:
-- Test in Windows high contrast mode
-- Don't rely only on color
-- Provide alternative visual cues
+**Modo de alto contraste**:
+- Prueba en el modo de alto contraste de Windows.
+- No dependas únicamente del color.
+- Proporciona pistas visuales alternativas.
 
-### Performance Resilience
+### Resiliencia en Rendimiento
 
-**Slow connections**:
-- Progressive image loading
-- Skeleton screens
-- Optimistic UI updates
-- Offline support (service workers)
+**Conexiones lentas**:
+- Carga progresiva de imágenes.
+- Pantallas de esqueleto (skeleton screens).
+- Actualizaciones optimistas de la interfaz.
+- Soporte sin conexión (service workers).
 
-**Memory leaks**:
-- Clean up event listeners
-- Cancel subscriptions
-- Clear timers/intervals
-- Abort pending requests on unmount
+**Fugas de memoria**:
+- Limpia los escuchadores de eventos (event listeners).
+- Cancela suscripciones.
+- Limpia temporizadores/intervalos.
+- Cancela peticiones pendientes al desmontar el componente.
 
-**Throttling & Debouncing**:
+**Limitación y Regulación (Throttling & Debouncing)**:
 ```javascript
-// Debounce search input
+// Limitar la búsqueda al escribir
 const debouncedSearch = debounce(handleSearch, 300);
 
-// Throttle scroll handler
+// Limitar la ejecución al desplazarse
 const throttledScroll = throttle(handleScroll, 100);
 ```
 
-## Testing Strategies
+## Estrategias de Prueba
 
-**Manual testing**:
-- Test with extreme data (very long, very short, empty)
-- Test in different languages
-- Test offline
-- Test slow connection (throttle to 3G)
-- Test with screen reader
-- Test keyboard-only navigation
-- Test on old browsers
+**Prueba manual**:
+- Prueba con datos extremos (muy largos, muy cortos, vacíos).
+- Prueba en diferentes idiomas.
+- Prueba sin conexión.
+- Prueba con conexión lenta (limita la velocidad a 3G).
+- Prueba con un lector de pantalla.
+- Prueba la navegación solo con teclado.
+- Prueba en navegadores antiguos.
 
-**Automated testing**:
-- Unit tests for edge cases
-- Integration tests for error scenarios
-- E2E tests for critical paths
-- Visual regression tests
-- Accessibility tests (axe, WAVE)
+**Prueba automatizada**:
+- Pruebas unitarias para casos extremos.
+- Pruebas de integración para escenarios de error.
+- Pruebas E2E para rutas críticas.
+- Pruebas de regresión visual.
+- Pruebas de accesibilidad (axe, WAVE).
 
-**IMPORTANT**: Hardening is about expecting the unexpected. Real users will do things you never imagined.
+**IMPORTANTE**: Robustecer consiste en esperar lo inesperado. Los usuarios reales harán cosas que nunca imaginaste.
 
-**NEVER**:
-- Assume perfect input (validate everything)
-- Ignore internationalization (design for global)
-- Leave error messages generic ("Error occurred")
-- Forget offline scenarios
-- Trust client-side validation alone
-- Use fixed widths for text
-- Assume English-length text
-- Block entire interface when one component errors
+**NUNCA**:
+- Asumas que la entrada de datos será perfecta (valida todo).
+- Ignores la internacionalización (diseña para un público global).
+- Dejes los mensajes de error genéricos ("Se produjo un error").
+- Olvides los escenarios sin conexión.
+- Confíes únicamente en la validación del lado del cliente.
+- Uses anchos fijos para el texto.
+- Asumas que la longitud del texto siempre será similar a la del inglés.
+- Bloquees toda la interfaz cuando un solo componente falle.
 
-## Verify Hardening
+## Verificar Robustecimiento
 
-Test thoroughly with edge cases:
+Prueba minuciosamente los casos extremos:
 
-- **Long text**: Try names with 100+ characters
-- **Emoji**: Use emoji in all text fields
-- **RTL**: Test with Arabic or Hebrew
-- **CJK**: Test with Chinese/Japanese/Korean
-- **Network issues**: Disable internet, throttle connection
-- **Large datasets**: Test with 1000+ items
-- **Concurrent actions**: Click submit 10 times rapidly
-- **Errors**: Force API errors, test all error states
-- **Empty**: Remove all data, test empty states
+- **Texto largo**: Prueba nombres con más de 100 caracteres.
+- **Emojis**: Usa emojis en todos los campos de texto.
+- **RTL**: Prueba con árabe o hebreo.
+- **CJK**: Prueba con chino, japonés o coreano.
+- **Problemas de red**: Desactiva internet, limita la velocidad de conexión.
+- **Grandes conjuntos de datos**: Prueba con más de 1000 elementos.
+- **Acciones concurrentes**: Haz clic en enviar 10 veces seguidas rápidamente.
+- **Errores**: Fuerza errores de la API, prueba todos los estados de error.
+- **Vacío**: Elimina todos los datos, prueba los estados vacíos.
 
-Remember: You're hardening for production reality, not demo perfection. Expect users to input weird data, lose connection mid-flow, and use your product in unexpected ways. Build resilience into every component.
-
+Recuerda: Estás preparando el código para la realidad de producción, no para la perfección de una demostración. Espera que los usuarios introduzcan datos extraños, pierdan la conexión a mitad del proceso y utilicen tu producto de formas inesperadas. Construye resiliencia en cada componente.

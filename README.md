@@ -1,160 +1,160 @@
 # Impeccable
 
-The vocabulary you didn't know you needed. 1 skill, 18 commands, and curated anti-patterns for impeccable frontend design.
+El vocabulario que no sabías que necesitabas. 1 habilidad, 18 comandos y anti-patrones seleccionados para un diseño frontend impecable.
 
-> **Quick start:** Visit [impeccable.style](https://impeccable.style) to download ready-to-use bundles.
+> **Inicio rápido:** Visita [impeccable.style](https://impeccable.style) para descargar los paquetes listos para usar.
 
-## Why Impeccable?
+## ¿Por qué Impeccable?
 
-Anthropic created [frontend-design](https://github.com/anthropics/skills/tree/main/skills/frontend-design), a skill that guides Claude toward better UI design. Impeccable builds on that foundation with deeper expertise and more control.
+Anthropic creó [frontend-design](https://github.com/anthropics/skills/tree/main/skills/frontend-design), una habilidad que guía a Claude hacia un mejor diseño de interfaz de usuario (UI). Impeccable se basa en esa base con una experiencia más profunda y un mayor control.
 
-Every LLM learned from the same generic templates. Without guidance, you get the same predictable mistakes: Inter font, purple gradients, cards nested in cards, gray text on colored backgrounds.
+Todos los LLMs aprendieron de las mismas plantillas genéricas. Sin orientación, obtienes los mismos errores predecibles: la fuente Inter, degradados de color púrpura, tarjetas anidadas dentro de tarjetas y texto gris sobre fondos de color.
 
-Impeccable fights that bias with:
-- **An expanded skill** with 7 domain-specific reference files ([view source](source/skills/impeccable/))
-- **18 steering commands** to audit, review, polish, distill, animate, and more
-- **Curated anti-patterns** that explicitly tell the AI what NOT to do
+Impeccable combate ese sesgo con:
+- **Una habilidad ampliada** con 7 archivos de referencia de dominios específicos ([ver fuente](source/skills/impeccable/))
+- **18 comandos de dirección** para auditar, revisar, pulir, destilar, animar y más
+- **Anti-patrones seleccionados** que le dicen explícitamente a la IA qué NO hacer
 
-## What's Included
+## Qué está incluido
 
-### The Skill: impeccable
+### La habilidad: impeccable
 
-A comprehensive design skill with 7 domain-specific references ([view skill](source/skills/impeccable/SKILL.md)):
+Una habilidad de diseño integral con 7 referencias de dominios específicos ([ver habilidad](source/skills/impeccable/SKILL.md)):
 
-| Reference | Covers |
-|-----------|--------|
-| [typography](source/skills/impeccable/reference/typography.md) | Type systems, font pairing, modular scales, OpenType |
-| [color-and-contrast](source/skills/impeccable/reference/color-and-contrast.md) | OKLCH, tinted neutrals, dark mode, accessibility |
-| [spatial-design](source/skills/impeccable/reference/spatial-design.md) | Spacing systems, grids, visual hierarchy |
-| [motion-design](source/skills/impeccable/reference/motion-design.md) | Easing curves, staggering, reduced motion |
-| [interaction-design](source/skills/impeccable/reference/interaction-design.md) | Forms, focus states, loading patterns |
-| [responsive-design](source/skills/impeccable/reference/responsive-design.md) | Mobile-first, fluid design, container queries |
-| [ux-writing](source/skills/impeccable/reference/ux-writing.md) | Button labels, error messages, empty states |
+| Referencia | Cubre |
+|------------|--------|
+| [typography](source/skills/impeccable/reference/typography.md) | Sistemas tipográficos, emparejamiento de fuentes, escalas modulares, OpenType |
+| [color-and-contrast](source/skills/impeccable/reference/color-and-contrast.md) | OKLCH, neutros tintados, modo oscuro, accesibilidad |
+| [spatial-design](source/skills/impeccable/reference/spatial-design.md) | Sistemas de espaciado, cuadrículas, jerarquía visual |
+| [motion-design](source/skills/impeccable/reference/motion-design.md) | Curvas de aceleración, escalonamiento, reducción de movimiento |
+| [interaction-design](source/skills/impeccable/reference/interaction-design.md) | Formularios, estados de foco, patrones de carga |
+| [responsive-design](source/skills/impeccable/reference/responsive-design.md) | Enfoque móvil-primero, diseño fluido, consultas de contenedor (container queries) |
+| [ux-writing](source/skills/impeccable/reference/ux-writing.md) | Etiquetas de botón, mensajes de error, estados vacíos |
 
-### 18 Commands
+### 18 Comandos
 
-| Command | What it does |
-|---------|--------------|
-| `/impeccable teach` | One-time setup: gather design context, save to config |
-| `/impeccable craft` | Full shape-then-build flow with visual iteration |
-| `/impeccable extract` | Pull reusable components and tokens into the design system |
-| `/audit` | Run technical quality checks (a11y, performance, responsive) |
-| `/critique` | UX design review: hierarchy, clarity, emotional resonance |
-| `/polish` | Final pass, design system alignment, and shipping readiness |
-| `/distill` | Strip to essence |
-| `/clarify` | Improve unclear UX copy |
-| `/optimize` | Performance improvements |
-| `/harden` | Error handling, onboarding, i18n, edge cases |
-| `/animate` | Add purposeful motion |
-| `/colorize` | Introduce strategic color |
-| `/bolder` | Amplify boring designs |
-| `/quieter` | Tone down overly bold designs |
-| `/delight` | Add moments of joy |
-| `/adapt` | Adapt for different devices |
-| `/typeset` | Fix font choices, hierarchy, sizing |
-| `/layout` | Fix layout, spacing, visual rhythm |
-| `/overdrive` | Add technically extraordinary effects |
+| Comando | Qué hace |
+|---------|----------|
+| `/impeccable teach` | Configuración única: reúne el contexto de diseño, guárdalo en la configuración |
+| `/impeccable craft` | Flujo completo de dar forma y luego construir con iteración visual |
+| `/impeccable extract` | Extrae componentes y tokens reutilizables hacia el sistema de diseño |
+| `/audit` | Ejecuta comprobaciones de calidad técnica (a11y, rendimiento, adaptabilidad) |
+| `/critique` | Revisión de diseño de UX: jerarquía, claridad, resonancia emocional |
+| `/polish` | Pase final, alineación del sistema de diseño y preparación para el lanzamiento |
+| `/distill` | Reduce a lo esencial |
+| `/clarify` | Mejora los textos de la interfaz (copy de UX) poco claros |
+| `/optimize` | Mejoras de rendimiento |
+| `/harden` | Manejo de errores, onboarding, i18n, casos extremos |
+| `/animate` | Añade movimiento intencionado |
+| `/colorize` | Introduce color estratégico |
+| `/bolder` | Amplifica diseños aburridos |
+| `/quieter` | Atenúa diseños demasiado llamativos |
+| `/delight` | Añade momentos de alegría |
+| `/adapt` | Adapta para diferentes dispositivos |
+| `/typeset` | Corrige la elección de fuentes, jerarquía y tamaño |
+| `/layout` | Corrige el diseño, espaciado y ritmo visual |
+| `/overdrive` | Añade efectos técnicamente extraordinarios |
 
-#### Usage Examples
+#### Ejemplos de uso
 
-**`/audit`** - Run quality checks, get a report (no edits)
+**`/audit`** - Ejecuta comprobaciones de calidad, obtiene un informe (sin ediciones)
 ```
-/audit blog              # Audit blog hub + post pages
-/audit dashboard         # Check dashboard components
-/audit checkout flow     # Focus on checkout UX
+/audit blog              # Audita el hub de blog + las páginas de publicaciones
+/audit dashboard         # Comprueba los componentes del dashboard
+/audit checkout flow     # Se enfoca en la UX del checkout
 ```
-*When to use:* Before making changes, to understand what needs fixing.
+*Cuándo usarlo:* Antes de realizar cambios, para entender qué necesita corregirse.
 
-**`/normalize`** - Align with design system
+**`/normalize`** - Alinea con el sistema de diseño
 ```
-/normalize blog          # Apply design tokens, fix spacing
-/normalize buttons       # Standardize button styles
+/normalize blog          # Aplica tokens de diseño, corrige el espaciado
+/normalize buttons       # Estandariza los estilos de los botones
 ```
-*When to use:* After audit, to fix inconsistencies.
+*Cuándo usarlo:* Después de una auditoría, para corregir inconsistencias.
 
-**`/critique`** - UX design review
+**`/critique`** - Revisión de diseño de UX
 ```
-/critique landing page   # Review landing page UX
-/critique onboarding     # Check onboarding flow
+/critique landing page   # Revisa la UX de la página de destino
+/critique onboarding     # Comprueba el flujo de onboarding
 ```
-*When to use:* When you want design feedback, not technical fixes.
+*Cuándo usarlo:* Cuando desees feedback de diseño, no soluciones técnicas.
 
-**`/polish`** - Final pass before shipping
+**`/polish`** - Pase final antes de lanzar
 ```
-/polish feature modal    # Clean up modal before release
-/polish settings page    # Final review of settings UI
+/polish feature modal    # Limpia el modal antes de lanzarlo
+/polish settings page    # Revisión final de la interfaz de configuración
 ```
-*When to use:* Last step before deploying to production.
+*Cuándo usarlo:* Último paso antes de desplegar a producción.
 
-**Combining commands:**
+**Combinando comandos:**
 ```
-/audit /normalize /polish blog    # Full workflow: audit → fix → polish
-/critique /harden checkout        # UX review + add error handling
+/audit /normalize /polish blog    # Flujo completo: auditar → corregir → pulir
+/critique /harden checkout        # Revisión de UX + añadir manejo de errores
 ```
 
-### Anti-Patterns
+### Anti-Patrones
 
-The skill includes explicit guidance on what to avoid:
+La habilidad incluye pautas explícitas sobre qué evitar:
 
-- Don't use overused fonts (Arial, Inter, system defaults)
-- Don't use gray text on colored backgrounds
-- Don't use pure black/gray (always tint)
-- Don't wrap everything in cards or nest cards inside cards
-- Don't use bounce/elastic easing (feels dated)
+- No uses fuentes sobreutilizadas (Arial, Inter, las predeterminadas del sistema)
+- No uses texto gris sobre fondos de color
+- No uses negro/gris puro (siempre tíñelos)
+- No envuelvas todo en tarjetas ni anides tarjetas dentro de tarjetas
+- No uses aceleración elástica o de rebote (se siente anticuada)
 
-## See It In Action
+## Míralo en acción
 
-Visit [impeccable.style](https://impeccable.style#casestudies) to see before/after case studies of real projects transformed with Impeccable commands.
+Visita [impeccable.style](https://impeccable.style#casestudies) para ver estudios de casos de antes/después de proyectos reales transformados con comandos de Impeccable.
 
-## Installation
+## Instalación
 
-### Option 1: Download from Website (Recommended)
+### Opción 1: Descargar del sitio web (Recomendado)
 
-Visit [impeccable.style](https://impeccable.style), download the ZIP for your tool, and extract to your project.
+Visita [impeccable.style](https://impeccable.style), descarga el archivo ZIP para tu herramienta y extráelo en tu proyecto.
 
-### Option 2: Copy from Repository
+### Opción 2: Copiar desde el repositorio
 
 **Cursor:**
 ```bash
-cp -r dist/cursor/.cursor your-project/
+cp -r dist/cursor/.cursor tu-proyecto/
 ```
 
-> **Note:** Cursor skills require setup:
-> 1. Switch to Nightly channel in Cursor Settings → Beta
-> 2. Enable Agent Skills in Cursor Settings → Rules
+> **Nota:** Las habilidades en Cursor requieren configuración:
+> 1. Cambia al canal Nightly en Cursor Settings → Beta
+> 2. Habilita Agent Skills en Cursor Settings → Rules
 >
-> [Learn more about Cursor skills](https://cursor.com/docs/context/skills)
+> [Más información sobre las habilidades de Cursor](https://cursor.com/docs/context/skills)
 
 **Claude Code:**
 ```bash
-# Project-specific
-cp -r dist/claude-code/.claude your-project/
+# Específico del proyecto
+cp -r dist/claude-code/.claude tu-proyecto/
 
-# Or global (applies to all projects)
+# O global (se aplica a todos los proyectos)
 cp -r dist/claude-code/.claude/* ~/.claude/
 ```
 
 **OpenCode:**
 ```bash
-cp -r dist/opencode/.opencode your-project/
+cp -r dist/opencode/.opencode tu-proyecto/
 ```
 
 **Pi:**
 ```bash
-cp -r dist/pi/.pi your-project/
+cp -r dist/pi/.pi tu-proyecto/
 ```
 
 **Gemini CLI:**
 ```bash
-cp -r dist/gemini/.gemini your-project/
+cp -r dist/gemini/.gemini tu-proyecto/
 ```
 
-> **Note:** Gemini CLI skills require setup:
-> 1. Install preview version: `npm i -g @google/gemini-cli@preview`
-> 2. Run `/settings` and enable "Skills"
-> 3. Run `/skills list` to verify installation
+> **Nota:** Las habilidades del Gemini CLI requieren configuración:
+> 1. Instala la versión de vista previa: `npm i -g @google/gemini-cli@preview`
+> 2. Ejecuta `/settings` y habilita "Skills"
+> 3. Ejecuta `/skills list` para verificar la instalación
 >
-> [Learn more about Gemini CLI skills](https://geminicli.com/docs/cli/skills/)
+> [Más información sobre las habilidades del Gemini CLI](https://geminicli.com/docs/cli/skills/)
 
 **Codex CLI:**
 ```bash
@@ -163,62 +163,62 @@ cp -r dist/codex/.codex/* ~/.codex/
 
 **Trae:**
 ```bash
-# Trae China (domestic version)
+# Trae China (versión doméstica)
 cp -r dist/trae/.trae-cn/skills/* ~/.trae-cn/skills/
 
-# Trae International
+# Trae Internacional
 cp -r dist/trae/.trae/skills/* ~/.trae/skills/
 ```
 
-> **Note:** Trae has two versions with different config directories:
+> **Nota:** Trae tiene dos versiones con diferentes directorios de configuración:
 > - **Trae China**: `~/.trae-cn/skills/`
-> - **Trae International**: `~/.trae/skills/`
+> - **Trae Internacional**: `~/.trae/skills/`
 >
-> After copying, restart Trae IDE to activate the skills.
+> Después de copiar, reinicia el IDE de Trae para activar las habilidades.
 
 **Rovo Dev:**
 ```bash
-# Project-specific
-cp -r dist/rovo-dev/.rovodev your-project/
+# Específico del proyecto
+cp -r dist/rovo-dev/.rovodev tu-proyecto/
 
-# Or global (applies to all projects)
+# O global (se aplica a todos los proyectos)
 cp -r dist/rovo-dev/.rovodev/skills/* ~/.rovodev/skills/
 ```
 
-## Usage
+## Uso
 
-Once installed, use commands in your AI harness:
+Una vez instalado, usa los comandos en tu entorno de IA:
 
 ```
-/audit           # Find issues
-/normalize       # Fix inconsistencies
-/polish          # Final cleanup
-/distill         # Remove complexity
+/audit           # Encuentra problemas
+/normalize       # Corrige inconsistencias
+/polish          # Limpieza final
+/distill         # Elimina la complejidad
 ```
 
-Most commands accept an optional argument to focus on a specific area:
+La mayoría de los comandos aceptan un argumento opcional para enfocarse en un área específica:
 
 ```
 /audit header
 /polish checkout-form
 ```
 
-**Note:** Codex CLI uses a different syntax: `/prompts:audit`, `/prompts:polish`, etc.
+**Nota:** Codex CLI usa una sintaxis diferente: `/prompts:audit`, `/prompts:polish`, etc.
 
 ## CLI
 
-Impeccable includes a standalone CLI for detecting anti-patterns without an AI harness:
+Impeccable incluye una interfaz de línea de comandos (CLI) independiente para detectar anti-patrones sin necesidad de un entorno de IA:
 
 ```bash
-npx impeccable detect src/                   # scan a directory
-npx impeccable detect index.html             # scan an HTML file
-npx impeccable detect https://example.com    # scan a URL (Puppeteer)
-npx impeccable detect --fast --json .        # regex-only, JSON output
+npx impeccable detect src/                   # escanea un directorio
+npx impeccable detect index.html             # escanea un archivo HTML
+npx impeccable detect https://example.com    # escanea una URL (Puppeteer)
+npx impeccable detect --fast --json .        # solo expresiones regulares, salida JSON
 ```
 
-The detector catches 24 issues across AI slop (side-tab borders, purple gradients, bounce easing, dark glows) and general design quality (line length, cramped padding, small touch targets, skipped headings, and more).
+El detector detecta 24 problemas clasificados entre "basura de IA" (bordes de acento lateral, degradados púrpuras, rebotes, brillos oscuros) y calidad general del diseño (longitud de línea, rellenos reducidos, objetivos táctiles pequeños, niveles de encabezado omitidos y más).
 
-## Supported Tools
+## Herramientas compatibles
 
 - [Cursor](https://cursor.com)
 - [Claude Code](https://claude.ai/code)
@@ -231,16 +231,16 @@ The detector catches 24 issues across AI slop (side-tab borders, purple gradient
 - [Trae](https://trae.ai)
 - [Rovo Dev](https://www.atlassian.com/software/rovo)
 
-## Contributing
+## Contribuir
 
-See [DEVELOP.md](DEVELOP.md) for contributor guidelines and build instructions.
+Consulta [DEVELOP.md](DEVELOP.md) para conocer las pautas de contribución e instrucciones de compilación.
 
-## License
+## Licencia
 
-Apache 2.0. See [LICENSE](LICENSE).
+Apache 2.0. Ver [LICENSE](LICENSE).
 
-The impeccable skill builds on [Anthropic's original frontend-design skill](https://github.com/anthropics/skills/tree/main/skills/frontend-design). See [NOTICE.md](NOTICE.md) for attribution.
+La habilidad impeccable se basa en la [habilidad original de diseño frontend de Anthropic](https://github.com/anthropics/skills/tree/main/skills/frontend-design). Ver [NOTICE.md](NOTICE.md) para atribuciones.
 
 ---
 
-Created by [Paul Bakaus](https://www.paulbakaus.com)
+Creado por [Paul Bakaus](https://www.paulbakaus.com)

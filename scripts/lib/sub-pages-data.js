@@ -74,21 +74,21 @@ const SKILL_CATEGORIES = {
 export const CATEGORY_ORDER = ['create', 'evaluate', 'refine', 'simplify', 'harden'];
 
 export const CATEGORY_LABELS = {
-  create: 'Create',
-  evaluate: 'Evaluate',
-  refine: 'Refine',
-  simplify: 'Simplify',
-  harden: 'Harden',
-  system: 'System',
+  create: 'Crear',
+  evaluate: 'Evaluar',
+  refine: 'Refinar',
+  simplify: 'Simplificar',
+  harden: 'Fortalecer',
+  system: 'Sistema',
 };
 
 export const CATEGORY_DESCRIPTIONS = {
-  create: 'Build something new, from a blank page to a working feature.',
-  evaluate: 'Review what you have. Score it, critique it, find what to fix.',
-  refine: 'Improve one dimension at a time: type, layout, color, motion.',
-  simplify: 'Strip complexity. Remove what does not earn its place.',
-  harden: 'Make it production-ready. Edge cases, performance, polish.',
-  system: 'Setup and tooling. Design system work, extraction, organization.',
+  create: 'Construye algo nuevo, desde una página en blanco hasta una funcionalidad activa.',
+  evaluate: 'Revisa lo que tienes. Califícalo, critícalo, encuentra qué solucionar.',
+  refine: 'Mejora una dimensión a la vez: tipografía, diseño, color, movimiento.',
+  simplify: 'Elimina la complejidad. Quita lo que no se gane su lugar.',
+  harden: 'Hazlo listo para producción. Casos límite, rendimiento, pulido.',
+  system: 'Configuración y herramientas. Trabajo del sistema de diseño, extracción, organización.',
 };
 
 /**

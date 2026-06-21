@@ -1,142 +1,142 @@
 ---
 name: colorize
-description: Add strategic color to features that are too monochromatic or lack visual interest, making interfaces more engaging and expressive. Use when the user mentions the design looking gray, dull, lacking warmth, needing more color, or wanting a more vibrant or expressive palette.
+description: Añade color estratégico a funcionalidades que resultan demasiado monocromáticas o carecen de interés visual, logrando interfaces más atractivas y expresivas. Úsalo cuando el usuario comente que el diseño se ve gris, aburrido, falto de calidez, que necesita más color o que requiere una paleta más vibrante o expresiva.
 version: 2.1.1
-argument-hint: "[target]"
+argument-hint: "[objetivo]"
 ---
 
-Strategically introduce color to designs that are too monochromatic, gray, or lacking in visual warmth and personality.
+Introduce color de manera estratégica en diseños que resultan demasiado monocromáticos, grises o que carecen de calidez visual y personalidad.
 
-## MANDATORY PREPARATION
+## PREPARACIÓN OBLIGATORIA
 
-Invoke $impeccable — it contains design principles, anti-patterns, and the **Context Gathering Protocol**. Follow the protocol before proceeding — if no design context exists yet, you MUST run $impeccable teach first. Additionally gather: existing brand colors.
+Invoca $impeccable — contiene los principios de diseño, antipatrones y el **Protocolo de Recopilación de Contexto**. Sigue el protocolo antes de proceder — si aún no existe un contexto de diseño, DEBES ejecutar $impeccable teach primero. Adicionalmente, recopila: colores de marca existentes.
 
 ---
 
-## Assess Color Opportunity
+## Evaluar Oportunidades de Color
 
-Analyze the current state and identify opportunities:
+Analiza el estado actual e identifica oportunidades:
 
-1. **Understand current state**:
-   - **Color absence**: Pure grayscale? Limited neutrals? One timid accent?
-   - **Missed opportunities**: Where could color add meaning, hierarchy, or delight?
-   - **Context**: What's appropriate for this domain and audience?
-   - **Brand**: Are there existing brand colors we should use?
+1. **Comprender el estado actual**:
+   - **Ausencia de color**: ¿Escala de grises pura? ¿Neutros limitados? ¿Un solo acento tímido?
+   - **Oportunidades perdidas**: ¿Dónde podría el color aportar significado, jerarquía o deleite?
+   - **Contexto**: ¿Qué es apropiado para este sector y esta audiencia?
+   - **Marca**: ¿Existen colores de marca que debamos utilizar?
 
-2. **Identify where color adds value**:
-   - **Semantic meaning**: Success (green), error (red), warning (yellow/orange), info (blue)
-   - **Hierarchy**: Drawing attention to important elements
-   - **Categorization**: Different sections, types, or states
-   - **Emotional tone**: Warmth, energy, trust, creativity
-   - **Wayfinding**: Helping users navigate and understand structure
-   - **Delight**: Moments of visual interest and personality
+2. **Identificar dónde aporta valor el color**:
+   - **Significado semántico**: Éxito (verde), error (rojo), advertencia (amarillo/naranja), información (azul).
+   - **Jerarquía**: Atraer la atención hacia los elementos importantes.
+   - **Categorización**: Diferenciar secciones, tipos o estados.
+   - **Tono emocional**: Calidez, energía, confianza, creatividad.
+   - **Orientación espacial**: Ayudar a los usuarios a navegar y comprender la estructura.
+   - **Deleite**: Momentos de interés visual y personalidad.
 
-If any of these are unclear from the codebase, ask the user directly to clarify what you cannot infer.
+Si alguno de estos puntos no está claro en el código base, ask the user directly to clarify what you cannot infer.
 
-**CRITICAL**: More color ≠ better. Strategic color beats rainbow vomit every time. Every color should have a purpose.
+**CRÍTICO**: Más color ≠ mejor. El color estratégico supera a un arcoíris descontrolado en cualquier situación. Cada color debe tener un propósito.
 
-## Plan Color Strategy
+## Planificar la Estrategia de Color
 
-Create a purposeful color introduction plan:
+Crea un plan intencional para la introducción de color:
 
-- **Color palette**: What colors match the brand/context? (Choose 2-4 colors max beyond neutrals)
-- **Dominant color**: Which color owns 60% of colored elements?
-- **Accent colors**: Which colors provide contrast and highlights? (30% and 10%)
-- **Application strategy**: Where does each color appear and why?
+- **Paleta de colores**: ¿Qué colores coinciden con la marca y el contexto? (Elige un máximo de 2 a 4 colores más allá de los neutros).
+- **Color dominante**: ¿Qué color representará el 60% de los elementos coloreados?
+- **Colores de acento**: ¿Qué colores aportarán contraste y zonas destacadas? (30% y 10%).
+- **Estrategia de aplicación**: ¿Dónde aparecerá cada color y por qué?
 
-**IMPORTANT**: Color should enhance hierarchy and meaning, not create chaos. Less is more when it matters more.
+**IMPORTANTE**: El color debe mejorar la jerarquía y el significado, no generar caos. Menos es más cuando lo que se destaca importa de verdad.
 
-## Introduce Color Strategically
+## Introducir Color de Manera Estratégica
 
-Add color systematically across these dimensions:
+Añade color sistemáticamente a través de estas dimensiones:
 
-### Semantic Color
-- **State indicators**:
-  - Success: Green tones (emerald, forest, mint)
-  - Error: Red/pink tones (rose, crimson, coral)
-  - Warning: Orange/amber tones
-  - Info: Blue tones (sky, ocean, indigo)
-  - Neutral: Gray/slate for inactive states
+### Color Semántico
+- **Indicadores de estado**:
+  - Éxito: Tonos verdes (esmeralda, bosque, menta).
+  - Error: Tonos rojos/rosas (rosa, carmesí, coral).
+  - Advertencia: Tonos naranja/ámbar.
+  - Información: Tonos azules (cielo, océano, índigo).
+  - Neutro: Gris/pizarra para estados inactivos.
 
-- **Status badges**: Colored backgrounds or borders for states (active, pending, completed, etc.)
-- **Progress indicators**: Colored bars, rings, or charts showing completion or health
+- **Etiquetas de estado (Badges)**: Fondos o bordes coloreados para indicar estados (activo, pendiente, completado, etc.).
+- **Indicadores de progreso**: Barras, anillos o gráficos coloreados que muestran el nivel de finalización o salud de un proceso.
 
-### Accent Color Application
-- **Primary actions**: Color the most important buttons/CTAs
-- **Links**: Add color to clickable text (maintain accessibility)
-- **Icons**: Colorize key icons for recognition and personality
-- **Headers/titles**: Add color to section headers or key labels
-- **Hover states**: Introduce color on interaction
+### Aplicación de Colores de Acento
+- **Acciones principales**: Colorea los botones o CTAs más importantes.
+- **Enlaces**: Añade color al texto en el que se puede hacer clic (manteniendo la accesibilidad).
+- **Iconos**: Colorea iconos clave para facilitar su reconocimiento y aportar personalidad.
+- **Encabezados/títulos**: Añade color a los encabezados de sección o a etiquetas clave.
+- **Estados hover**: Introduce color al interactuar con los elementos.
 
-### Background & Surfaces
-- **Tinted backgrounds**: Replace pure gray (`#f5f5f5`) with warm neutrals (`oklch(97% 0.01 60)`) or cool tints (`oklch(97% 0.01 250)`)
-- **Colored sections**: Use subtle background colors to separate areas
-- **Gradient backgrounds**: Add depth with subtle, intentional gradients (not generic purple-blue)
-- **Cards & surfaces**: Tint cards or surfaces slightly for warmth
+### Fondos y Superficies
+- **Fondos teñidos**: Reemplaza el gris puro (`#f5f5f5`) por neutros cálidos (`oklch(97% 0.01 60)`) o tintes fríos (`oklch(97% 0.01 250)`).
+- **Secciones coloreadas**: Usa colores de fondo sutiles para separar diferentes áreas.
+- **Fondos degradados**: Añade profundidad con degradados sutiles e intencionales (evitando el típico degradado púrpura-azul).
+- **Tarjetas y superficies**: Tiñe ligeramente las tarjetas o superficies para aportar calidez.
 
-**Use OKLCH for color**: It's perceptually uniform, meaning equal steps in lightness *look* equal. Great for generating harmonious scales.
+**Usa OKLCH para definir el color**: Es un espacio de color perceptualmente uniforme, lo que significa que pasos de igual valor en luminosidad *se verán* iguales. Excelente para generar escalas armoniosas.
 
-### Data Visualization
-- **Charts & graphs**: Use color to encode categories or values
-- **Heatmaps**: Color intensity shows density or importance
-- **Comparison**: Color coding for different datasets or timeframes
+### Visualización de Datos
+- **Gráficos**: Usa color para codificar categorías o valores.
+- **Mapas de calor**: La intensidad del color muestra la densidad o la importancia.
+- **Comparativas**: Codificación por colores para diferentes conjuntos de datos o periodos de tiempo.
 
-### Borders & Accents
-- **Accent borders**: Add colored left/top borders to cards or sections
-- **Underlines**: Color underlines for emphasis or active states
-- **Dividers**: Subtle colored dividers instead of gray lines
-- **Focus rings**: Colored focus indicators matching brand
+### Bordes y Detalles de Acento
+- **Bordes de acento**: Añade bordes coloreados (izquierdos/superiores) en tarjetas o secciones.
+- **Subrayados**: Subrayados de color para dar énfasis o indicar estados activos.
+- **Divisores**: Divisores sutiles de color en lugar de líneas grises.
+- **Anillos de enfoque (Focus)**: Indicadores de enfoque coloreados que coincidan con la marca.
 
-### Typography Color
-- **Colored headings**: Use brand colors for section headings (maintain contrast)
-- **Highlight text**: Color for emphasis or categories
-- **Labels & tags**: Small colored labels for metadata or categories
+### Color en Tipografía
+- **Encabezados coloreados**: Usa los colores de la marca para los encabezados de sección (manteniendo el contraste).
+- **Texto resaltado**: Color para dar énfasis o indicar categorías.
+- **Etiquetas e identificadores**: Pequeñas etiquetas de color para metadatos o categorías.
 
-### Decorative Elements
-- **Illustrations**: Add colored illustrations or icons
-- **Shapes**: Geometric shapes in brand colors as background elements
-- **Gradients**: Colorful gradient overlays or mesh backgrounds
-- **Blobs/organic shapes**: Soft colored shapes for visual interest
+### Elementos Decorativos
+- **Ilustraciones**: Añade ilustraciones o iconos coloreados.
+- **Formas**: Formas geométricas en los colores de la marca como elementos de fondo.
+- **Degradados**: Superposiciones de degradados coloridos o fondos de tipo malla (mesh).
+- **Formas orgánicas (Blobs)**: Formas de color suave para aportar interés visual.
 
-## Balance & Refinement
+## Equilibrio y Refinamiento
 
-Ensure color addition improves rather than overwhelms:
+Asegúrate de que la adición de color mejore la experiencia en lugar de saturar:
 
-### Maintain Hierarchy
-- **Dominant color** (60%): Primary brand color or most used accent
-- **Secondary color** (30%): Supporting color for variety
-- **Accent color** (10%): High contrast for key moments
-- **Neutrals** (remaining): Gray/black/white for structure
+### Mantener la Jerarquía
+- **Color dominante** (60%): El color principal de la marca o el acento más utilizado.
+- **Color secundario** (30%): Color de apoyo para aportar variedad.
+- **Color de acento** (10%): Alto contraste para momentos clave.
+- **Neutros** (el resto): Gris/negro/blanco para dar estructura.
 
-### Accessibility
-- **Contrast ratios**: Ensure WCAG compliance (4.5:1 for text, 3:1 for UI components)
-- **Don't rely on color alone**: Use icons, labels, or patterns alongside color
-- **Test for color blindness**: Verify red/green combinations work for all users
+### Accesibilidad
+- **Proporciones de contraste**: Garantiza el cumplimiento de las WCAG (4.5:1 para texto, 3:1 para componentes de interfaz).
+- **No dependas solo del color**: Usa iconos, etiquetas o patrones junto al color.
+- **Prueba para daltonismo**: Verifica que las combinaciones de rojo/verde funcionen para todos los usuarios.
 
-### Cohesion
-- **Consistent palette**: Use colors from defined palette, not arbitrary choices
-- **Systematic application**: Same color meanings throughout (green always = success)
-- **Temperature consistency**: Warm palette stays warm, cool stays cool
+### Cohesión
+- **Paleta consistente**: Usa colores de la paleta definida, evita elecciones arbitrarias.
+- **Aplicación sistemática**: Mismos significados de color en todo el sitio (el verde siempre = éxito).
+- **Consistencia de temperatura**: Las paletas cálidas deben mantenerse cálidas; las frías, frías.
 
-**NEVER**:
-- Use every color in the rainbow (choose 2-4 colors beyond neutrals)
-- Apply color randomly without semantic meaning
-- Put gray text on colored backgrounds—it looks washed out; use a darker shade of the background color or transparency instead
-- Use pure gray for neutrals—add subtle color tint (warm or cool) for sophistication
-- Use pure black (`#000`) or pure white (`#fff`) for large areas
-- Violate WCAG contrast requirements
-- Use color as the only indicator (accessibility issue)
-- Make everything colorful (defeats the purpose)
-- Default to purple-blue gradients (AI slop aesthetic)
+**NUNCA**:
+- Uses todos los colores del arcoíris (elige de 2 a 4 colores más allá de los neutros).
+- Apliques color de forma aleatoria sin un significado semántico.
+- Coloques texto gris sobre fondos de color; se ve lavado. Usa un tono más oscuro de la tarjeta o transparencia en su lugar.
+- Uses gris puro para los neutros; añade un sutil tinte de color (cálido o frío) para dar sofisticación.
+- Uses negro puro (`#000`) o blanco puro (`#fff`) para áreas grandes.
+- Incumplas los requisitos de contraste de las WCAG.
+- Uses el color como único indicador visual (problema de accesibilidad).
+- Hagas que todo sea colorido (anula el propósito de destacar).
+- Uses por defecto degradados púrpura-azul (estética basura de IA).
 
-## Verify Color Addition
+## Verificar Adición de Color
 
-Test that colorization improves the experience:
+Prueba que la colorización mejore la experiencia:
 
-- **Better hierarchy**: Does color guide attention appropriately?
-- **Clearer meaning**: Does color help users understand states/categories?
-- **More engaging**: Does the interface feel warmer and more inviting?
-- **Still accessible**: Do all color combinations meet WCAG standards?
-- **Not overwhelming**: Is color balanced and purposeful?
+- **Mejor jerarquía**: ¿El color guía la atención de manera adecuada?
+- **Significado más claro**: ¿El color ayuda a entender estados o categorías?
+- **Más atractivo**: ¿La interfaz se siente más cálida y acogedora?
+- **Sigue siendo accesible**: ¿Todas las combinaciones de colores cumplen con los estándares WCAG?
+- **No es abrumador**: ¿El color es equilibrado y tiene un propósito?
 
-Remember: Color is emotional and powerful. Use it to create warmth, guide attention, communicate meaning, and express personality. But restraint and strategy matter more than saturation and variety. Be colorful, but be intentional.
+Recuerda: El color es emocional y poderoso. Úsalo para crear calidez, guiar la atención, comunicar significados y expresar personalidad. Pero la moderación y la estrategia importan más que la saturación y la variedad. Sé colorido, pero sé intencional.

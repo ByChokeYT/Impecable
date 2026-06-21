@@ -1,124 +1,124 @@
 ---
 name: layout
-description: "Improve layout, spacing, and visual rhythm. Fixes monotonous grids, inconsistent spacing, and weak visual hierarchy. Use when the user mentions layout feeling off, spacing issues, visual hierarchy, crowded UI, alignment problems, or wanting better composition."
-argument-hint: "[target]"
+description: "Mejora el diseño (layout), el espaciado y el ritmo visual. Corrige cuadrículas monótonas, espaciados inconsistentes y jerarquías visuales débiles. Úsalo cuando el usuario comente que el diseño se siente mal estructurado, existan problemas de espaciado, jerarquía visual, interfaces saturadas, problemas de alineación o se busque una mejor composición."
+argument-hint: "[objetivo]"
 user-invocable: true
 ---
 
-Assess and improve layout and spacing that feels monotonous, crowded, or structurally weak — turning generic arrangements into intentional, rhythmic compositions.
+Evalúa y mejora el diseño (layout) y el espaciado cuando se sientan monótonos, saturados o estructuralmente débiles, transformando disposiciones genéricas en composiciones intencionadas y rítmicas.
 
-## MANDATORY PREPARATION
+## PREPARACIÓN OBLIGATORIA
 
-Invoke {{command_prefix}}impeccable — it contains design principles, anti-patterns, and the **Context Gathering Protocol**. Follow the protocol before proceeding — if no design context exists yet, you MUST run {{command_prefix}}impeccable teach first.
+Invoca {{command_prefix}}impeccable — contiene los principios de diseño, antipatrones y el **Protocolo de Recopilación de Contexto**. Sigue el protocolo antes de proceder — si aún no existe un contexto de diseño, DEBES ejecutar {{command_prefix}}impeccable teach primero.
 
 ---
 
-## Assess Current Layout
+## Evaluar el Diseño Actual
 
-Analyze what's weak about the current spatial design:
+Analiza qué aspectos del diseño espacial actual resultan débiles:
 
-1. **Spacing**:
-   - Is spacing consistent or arbitrary? (Random padding/margin values)
-   - Is all spacing the same? (Equal padding everywhere = no rhythm)
-   - Are related elements grouped tightly, with generous space between groups?
+1. **Espaciado**:
+   - ¿El espaciado es consistente o arbitrario? (Valores de padding/margin aleatorios).
+   - ¿Todo el espaciado es idéntico? (El mismo padding en todas partes = ausencia de ritmo).
+   - ¿Los elementos relacionados están agrupados de forma estrecha, dejando un espacio generoso entre grupos?
 
-2. **Visual hierarchy**:
-   - Apply the squint test: blur your (metaphorical) eyes — can you still identify the most important element, second most important, and clear groupings?
-   - Is hierarchy achieved effectively? (Space and weight alone can be enough — but is the current approach working?)
-   - Does whitespace guide the eye to what matters?
+2. **Jerarquía visual**:
+   - Aplica la prueba del entrecejo (squint test): entorna los ojos (metafóricamente) — ¿puedes seguir identificando el elemento más importante, el segundo más importante y las agrupaciones claras?
+   - ¿Se logra la jerarquía de manera efectiva? (El espacio y el peso por sí solos pueden ser suficientes — ¿está funcionando el enfoque actual?).
+   - ¿El espacio en blanco guía la mirada hacia lo que realmente importa?
 
-3. **Grid & structure**:
-   - Is there a clear underlying structure, or does the layout feel random?
-   - Are identical card grids used everywhere? (Icon + heading + text, repeated endlessly)
-   - Is everything centered? (Left-aligned with asymmetric layouts feels more designed, but not a hard and fast rule)
+3. **Cuadrícula y estructura**:
+   - ¿Existe una estructura subyacente clara o el diseño se siente aleatorio?
+   - ¿Se utilizan cuadrículas de tarjetas idénticas en todas partes? (Icono + encabezado + texto, repetido sin cesar).
+   - ¿Está todo centrado? (La alineación a la izquierda con diseños asimétricos suele sentirse más diseñada, aunque no es una regla estricta).
 
-4. **Rhythm & variety**:
-   - Does the layout have visual rhythm? (Alternating tight/generous spacing)
-   - Is every section structured the same way? (Monotonous repetition)
-   - Are there intentional moments of surprise or emphasis?
+4. **Ritmo y variedad**:
+   - ¿El diseño tiene ritmo visual? (Alternancia de espaciados estrechos y generosos).
+   - ¿Todas las secciones están estructuradas de la misma manera? (Repetición monótona).
+   - ¿Existen momentos intencionados de sorpresa o énfasis?
 
-5. **Density**:
-   - Is the layout too cramped? (Not enough breathing room)
-   - Is the layout too sparse? (Excessive whitespace without purpose)
-   - Does density match the content type? (Data-dense UIs need tighter spacing; marketing pages need more air)
+5. **Densidad**:
+   - ¿El diseño está demasiado apretado? (Falta espacio para respirar).
+   - ¿El diseño está demasiado disperso? (Espacio en blanco excesivo sin un propósito).
+   - ¿La densidad coincide con el tipo de contenido? (Las interfaces densas en datos necesitan un espaciado más ajustado; las páginas de marketing necesitan más aire).
 
-**CRITICAL**: Layout problems are often the root cause of interfaces feeling "off" even when colors and fonts are fine. Space is a design material — use it with intention.
+**CRÍTICO**: Los problemas de diseño (layout) suelen ser la causa principal de que una interfaz se sienta "rara", incluso cuando los colores y las fuentes son correctos. El espacio es un material de diseño; úsalo con intención.
 
-## Plan Layout Improvements
+## Planificar Mejoras de Diseño (Layout)
 
-Consult the [spatial design reference](reference/spatial-design.md) from the impeccable skill for detailed guidance on grids, rhythm, and container queries.
+Consulta la [referencia de diseño espacial](reference/spatial-design.md) en la habilidad impeccable para obtener una guía detallada sobre cuadrículas, ritmo y consultas de contenedor (container queries).
 
-Create a systematic plan:
+Crea un plan sistemático:
 
-- **Spacing system**: Use a consistent scale — whether that's a framework's built-in scale (e.g., Tailwind), rem-based tokens, or a custom system. The specific values matter less than consistency.
-- **Hierarchy strategy**: How will space communicate importance?
-- **Layout approach**: What structure fits the content? Flex for 1D, Grid for 2D, named areas for complex page layouts.
-- **Rhythm**: Where should spacing be tight vs generous?
+- **Sistema de espaciado**: Usa una escala consistente, ya sea la escala integrada de un framework (por ejemplo, Tailwind), tokens basados en rem o un sistema personalizado. Los valores específicos importan menos que la consistencia.
+- **Estrategia de jerarquía**: ¿Cómo comunicará la importancia el espacio?
+- **Enfoque de diseño**: ¿Qué estructura se adapta al contenido? Flexbox para 1D, Grid para 2D, áreas con nombre para diseños de página complejos.
+- **Ritmo**: ¿Dónde debería ser el espaciado estrecho vs. generoso?
 
-## Improve Layout Systematically
+## Mejorar el Diseño Sistemáticamente
 
-### Establish a Spacing System
+### Establecer un Sistema de Espaciado
 
-- Use a consistent spacing scale — framework scales (Tailwind, etc.), rem-based tokens, or a custom scale all work. What matters is that values come from a defined set, not arbitrary numbers.
-- Name tokens semantically if using custom properties: `--space-xs` through `--space-xl`, not `--spacing-8`
-- Use `gap` for sibling spacing instead of margins — eliminates margin collapse hacks
-- Apply `clamp()` for fluid spacing that breathes on larger screens
+- Usa una escala de espaciado consistente: las escalas de los frameworks (Tailwind, etc.), los tokens basados en rem o una escala personalizada funcionan perfectamente. Lo que importa es que los valores provengan de un conjunto definido, no de números arbitrarios.
+- Nombra los tokens semánticamente si utilizas propiedades personalizadas: de `--space-xs` a `--space-xl`, evita nombres del tipo `--spacing-8`.
+- Usa `gap` para el espaciado de elementos hermanos en lugar de márgenes; elimina los trucos para resolver el colapso de márgenes.
+- Aplica `clamp()` para lograr un espaciado fluido que respire en pantallas más grandes.
 
-### Create Visual Rhythm
+### Crear Ritmo Visual
 
-- **Tight grouping** for related elements (8-12px between siblings)
-- **Generous separation** between distinct sections (48-96px)
-- **Varied spacing** within sections — not every row needs the same gap
-- **Asymmetric compositions** — break the predictable centered-content pattern when it makes sense
+- **Agrupación estrecha** para elementos relacionados (8-12px entre hermanos).
+- **Separación generosa** entre secciones distintas (48-96px).
+- **Espaciado variado** dentro de las secciones: no cada fila necesita la misma separación.
+- **Composiciones asimétricas**: rompe el patrón predecible de contenido centrado cuando tenga sentido.
 
-### Choose the Right Layout Tool
+### Elegir la Herramienta de Diseño Adecuada
 
-- **Use Flexbox for 1D layouts**: Rows of items, nav bars, button groups, card contents, most component internals. Flex is simpler and more appropriate for the majority of layout tasks.
-- **Use Grid for 2D layouts**: Page-level structure, dashboards, data-dense interfaces, anything where rows AND columns need coordinated control.
-- **Don't default to Grid** when Flexbox with `flex-wrap` would be simpler and more flexible.
-- Use `repeat(auto-fit, minmax(280px, 1fr))` for responsive grids without breakpoints.
-- Use named grid areas (`grid-template-areas`) for complex page layouts — redefine at breakpoints.
+- **Usa Flexbox para diseños 1D**: Filas de elementos, barras de navegación, grupos de botones, contenido de tarjetas, la mayoría de los componentes internos. Flexbox es más simple y adecuado para la gran mayoría de las tareas de diseño.
+- **Usa Grid para diseños 2D**: Estructuras a nivel de página, paneles de control (dashboards), interfaces densas en datos, cualquier elemento donde las filas Y las columnas necesiten un control coordinado.
+- **No uses Grid por defecto** cuando Flexbox con `flex-wrap` sea más sencillo y flexible.
+- Usa `repeat(auto-fit, minmax(280px, 1fr))` para cuadrículas responsivas sin breakpoints.
+- Usa áreas de cuadrícula con nombre (`grid-template-areas`) para diseños de página complejos; redéfinelas en los breakpoints.
 
-### Break Card Grid Monotony
+### Romper la Monotonía de las Cuadrículas de Tarjetas
 
-- Don't default to card grids for everything — spacing and alignment create visual grouping naturally
-- Use cards only when content is truly distinct and actionable — never nest cards inside cards
-- Vary card sizes, span columns, or mix cards with non-card content to break repetition
+- No utilices por defecto cuadrículas de tarjetas para todo; el espaciado y la alineación crean agrupaciones visuales de forma natural.
+- Usa tarjetas solo cuando el contenido sea verdaderamente diferente y requiera acción; nunca anides tarjetas dentro de otras tarjetas.
+- Varía el tamaño de las tarjetas, haz que abarquen varias columnas o mezcla tarjetas con contenido sin tarjeta para romper la repetición.
 
-### Strengthen Visual Hierarchy
+### Fortalecer la Jerarquía Visual
 
-- Use the fewest dimensions needed for clear hierarchy. Space alone can be enough — generous whitespace around an element draws the eye. Some of the most sophisticated designs achieve rhythm with just space and weight. Add color or size contrast only when simpler means aren't sufficient.
-- Be aware of reading flow — in LTR languages, the eye naturally scans top-left to bottom-right, but primary action placement depends on context (e.g., bottom-right in dialogs, top in navigation).
-- Create clear content groupings through proximity and separation.
+- Usa la menor cantidad de recursos necesarios para lograr una jerarquía clara. El espacio por sí solo puede ser suficiente: un espacio en blanco generoso alrededor de un elemento atrae la mirada. Algunos de los diseños más sofisticados logran ritmo únicamente con el espacio y el peso. Añade color o contraste de tamaño solo cuando los medios más simples no sean suficientes.
+- Ten en cuenta el flujo de lectura: en idiomas occidentales, el ojo escanea de arriba a izquierda hacia abajo a la derecha, pero la ubicación de la acción principal depende del contexto (por ejemplo, abajo a la derecha en diálogos, arriba en la navegación).
+- Crea agrupaciones de contenido claras a través de la proximidad y la separación.
 
-### Manage Depth & Elevation
+### Gestionar la Profundidad y la Elevación
 
-- Create a semantic z-index scale (dropdown → sticky → modal-backdrop → modal → toast → tooltip)
-- Build a consistent shadow scale (sm → md → lg → xl) — shadows should be subtle
-- Use elevation to reinforce hierarchy, not as decoration
+- Crea una escala semántica para `z-index` (dropdown → sticky → modal-backdrop → modal → toast → tooltip).
+- Diseña una escala de sombras consistente (sm → md → lg → xl); las sombras deben ser sutiles.
+- Usa la elevación para reforzar la jerarquía, no como decoración.
 
-### Optical Adjustments
+### Ajustes Ópticos
 
-- If an icon looks visually off-center despite being geometrically centered, nudge it — but only if you're confident it actually looks wrong. Don't adjust speculatively.
+- Si un icono se ve visualmente descentrado a pesar de estar geométricamente centrado, ajústalo ligeramente; pero hazlo solo si estás seguro de que realmente se ve mal. No hagas ajustes especulativos.
 
-**NEVER**:
-- Use arbitrary spacing values outside your scale
-- Make all spacing equal — variety creates hierarchy
-- Wrap everything in cards — not everything needs a container
-- Nest cards inside cards — use spacing and dividers for hierarchy within
-- Use identical card grids everywhere (icon + heading + text, repeated)
-- Center everything — left-aligned with asymmetry feels more designed
-- Default to the hero metric layout (big number, small label, stats, gradient) as a template. If showing real user data, a prominent metric can work — but it should display actual data, not decorative numbers.
-- Default to CSS Grid when Flexbox would be simpler — use the simplest tool for the job
-- Use arbitrary z-index values (999, 9999) — build a semantic scale
+**NUNCA**:
+- Uses valores de espaciado arbitrarios fuera de tu escala.
+- Hagas que todo el espaciado sea igual; la variedad crea la jerarquía.
+- Envuelvas todo en tarjetas; no todo necesita un contenedor.
+- Anides tarjetas dentro de otras tarjetas; usa espaciado y divisores para establecer jerarquías internas.
+- Uses cuadrículas de tarjetas idénticas en todas partes (icono + título + texto, repetidos).
+- Centres todo; la alineación a la izquierda con asimetría se siente más diseñada.
+- Uses por defecto el diseño de métrica hero (número grande, etiqueta pequeña, estadísticas, degradado) como plantilla. Si se muestran datos de usuario reales, una métrica destacada puede funcionar; pero debe mostrar datos reales, no números decorativos.
+- Uses CSS Grid por defecto cuando Flexbox sea más sencillo; usa la herramienta más simple para cada tarea.
+- Uses valores de z-index arbitrarios (999, 9999); construye una escala semántica.
 
-## Verify Layout Improvements
+## Verificar Mejoras de Diseño
 
-- **Squint test**: Can you identify primary, secondary, and groupings with blurred vision?
-- **Rhythm**: Does the page have a satisfying beat of tight and generous spacing?
-- **Hierarchy**: Is the most important content obvious within 2 seconds?
-- **Breathing room**: Does the layout feel comfortable, not cramped or wasteful?
-- **Consistency**: Is the spacing system applied uniformly?
-- **Responsiveness**: Does the layout adapt gracefully across screen sizes?
+- **Prueba del entrecejo (Squint test)**: ¿Puedes identificar las acciones principales, secundarias y las agrupaciones con la vista desenfocada?
+- **Ritmo**: ¿La página tiene una alternancia satisfactoria de espaciados estrechos y generosos?
+- **Jerarquía**: ¿El contenido más importante resulta obvio en menos de 2 segundos?
+- **Espacio para respirar**: ¿El diseño se siente cómodo, no apretado ni desperdiciado?
+- **Consistencia**: ¿El sistema de espaciado se aplica de manera uniforme?
+- **Responsividad**: ¿El diseño se adapta con gracia en los diferentes tamaños de pantalla?
 
-Remember: Space is the most underused design tool. A layout with the right rhythm and hierarchy can make even simple content feel polished and intentional.
+Recuerda: El espacio es la herramienta de diseño menos aprovechada. Un diseño con el ritmo y la jerarquía adecuados puede hacer que incluso el contenido más simple se sienta pulido e intencional.

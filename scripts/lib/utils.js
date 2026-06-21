@@ -253,20 +253,36 @@ export function readPatterns(rootDir) {
     // Track section headings (### Typography, ### Color & Theme, etc.)
     if (trimmed.startsWith('### ')) {
       currentSection = trimmed.slice(4).trim();
-      // Normalize "Color & Theme" to "Color & Contrast" for consistency
-      if (currentSection === 'Color & Theme') {
+      // Normalize to English keys for consistent mapping
+      if (currentSection === 'Color & Theme' || currentSection === 'Color y Tema' || currentSection === 'Color y Contraste') {
         currentSection = 'Color & Contrast';
+      } else if (currentSection === 'Tipografía' || currentSection === 'Typography') {
+        currentSection = 'Typography';
+      } else if (currentSection === 'Diseño y Espacio' || currentSection === 'Layout & Space') {
+        currentSection = 'Layout & Space';
+      } else if (currentSection === 'Detalles Visuales' || currentSection === 'Visual Details') {
+        currentSection = 'Visual Details';
+      } else if (currentSection === 'Movimiento' || currentSection === 'Motion') {
+        currentSection = 'Motion';
+      } else if (currentSection === 'Interacción' || currentSection === 'Interaction') {
+        currentSection = 'Interaction';
+      } else if (currentSection === 'Responsivo' || currentSection === 'Responsive') {
+        currentSection = 'Responsive';
+      } else if (currentSection === 'Textos de UX (UX Writing)' || currentSection === 'UX Writing') {
+        currentSection = 'UX Writing';
       }
       continue;
     }
 
     // Markdown bullet form (legacy): **DO**: ... and **DON'T**: ...
-    if (trimmed.startsWith('**DO**:')) {
-      pushPattern(trimmed.slice(7).trim());
+    if (trimmed.startsWith('**DO**:') || trimmed.startsWith('**SÍ**:') || trimmed.startsWith('**SI**:')) {
+      const offset = trimmed.startsWith('**DO**:') ? 7 : 7;
+      pushPattern(trimmed.slice(offset).trim());
       continue;
     }
-    if (trimmed.startsWith("**DON'T**:")) {
-      pushAntipattern(trimmed.slice(10).trim());
+    if (trimmed.startsWith("**DON'T**:") || trimmed.startsWith('**NO**:')) {
+      const offset = trimmed.startsWith("**DON'T**:") ? 10 : 7;
+      pushAntipattern(trimmed.slice(offset).trim());
       continue;
     }
 
@@ -283,12 +299,36 @@ export function readPatterns(rootDir) {
       pushAntipattern(trimmed.slice('DO NOT '.length).trim());
       continue;
     }
+    if (trimmed.startsWith('NO: ')) {
+      pushAntipattern(trimmed.slice('NO: '.length).trim());
+      continue;
+    }
+    if (trimmed.startsWith('NO ')) {
+      pushAntipattern(trimmed.slice('NO '.length).trim());
+      continue;
+    }
     if (trimmed.startsWith('DO: ')) {
       pushPattern(trimmed.slice('DO: '.length).trim());
       continue;
     }
     if (trimmed.startsWith('DO ')) {
       pushPattern(trimmed.slice('DO '.length).trim());
+      continue;
+    }
+    if (trimmed.startsWith('SÍ: ')) {
+      pushPattern(trimmed.slice('SÍ: '.length).trim());
+      continue;
+    }
+    if (trimmed.startsWith('SÍ ')) {
+      pushPattern(trimmed.slice('SÍ '.length).trim());
+      continue;
+    }
+    if (trimmed.startsWith('SI: ')) {
+      pushPattern(trimmed.slice('SI: '.length).trim());
+      continue;
+    }
+    if (trimmed.startsWith('SI ')) {
+      pushPattern(trimmed.slice('SI '.length).trim());
       continue;
     }
   }

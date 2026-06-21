@@ -1,85 +1,85 @@
 ---
 name: delight
-description: Add moments of joy, personality, and unexpected touches that make interfaces memorable and enjoyable to use. Elevates functional to delightful. Use when the user asks to add polish, personality, animations, micro-interactions, delight, or make an interface feel fun or memorable.
+description: Añade momentos de alegría, personalidad y toques inesperados que hacen que las interfaces sean memorables y agradables de usar. Eleva lo funcional a lo deleitable. Úsalo cuando el usuario solicite pulir la interfaz, añadir personalidad, animaciones, microinteracciones, deleite o hacer que una interfaz se sienta divertida o memorable.
 version: 2.1.1
 user-invocable: true
-argument-hint: "[target]"
+argument-hint: "[objetivo]"
 ---
 
-Identify opportunities to add moments of joy, personality, and unexpected polish that transform functional interfaces into delightful experiences.
+Identifica oportunidades para añadir momentos de alegría, personalidad y detalles inesperados que transformen interfaces funcionales en experiencias deleitables.
 
-## MANDATORY PREPARATION
+## PREPARACIÓN OBLIGATORIA
 
-Invoke /impeccable — it contains design principles, anti-patterns, and the **Context Gathering Protocol**. Follow the protocol before proceeding — if no design context exists yet, you MUST run /impeccable teach first. Additionally gather: what's appropriate for the domain (playful vs professional vs quirky vs elegant).
+Invoca /impeccable — contiene los principios de diseño, antipatrones y el **Protocolo de Recopilación de Contexto**. Sigue el protocolo antes de proceder — si aún no existe un contexto de diseño, DEBES ejecutar /impeccable teach primero. Adicionalmente, recopila: qué es apropiado para el sector (juguetón vs. profesional vs. extravagante vs. elegante).
 
 ---
 
-## Assess Delight Opportunities
+## Evaluar Oportunidades de Deleite
 
-Identify where delight would enhance (not distract from) the experience:
+Identifica dónde el deleite mejoraría (y no distraería de) la experiencia:
 
-1. **Find natural delight moments**:
-   - **Success states**: Completed actions (save, send, publish)
-   - **Empty states**: First-time experiences, onboarding
-   - **Loading states**: Waiting periods that could be entertaining
-   - **Achievements**: Milestones, streaks, completions
-   - **Interactions**: Hover states, clicks, drags
-   - **Errors**: Softening frustrating moments
-   - **Easter eggs**: Hidden discoveries for curious users
+1. **Encontrar momentos naturales de deleite**:
+   - **Estados de éxito**: Acciones completadas (guardar, enviar, publicar).
+   - **Estados vacíos**: Primeras experiencias, procesos de inducción (onboarding).
+   - **Estados de carga**: Periodos de espera que podrían ser entretenidos.
+   - **Logros**: Hitos, rachas de uso, finalización de tareas.
+   - **Interacciones**: Estados hover, clics, arrastres.
+   - **Errores**: Suavizar momentos frustrantes.
+   - **Easter eggs (secretos)**: Descubrimientos ocultos para usuarios curiosos.
 
-2. **Understand the context**:
-   - What's the brand personality? (Playful? Professional? Quirky? Elegant?)
-   - Who's the audience? (Tech-savvy? Creative? Corporate?)
-   - What's the emotional context? (Accomplishment? Exploration? Frustration?)
-   - What's appropriate? (Banking app ≠ gaming app)
+2. **Comprender el contexto**:
+   - ¿Cuál es la personalidad de la marca? (¿Juguetona? ¿Profesional? ¿Extravagante? ¿Elegante?)
+   - ¿Quién es la audiencia? (¿Usuarios tecnológicos? ¿Creativos? ¿Corporativos?)
+   - ¿Cuál es el contexto emocional? (¿Logro? ¿Exploración? ¿Frustración?)
+   - ¿Qué es apropiado? (Una app bancaria ≠ una app de juegos).
 
-3. **Define delight strategy**:
-   - **Subtle sophistication**: Refined micro-interactions (luxury brands)
-   - **Playful personality**: Whimsical illustrations and copy (consumer apps)
-   - **Helpful surprises**: Anticipating needs before users ask (productivity tools)
-   - **Sensory richness**: Satisfying sounds, smooth animations (creative tools)
+3. **Definir la estrategia de deleite**:
+   - **Sofisticación sutil**: Microinteracciones refinadas (marcas de lujo).
+   - **Personalidad juguetona**: Ilustraciones y textos ingeniosos (apps de consumo).
+   - **Sorpresas útiles**: Anticiparse a las necesidades antes de que el usuario lo pida (herramientas de productividad).
+   - **Riqueza sensorial**: Sonidos satisfactorios, animaciones fluidas (herramientas creativas).
 
-If any of these are unclear from the codebase, STOP and call the `question` tool to clarify.
+Si alguno de estos puntos no está claro en el código base, STOP and call the `question` tool to clarify.
 
-**CRITICAL**: Delight should enhance usability, never obscure it. If users notice the delight more than accomplishing their goal, you've gone too far.
+**CRÍTICO**: El deleite debe mejorar la usabilidad, nunca oscurecerla. Si los usuarios prestan más atención al deleite que a lograr su objetivo, has ido demasiado lejos.
 
-## Delight Principles
+## Principios del Deleite
 
-Follow these guidelines:
+Sigue estas directrices:
 
-### Delight Amplifies, Never Blocks
-- Delight moments should be quick (< 1 second)
-- Never delay core functionality for delight
-- Make delight skippable or subtle
-- Respect user's time and task focus
+### El Deleite Amplifica, Nunca Bloquea
+- Los momentos de deleite deben ser rápidos (< 1 segundo).
+- Nunca retrases la funcionalidad principal por el deleite.
+- Haz que el deleite sea opcional o sutil.
+- Respeta el tiempo y el enfoque del usuario en su tarea.
 
-### Surprise and Discovery
-- Hide delightful details for users to discover
-- Reward exploration and curiosity
-- Don't announce every delight moment
-- Let users share discoveries with others
+### Sorpresa y Descubrimiento
+- Oculta detalles agradables para que los usuarios los descubran.
+- Recompensa la exploración y la curiosidad.
+- No anuncies cada momento de deleite.
+- Deja que los usuarios compartan sus descubrimientos con otros.
 
-### Appropriate to Context
-- Match delight to emotional moment (celebrate success, empathize with errors)
-- Respect the user's state (don't be playful during critical errors)
-- Match brand personality and audience expectations
-- Cultural sensitivity (what's delightful varies by culture)
+### Adecuado al Contexto
+- Adapta el deleite al momento emocional (celebra el éxito, empatiza con los errores).
+- Respeta el estado del usuario (no seas gracioso durante errores críticos).
+- Coincide con la personalidad de la marca y las expectativas de la audiencia.
+- Sensibilidad cultural (lo que resulta agradable varía según la cultura).
 
-### Compound Over Time
-- Delight should remain fresh with repeated use
-- Vary responses (not same animation every time)
-- Reveal deeper layers with continued use
-- Build anticipation through patterns
+### Acumulación en el Tiempo
+- El deleite debe mantenerse fresco tras un uso repetido.
+- Varía las respuestas (no muestres la misma animación cada vez).
+- Revela capas más profundas con el uso continuo.
+- Genera expectativa a través de patrones.
 
-## Delight Techniques
+## Técnicas de Deleite
 
-Add personality and joy through these methods:
+Añade personalidad y alegría a través de estos métodos:
 
-### Micro-interactions & Animation
+### Microinteracciones y Animación
 
-**Button delight**:
+**Deleite en botones**:
 ```css
-/* Satisfying button press */
+/* Pulsación de botón satisfactoria */
 .button {
   transition: transform 0.1s, box-shadow 0.1s;
 }
@@ -88,217 +88,217 @@ Add personality and joy through these methods:
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
-/* Ripple effect on click */
-/* Smooth lift on hover */
+/* Efecto de onda al hacer clic */
+/* Elevación suave en hover */
 .button:hover {
   transform: translateY(-2px);
   transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1); /* ease-out-quart */
 }
 ```
 
-**Loading delight**:
-- Playful loading animations (not just spinners)
-- Personality in loading messages (write product-specific ones, not generic AI filler)
-- Progress indication with encouraging messages
-- Skeleton screens with subtle animations
+**Deleite en cargas**:
+- Animaciones de carga ingeniosas (no solo spinners).
+- Personalidad en los mensajes de carga (escribe mensajes específicos para el producto, no relleno genérico de IA).
+- Indicación de progreso con mensajes de aliento.
+- Pantallas de esqueleto con animaciones sutiles.
 
-**Success animations**:
-- Checkmark draw animation
-- Confetti burst for major achievements
-- Gentle scale + fade for confirmation
-- Satisfying sound effects (subtle)
+**Animaciones de éxito**:
+- Animación de dibujo de marca de verificación.
+- Explosión de confeti para logros importantes.
+- Escala suave + desvanecimiento para confirmación.
+- Efectos de sonido satisfactorios (sutiles).
 
-**Hover surprises**:
-- Icons that animate on hover
-- Color shifts or glow effects
-- Tooltip reveals with personality
-- Cursor changes (custom cursors for branded experiences)
+**Sorpresas en hover**:
+- Iconos que se animan al pasar el cursor.
+- Cambios de color o efectos de brillo.
+- Tooltips que se revelan con personalidad.
+- Cambios de cursor (cursores personalizados para experiencias de marca).
 
-### Personality in Copy
+### Personalidad en los Textos (Copy)
 
-**Playful error messages**:
+**Mensajes de error con personalidad**:
 ```
 "Error 404"
-"This page is playing hide and seek. (And winning)"
+"Esta página está jugando a las escondidas. (Y va ganando)"
 
-"Connection failed"
-"Looks like the internet took a coffee break. Want to retry?"
+"Error de conexión"
+"Parece que el internet se tomó un descanso para el café. ¿Quieres volver a intentarlo?"
 ```
 
-**Encouraging empty states**:
+**Estados vacíos alentadores**:
 ```
-"No projects"
-"Your canvas awaits. Create something amazing."
+"Sin proyectos"
+"Tu lienzo te espera. Crea algo increíble."
 
-"No messages"
-"Inbox zero! You're crushing it today."
-```
-
-**Playful labels & tooltips**:
-```
-"Delete"
-"Send to void" (for playful brand)
-
-"Help"
-"Rescue me" (tooltip)
+"Sin mensajes"
+"¡Bandeja de entrada en cero! Hoy la estás rompiendo."
 ```
 
-**IMPORTANT**: Match copy personality to brand. Banks shouldn't be wacky, but they can be warm.
-
-### Illustrations & Visual Personality
-
-**Custom illustrations**:
-- Empty state illustrations (not stock icons)
-- Error state illustrations (friendly monsters, quirky characters)
-- Loading state illustrations (animated characters)
-- Success state illustrations (celebrations)
-
-**Icon personality**:
-- Custom icon set matching brand personality
-- Animated icons (subtle motion on hover/click)
-- Illustrative icons (more detailed than generic)
-- Consistent style across all icons
-
-**Background effects**:
-- Subtle particle effects
-- Gradient mesh backgrounds
-- Geometric patterns
-- Parallax depth
-- Time-of-day themes (morning vs night)
-
-### Satisfying Interactions
-
-**Drag and drop delight**:
-- Lift effect on drag (shadow, scale)
-- Snap animation when dropped
-- Satisfying placement sound
-- Undo toast ("Dropped in wrong place? [Undo]")
-
-**Toggle switches**:
-- Smooth slide with spring physics
-- Color transition
-- Haptic feedback on mobile
-- Optional sound effect
-
-**Progress & achievements**:
-- Streak counters with celebratory milestones
-- Progress bars that "celebrate" at 100%
-- Badge unlocks with animation
-- Playful stats ("You're on fire! 5 days in a row")
-
-**Form interactions**:
-- Input fields that animate on focus
-- Checkboxes with a satisfying scale pulse when checked
-- Success state that celebrates valid input
-- Auto-grow textareas
-
-### Sound Design
-
-**Subtle audio cues** (when appropriate):
-- Notification sounds (distinctive but not annoying)
-- Success sounds (satisfying "ding")
-- Error sounds (empathetic, not harsh)
-- Typing sounds for chat/messaging
-- Ambient background audio (very subtle)
-
-**IMPORTANT**:
-- Respect system sound settings
-- Provide mute option
-- Keep volumes quiet (subtle cues, not alarms)
-- Don't play on every interaction (sound fatigue is real)
-
-### Easter Eggs & Hidden Delights
-
-**Discovery rewards**:
-- Konami code unlocks special theme
-- Hidden keyboard shortcuts (Cmd+K for special features)
-- Hover reveals on logos or illustrations
-- Alt text jokes on images (for screen reader users too!)
-- Console messages for developers ("Like what you see? We're hiring!")
-
-**Seasonal touches**:
-- Holiday themes (subtle, tasteful)
-- Seasonal color shifts
-- Weather-based variations
-- Time-based changes (dark at night, light during day)
-
-**Contextual personality**:
-- Different messages based on time of day
-- Responses to specific user actions
-- Randomized variations (not same every time)
-- Progressive reveals with continued use
-
-### Loading & Waiting States
-
-**Make waiting engaging**:
-- Interesting loading messages that rotate
-- Progress bars with personality
-- Mini-games during long loads
-- Fun facts or tips while waiting
-- Countdown with encouraging messages
-
+**Etiquetas y tooltips ingeniosos**:
 ```
-Loading messages — write ones specific to your product, not generic AI filler:
-- "Crunching your latest numbers..."
-- "Syncing with your team's changes..."
-- "Preparing your dashboard..."
-- "Checking for updates since yesterday..."
+"Eliminar"
+"Enviar al vacío" (para una marca atrevida/juguetona)
+
+"Ayuda"
+"¡Rescátame!" (tooltip)
 ```
 
-**WARNING**: Avoid cliched loading messages like "Herding pixels", "Teaching robots to dance", "Consulting the magic 8-ball", "Counting backwards from infinity". These are AI-slop copy — instantly recognizable as machine-generated. Write messages that are specific to what your product actually does.
+**IMPORTANTE**: Ajusta la personalidad del texto a la marca. Los bancos no deben ser extravagantes, pero pueden ser cálidos.
 
-### Celebration Moments
+### Ilustraciones y Personalidad Visual
 
-**Success celebrations**:
-- Confetti for major milestones
-- Animated checkmarks for completions
-- Progress bar celebrations at 100%
-- "Achievement unlocked" style notifications
-- Personalized messages ("You published your 10th article!")
+**Ilustraciones personalizadas**:
+- Ilustraciones de estados vacíos (no iconos de catálogo).
+- Ilustraciones de estados de error (monstruos amigables, personajes curiosos).
+- Ilustraciones de estados de carga (personajes animados).
+- Ilustraciones de estados de éxito (celebraciones).
 
-**Milestone recognition**:
-- First-time actions get special treatment
-- Streak tracking and celebration
-- Progress toward goals
-- Anniversary celebrations
+**Personalidad en iconos**:
+- Conjunto de iconos personalizados que coincidan con la personalidad de la marca.
+- Iconos animados (movimiento sutil en hover/clic).
+- Iconos ilustrativos (más detallados que los genéricos).
+- Estilo consistente en todos los iconos.
 
-## Implementation Patterns
+**Efectos de fondo**:
+- Efectos sutiles de partículas.
+- Fondos de malla de degradados.
+- Patrones geométricos.
+- Profundidad de paralaje.
+- Temas basados en la hora del día (mañana vs. noche).
 
-**Animation libraries**:
-- Framer Motion (React)
-- GSAP (universal)
-- Lottie (After Effects animations)
-- Canvas confetti (party effects)
+### Interacciones Satisfactorias
 
-**Sound libraries**:
-- Howler.js (audio management)
-- Use-sound (React hook)
+**Deleite al arrastrar y soltar**:
+- Efecto de elevación al arrastrar (sombra, escala).
+- Animación de ajuste (snap) al soltar.
+- Sonido de colocación satisfactorio.
+- Mensaje emergente de deshacer ("¿Lo soltaste en el lugar equivocado? [Deshacer]").
 
-**Physics libraries**:
-- React Spring (spring physics)
-- Popmotion (animation primitives)
+**Interruptores (Toggles)**:
+- Deslizamiento suave con física de resorte.
+- Transición de color.
+- Retroalimentación háptica en móviles.
+- Efecto de sonido opcional.
 
-**IMPORTANT**: File size matters. Compress images, optimize animations, lazy load delight features.
+**Progreso y logros**:
+- Contadores de rachas con hitos de celebración.
+- Barras de progreso que "celebran" al llegar al 100%.
+- Desbloqueo de insignias con animación.
+- Estadísticas motivadoras ("¡Estás imparable! 5 días seguidos").
 
-**NEVER**:
-- Delay core functionality for delight
-- Force users through delightful moments (make skippable)
-- Use delight to hide poor UX
-- Overdo it (less is more)
-- Ignore accessibility (animate responsibly, provide alternatives)
-- Make every interaction delightful (special moments should be special)
-- Sacrifice performance for delight
-- Be inappropriate for context (read the room)
+**Interacciones de formulario**:
+- Campos de entrada que se animan al enfocarse.
+- Casillas de verificación con un pulso de escala satisfactorio al marcarse.
+- Estado de éxito que celebra la entrada de datos válida.
+- Áreas de texto que se expanden automáticamente.
 
-## Verify Delight Quality
+### Diseño de Sonido
 
-Test that delight actually delights:
+**Señales de audio sutiles** (cuando sea apropiado):
+- Sonidos de notificación (distintivos pero no molestos).
+- Sonidos de éxito (un satisfactorio "ding").
+- Sonidos de error (empáticos, no estridentes).
+- Sonidos de escritura para chat/mensajería.
+- Audio de fondo ambiental (muy sutil).
 
-- **User reactions**: Do users smile? Share screenshots?
-- **Doesn't annoy**: Still pleasant after 100th time?
-- **Doesn't block**: Can users opt out or skip?
-- **Performant**: No jank, no slowdown
-- **Appropriate**: Matches brand and context
-- **Accessible**: Works with reduced motion, screen readers
+**IMPORTANTE**:
+- Respeta la configuración de sonido del sistema.
+- Proporciona una opción para silenciar.
+- Mantén los volúmenes bajos (señales sutiles, no alarmas).
+- No reproduzcas sonido en cada interacción (la fatiga de sonido es real).
 
-Remember: Delight is the difference between a tool and an experience. Add personality, surprise users positively, and create moments worth sharing. But always respect usability - delight should enhance, never obstruct.
+### Easter Eggs y Detalles Ocultos
+
+**Recompensas por descubrimiento**:
+- El código Konami desbloquea un tema especial.
+- Atajos de teclado ocultos (Cmd+K para funciones especiales).
+- Elementos interactivos ocultos en logotipos o ilustraciones.
+- Bromas en el texto alternativo de las imágenes (¡también para usuarios de lectores de pantalla!).
+- Mensajes en consola para desarrolladores ("¿Te gusta lo que ves? ¡Estamos contratando!").
+
+**Toques estacionales**:
+- Temas navideños o festivos (sutiles y con buen gusto).
+- Cambios de color estacionales.
+- Variaciones basadas en el clima local.
+- Cambios basados en la hora (oscuro por la noche, claro por el día).
+
+**Personalidad contextual**:
+- Diferentes mensajes según la hora del día.
+- Respuestas a acciones específicas del usuario.
+- Variaciones aleatorias (no mostrar siempre lo mismo).
+- Revelaciones progresivas con el uso continuo.
+
+### Estados de Carga y Espera
+
+**Haz que la espera sea atractiva**:
+- Mensajes de carga interesantes que rotan.
+- Barras de progreso con personalidad.
+- Mini-juegos durante cargas largas.
+- Datos curiosos o consejos mientras se espera.
+- Cuenta regresiva con mensajes de ánimo.
+
+```
+Mensajes de carga — escribe mensajes específicos para tu producto, no relleno genérico de IA:
+- "Procesando tus últimos números..."
+- "Sincronizando con los cambios de tu equipo..."
+- "Preparando tu panel de control..."
+- "Buscando novedades desde ayer..."
+```
+
+**ADVERTENCIA**: Evita mensajes de carga trillados como "Herreando píxeles", "Enseñando a bailar a los robots", "Consultando la bola 8 mágica", "Contando al revés desde el infinito". Estos son textos de tipo basura de IA, reconocibles al instante como generados por máquina. Escribe mensajes específicos de lo que hace realmente tu producto.
+
+### Momentos de Celebración
+
+**Celebraciones de éxito**:
+- Confeti para hitos importantes.
+- Marcas de verificación animadas al completar tareas.
+- Celebraciones de barras de progreso al llegar al 100%.
+- Notificaciones de estilo "logro desbloqueado".
+- Mensajes personalizados ("¡Has publicado tu artículo número 10!").
+
+**Reconocimiento de hitos**:
+- Tratamiento especial para las primeras acciones.
+- Seguimiento y celebración de rachas de uso.
+- Progreso hacia metas.
+- Celebración de aniversarios.
+
+## Patrones de Implementación
+
+**Librerías de animación**:
+- Framer Motion (React).
+- GSAP (universal).
+- Lottie (animaciones de After Effects).
+- Canvas confetti (efectos de fiesta).
+
+**Librerías de sonido**:
+- Howler.js (gestión de audio).
+- Use-sound (React hook).
+
+**Librerías de física**:
+- React Spring (física de resorte).
+- Popmotion (primitivas de animación).
+
+**IMPORTANTE**: El tamaño de los archivos importa. Comprime imágenes, optimiza animaciones y carga de forma perezosa (lazy load) las funciones de deleite.
+
+**NUNCA**:
+- Retrases la funcionalidad principal por el deleite.
+- Obligues a los usuarios a pasar por los momentos de deleite (hazlos omitibles).
+- Uses el deleite para ocultar una mala experiencia de usuario (UX).
+- Te pases (menos es más).
+- Ignores la accesibilidad (anima con responsabilidad, proporciona alternativas).
+- Hagas deleitable cada interacción (los momentos especiales deben seguir siendo especiales).
+- Sacrifiques el rendimiento por el deleite.
+- Seas inoportuno con el contexto (interpreta bien la situación).
+
+## Verificar Calidad del Deleite
+
+Prueba que el deleite realmente deleite:
+
+- **Reacciones del usuario**: ¿Sonríen los usuarios? ¿Comparten capturas de pantalla?
+- **No resulta molesto**: ¿Sigue siendo agradable después de verlo 100 veces?
+- **No bloquea**: ¿Pueden los usuarios desactivarlo u omitirlo?
+- **Rendimiento**: Sin tirones, sin ralentizaciones.
+- **Apropiado**: Coincide con la marca y el contexto.
+- **Accesible**: Funciona con reducción de movimiento y lectores de pantalla.
+
+Recuerda: El deleite es la diferencia entre una herramienta y una experiencia. Añade personalidad, sorprende positivamente al usuario y crea momentos que valga la pena compartir. Pero respeta siempre la usabilidad: el deleite debe mejorar, nunca obstruir.

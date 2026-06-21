@@ -1,152 +1,152 @@
-# Developer Guide
+# Guía del desarrollador
 
-Documentation for contributors to Impeccable.
+Documentación para colaboradores de Impeccable.
 
-## Architecture
+## Arquitectura
 
-Source skills in `source/skills/` are transformed into provider-specific formats by a config-driven factory. Each provider is defined as a config object in `scripts/lib/transformers/providers.js` -- adding a new provider requires only a new config entry.
+Las habilidades fuente en `source/skills/` son transformadas en formatos específicos de proveedor mediante una factoría basada en configuración. Cada proveedor se define como un objeto de configuración en `scripts/lib/transformers/providers.js` -- agregar un nuevo proveedor requiere únicamente una nueva entrada de configuración.
 
-For detailed harness capabilities (which frontmatter fields each supports, placeholder systems, directory structures), see [HARNESSES.md](HARNESSES.md).
+Para obtener información detallada sobre las capacidades de cada entorno (qué campos de frontmatter admite cada uno, sistemas de marcadores de posición, estructuras de directorios), consulta [HARNESSES.md](HARNESSES.md).
 
-## Source Format
+## Formato fuente
 
-### Skills (`source/skills/{name}/SKILL.md`)
+### Habilidades (`source/skills/{name}/SKILL.md`)
 
 ```yaml
 ---
-name: skill-name
-description: What this skill provides
-argument-hint: "[target]"
+name: nombre-de-la-habilidad
+description: Qué proporciona esta habilidad
+argument-hint: "[objetivo]"
 user-invocable: true
-license: License info (optional)
-compatibility: Environment requirements (optional)
+license: Información de licencia (opcional)
+compatibility: Requisitos del entorno (opcional)
 ---
 
-Your skill instructions here...
+Las instrucciones de tu habilidad aquí...
 ```
 
-**Frontmatter fields** (based on [Agent Skills spec](https://agentskills.io/specification)):
-- `name` (required): Skill identifier (1-64 chars, lowercase/numbers/hyphens)
-- `description` (required): What the skill provides (1-1024 chars)
-- `user-invocable` (optional): Boolean -- if `true`, the skill can be invoked as a slash command
-- `argument-hint` (optional): Hint shown during autocomplete (e.g., `[target]`, `[area (feature, page...)]`)
-- `license` (optional): License/attribution info
-- `compatibility` (optional): Environment requirements (1-500 chars)
-- `metadata` (optional): Arbitrary key-value pairs
-- `allowed-tools` (optional, experimental): Pre-approved tools list
+**Campos de Frontmatter** (basados en la [especificación de Agent Skills](https://agentskills.io/specification)):
+- `name` (requerido): Identificador de la habilidad (1-64 caracteres, minúsculas/números/guiones)
+- `description` (requerido): Qué proporciona la habilidad (1-1024 caracteres)
+- `user-invocable` (opcional): Booleano -- si es `true`, la habilidad se puede invocar como un comando de barra diagonal (slash command)
+- `argument-hint` (opcional): Sugerencia que se muestra durante el autocompletado (ej. `[objetivo]`, `[área (característica, página...)]`)
+- `license` (opcional): Información de licencia/atribución
+- `compatibility` (opcional): Requisitos del entorno (1-500 caracteres)
+- `metadata` (opcional): Pares clave-valor arbitrarios
+- `allowed-tools` (opcional, experimental): Lista de herramientas pre-aprobadas
 
-**Body placeholders** (replaced per-provider during build):
-- `{{model}}` -- Provider-specific model name (e.g., "Claude", "Gemini", "GPT")
-- `{{config_file}}` -- Provider-specific config file (e.g., "CLAUDE.md", ".cursorrules")
-- `{{ask_instruction}}` -- How to ask the user for clarification
-- `{{command_prefix}}` -- Slash command prefix (`/` for most, `$` for Codex)
-- `{{available_commands}}` -- Comma-separated list of user-invocable commands
+**Marcadores de posición en el cuerpo** (reemplazados por proveedor durante la compilación):
+- `{{model}}` -- Nombre del modelo específico del proveedor (ej., "Claude", "Gemini", "GPT")
+- `{{config_file}}` -- Archivo de configuración específico del proveedor (ej., "CLAUDE.md", ".cursorrules")
+- `{{ask_instruction}}` -- Cómo pedir aclaraciones al usuario
+- `{{command_prefix}}` -- Prefijo del comando de barra diagonal (`/` para la mayoría, `$` para Codex)
+- `{{available_commands}}` -- Lista separada por comas de los comandos invocables por el usuario
 
-## Building
+## Compilación
 
-### Prerequisites
-- Bun (fast JavaScript runtime and package manager)
-- No external dependencies required
+### Requisitos previos
+- Bun (entorno de ejecución de JavaScript y gestor de paquetes rápido)
+- No se requieren dependencias externas
 
-### Commands
+### Comandos
 
 ```bash
-# Build all provider formats
+# Compilar todos los formatos de proveedores
 bun run build
 
-# Clean dist folder
+# Limpiar la carpeta dist
 bun run clean
 
-# Rebuild from scratch
+# Recompilar desde cero
 bun run rebuild
 ```
 
-### What Gets Generated
+### Qué se genera
 
 ```
 source/                          -> dist/
   skills/{name}/SKILL.md           {provider}/{configDir}/skills/{name}/SKILL.md
 ```
 
-Each provider gets its own output directory. Two variants are generated per provider: unprefixed and prefixed (with `i-` prefix for skill names).
+Cada proveedor obtiene su propio directorio de salida. Se generan dos variantes por proveedor: sin prefijo y con prefijo (con el prefijo `i-` para los nombres de las habilidades).
 
-## Build System Details
+## Detalles del sistema de compilación
 
-The build system uses a factory pattern under `scripts/`:
+El sistema de compilación utiliza un patrón de factoría en `scripts/`:
 
 ```
 scripts/
-  build.js                        # Main orchestrator
+  build.js                        # Organizador principal
   lib/
-    utils.js                      # Frontmatter parsing, placeholder replacement, YAML generation
-    zip.js                        # ZIP bundle generation
+    utils.js                      # Análisis de frontmatter, reemplazo de marcadores de posición, generación de YAML
+    zip.js                        # Generación de paquetes ZIP
     transformers/
-      factory.js                  # createTransformer() -- generates transformer functions from config
-      providers.js                # PROVIDERS config map -- one entry per provider
-      index.js                    # Re-exports factory-generated transformer functions
+      factory.js                  # createTransformer() -- genera funciones de transformación a partir de la configuración
+      providers.js                # Mapa de configuración PROVIDERS -- una entrada por proveedor
+      index.js                    # Reexporta las funciones de transformación generadas por la factoría
 ```
 
-### Adding a New Provider
+### Agregar un nuevo proveedor
 
-1. Add a placeholder config to `PROVIDER_PLACEHOLDERS` in `scripts/lib/utils.js`:
+1. Agrega una configuración de marcador de posición a `PROVIDER_PLACEHOLDERS` en `scripts/lib/utils.js`:
    ```javascript
-   'my-provider': {
-     model: 'MyModel',
+   'mi-proveedor': {
+     model: 'MiModelo',
      config_file: 'CONFIG.md',
-     ask_instruction: 'ask the user directly to clarify.',
+     ask_instruction: 'pregunta directamente al usuario para aclarar.',
      command_prefix: '/'
    }
    ```
 
-2. Add a provider config to `PROVIDERS` in `scripts/lib/transformers/providers.js`:
+2. Agrega una configuración de proveedor a `PROVIDERS` en `scripts/lib/transformers/providers.js`:
    ```javascript
-   'my-provider': {
-     provider: 'my-provider',
-     configDir: '.my-provider',
-     displayName: 'My Provider',
+   'mi-proveedor': {
+     provider: 'mi-proveedor',
+     configDir: '.mi-proveedor',
+     displayName: 'Mi Proveedor',
      frontmatterFields: ['user-invocable', 'argument-hint', 'license'],
    }
    ```
 
-3. Run `bun run build` -- the provider is automatically picked up by the build loop.
+3. Ejecuta `bun run build` -- el bucle de compilación detectará automáticamente el proveedor.
 
-4. Update `HARNESSES.md` with the provider's capabilities.
+4. Actualiza `HARNESSES.md` con las capacidades del proveedor.
 
-### Provider Config Options
+### Opciones de configuración de proveedores
 
-| Field | Description |
+| Campo | Descripción |
 |-------|-------------|
-| `provider` | Key for output directory and placeholder lookup |
-| `configDir` | Dot-directory name (e.g., `.claude`) |
-| `displayName` | Human-readable name for build logs |
-| `frontmatterFields` | Which optional fields to emit (see `factory.js` FIELD_SPECS) |
-| `bodyTransform` | Optional `(body, skill) => body` function for post-processing |
-| `placeholderProvider` | Override which PROVIDER_PLACEHOLDERS key to use (for variants sharing config) |
+| `provider` | Clave para el directorio de salida y búsqueda de marcadores de posición |
+| `configDir` | Nombre del directorio con punto (ej., `.claude`) |
+| `displayName` | Nombre legible por humanos para los logs de compilación |
+| `frontmatterFields` | Qué campos opcionales emitir (ver `factory.js` FIELD_SPECS) |
+| `bodyTransform` | Función opcional `(body, skill) => body` para post-procesamiento |
+| `placeholderProvider` | Sobrescribe qué clave de PROVIDER_PLACEHOLDERS usar (para variantes que comparten configuración) |
 
-### Key Functions
+### Funciones clave
 
-- `createTransformer(config)`: Factory that returns a transformer function from a provider config
-- `parseFrontmatter()`: Extracts YAML frontmatter and body from SKILL.md files
-- `readSourceFiles()`: Reads all skill directories from `source/skills/`
-- `replacePlaceholders()`: Substitutes `{{model}}`, `{{config_file}}`, etc. per provider
-- `generateYamlFrontmatter()`: Serializes objects to YAML frontmatter (auto-quotes values starting with `[` or `{`)
-- `prefixSkillReferences()`: Replaces `/skillname` with `/i-skillname` for prefixed variants
+- `createTransformer(config)`: Factoría que devuelve una función transformadora a partir de la configuración de un proveedor
+- `parseFrontmatter()`: Extrae el cuerpo y el frontmatter YAML de los archivos SKILL.md
+- `readSourceFiles()`: Lee todos los directorios de habilidades desde `source/skills/`
+- `replacePlaceholders()`: Sustituye `{{model}}`, `{{config_file}}`, etc. por proveedor
+- `generateYamlFrontmatter()`: Serializa objetos a frontmatter YAML (entrecomilla automáticamente valores que comienzan con `[` o `{`)
+- `prefixSkillReferences()`: Reemplaza `/skillname` con `/i-skillname` para variantes con prefijo
 
-## Best Practices
+## Buenas prácticas
 
-### Skill Writing
+### Escritura de habilidades
 
-1. **Focused scope**: One clear domain per skill
-2. **Clear descriptions**: Make purpose obvious
-3. **Clear instructions**: LLM should understand exactly what to do
-4. **Include examples**: Where they clarify intent
-5. **State constraints**: What NOT to do as clearly as what to do
-6. **Test across providers**: Verify it works in multiple contexts
+1. **Alcance enfocado**: Un dominio claro por habilidad
+2. **Descripciones claras**: Haz que el propósito sea obvio
+3. **Instrucciones claras**: El LLM debe entender exactamente qué hacer
+4. **Incluye ejemplos**: Donde ayuden a aclarar la intención
+5. **Establece restricciones**: Qué NO hacer tan claramente como qué hacer
+6. **Prueba en múltiples proveedores**: Verifica que funcione en múltiples contextos
 
-## Reference Documentation
+## Documentación de referencia
 
-- [Agent Skills Specification](https://agentskills.io/specification) - Open standard
-- [HARNESSES.md](HARNESSES.md) - Provider capabilities matrix
+- [Especificación de Agent Skills](https://agentskills.io/specification) - Estándar abierto
+- [HARNESSES.md](HARNESSES.md) - Matriz de capacidades de proveedores
 - [Cursor Skills](https://cursor.com/docs/context/skills)
 - [Claude Code Skills](https://code.claude.com/docs/en/skills)
 - [Gemini CLI Skills](https://geminicli.com/docs/cli/skills/)
@@ -156,51 +156,51 @@ scripts/
 - [OpenCode Skills](https://opencode.ai/docs/skills/)
 - [Pi Skills](https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/docs/skills.md)
 
-## Repository Structure
+## Estructura del repositorio
 
 ```
 impeccable/
-  source/                          # Edit these! Source of truth
-    skills/                        # Skill definitions
+  source/                          # ¡Edita aquí! Fuente de la verdad
+    skills/                        # Definiciones de habilidades
       frontend-design/
         SKILL.md
-        reference/*.md             # Domain-specific references
+        reference/*.md             # Referencias específicas del dominio
       audit/SKILL.md
       polish/SKILL.md
       ...
-  dist/                            # Generated output (gitignored)
+  dist/                            # Salida generada (ignorado por git)
   scripts/
-    build.js                       # Main orchestrator
+    build.js                       # Organizador principal
     lib/
-      utils.js                     # Shared utilities
-      zip.js                       # ZIP generation
+      utils.js                     # Utilidades compartidas
+      zip.js                       # Generación de paquetes ZIP
       transformers/
-        factory.js                 # Config-driven transformer factory
-        providers.js               # Provider config map
-        index.js                   # Re-exports
-  tests/                           # Bun test suite
-  HARNESSES.md                     # Provider capabilities reference
-  DEVELOP.md                       # This file
-  README.md                        # User documentation
+        factory.js                 # Factoría de transformación basada en configuración
+        providers.js               # Mapa de configuración de proveedores
+        index.js                   # Reexportaciones
+  tests/                           # Suite de pruebas de Bun
+  HARNESSES.md                     # Referencia de capacidades de proveedores
+  DEVELOP.md                       # Este archivo
+  README.md                        # Documentación del usuario
 ```
 
-## Troubleshooting
+## Solución de problemas
 
-### Build fails with YAML parsing errors
-- Check frontmatter indentation (YAML is indent-sensitive)
-- Ensure `---` delimiters are on their own lines
-- Values starting with `[` or `{` are auto-quoted; other special YAML chars may need manual quoting
+### La compilación falla con errores de análisis sintáctico de YAML
+- Comprueba la sangría del frontmatter (YAML es sensible a la sangría)
+- Asegúrate de que los delimitadores `---` estén en sus propias líneas
+- Los valores que comienzan con `[` o `{` se entrecomillan automáticamente; otros caracteres especiales de YAML pueden requerir entrecomillado manual
 
-### Output doesn't match expectations
-- Check the provider config in `scripts/lib/transformers/providers.js`
-- Verify source file has correct frontmatter structure
-- Run `bun run rebuild` to ensure clean build
+### La salida no coincide con las expectativas
+- Comprueba la configuración del proveedor en `scripts/lib/transformers/providers.js`
+- Verifica que el archivo fuente tenga la estructura de frontmatter correcta
+- Ejecuta `bun run rebuild` para asegurar una compilación limpia
 
-### Provider doesn't recognize the files
-- Check installation path for your provider
-- Verify file naming matches provider requirements
-- Consult [HARNESSES.md](HARNESSES.md) for provider-specific details
+### El proveedor no reconoce los archivos
+- Comprueba la ruta de instalación de tu proveedor
+- Verifica que el nombre del archivo coincida con los requisitos del proveedor
+- Consulta [HARNESSES.md](HARNESSES.md) para detalles específicos del proveedor
 
-## Questions?
+## ¿Preguntas?
 
-Open an issue or submit a PR!
+¡Abre un issue o envía un PR!

@@ -1,183 +1,182 @@
 ---
 name: clarify
-description: "Improve unclear UX copy, error messages, microcopy, labels, and instructions to make interfaces easier to understand. Use when the user mentions confusing text, unclear labels, bad error messages, hard-to-follow instructions, or wanting better UX writing."
-argument-hint: "[target]"
+description: "Mejora los textos de la interfaz (copy de UX), mensajes de error, microcopy, etiquetas e instrucciones poco claras para que sean fáciles de entender. Úsalo cuando el usuario mencione textos confusos, etiquetas poco claras, mensajes de error deficientes, instrucciones difíciles de seguir o cuando desee una mejor redacción para UX."
+argument-hint: "[objetivo]"
 user-invocable: true
 ---
 
-Identify and improve unclear, confusing, or poorly written interface text to make the product easier to understand and use.
+Identifica y mejora los textos de la interfaz que sean poco claros, confusos o estén mal redactados para hacer que el producto sea más fácil de entender y usar.
 
-## MANDATORY PREPARATION
+## PREPARACIÓN OBLIGATORIA
 
-Invoke {{command_prefix}}impeccable — it contains design principles, anti-patterns, and the **Context Gathering Protocol**. Follow the protocol before proceeding — if no design context exists yet, you MUST run {{command_prefix}}impeccable teach first. Additionally gather: audience technical level and users' mental state in context.
+Invoca {{command_prefix}}impeccable — contiene los principios de diseño, antipatrones y el **Protocolo de Recopilación de Contexto**. Sigue el protocolo antes de proceder — si aún no existe un contexto de diseño, DEBES ejecutar {{command_prefix}}impeccable teach primero. Adicionalmente, recopila: nivel técnico de la audiencia y estado mental de los usuarios en este contexto.
 
 ---
 
-## Assess Current Copy
+## Evaluar el Texto Actual
 
-Identify what makes the text unclear or ineffective:
+Identifica qué hace que el texto sea poco claro o ineficaz:
 
-1. **Find clarity problems**:
-   - **Jargon**: Technical terms users won't understand
-   - **Ambiguity**: Multiple interpretations possible
-   - **Passive voice**: "Your file has been uploaded" vs "We uploaded your file"
-   - **Length**: Too wordy or too terse
-   - **Assumptions**: Assuming user knowledge they don't have
-   - **Missing context**: Users don't know what to do or why
-   - **Tone mismatch**: Too formal, too casual, or inappropriate for situation
+1. **Encontrar problemas de claridad**:
+   - **Jerga**: Términos técnicos que los usuarios no entenderán.
+   - **Ambigüedad**: Múltiples interpretaciones posibles.
+   - **Voz pasiva**: "Tu archivo ha sido subido" vs. "Subimos tu archivo".
+   - **Longitud**: Demasiado detallado o demasiado escueto.
+   - **Suposiciones**: Asumir que el usuario posee conocimientos que no tiene.
+   - **Falta de contexto**: Los usuarios no saben qué hacer ni por qué.
+   - **Tono inadecuado**: Demasiado formal, demasiado informal o inapropiado para la situación.
 
-2. **Understand the context**:
-   - Who's the audience? (Technical? General? First-time users?)
-   - What's the user's mental state? (Stressed during error? Confident during success?)
-   - What's the action? (What do we want users to do?)
-   - What's the constraint? (Character limits? Space limitations?)
+2. **Comprender el contexto**:
+   - ¿Quién es la audiencia? (¿Técnica? ¿Público general? ¿Usuarios primerizos?)
+   - ¿Cuál es el estado mental del usuario? (¿Estresado por un error? ¿Tranquilo tras un éxito?)
+   - ¿Cuál es la acción? (¿Qué queremos que hagan los usuarios?)
+   - ¿Cuál es la restricción? (¿Límites de caracteres? ¿Limitaciones de espacio?)
 
-**CRITICAL**: Clear copy helps users succeed. Unclear copy creates frustration, errors, and support tickets.
+**CRÍTICO**: Un texto claro ayuda a los usuarios a tener éxito. El texto confuso genera frustración, errores y tickets de soporte.
 
-## Plan Copy Improvements
+## Planificar Mejoras en los Textos
 
-Create a strategy for clearer communication:
+Crea una estrategia para lograr una comunicación más clara:
 
-- **Primary message**: What's the ONE thing users need to know?
-- **Action needed**: What should users do next (if anything)?
-- **Tone**: How should this feel? (Helpful? Apologetic? Encouraging?)
-- **Constraints**: Length limits, brand voice, localization considerations
+- **Mensaje principal**: ¿Qué es la ÚNICA cosa que los usuarios necesitan saber?
+- **Acción requerida**: ¿Qué deben hacer los usuarios a continuación (si aplica)?
+- **Tono**: ¿Cómo debería sentirse esto? (¿De ayuda? ¿Disculpándose? ¿Alentador?)
+- **Restricciones**: Límites de longitud, voz de marca, consideraciones de localización.
 
-**IMPORTANT**: Good UX writing is invisible. Users should understand immediately without noticing the words.
+**IMPORTANTE**: La buena redacción de UX es invisible. Los usuarios deben entender de inmediato sin percatarse de las palabras.
 
-## Improve Copy Systematically
+## Mejorar el Texto Sistemáticamente
 
-Refine text across these common areas:
+Refina el texto en estas áreas comunes:
 
-### Error Messages
-**Bad**: "Error 403: Forbidden"
-**Good**: "You don't have permission to view this page. Contact your admin for access."
+### Mensajes de Error
+**Mal**: "Error 403: Prohibido"
+**Bien**: "No tienes permiso para ver esta página. Contacta a tu administrador para obtener acceso."
 
-**Bad**: "Invalid input"
-**Good**: "Email addresses need an @ symbol. Try: name@example.com"
+**Mal**: "Entrada inválida"
+**Bien**: "Las direcciones de correo necesitan un símbolo @. Prueba con: nombre@ejemplo.com"
 
-**Principles**:
-- Explain what went wrong in plain language
-- Suggest how to fix it
-- Don't blame the user
-- Include examples when helpful
-- Link to help/support if applicable
+**Principios**:
+- Explica qué salió mal en un lenguaje sencillo.
+- Sugiere cómo solucionarlo.
+- No culpes al usuario.
+- Incluye ejemplos cuando sea útil.
+- Proporciona un enlace a la ayuda o soporte si aplica.
 
-### Form Labels & Instructions
-**Bad**: "DOB (MM/DD/YYYY)"
-**Good**: "Date of birth" (with placeholder showing format)
+### Etiquetas de Formulario e Instrucciones
+**Mal**: "F. Nac. (DD/MM/AAAA)"
+**Bien**: "Fecha de nacimiento" (con un marcador de posición que muestre el formato).
 
-**Bad**: "Enter value here"
-**Good**: "Your email address" or "Company name"
+**Mal**: "Introduce el valor aquí"
+**Bien**: "Tu correo electrónico" o "Nombre de la empresa".
 
-**Principles**:
-- Use clear, specific labels (not generic placeholders)
-- Show format expectations with examples
-- Explain why you're asking (when not obvious)
-- Put instructions before the field, not after
-- Keep required field indicators clear
+**Principios**:
+- Usa etiquetas claras y específicas (no marcadores de posición genéricos).
+- Muestra el formato esperado con ejemplos.
+- Explica por qué estás pidiendo el dato (cuando no sea obvio).
+- Coloca las instrucciones antes del campo, no después.
+- Mantén claros los indicadores de campos obligatorios.
 
-### Button & CTA Text
-**Bad**: "Click here" | "Submit" | "OK"
-**Good**: "Create account" | "Save changes" | "Got it, thanks"
+### Botones y Textos de Llamada a la Acción (CTA)
+**Mal**: "Haz clic aquí" | "Enviar" | "OK"
+**Bien**: "Crear cuenta" | "Guardar cambios" | "Entendido, gracias"
 
-**Principles**:
-- Describe the action specifically
-- Use active voice (verb + noun)
-- Match user's mental model
-- Be specific ("Save" is better than "OK")
+**Principios**:
+- Describe la acción específicamente.
+- Usa la voz activa (verbo + sustantivo).
+- Adáptate al modelo mental del usuario.
+- Sé específico ("Guardar" es mejor que "OK").
 
-### Help Text & Tooltips
-**Bad**: "This is the username field"
-**Good**: "Choose a username. You can change this later in Settings."
+### Textos de Ayuda y Tooltips
+**Mal**: "Este es el campo de nombre de usuario"
+**Bien**: "Elige un nombre de usuario. Puedes cambiarlo más tarde en Configuración."
 
-**Principles**:
-- Add value (don't just repeat the label)
-- Answer the implicit question ("What is this?" or "Why do you need this?")
-- Keep it brief but complete
-- Link to detailed docs if needed
+**Principios**:
+- Aporta valor (no te limites a repetir la etiqueta).
+- Responde a la pregunta implícita ("¿Qué es esto?" o "¿Por qué necesito esto?").
+- Mantén el texto breve pero completo.
+- Enlaza a documentación detallada si es necesario.
 
-### Empty States
-**Bad**: "No items"
-**Good**: "No projects yet. Create your first project to get started."
+### Estados Vacíos (Empty States)
+**Mal**: "No hay elementos"
+**Bien**: "Aún no tienes proyectos. Crea tu primer proyecto para comenzar."
 
-**Principles**:
-- Explain why it's empty (if not obvious)
-- Show next action clearly
-- Make it welcoming, not dead-end
+**Principios**:
+- Explica por qué está vacío (si no es obvio).
+- Muestra la siguiente acción claramente.
+- Haz que sea acogedor, no un callejón sin salida.
 
-### Success Messages
-**Bad**: "Success"
-**Good**: "Settings saved! Your changes will take effect immediately."
+### Mensajes de Éxito
+**Mal**: "Éxito"
+**Bien**: "¡Configuración guardada! Tus cambios se aplicarán de inmediato."
 
-**Principles**:
-- Confirm what happened
-- Explain what happens next (if relevant)
-- Be brief but complete
-- Match the user's emotional moment (celebrate big wins)
+**Principios**:
+- Confirma qué sucedió.
+- Explica qué ocurre a continuación (si es relevante).
+- Sé breve pero completo.
+- Sincronízate con el momento emocional del usuario (celebra los logros importantes).
 
-### Loading States
-**Bad**: "Loading..." (for 30+ seconds)
-**Good**: "Analyzing your data... this usually takes 30-60 seconds"
+### Estados de Carga
+**Mal**: "Cargando..." (durante más de 30 segundos).
+**Bien**: "Analizando tus datos... esto suele tardar entre 30 y 60 segundos."
 
-**Principles**:
-- Set expectations (how long?)
-- Explain what's happening (when it's not obvious)
-- Show progress when possible
-- Offer escape hatch if appropriate ("Cancel")
+**Principios**:
+- Establece expectativas (¿cuánto tiempo?).
+- Explica qué está sucediendo (cuando no sea obvio).
+- Muestra el progreso siempre que sea posible.
+- Ofrece una opción de salida si es apropiado ("Cancelar").
 
-### Confirmation Dialogs
-**Bad**: "Are you sure?"
-**Good**: "Delete 'Project Alpha'? This can't be undone."
+### Diálogos de Confirmación
+**Mal**: "¿Estás seguro?"
+**Bien**: "¿Eliminar 'Proyecto Alfa'? Esta acción no se puede deshacer."
 
-**Principles**:
-- State the specific action
-- Explain consequences (especially for destructive actions)
-- Use clear button labels ("Delete project" not "Yes")
-- Don't overuse confirmations (only for risky actions)
+**Principios**:
+- Indica la acción específica.
+- Explica las consecuencias (especialmente para acciones destructivas).
+- Usa etiquetas claras en los botones ("Eliminar proyecto", no "Sí").
+- No abuses de las confirmaciones (solo para acciones de riesgo).
 
-### Navigation & Wayfinding
-**Bad**: Generic labels like "Items" | "Things" | "Stuff"
-**Good**: Specific labels like "Your projects" | "Team members" | "Settings"
+### Navegación y Orientación
+**Mal**: Etiquetas genéricas como "Elementos" | "Cosas" | "Objetos"
+**Bien**: Etiquetas específicas como "Tus proyectos" | "Miembros del equipo" | "Configuración"
 
-**Principles**:
-- Be specific and descriptive
-- Use language users understand (not internal jargon)
-- Make hierarchy clear
-- Consider information scent (breadcrumbs, current location)
+**Principios**:
+- Sé específico y descriptivo.
+- Usa un lenguaje que los usuarios entiendan (evita la jerga interna).
+- Haz que la jerarquía sea clara.
+- Considera el rastro de información (breadcrumbs, ubicación actual).
 
-## Apply Clarity Principles
+## Aplicar Principios de Claridad
 
-Every piece of copy should follow these rules:
+Cada fragmento de texto debe seguir estas reglas:
 
-1. **Be specific**: "Enter email" not "Enter value"
-2. **Be concise**: Cut unnecessary words (but don't sacrifice clarity)
-3. **Be active**: "Save changes" not "Changes will be saved"
-4. **Be human**: "Oops, something went wrong" not "System error encountered"
-5. **Be helpful**: Tell users what to do, not just what happened
-6. **Be consistent**: Use same terms throughout (don't vary for variety)
+1. **Sé específico**: "Introduce tu correo" en lugar de "Introduce el valor".
+2. **Sé conciso**: Recorta palabras innecesarias (pero sin sacrificar la claridad).
+3. **Sé activo**: "Guardar cambios" en lugar de "Los cambios se guardarán".
+4. **Sé humano**: "Vaya, algo salió mal" en lugar de "Se produjo un error en el sistema".
+5. **Sé de ayuda**: Dile a los usuarios qué hacer, no solo qué sucedió.
+6. **Sé consistente**: Usa los mismos términos en todas partes (no cambies palabras solo por variar).
 
-**NEVER**:
-- Use jargon without explanation
-- Blame users ("You made an error" → "This field is required")
-- Be vague ("Something went wrong" without explanation)
-- Use passive voice unnecessarily
-- Write overly long explanations (be concise)
-- Use humor for errors (be empathetic instead)
-- Assume technical knowledge
-- Vary terminology (pick one term and stick with it)
-- Repeat information (headers restating intros, redundant explanations)
-- Use placeholders as the only labels (they disappear when users type)
+**NUNCA**:
+- Uses jerga sin explicación.
+- Culpas a los usuarios ("Cometiste un error" → "Este campo es obligatorio").
+- Seas impreciso ("Algo salió mal" sin explicación).
+- Uses la voz pasiva de manera innecesaria.
+- Escribas explicaciones excesivamente largas (sé conciso).
+- Uses el humor en los errores (sé empático en su lugar).
+- Asumas conocimientos técnicos por parte del usuario.
+- Varíes la terminología (elige un término y manténlo).
+- Repitas información (encabezados que repiten introducciones, explicaciones redundantes).
+- Uses marcadores de posición como las únicas etiquetas (desaparecen cuando el usuario escribe).
 
-## Verify Improvements
+## Verificar Mejoras
 
-Test that copy improvements work:
+Prueba que las mejoras de redacción funcionen:
 
-- **Comprehension**: Can users understand without context?
-- **Actionability**: Do users know what to do next?
-- **Brevity**: Is it as short as possible while remaining clear?
-- **Consistency**: Does it match terminology elsewhere?
-- **Tone**: Is it appropriate for the situation?
+- **Comprensión**: ¿Pueden los usuarios entender el texto sin contexto adicional?
+- **Orientación a la acción**: ¿Saben los usuarios qué hacer a continuación?
+- **Brevedad**: ¿Es el texto lo más corto posible sin perder claridad?
+- **Consistencia**: ¿Coincide con la terminología utilizada en otras partes del sitio?
+- **Tono**: ¿Es apropiado para la situación?
 
-Remember: You're a clarity expert with excellent communication skills. Write like you're explaining to a smart friend who's unfamiliar with the product. Be clear, be helpful, be human.
-
+Recuerda: Eres un experto en claridad con excelentes habilidades de comunicación. Escribe como si le estuvieras explicando el funcionamiento a un amigo inteligente que no está familiarizado con el producto. Sé claro, sé útil, sé humano.

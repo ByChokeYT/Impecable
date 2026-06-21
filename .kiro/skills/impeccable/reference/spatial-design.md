@@ -1,53 +1,53 @@
-# Spatial Design
+# Diseño Espacial (Spatial Design)
 
-## Spacing Systems
+## Sistemas de Espaciado
 
-### Use 4pt Base, Not 8pt
+### Usa una Base de 4pt en lugar de 8pt
 
-8pt systems are too coarse—you'll frequently need 12px (between 8 and 16). Use 4pt for granularity: 4, 8, 12, 16, 24, 32, 48, 64, 96px.
+Los sistemas basados en 8pt son demasiado gruesos — con frecuencia necesitarás 12px (un término medio entre 8 y 16). Usa 4pt para lograr granularidad: 4, 8, 12, 16, 24, 32, 48, 64, 96px.
 
-### Name Tokens Semantically
+### Nombra los Tokens Semánticamente
 
-Name by relationship (`--space-sm`, `--space-lg`), not value (`--spacing-8`). Use `gap` instead of margins for sibling spacing—it eliminates margin collapse and cleanup hacks.
+Define los nombres según la relación del elemento (`--space-sm`, `--space-lg`), no por su valor absoluto (`--spacing-8`). Usa la propiedad `gap` en lugar de márgenes para la separación de elementos hermanos — elimina el colapso de márgenes y los trucos para corregirlo.
 
-## Grid Systems
+## Sistemas de Cuadrícula (Grid)
 
-### The Self-Adjusting Grid
+### La Cuadrícula Autoajustable
 
-Use `repeat(auto-fit, minmax(280px, 1fr))` for responsive grids without breakpoints. Columns are at least 280px, as many as fit per row, leftovers stretch. For complex layouts, use named grid areas (`grid-template-areas`) and redefine them at breakpoints.
+Usa `repeat(auto-fit, minmax(280px, 1fr))` para lograr cuadrículas responsivas sin recurrir a breakpoints. Las columnas tendrán al menos 280px de ancho y se mostrarán tantas como quepan por fila, distribuyendo de forma equitativa el espacio sobrante. Para estructuras complejas, usa áreas de cuadrícula con nombre (`grid-template-areas`) y redéfinelas en los breakpoints.
 
-## Visual Hierarchy
+## Jerarquía Visual
 
-### The Squint Test
+### La Prueba del Entrecejo (Squint Test)
 
-Blur your eyes (or screenshot and blur). Can you still identify:
-- The most important element?
-- The second most important?
-- Clear groupings?
+Entorna los ojos (o haz una captura de pantalla y difumínala). ¿Puedes seguir identificando:
+- ¿El elemento más importante?
+- ¿El segundo más importante?
+- ¿Las agrupaciones claras?
 
-If everything looks the same weight blurred, you have a hierarchy problem.
+Si tras el difuminado todo se ve con el mismo peso visual, tienes un problema de jerarquía.
 
-### Hierarchy Through Multiple Dimensions
+### Jerarquía a través de Múltiples Dimensiones
 
-Don't rely on size alone. Combine:
+No confíes únicamente en el tamaño. Combina recursos:
 
-| Tool | Strong Hierarchy | Weak Hierarchy |
-|------|------------------|----------------|
-| **Size** | 3:1 ratio or more | <2:1 ratio |
-| **Weight** | Bold vs Regular | Medium vs Regular |
-| **Color** | High contrast | Similar tones |
-| **Position** | Top/left (primary) | Bottom/right |
-| **Space** | Surrounded by white space | Crowded |
+| Recurso | Jerarquía Fuerte | Jerarquía Débil |
+|---------|------------------|-----------------|
+| **Tamaño** | Relación de 3:1 o superior | Relación menor a 2:1 |
+| **Peso** | Negrita frente a Regular | Medium frente a Regular |
+| **Color** | Alto contraste | Tonos similares |
+| **Posición** | Arriba/izquierda (principal) | Abajo/derecha |
+| **Espacio** | Rodeado de espacio en blanco | Saturado |
 
-**The best hierarchy uses 2-3 dimensions at once**: A heading that's larger, bolder, AND has more space above it.
+**La mejor jerarquía utiliza 2 o 3 dimensiones simultáneamente**: Un encabezado que sea más grande, en negrita Y que cuente con más espacio en blanco por encima de él.
 
-### Cards Are Not Required
+### Las Tarjetas no son Obligatorias
 
-Cards are overused. Spacing and alignment create visual grouping naturally. Use cards only when content is truly distinct and actionable, items need visual comparison in a grid, or content needs clear interaction boundaries. **Never nest cards inside cards**—use spacing, typography, and subtle dividers for hierarchy within a card.
+Se abusa del uso de tarjetas. El espaciado y la alineación crean agrupaciones visuales de forma natural. Usa tarjetas únicamente cuando el contenido sea verdaderamente diferente y accionable, los elementos requieran una comparación visual directa en una cuadrícula, o el contenido necesite límites de interacción muy claros. **Nunca anides tarjetas dentro de otras tarjetas** — utiliza el espaciado, la tipografía y divisores sutiles para establecer jerarquías internas dentro de una tarjeta.
 
-## Container Queries
+## Consultas de Contenedor (Container Queries)
 
-Viewport queries are for page layouts. **Container queries are for components**:
+Las consultas de viewport son para estructurar la página en su conjunto. **Las consultas de contenedor son para los componentes individuales**:
 
 ```css
 .card-container {
@@ -59,7 +59,7 @@ Viewport queries are for page layouts. **Container queries are for components**:
   gap: var(--space-md);
 }
 
-/* Card layout changes based on its container, not viewport */
+/* El diseño de la tarjeta cambia según el tamaño de su contenedor, no del viewport */
 @container (min-width: 400px) {
   .card {
     grid-template-columns: 120px 1fr;
@@ -67,19 +67,19 @@ Viewport queries are for page layouts. **Container queries are for components**:
 }
 ```
 
-**Why this matters**: A card in a narrow sidebar stays compact, while the same card in a main content area expands—automatically, without viewport hacks.
+**Por qué es importante**: Una tarjeta en una barra lateral estrecha se mantiene compacta, mientras que la misma tarjeta situada en el área de contenido principal se expande de forma automática, sin requerir trucos basados en el viewport.
 
-## Optical Adjustments
+## Ajustes Ópticos
 
-Text at `margin-left: 0` looks indented due to letterform whitespace—use negative margin (`-0.05em`) to optically align. Geometrically centered icons often look off-center; play icons need to shift right, arrows shift toward their direction.
+El texto alineado a `margin-left: 0` puede verse visualmente sangrado debido al espacio en blanco de las propias letras — utiliza un margen negativo (`-0.05em`) para lograr una alineación óptica precisa. Los iconos geométricamente centrados a menudo se ven descentrados; los iconos de reproducción (play) necesitan desplazarse hacia la derecha y las flechas deben inclinarse hacia su dirección de movimiento.
 
-### Touch Targets vs Visual Size
+### Áreas Táctiles frente a Tamaño Visual
 
-Buttons can look small but need large touch targets (44px minimum). Use padding or pseudo-elements:
+Los botones pueden verse pequeños pero necesitan áreas de pulsación amplias (mínimo de 44px). Usa padding o pseudoelementos para ampliar el área de acción:
 
 ```css
 .icon-button {
-  width: 24px;  /* Visual size */
+  width: 24px;  /* Tamaño visual */
   height: 24px;
   position: relative;
 }
@@ -87,14 +87,14 @@ Buttons can look small but need large touch targets (44px minimum). Use padding 
 .icon-button::before {
   content: '';
   position: absolute;
-  inset: -10px;  /* Expand tap target to 44px */
+  inset: -10px;  /* Amplía el área táctil a 44px */
 }
 ```
 
-## Depth & Elevation
+## Profundidad y Elevación
 
-Create semantic z-index scales (dropdown → sticky → modal-backdrop → modal → toast → tooltip) instead of arbitrary numbers. For shadows, create a consistent elevation scale (sm → md → lg → xl). **Key insight**: Shadows should be subtle—if you can clearly see it, it's probably too strong.
+Crea escalas semánticas para `z-index` (dropdown → sticky → modal-backdrop → modal → toast → tooltip) en lugar de usar valores numéricos arbitrarios. Para las sombras, diseña una escala de elevación consistente (sm → md → lg → xl). **Idea clave**: Las sombras deben ser sutiles — si la detectas con total claridad a primera vista, probablemente sea demasiado fuerte.
 
 ---
 
-**Avoid**: Arbitrary spacing values outside your scale. Making all spacing equal (variety creates hierarchy). Creating hierarchy through size alone - combine size, weight, color, and space.
+**Evita**: Valores de espaciado arbitrarios fuera de tu escala. Hacer que todo el espaciado sea igual (la variedad crea la jerarquía). Crear jerarquía únicamente a través del tamaño — combina el tamaño, peso, color y espacio en blanco.

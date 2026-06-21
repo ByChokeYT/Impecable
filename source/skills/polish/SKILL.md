@@ -1,224 +1,223 @@
 ---
 name: polish
-description: "Performs a final quality pass fixing alignment, spacing, consistency, and micro-detail issues before shipping. Use when the user mentions polish, finishing touches, pre-launch review, something looks off, or wants to go from good to great."
-argument-hint: "[target]"
+description: "Realiza una ronda final de control de calidad corrigiendo problemas de alineación, espaciado, consistencia y detalles minuciosos antes de publicar. Úsalo cuando el usuario comente sobre pulir, dar toques finales, revisión previa al lanzamiento, que algo se ve raro o cuando desee pasar de un buen resultado a uno excelente."
+argument-hint: "[objetivo]"
 user-invocable: true
 ---
 
-## MANDATORY PREPARATION
+## PREPARACIÓN OBLIGATORIA
 
-Invoke {{command_prefix}}impeccable — it contains design principles, anti-patterns, and the **Context Gathering Protocol**. Follow the protocol before proceeding — if no design context exists yet, you MUST run {{command_prefix}}impeccable teach first. Additionally gather: quality bar (MVP vs flagship).
+Invoca {{command_prefix}}impeccable — contiene los principios de diseño, antipatrones y el **Protocolo de Recopilación de Contexto**. Sigue el protocolo antes de proceder — si aún no existe un contexto de diseño, DEBES ejecutar {{command_prefix}}impeccable teach primero. Adicionalmente, recopila: el nivel de exigencia de calidad (MVP vs. producto insignia).
 
 ---
 
-Perform a meticulous final pass to catch all the small details that separate good work from great work. The difference between shipped and polished.
+Realiza una ronda final meticulosa para detectar todos los pequeños detalles que diferencian el trabajo aceptable del excelente. La diferencia entre algo publicado y algo pulido.
 
-## Design System Discovery
+## Descubrimiento del Sistema de Diseño
 
-Before polishing, understand the system you are polishing toward:
+Antes de pulir, comprende el sistema sobre el que vas a trabajar:
 
-1. **Find the design system**: Search for design system documentation, component libraries, style guides, or token definitions. Study the core patterns: color tokens, spacing scale, typography styles, component API.
-2. **Note the conventions**: How are shared components imported? What spacing scale is used? Which colors come from tokens vs hard-coded values? What motion and interaction patterns are established?
-3. **Identify drift**: Where does the target feature deviate from the system? Hard-coded values that should be tokens, custom components that duplicate shared ones, spacing that doesn't match the scale.
+1. **Buscar el sistema de diseño**: Busca documentación del sistema de diseño, librerías de componentes, guías de estilo o definiciones de tokens. Estudia los patrones principales: tokens de color, escala de espaciado, estilos tipográficos, API de componentes.
+2. **Anotar las convenciones**: ¿Cómo se importan los componentes compartidos? ¿Qué escala de espaciado se utiliza? ¿Qué colores provienen de tokens en lugar de valores fijos (hardcoded)? ¿Qué patrones de interacción y movimiento están establecidos?
+3. **Identificar desviaciones (drift)**: ¿Dónde se desvía la funcionalidad objetivo con respecto al sistema? Valores fijos que deberían ser tokens, componentes personalizados que duplican a los compartidos, espaciados que no coinciden con la escala.
 
-If a design system exists, polish should align the feature with it. If none exists, polish against the conventions visible in the codebase.
+Si existe un sistema de diseño, el pulido debe alinear la funcionalidad con él. Si no existe ninguno, realiza el pulido respetando las convenciones visibles en el código base.
 
-## Pre-Polish Assessment
+## Evaluación Previa al Pulido
 
-Understand the current state and goals:
+Comprende el estado actual y los objetivos:
 
-1. **Review completeness**:
-   - Is it functionally complete?
-   - Are there known issues to preserve (mark with TODOs)?
-   - What's the quality bar? (MVP vs flagship feature?)
-   - When does it ship? (How much time for polish?)
+1. **Revisar completitud**:
+   - ¿Es funcionalmente completo?
+   - ¿Hay problemas conocidos que deban conservarse (márcalos con TODOs)?
+   - ¿Cuál es el nivel de exigencia de calidad? (¿Un MVP o una funcionalidad insignia?).
+   - ¿Cuándo se lanza? (¿De cuánto tiempo disponemos para pulir?).
 
-2. **Identify polish areas**:
-   - Visual inconsistencies
-   - Spacing and alignment issues
-   - Interaction state gaps
-   - Copy inconsistencies
-   - Edge cases and error states
-   - Loading and transition smoothness
+2. **Identificar áreas a pulir**:
+   - Inconsistencias visuales.
+   - Problemas de espaciado y alineación.
+   - Ausencia de estados de interacción.
+   - Inconsistencias en los textos (copy).
+   - Casos extremos y estados de error.
+   - Fluidez en las cargas y transiciones.
 
-**CRITICAL**: Polish is the last step, not the first. Don't polish work that's not functionally complete.
+**CRÍTICO**: El pulido es el último paso, no el primero. No pulas código que no sea funcionalmente completo.
 
-## Polish Systematically
+## Pulir Sistemáticamente
 
-Work through these dimensions methodically:
+Trabaja a través de estas dimensiones metódicamente:
 
-### Visual Alignment & Spacing
+### Alineación Visual y Espaciado
 
-- **Pixel-perfect alignment**: Everything lines up to grid
-- **Consistent spacing**: All gaps use spacing scale (no random 13px gaps)
-- **Optical alignment**: Adjust for visual weight (icons may need offset for optical centering)
-- **Responsive consistency**: Spacing and alignment work at all breakpoints
-- **Grid adherence**: Elements snap to baseline grid
+- **Alineación perfecta al píxel**: Todo se alinea con respecto a la cuadrícula.
+- **Espaciado consistente**: Todos los huecos (gaps) usan la escala de espaciado (sin huecos aleatorios de 13px).
+- **Alineación óptica**: Ajusta según el peso visual (los iconos pueden necesitar desplazamientos para centrarse ópticamente).
+- **Consistencia responsiva**: El espaciado y la alineación funcionan en todos los breakpoints.
+- **Adherencia a la cuadrícula**: Los elementos encajan con la cuadrícula base.
 
-**Check**:
-- Enable grid overlay and verify alignment
-- Check spacing with browser inspector
-- Test at multiple viewport sizes
-- Look for elements that "feel" off
+**Verificación**:
+- Activa la superposición de cuadrícula y verifica la alineación.
+- Comprueba el espaciado con el inspector del navegador.
+- Realiza pruebas en múltiples tamaños de pantalla.
+- Busca elementos que se "sientan" descentrados o raros.
 
-### Typography Refinement
+### Refinamiento de la Tipografía
 
-- **Hierarchy consistency**: Same elements use same sizes/weights throughout
-- **Line length**: 45-75 characters for body text
-- **Line height**: Appropriate for font size and context
-- **Widows & orphans**: No single words on last line
-- **Hyphenation**: Appropriate for language and column width
-- **Kerning**: Adjust letter spacing where needed (especially headlines)
-- **Font loading**: No FOUT/FOIT flashes
+- **Consistencia en la jerarquía**: Los mismos elementos usan los mismos tamaños y pesos en todo el sitio.
+- **Longitud de línea**: Entre 45 y 75 caracteres para el texto del cuerpo.
+- **Altura de línea (line-height)**: Adecuada para el tamaño de la fuente y el contexto.
+- **Viudas y huérfanas**: Evita palabras sueltas en la última línea de un párrafo.
+- **Separación de palabras**: Adecuada para el idioma y el ancho de la columna.
+- **Interletraje (Kerning)**: Ajusta el espacio entre letras donde sea necesario (especialmente en titulares).
+- **Carga de fuentes**: Evita parpadeos de texto invisible (FOIT) o texto sin estilo (FOUT).
 
-### Color & Contrast
+### Color y Contraste
 
-- **Contrast ratios**: All text meets WCAG standards
-- **Consistent token usage**: No hard-coded colors, all use design tokens
-- **Theme consistency**: Works in all theme variants
-- **Color meaning**: Same colors mean same things throughout
-- **Accessible focus**: Focus indicators visible with sufficient contrast
-- **Tinted neutrals**: No pure gray or pure black—add subtle color tint (0.01 chroma)
-- **Gray on color**: Never put gray text on colored backgrounds—use a shade of that color or transparency
+- **Relaciones de contraste**: Todo el texto debe cumplir con los estándares WCAG.
+- **Uso consistente de tokens**: Sin colores fijos en el código; todos deben usar tokens de diseño.
+- **Consistencia del tema**: Debe funcionar correctamente en todas las variantes del tema (claro/oscuro).
+- **Significado del color**: Mismos colores significan lo mismo en todo el sitio.
+- **Enfoque (Focus) accesible**: Indicadores de enfoque visibles y con suficiente contraste.
+- **Neutros teñidos**: Evita el gris puro o el negro puro; añade un sutil tinte de color (croma de 0.01).
+- **Gris sobre color**: Nunca coloques texto gris sobre fondos de color; usa un tono de ese color o transparencia.
 
-### Interaction States
+### Estados de Interacción
 
-Every interactive element needs all states:
+Cada elemento interactivo necesita definir todos sus estados:
 
-- **Default**: Resting state
-- **Hover**: Subtle feedback (color, scale, shadow)
-- **Focus**: Keyboard focus indicator (never remove without replacement)
-- **Active**: Click/tap feedback
-- **Disabled**: Clearly non-interactive
-- **Loading**: Async action feedback
-- **Error**: Validation or error state
-- **Success**: Successful completion
+- **Predeterminado (Default)**: Estado en reposo.
+- **Hover**: Retroalimentación sutil al pasar el cursor (color, escala, sombra).
+- **Enfoque (Focus)**: Indicador de enfoque por teclado (nunca lo elimines sin proporcionar un sustituto).
+- **Activo (Active)**: Retroalimentación al hacer clic o pulsar.
+- **Desactivado (Disabled)**: Claramente no interactivo.
+- **Cargando (Loading)**: Retroalimentación para acciones asíncronas.
+- **Error**: Estado de validación o error.
+- **Éxito**: Finalización exitosa.
 
-**Missing states create confusion and broken experiences**.
+**La falta de estados genera confusión y rompe la experiencia de usuario**.
 
-### Micro-interactions & Transitions
+### Microinteracciones y Transiciones
 
-- **Smooth transitions**: All state changes animated appropriately (150-300ms)
-- **Consistent easing**: Use ease-out-quart/quint/expo for natural deceleration. Never bounce or elastic—they feel dated.
-- **No jank**: 60fps animations, only animate transform and opacity
-- **Appropriate motion**: Motion serves purpose, not decoration
-- **Reduced motion**: Respects `prefers-reduced-motion`
+- **Transiciones fluidas**: Todos los cambios de estado deben estar animados adecuadamente (150-300ms).
+- **Suavizado (Easing) consistente**: Usa ease-out-quart/quint/expo para una desaceleración natural. Nunca uses rebotes (bounce) o efectos elásticos, ya que se ven anticuados.
+- **Sin tirones**: Animaciones a 60fps; anima únicamente `transform` y `opacity`.
+- **Movimiento adecuado**: El movimiento sirve a un propósito, no es mera decoración.
+- **Movimiento reducido**: Respeta la preferencia `prefers-reduced-motion`.
 
-### Content & Copy
+### Contenido y Copy
 
-- **Consistent terminology**: Same things called same names throughout
-- **Consistent capitalization**: Title Case vs Sentence case applied consistently
-- **Grammar & spelling**: No typos
-- **Appropriate length**: Not too wordy, not too terse
-- **Punctuation consistency**: Periods on sentences, not on labels (unless all labels have them)
+- **Terminología consistente**: Las mismas cosas deben llamarse igual en todas partes.
+- **Mayúsculas consistentes**: Uso coherente de mayúsculas en títulos o en frases iniciales.
+- **Gramática y ortografía**: Sin errores tipográficos o faltas de ortografía.
+- **Longitud apropiada**: Ni demasiado detallado ni demasiado escueto.
+- **Puntuación consistente**: Puntos finales en frases, evita puntos en las etiquetas de los botones (a menos que todas las lleven).
 
-### Icons & Images
+### Iconos e Imágenes
 
-- **Consistent style**: All icons from same family or matching style
-- **Appropriate sizing**: Icons sized consistently for context
-- **Proper alignment**: Icons align with adjacent text optically
-- **Alt text**: All images have descriptive alt text
-- **Loading states**: Images don't cause layout shift, proper aspect ratios
-- **Retina support**: 2x assets for high-DPI screens
+- **Estilo consistente**: Todos los iconos deben pertenecer a la misma familia o tener un estilo visual coincidente.
+- **Tamaño adecuado**: Iconos con tamaños consistentes según el contexto.
+- **Alineación correcta**: Los iconos deben alinearse ópticamente con el texto adyacente.
+- **Texto alternativo**: Todas las imágenes deben tener texto alternativo descriptivo.
+- **Estados de carga**: Las imágenes no deben causar saltos en el diseño (CLS); usa relaciones de aspecto adecuadas.
+- **Soporte de alta definición (Retina)**: Recursos a 2x para pantallas de alta densidad de píxeles.
 
-### Forms & Inputs
+### Formularios y Entradas
 
-- **Label consistency**: All inputs properly labeled
-- **Required indicators**: Clear and consistent
-- **Error messages**: Helpful and consistent
-- **Tab order**: Logical keyboard navigation
-- **Auto-focus**: Appropriate (don't overuse)
-- **Validation timing**: Consistent (on blur vs on submit)
+- **Consistencia de etiquetas**: Todos los campos de entrada deben estar correctamente etiquetados.
+- **Indicadores de obligatoriedad**: Claros y consistentes.
+- **Mensajes de error**: Útiles y consistentes.
+- **Orden de tabulación**: Navegación lógica mediante teclado.
+- **Enfoque automático (Auto-focus)**: Adecuado (no abuses de él).
+- **Momento de validación**: Consistente (al perder el foco / blur vs. al enviar / submit).
 
-### Edge Cases & Error States
+### Casos Extremos y Estados de Error
 
-- **Loading states**: All async actions have loading feedback
-- **Empty states**: Helpful empty states, not just blank space
-- **Error states**: Clear error messages with recovery paths
-- **Success states**: Confirmation of successful actions
-- **Long content**: Handles very long names, descriptions, etc.
-- **No content**: Handles missing data gracefully
-- **Offline**: Appropriate offline handling (if applicable)
+- **Estados de carga**: Todas las acciones asíncronas deben tener retroalimentación de carga.
+- **Estados vacíos**: Diseños atractivos y de ayuda, evita dejar espacios vacíos sin contenido.
+- **Estados de error**: Mensajes de error claros con opciones de recuperación.
+- **Estados de éxito**: Confirmación de acciones exitosas.
+- **Contenido largo**: Capacidad para manejar nombres, descripciones, etc., extremadamente largos.
+- **Sin contenido**: Capacidad para manejar la falta de datos con elegancia.
+- **Sin conexión**: Manejo adecuado de la falta de conexión (si aplica).
 
-### Responsiveness
+### Responsividad
 
-- **All breakpoints**: Test mobile, tablet, desktop
-- **Touch targets**: 44x44px minimum on touch devices
-- **Readable text**: No text smaller than 14px on mobile
-- **No horizontal scroll**: Content fits viewport
-- **Appropriate reflow**: Content adapts logically
+- **Todos los breakpoints**: Realiza pruebas en móvil, tablet y escritorio.
+- **Áreas táctiles**: Mínimo de 44x44px en dispositivos táctiles.
+- **Texto legible**: Texto no menor a 14px en móvil.
+- **Sin desplazamiento horizontal**: El contenido debe ajustarse al viewport.
+- **Ajuste lógico**: El contenido se adapta de forma lógica al cambiar el tamaño.
 
-### Performance
+### Rendimiento
 
-- **Fast initial load**: Optimize critical path
-- **No layout shift**: Elements don't jump after load (CLS)
-- **Smooth interactions**: No lag or jank
-- **Optimized images**: Appropriate formats and sizes
-- **Lazy loading**: Off-screen content loads lazily
+- **Carga inicial rápida**: Optimiza la ruta crítica.
+- **Sin cambios en el diseño**: Los elementos no deben saltar después de cargar (CLS).
+- **Interacciones fluidas**: Sin retrasos ni tirones.
+- **Imágenes optimizadas**: Formatos y tamaños adecuados.
+- **Carga perezosa**: Carga perezosa del contenido que queda fuera de la pantalla.
 
-### Code Quality
+### Calidad del Código
 
-- **Remove console logs**: No debug logging in production
-- **Remove commented code**: Clean up dead code
-- **Remove unused imports**: Clean up unused dependencies
-- **Consistent naming**: Variables and functions follow conventions
-- **Type safety**: No TypeScript `any` or ignored errors
-- **Accessibility**: Proper ARIA labels and semantic HTML
+- **Eliminar console.logs**: Evita mensajes de depuración en producción.
+- **Eliminar código comentado**: Limpia el código muerto.
+- **Eliminar importaciones sin usar**: Limpia las dependencias no utilizadas.
+- **Nombres consistentes**: Las variables y funciones deben seguir las convenciones establecidas.
+- **Seguridad tipográfica**: Evita el tipo `any` en TypeScript o errores ignorados.
+- **Accesibilidad**: Etiquetas ARIA correctas e HTML semántico.
 
-## Polish Checklist
+## Lista de Verificación de Pulido
 
-Go through systematically:
+Revisa de manera sistemática:
 
-- [ ] Visual alignment perfect at all breakpoints
-- [ ] Spacing uses design tokens consistently
-- [ ] Typography hierarchy consistent
-- [ ] All interactive states implemented
-- [ ] All transitions smooth (60fps)
-- [ ] Copy is consistent and polished
-- [ ] Icons are consistent and properly sized
-- [ ] All forms properly labeled and validated
-- [ ] Error states are helpful
-- [ ] Loading states are clear
-- [ ] Empty states are welcoming
-- [ ] Touch targets are 44x44px minimum
-- [ ] Contrast ratios meet WCAG AA
-- [ ] Keyboard navigation works
-- [ ] Focus indicators visible
-- [ ] No console errors or warnings
-- [ ] No layout shift on load
-- [ ] Works in all supported browsers
-- [ ] Respects reduced motion preference
-- [ ] Code is clean (no TODOs, console.logs, commented code)
+- [ ] Alineación visual perfecta en todos los breakpoints.
+- [ ] El espaciado utiliza tokens de diseño de forma consistente.
+- [ ] Jerarquía tipográfica consistente.
+- [ ] Todos los estados de interacción implementados.
+- [ ] Todas las transiciones fluidas (60fps).
+- [ ] Los textos son coherentes y están pulidos.
+- [ ] Los iconos son consistentes y tienen el tamaño adecuado.
+- [ ] Todos los formularios están etiquetados y validados correctamente.
+- [ ] Los estados de error son de utilidad.
+- [ ] Los estados de carga son claros.
+- [ ] Los estados vacíos son acogedores.
+- [ ] Las áreas táctiles tienen un mínimo de 44x44px.
+- [ ] Las relaciones de contraste cumplen con WCAG AA.
+- [ ] La navegación por teclado funciona correctamente.
+- [ ] Indicadores de enfoque visibles.
+- [ ] Sin errores ni advertencias en la consola.
+- [ ] Sin cambios de diseño al cargar (CLS).
+- [ ] Funciona en todos los navegadores soportados.
+- [ ] Respeta la preferencia de movimiento reducido.
+- [ ] El código está limpio (sin TODOs, console.logs o código comentado).
 
-**IMPORTANT**: Polish is about details. Zoom in. Squint at it. Use it yourself. The little things add up.
+**IMPORTANTE**: El pulido reside en los detalles. Haz zoom. Observa de cerca. Usa la app tú mismo. Los pequeños detalles marcan la diferencia.
 
-**NEVER**:
-- Polish before it's functionally complete
-- Spend hours on polish if it ships in 30 minutes (triage)
-- Introduce bugs while polishing (test thoroughly)
-- Ignore systematic issues (if spacing is off everywhere, fix the system)
-- Perfect one thing while leaving others rough (consistent quality level)
-- Create new one-off components when design system equivalents exist
-- Hard-code values that should use design tokens
+**NUNCA**:
+- Pulas antes de que la funcionalidad sea completa.
+- Dediques horas a pulir si el lanzamiento es en 30 minutos (haz triaje).
+- Introduzcas errores (bugs) mientras pules (realiza pruebas exhaustivas).
+- Ignores problemas sistemáticos (si el espaciado está mal en todas partes, corrige el sistema).
+- Dejes partes toscas mientras perfeccionas una sola cosa (mantén un nivel de calidad consistente).
+- Crees componentes personalizados de un solo uso cuando ya existan equivalentes en el sistema de diseño.
+- Uses valores fijos (hardcode) que deberían ser tokens de diseño.
 
-## Final Verification
+## Verificación Final
 
-Before marking as done:
+Antes de marcar la tarea como completada:
 
-- **Use it yourself**: Actually interact with the feature
-- **Test on real devices**: Not just browser DevTools
-- **Ask someone else to review**: Fresh eyes catch things
-- **Compare to design**: Match intended design
-- **Check all states**: Don't just test happy path
+- **Úsalo tú mismo**: Interactúa realmente con la funcionalidad.
+- **Prueba en dispositivos reales**: No te limites a las DevTools del navegador.
+- **Pide a otra persona que lo revise**: Una mirada fresca detecta cosas nuevas.
+- **Compara con el diseño original**: Verifica que coincida con el diseño previsto.
+- **Prueba todos los estados**: No te limites a probar la ruta feliz.
 
-## Clean Up
+## Limpieza
 
-After polishing, ensure code quality:
+Después de pulir, asegura la calidad del código:
 
-- **Replace custom implementations**: If the design system provides a component you reimplemented, switch to the shared version.
-- **Remove orphaned code**: Delete unused styles, components, or files made obsolete by polish.
-- **Consolidate tokens**: If you introduced new values, check whether they should be tokens.
-- **Verify DRYness**: Look for duplication introduced during polishing and consolidate.
+- **Reemplaza implementaciones personalizadas**: Si el sistema de diseño proporciona un componente que habías reimplementado, cámbialo por la versión compartida.
+- **Elimina código huérfano**: Borra estilos, componentes o archivos que ya no se utilicen tras el pulido.
+- **Consolida tokens**: Si introdujiste nuevos valores, comprueba si deberían convertirse en tokens.
+- **Verifica el principio DRY**: Busca duplicaciones que se hayan podido introducir al pulir y consolídalas.
 
-Remember: You have impeccable attention to detail and exquisite taste. Polish until it feels effortless, looks intentional, and works flawlessly. Sweat the details - they matter.
-
+Recuerda: Tienes una atención al detalle impecable y un gusto exquisito. Pule hasta que la experiencia se sienta natural, se vea intencionada y funcione a la perfección. Cuida los detalles; importan de verdad.

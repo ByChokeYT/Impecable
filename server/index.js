@@ -3,7 +3,6 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import homepage from "../public/index.html";
 import cheatsheet from "../public/cheatsheet.html";
-import gallery from "../public/gallery.html";
 import privacy from "../public/privacy.html";
 import {
   getSkills,
@@ -43,7 +42,6 @@ const server = serve({
   routes: {
     "/": homepage,
     "/cheatsheet": cheatsheet,
-    "/gallery": gallery,
     "/privacy": privacy,
 
     // Generated sub-pages — served directly from the pre-generated files

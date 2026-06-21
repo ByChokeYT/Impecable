@@ -1,250 +1,249 @@
 # Impeccable
 
-The vocabulary you didn't know you needed. 1 skill, 18 commands, and curated anti-patterns for impeccable style. Works with Cursor, Claude Code, Gemini CLI, and Codex CLI.
+El vocabulario que no sabías que necesitabas. 1 habilidad, 18 comandos y anti-patrones seleccionados para un estilo impecable. Funciona con Cursor, Claude Code, Gemini CLI y Codex CLI.
 
-## Repository Purpose
+## Propósito del repositorio
 
-Maintain a **single source of truth** for design-focused skills and commands, then automatically transform them into provider-specific formats. Each provider has different capabilities (frontmatter, arguments, modular files), so we use a build system to generate appropriate outputs.
+Mantener una **única fuente de verdad** para las habilidades y comandos enfocados en diseño, y luego transformarlos automáticamente a formatos específicos de cada proveedor. Cada proveedor tiene diferentes capacidades (frontmatter, argumentos, archivos modulares), por lo que utilizamos un sistema de compilación para generar las salidas correspondientes.
 
-## Architecture: Option A (Feature-Rich Source)
+## Arquitectura: Opción A (Origen rico en funciones)
 
-We use a **feature-rich source format** that gets transformed for each provider:
+Utilizamos un **formato de origen rico en funciones** que se transforma para cada proveedor:
 
-- **Source files** (`source/`): Full metadata with YAML frontmatter, args, descriptions
-- **Build system** (`scripts/`): Transforms source → provider-specific formats
-- **Distribution** (`dist/`): Committed output files for 4 providers
+- **Archivos fuente** (`source/`): Metadatos completos con frontmatter YAML, argumentos y descripciones
+- **Sistema de compilación** (`scripts/`): Transforma la fuente → formatos específicos del proveedor
+- **Distribución** (`dist/`): Archivos de salida confirmados para 4 proveedores
 
-### Why Option A?
+### ¿Por qué la opción A?
 
-Cursor doesn't support frontmatter or arguments (lowest common denominator). Instead of limiting all providers, we:
-1. Author with full metadata in source files
-2. Generate full-featured versions for providers that support it (Claude Code, Gemini, Codex)
-3. Generate downgraded versions for Cursor (strip frontmatter, rely on appending)
+Cursor no admite frontmatter ni argumentos (el mínimo común denominador). En lugar de limitar a todos los proveedores, nosotros:
+1. Autorizamos con metadatos completos en los archivos fuente
+2. Generamos versiones con todas las funciones para los proveedores que lo admiten (Claude Code, Gemini, Codex)
+3. Generamos versiones simplificadas para Cursor (eliminando frontmatter y confiando en la adición de texto)
 
-## Repository Structure
+## Estructura del repositorio
 
 ```
 impeccable/
-├── source/                      # EDIT THESE! Single source of truth
-│   ├── commands/                # Command definitions with frontmatter
+├── source/                      # ¡EDITA ESTOS! Única fuente de verdad
+│   ├── commands/                # Definiciones de comandos con frontmatter
 │   │   └── normalize.md
-│   └── skills/                  # Skill definitions with frontmatter
+│   └── skills/                  # Definiciones de habilidades con frontmatter
 │       └── impeccable/
-├── dist/                        # Generated outputs (committed for users)
-│   ├── cursor/                  # Commands + Agent Skills
+├── dist/                        # Salidas generadas (comitadas para los usuarios)
+│   ├── cursor/                  # Comandos + Habilidades de agentes
 │   │   └── .cursor/
 │   │       ├── commands/*.md
 │   │       └── skills/*/SKILL.md
-│   ├── claude-code/             # Full featured
+│   ├── claude-code/             # Con todas las funciones
 │   │   └── .claude/
 │   │       ├── commands/*.md
 │   │       └── skills/*/SKILL.md
-│   ├── gemini/                  # TOML commands + modular skills
+│   ├── gemini/                  # Comandos TOML + habilidades modulares
 │   │   ├── .gemini/
 │   │   │   └── commands/*.toml
 │   │   ├── GEMINI.md
 │   │   └── GEMINI.*.md
-│   └── codex/                   # Custom prompts + Agent Skills
+│   └── codex/                   # Prompts personalizados + Habilidades de agentes
 │       └── .codex/
 │           ├── prompts/*.md
 │           └── skills/*/SKILL.md
-├── api/                         # Vercel Functions (production)
+├── api/                         # Vercel Functions (producción)
 │   ├── skills.js                # GET /api/skills
 │   ├── commands.js              # GET /api/commands
 │   └── download/
-│       ├── [type]/[provider]/[id].js   # Individual downloads
-│       └── bundle/[provider].js        # Bundle downloads
-├── public/                      # Website for impeccable.style
-│   ├── index.html               # Main page
-│   ├── css/                     # Modular CSS (9 files)
-│   │   ├── main.css             # Entry point with imports
-│   │   ├── tokens.css           # Design system
-│   │   └── ...                  # Component styles
-│   └── app.js                   # Vanilla JS
-├── server/                      # Bun server (local dev only)
-│   ├── index.js                 # Serves website + API routes
+│       ├── [type]/[provider]/[id].js   # Descargas individuales
+│       └── bundle/[provider].js        # Descargas de paquetes
+├── public/                      # Sitio web para impeccable.style
+│   ├── index.html               # Página principal
+│   ├── css/                     # CSS modular (9 archivos)
+│   │   ├── main.css             # Punto de entrada con importaciones
+│   │   ├── tokens.css           # Sistema de diseño
+│   │   └── ...                  # Estilos de componentes
+│   └── app.js                   # JS Vanilla
+├── server/                      # Servidor Bun (desarrollo local únicamente)
+│   ├── index.js                 # Sirve el sitio web + rutas de la API
 │   └── lib/
-│       └── api-handlers.js      # Shared API logic (used by both server & functions)
-├── scripts/                     # Build system (Bun)
-│   ├── build.js                 # Main orchestrator
+│       └── api-handlers.js      # Lógica compartida de la API (usada por servidor y funciones)
+├── scripts/                     # Sistema de compilación (Bun)
+│   ├── build.js                 # Organizador principal
 │   ├── lib/
-│   │   ├── utils.js             # Shared utilities
-│   │   ├── zip.js               # ZIP generation
-│   │   └── transformers/        # Provider-specific transformers
+│   │   ├── utils.js             # Utilidades compartidas
+│   │   ├── zip.js               # Generación de ZIP
+│   │   └── transformers/        # Transformadores específicos del proveedor
 │   │       ├── cursor.js
 │   │       ├── claude-code.js
 │   │       ├── gemini.js
 │   │       └── codex.js
-├── README.md                    # End user documentation
-├── DEVELOP.md                   # Contributor documentation
-└── package.json                 # Bun scripts
+├── README.md                    # Documentación del usuario final
+├── DEVELOP.md                   # Documentación para desarrolladores
+└── package.json                 # Scripts de Bun
 ```
 
-## Website (impeccable.style)
+## Sitio Web (impeccable.style)
 
-**Tech Stack:**
-- Vanilla JavaScript (no frameworks)
-- Modern CSS with Bun's bundler (nesting, OKLCH colors, @import)
-- **Local Development**: Bun server with native routes (`server/index.js`)
-- **Production**: Vercel Functions with Bun runtime (`/api` directory)
-- Deployed on Vercel with Bun runtime
+**Pila tecnológica:**
+- JavaScript Vanilla (sin frameworks)
+- CSS moderno con el empaquetador de Bun (anidamiento, colores OKLCH, @import)
+- **Desarrollo local**: Servidor Bun con rutas nativas (`server/index.js`)
+- **Producción**: Vercel Functions con entorno de ejecución de Bun (directorio `/api`)
+- Desplegado en Vercel con el entorno de ejecución de Bun
 
-**Dual Setup:**
-- `/api` directory contains individual Vercel Functions for production
-- `/server` directory contains monolithic Bun server for local development
-- `/server/lib/api-handlers.js` contains shared logic used by both
-- Zero duplication: API functions and dev server import the same handlers
+**Configuración dual:**
+- El directorio `/api` contiene Vercel Functions individuales para producción
+- El directorio `/server` contiene el servidor Bun monolítico para desarrollo local
+- `/server/lib/api-handlers.js` contiene la lógica compartida utilizada por ambos
+- Cero duplicación: Las funciones de la API y el servidor de desarrollo importan los mismos controladores
 
-**Design:**
-- Editorial precision aesthetic
-- Cormorant Garamond (display) + Instrument Sans (body)
-- OKLCH color space for vibrant, perceptually uniform colors
-- Editorial sidebar layout (title left, content right)
-- Modular CSS architecture (9 files)
+**Diseño:**
+- Estética de precisión editorial
+- Cormorant Garamond (títulos) + Instrument Sans (cuerpo)
+- Espacio de color OKLCH para colores vibrantes y perceptualmente uniformes
+- Diseño de barra lateral editorial (título a la izquierda, contenido a la derecha)
+- Arquitectura CSS modular (9 archivos)
 
-**API Endpoints** (Vercel Functions):
-- `/` - Homepage (static HTML)
-- `/api/skills` - JSON list of all skills
-- `/api/commands` - JSON list of all commands
-- `/api/download/[type]/[provider]/[id]` - Individual file download
-- `/api/download/bundle/[provider]` - ZIP bundle download
+**Endpoints de la API** (Vercel Functions):
+- `/` - Página de inicio (HTML estático)
+- `/api/skills` - Lista JSON de todas las habilidades
+- `/api/commands` - Lista JSON de todos los comandos
+- `/api/download/[type]/[provider]/[id]` - Descarga de archivo individual
+- `/api/download/bundle/[provider]` - Descarga de paquete ZIP
 
-## Source File Format
+## Formato del archivo fuente
 
-### Commands (`source/commands/*.md`)
+### Comandos (`source/commands/*.md`)
 
 ```yaml
 ---
-name: command-name
-description: Clear description of what this command does
+name: nombre-del-comando
+description: Descripción clara de lo que hace este comando
 args:
-  - name: argname
-    description: Argument description
+  - name: nombrearg
+    description: Descripción del argumento
     required: false
 ---
 
-Command prompt here. Use {{argname}} placeholders for arguments.
+Instrucciones del comando aquí. Utiliza marcadores de posición {{nombrearg}} para los argumentos.
 ```
 
-### Skills (`source/skills/*.md`)
+### Habilidades (`source/skills/*.md`)
 
 ```yaml
 ---
-name: skill-name
-description: Clear description of what this skill provides
-license: License info (optional)
+name: nombre-de-la-habilidad
+description: Descripción clara de lo que proporciona esta habilidad
+license: Información de licencia (opcional)
 ---
 
-Skill instructions for the LLM here.
+Instrucciones de la habilidad para el LLM aquí.
 ```
 
-## Build System
+## Sistema de compilación
 
-Uses **Bun** for fast builds. Modular architecture:
+Utiliza **Bun** para compilaciones rápidas. Arquitectura modular:
 
-- **`utils.js`**: Shared functions (parseFrontmatter, readSourceFiles, writeFile, etc.)
-- **Transformer pattern**: Each provider has one focused file
-- **Registry**: `transformers/index.js` exports all transformers
-- **Main script**: `build.js` orchestrates everything (~50 lines)
+- **`utils.js`**: Funciones compartidas (parseFrontmatter, readSourceFiles, writeFile, etc.)
+- **Patrón de transformador**: Cada proveedor tiene un archivo específico
+- **Registro**: `transformers/index.js` exporta todos los transformadores
+- **Script principal**: `build.js` organiza todo (~50 líneas)
 
-Run: `bun run build`
+Ejecuta: `bun run build`
 
-## Provider Transformations
+## Transformaciones de proveedores
 
-### 1. Cursor (Agent Skills Standard)
-- **Commands**: Body only → `dist/cursor/.cursor/commands/*.md` (no frontmatter support)
-- **Skills**: Agent Skills standard → `dist/cursor/.cursor/skills/{name}/SKILL.md`
-  - Full YAML frontmatter with name/description
-  - Reference files in skill subdirectories
-- **Installation**: Extract ZIP into your project root, creates `.cursor/` folder
-- **Note**: Agent Skills require Cursor nightly channel
+### 1. Cursor (Estándar de Habilidades del Agente)
+- **Comandos**: Solo el cuerpo → `dist/cursor/.cursor/commands/*.md` (sin soporte para frontmatter)
+- **Habilidades**: Estándar de Habilidades del Agente → `dist/cursor/.cursor/skills/{name}/SKILL.md`
+  - Frontmatter YAML completo con nombre/descripción
+  - Archivos de referencia en los subdirectorios de habilidades
+- **Instalación**: Extrae el ZIP en la raíz de tu proyecto, crea la carpeta `.cursor/`
+- **Nota**: Las habilidades de agente requieren el canal Nightly de Cursor
 
-### 2. Claude Code (Full Featured)
-- **Commands**: Full YAML frontmatter → `dist/claude-code/.claude/commands/*.md`
-- **Skills**: Full YAML frontmatter → `dist/claude-code/.claude/skills/{name}/SKILL.md`
-- **Preserves**: All metadata, all args
-- **Format**: Matches [Anthropic Skills spec](https://github.com/anthropics/skills)
-- **Installation**: Extract ZIP into your project root, creates `.claude/` folder
+### 2. Claude Code (Con todas las funciones)
+- **Comandos**: Frontmatter YAML completo → `dist/claude-code/.claude/commands/*.md`
+- **Habilidades**: Frontmatter YAML completo → `dist/claude-code/.claude/skills/{name}/SKILL.md`
+- **Preserva**: Todos los metadatos y argumentos
+- **Formato**: Coincide con la [especificación de habilidades de Anthropic](https://github.com/anthropics/skills)
+- **Instalación**: Extrae el ZIP en la raíz de tu proyecto, crea la carpeta `.claude/`
 
-### 3. Gemini CLI (Full Featured)
-- **Commands**: TOML format → `dist/gemini/.gemini/commands/*.toml`
-  - Uses `description` and `prompt` keys
-  - Transforms `{{argname}}` → `{{args}}` (Gemini uses single args string)
-- **Skills**: Modular with imports → `dist/gemini/GEMINI.{name}.md` (root level)
-  - Main `GEMINI.md` uses `@./GEMINI.{name}.md` import syntax
-  - Gemini automatically loads imported files
-- **Installation**: Extract ZIP into your project root, creates `.gemini/` folder + skill files
+### 3. Gemini CLI (Con todas las funciones)
+- **Comandos**: Formato TOML → `dist/gemini/.gemini/commands/*.toml`
+  - Utiliza las claves `description` y `prompt`
+  - Transforma `{{argname}}` → `{{args}}` (Gemini utiliza una única cadena de argumentos)
+- **Habilidades**: Modulares con importaciones → `dist/gemini/GEMINI.{name}.md` (nivel raíz)
+  - El archivo principal `GEMINI.md` utiliza la sintaxis de importación `@./GEMINI.{name}.md`
+  - Gemini carga automáticamente los archivos importados
+- **Instalación**: Extrae el ZIP en la raíz de tu proyecto, crea la carpeta `.gemini/` y los archivos de habilidad
 
-### 4. Codex CLI (Full Featured)
-- **Commands**: Custom prompt format → `dist/codex/.codex/prompts/*.md`
-  - Uses `description` and `argument-hint` in frontmatter
-  - Transforms `{{argname}}` → `$ARGNAME` (uppercase variables)
-  - Invoked as `/prompts:<name>`
-- **Skills**: Agent Skills standard → `dist/codex/.codex/skills/{name}/SKILL.md`
-  - Same SKILL.md format as Claude Code with YAML frontmatter
-  - Reference files in skill subdirectories
-- **Installation**: Extract ZIP into your project root, creates `.codex/` folder
+### 4. Codex CLI (Con todas las funciones)
+- **Comandos**: Formato de prompt personalizado → `dist/codex/.codex/prompts/*.md`
+  - Utiliza `description` y `argument-hint` en el frontmatter
+  - Transforma `{{argname}}` → `$ARGNAME` (variables en mayúsculas)
+  - Se invoca como `/prompts:<nombre>`
+- **Habilidades**: Estándar de Habilidades del Agente → `dist/codex/.codex/skills/{name}/SKILL.md`
+  - Mismo formato SKILL.md que Claude Code con frontmatter YAML
+  - Archivos de referencia en los subdirectorios de habilidades
+- **Instalación**: Extrae el ZIP en la raíz de tu proyecto, crea la carpeta `.codex/`
 
-## Key Design Decisions
+## Decisiones clave de diseño
 
-### Why commit dist/?
-End users can copy files directly without needing build tools.
+### ¿Por qué subir dist/?
+Los usuarios finales pueden copiar los archivos directamente sin necesidad de herramientas de compilación.
 
-### Why separate transformers?
-- Each provider ~30-85 lines, easy to understand
-- Can modify one without affecting others
-- Easy to add new providers
+### ¿Por qué transformadores separados?
+- Cada proveedor ocupa ~30-85 líneas, fácil de entender
+- Se puede modificar uno sin afectar a los demás
+- Es fácil añadir nuevos proveedores
 
-### Why Bun?
-- Much faster than Node.js (2-4x)
-- All-in-one toolkit (runtime + package manager)
-- Zero config, TypeScript native
-- Node.js compatible (works with existing code)
+### ¿Por qué Bun?
+- Mucho más rápido que Node.js (2-4x)
+- Caja de herramientas todo en uno (entorno de ejecución + gestor de paquetes)
+- Cero configuración, nativo de TypeScript
+- Compatible con Node.js (funciona con el código existente)
 
-### Why modular skills for Gemini/Codex?
-- Better context management (load only what's needed)
-- Cleaner file organization
-- Gemini: Uses native `@file.md` import feature
-- Codex: Uses routing pattern with AGENTS.md guide
+### ¿Por qué habilidades modulares para Gemini/Codex?
+- Mejor gestión del contexto (carga solo lo que se necesita)
+- Organización de archivos más limpia
+- Gemini: Utiliza la función de importación nativa `@file.md`
+- Codex: Utiliza el patrón de enrutamiento con la guía AGENTS.md
 
-### Why vanilla JS for website?
-- No build complexity
-- Bun handles everything natively
-- Modern features (ES6+, CSS nesting, OKLCH colors)
-- Fast, lean, maintainable
+### ¿Por qué JS Vanilla para el sitio web?
+- Sin complejidad de compilación
+- Bun maneja todo de forma nativa
+- Funciones modernas (ES6+, anidamiento de CSS, colores OKLCH)
+- Rápido, ligero, mantenible
 
-## Adding New Content
+## Añadir nuevo contenido
 
-1. **Create source file** in `source/commands/` or `source/skills/`
-2. **Add frontmatter** with name, description, args (for commands) or license (for skills)
-3. **Write body** with instructions/prompt
-4. **Build**: `bun run build`
-5. **Test** with your provider
-6. **Commit** both source and dist files
+1. **Crea el archivo fuente** en `source/commands/` o `source/skills/`
+2. **Añade el frontmatter** con nombre, descripción, argumentos (para comandos) o licencia (para habilidades)
+3. **Escribe el cuerpo** con las instrucciones/prompts
+4. **Compila**: `bun run build`
+5. **Prueba** con tu proveedor
+6. **Sube** tanto los archivos fuente como los generados en dist/
 
-## Important Notes
+## Notas importantes
 
-- **Source is truth**: Always edit `source/`, never edit `dist/` directly
-- **Test across providers**: Changes affect 4 different outputs
-- **Argument handling**: Write prompts that work with both placeholders and appending
-- **Cursor limitations**: No frontmatter/args, so design for graceful degradation
+- **La fuente es la verdad**: Edita siempre en `source/`, nunca edites en `dist/` directamente
+- **Prueba en todos los proveedores**: Los cambios afectan a 4 salidas diferentes
+- **Gestión de argumentos**: Escribe prompts que funcionen tanto con marcadores de posición como añadiendo texto al final
+- **Limitaciones de Cursor**: Sin soporte para frontmatter/argumentos, diseña para una degradación elegante
 
-## Documentation
+## Documentación
 
-- **README.md**: End user guide (installation, usage, quick dev setup)
-- **DEVELOP.md**: Contributor guide (architecture, build system, adding content)
-- **This file (AGENTS.md)**: Context for AI assistants and new developers
+- **README.md**: Guía del usuario final (instalación, uso, inicio rápido de desarrollo)
+- **DEVELOP.md**: Guía del colaborador (arquitectura, sistema de compilación, añadir contenido)
+- **Este archivo (AGENTS.md)**: Contexto para asistentes de IA y nuevos desarrolladores
 
-## Provider Documentation Links
+## Enlaces a la documentación de proveedores
 
-- [Agent Skills Specification](https://agentskills.io/specification) - Open standard
-- [Cursor Commands](https://cursor.com/docs/agent/chat/commands)
-- [Cursor Rules](https://cursor.com/docs/context/rules)
-- [Cursor Skills](https://cursor.com/docs/context/skills)
-- [Claude Code Slash Commands](https://code.claude.com/docs/en/slash-commands)
-- [Anthropic Skills](https://github.com/anthropics/skills)
-- [Gemini CLI Custom Commands](https://cloud.google.com/blog/topics/developers-practitioners/gemini-cli-custom-slash-commands)
-- [Gemini CLI GEMINI.md](https://github.com/google-gemini/gemini-cli/blob/main/docs/cli/gemini-md.md)
-- [Codex CLI Slash Commands](https://developers.openai.com/codex/guides/slash-commands)
-- [Codex CLI Skills](https://developers.openai.com/codex/skills/)
-
+- [Especificación de Habilidades de Agente](https://agentskills.io/specification) - Estándar abierto
+- [Comandos de Cursor](https://cursor.com/docs/agent/chat/commands)
+- [Reglas de Cursor](https://cursor.com/docs/context/rules)
+- [Habilidades de Cursor](https://cursor.com/docs/context/skills)
+- [Comandos de barra diagonal de Claude Code](https://code.claude.com/docs/en/slash-commands)
+- [Habilidades de Anthropic](https://github.com/anthropics/skills)
+- [Comandos personalizados de Gemini CLI](https://cloud.google.com/blog/topics/developers-practitioners/gemini-cli-custom-slash-commands)
+- [GEMINI.md en Gemini CLI](https://github.com/google-gemini/gemini-cli/blob/main/docs/cli/gemini-md.md)
+- [Comandos de barra diagonal de Codex CLI](https://developers.openai.com/codex/guides/slash-commands)
+- [Habilidades de Codex CLI](https://developers.openai.com/codex/skills/)

@@ -1,88 +1,88 @@
 ---
 name: impeccable
-description: Create distinctive, production-grade frontend interfaces with high design quality. Generates creative, polished code that avoids generic AI aesthetics. Use when the user asks to build web components, pages, artifacts, posters, or applications, or when any design skill requires project context. Call with 'craft' for shape-then-build, 'teach' for design context setup, or 'extract' to pull reusable components and tokens into the design system.
+description: Crea interfaces frontend distintivas de nivel de producción con alta calidad de diseño. Genera código creativo y pulido que evita la estética genérica de la IA. Úsalo cuando el usuario pida construir componentes web, páginas, artefactos, pósters o aplicaciones, o cuando cualquier habilidad de diseño requiera contexto del proyecto. Llámalo con 'craft' para diseñar y luego construir, 'teach' para configurar el contexto de diseño del proyecto, o 'extract' para extraer componentes y tokens reutilizables al sistema de diseño.
 version: 2.1.1
-license: Apache 2.0. Based on Anthropic's frontend-design skill. See NOTICE.md for attribution.
+license: Apache 2.0. Basado en la habilidad frontend-design de Anthropic. Consulta NOTICE.md para atribución.
 ---
 
 <post-update-cleanup>
-BEFORE doing any design work, run this one-time maintenance step. Tell the user:
+ANTES de realizar cualquier trabajo de diseño, ejecuta este paso de mantenimiento por única vez. Dile al usuario:
 
-> **Impeccable was updated.** A few skills were renamed or merged in this version (e.g. `/arrange` is now `/layout`, `/normalize` was folded into `/polish`). I'll clean up the old skill files so they don't clutter your project. This only runs once after an update.
+> **Impeccable se ha actualizado.** Se han renombrado o fusionado algunas habilidades en esta versión (por ejemplo, `/arrange` ahora es `/layout`, `/normalize` se integró en `/polish`). Limpiaré los archivos de habilidades antiguos para que no saturen tu proyecto. Esto solo se ejecuta una vez después de una actualización.
 
-Then run:
+Luego ejecuta:
 
 ```bash
 node .kiro/skills/impeccable/scripts/cleanup-deprecated.mjs
 ```
 
-If the script removed files, briefly confirm what was cleaned up. If it found nothing, skip any output and move on.
+Si el script eliminó archivos, confirma brevemente qué se limpió. Si no encontró nada, omite cualquier mensaje y continúa.
 
-After running the script, delete this entire section (from `<post-update-cleanup>` through `</post-update-cleanup>` inclusive) from THIS file so it does not run again until the next update. Save the file.
+Después de ejecutar el script, elimina toda esta sección (desde `<post-update-cleanup>` hasta `</post-update-cleanup>` inclusive) de ESTE archivo para que no se vuelva a ejecutar hasta la próxima actualización. Guarda el archivo.
 </post-update-cleanup>
 
-This skill guides creation of distinctive, production-grade frontend interfaces that avoid generic "AI slop" aesthetics. Implement real working code with exceptional attention to aesthetic details and creative choices.
+Esta habilidad guía la creación de interfaces frontend distintivas de nivel de producción que evitan la estética genérica de la IA ("AI slop"). Implementa código funcional real con una atención excepcional a los detalles estéticos y a las elecciones creativas.
 
-## Context Gathering Protocol
+## Protocolo de Recopilación de Contexto
 
-Design skills produce generic output without project context. You MUST have confirmed design context before doing any design work.
+Las habilidades de diseño producen resultados genéricos sin el contexto del proyecto. DEBES tener un contexto de diseño confirmado antes de realizar cualquier trabajo de diseño.
 
-**Required context** (every design skill needs at minimum):
-- **Target audience**: Who uses this product and in what context?
-- **Use cases**: What jobs are they trying to get done?
-- **Brand personality/tone**: How should the interface feel?
+**Contexto requerido** (cada habilidad de diseño necesita como mínimo):
+- **Audiencia objetivo**: ¿Quién usa este producto y en qué contexto?
+- **Casos de uso**: ¿Qué tareas están intentando resolver?
+- **Personalidad/tono de marca**: ¿Cómo debería sentirse la interfaz?
 
-Individual skills may require additional context. Check the skill's preparation section for specifics.
+Las habilidades individuales pueden requerir contexto adicional. Consulta la sección de preparación de la habilidad para obtener detalles específicos.
 
-**CRITICAL**: You cannot infer this context by reading the codebase. Code tells you what was built, not who it's for or what it should feel like. Only the creator can provide this context.
+**CRÍTICO**: No puedes deducir este contexto leyendo el código base. El código te dice qué se construyó, no para quién es ni cómo debería sentirse. Solo el creador puede proporcionar este contexto.
 
-**Gathering order:**
-1. **Check current instructions (instant)**: If your loaded instructions already contain a **Design Context** section, proceed immediately.
-2. **Check .impeccable.md (fast)**: If not in instructions, read `.impeccable.md` from the project root. If it exists and contains the required context, proceed.
-3. **Run impeccable teach (REQUIRED)**: If neither source has context, you MUST run /impeccable teach NOW before doing anything else. Do NOT skip this step. Do NOT attempt to infer context from the codebase instead.
+**Orden de recopilación:**
+1. **Comprobar las instrucciones actuales (instantáneo)**: Si tus instrucciones cargadas ya contienen una sección de **Contexto de diseño**, procede de inmediato.
+2. **Comprobar .impeccable.md (rápido)**: Si no está en las instrucciones, lee `.impeccable.md` en la raíz del proyecto. Si existe y contiene el contexto requerido, procede.
+3. **Ejecutar impeccable teach (REQUERIDO)**: Si ninguna de las fuentes tiene contexto, DEBES ejecutar /impeccable teach AHORA antes de hacer cualquier otra cosa. NO omitas este paso. NO intentes deducir el contexto a partir del código base en su lugar.
 
 ---
 
-## Design Direction
+## Dirección de Diseño
 
-Commit to a BOLD aesthetic direction:
-- **Purpose**: What problem does this interface solve? Who uses it?
-- **Tone**: Pick an extreme: brutally minimal, maximalist chaos, retro-futuristic, organic/natural, luxury/refined, playful/toy-like, editorial/magazine, brutalist/raw, art deco/geometric, soft/pastel, industrial/utilitarian, etc. There are so many flavors to choose from. Use these for inspiration but design one that is true to the aesthetic direction.
-- **Constraints**: Technical requirements (framework, performance, accessibility).
-- **Differentiation**: What makes this UNFORGETTABLE? What's the one thing someone will remember?
+Comprométete con una dirección estética ATREVIDA:
+- **Propósito**: ¿Qué problema resuelve esta interfaz? ¿Quién la usa?
+- **Tono**: Elige un extremo: brutalmente minimalista, caos maximalista, retro-futurista, orgánico/natural, lujoso/refinado, juguetón/tipo juguete, editorial/revista, brutalista/puro, art déco/geométrico, suave/pastel, industrial/utilitario, etc. Hay muchos estilos para elegir. Úsalos como inspiración pero diseña uno que sea fiel a la dirección estética seleccionada.
+- **Restricciones**: Requisitos técnicos (framework, rendimiento, accesibilidad).
+- **Diferenciación**: ¿Qué hace que esto sea INOLVIDABLE? ¿Qué es lo único que alguien recordará?
 
-**CRITICAL**: Choose a clear conceptual direction and execute it with precision. Bold maximalism and refined minimalism both work. The key is intentionality, not intensity.
+**CRÍTICO**: Elige una dirección conceptual clara y ejecútala con precisión. El maximalismo atrevido y el minimalismo refinado funcionan. La clave es la intencionalidad, no la intensidad.
 
-Then implement working code that is:
-- Production-grade and functional
-- Visually striking and memorable
-- Cohesive with a clear aesthetic point-of-view
-- Meticulously refined in every detail
+Luego implementa código funcional que sea:
+- De nivel de producción y funcional
+- Visualmente impactante y memorable
+- Coherente con un punto de vista estético claro
+- Meticulosamente refinado en cada detalle
 
-## Frontend Aesthetics Guidelines
+## Directrices de Estética Frontend
 
-### Typography
-→ *Consult [typography reference](reference/typography.md) for OpenType features, web font loading, and the deeper material on scales.*
+### Tipografía
+→ *Consulta la [referencia de tipografía](reference/typography.md) para características OpenType, carga de fuentes web y material más profundo sobre escalas.*
 
-Choose fonts that are beautiful, unique, and interesting. Pair a distinctive display font with a refined body font.
+Elige fuentes que sean hermosas, únicas e interesantes. Combina una fuente de exhibición (display) distintiva con una fuente de cuerpo refinada.
 
 <typography_principles>
-Always apply these — do not consult a reference, just do them:
+Aplica siempre estas reglas, no consultes una referencia, solo hazlas:
 
-- Use a modular type scale with fluid sizing (clamp) for headings on marketing/content pages. Use fixed `rem` scales for app UIs and dashboards (no major design system uses fluid type in product UI).
-- Use fewer sizes with more contrast. A 5-step scale with at least a 1.25 ratio between steps creates clearer hierarchy than 8 sizes that are 1.1× apart.
-- Line-height scales inversely with line length. Narrow columns want tighter leading, wide columns want more. For light text on dark backgrounds, ADD 0.05-0.1 to your normal line-height — light type reads as lighter weight and needs more breathing room.
-- Cap line length at ~65-75ch. Body text wider than that is fatiguing.
+- Usa una escala tipográfica modular con dimensionamiento fluido (clamp) para los encabezados en páginas de marketing o contenido. Usa escalas fijas en `rem` para interfaces de aplicaciones y paneles de control (ningún sistema de diseño importante usa tipografía fluida en la interfaz de usuario de un producto).
+- Usa menos tamaños pero con más contraste. Una escala de 5 pasos con al menos una proporción de 1.25 entre pasos crea una jerarquía más clara que 8 tamaños que están a una distancia de 1.1x.
+- La altura de línea (line-height) escala inversamente con la longitud de línea. Las columnas estrechas requieren un interlineado más ajustado; las columnas anchas requieren más espacio. Para texto claro sobre fondos oscuros, AÑADE 0.05-0.1 a tu altura de línea normal; el texto claro se lee como de menor peso y necesita más espacio para respirar.
+- Limita la longitud de línea a ~65-75ch. El texto de cuerpo más ancho que eso resulta fatigante de leer.
 </typography_principles>
 
 <font_selection_procedure>
-DO THIS BEFORE TYPING ANY FONT NAME.
+HAZ ESTO ANTES DE ESCRIBIR CUALQUIER NOMBRE DE FUENTE.
 
-The model's natural failure mode is "I was told not to use Inter, so I will pick my next favorite font, which becomes the new monoculture." Avoid this by performing the following procedure on every project, in order:
+El modo de fallo natural del modelo es "me dijeron que no usara Inter, así que elegiré mi siguiente fuente favorita, que se convierte en la nueva monocultura". Evita esto realizando el siguiente procedimiento en cada proyecto, en orden:
 
-Step 1. Read the brief once. Write down 3 concrete words for the brand voice (e.g., "warm and mechanical and opinionated", "calm and clinical and careful", "fast and dense and unimpressed", "handmade and a little weird"). NOT "modern" or "elegant" — those are dead categories.
+Paso 1. Lee la descripción una vez. Escribe 3 palabras concretas para la voz de la marca (por ejemplo, "cálido, mecánico y obstinado", "calmo, clínico y cuidadoso", "rápido, denso e indiferente", "hecho a mano y un poco raro"). NO uses "moderno" o "elegante", esas son categorías vacías.
 
-Step 2. List the 3 fonts you would normally reach for given those words. Write them down. They are most likely from this list:
+Paso 2. Haz una lista de las 3 fuentes que normalmente elegirías dadas esas palabras. Escríbelas. Lo más probable es que estén en esta lista:
 
 <reflex_fonts_to_reject>
 Fraunces
@@ -110,254 +110,254 @@ Instrument Sans
 Instrument Serif
 </reflex_fonts_to_reject>
 
-Reject every font that appears in the reflex_fonts_to_reject list. They are your training-data defaults and they create monoculture across projects.
+Rechaza cada fuente que aparezca en la lista reflex_fonts_to_reject. Son tus valores predeterminados de datos de entrenamiento y crean monocultura entre proyectos.
 
-Step 3. Browse a font catalog with the 3 brand words in mind. Sources: Google Fonts, Pangram Pangram, Future Fonts, Adobe Fonts, ABC Dinamo, Klim Type Foundry, Velvetyne. Look for something that fits the brand as a *physical object* — a museum exhibit caption, a hand-painted shop sign, a 1970s mainframe terminal manual, a fabric label on the inside of a coat, a children's book printed on cheap newsprint. Reject the first thing that "looks designy" — that's the trained reflex too. Keep looking.
+Paso 3. Explora un catálogo de fuentes teniendo en mente las 3 palabras de la marca. Fuentes: Google Fonts, Pangram Pangram, Future Fonts, Adobe Fonts, ABC Dinamo, Klim Type Foundry, Velvetyne. Busca algo que se adapte a la marca como un *objeto físico*: el epígrafe de una exhibición de museo, un letrero de tienda pintado a mano, el manual de una terminal de computadora de los años 70, una etiqueta de tela en el interior de un abrigo, un libro infantil impreso en papel de periódico barato. Rechaza lo primero que "parezca diseñado", eso también es el reflejo entrenado. Sigue buscando.
 
-Step 4. Cross-check the result. The right font for an "elegant" brief is NOT necessarily a serif. The right font for a "technical" brief is NOT necessarily a sans-serif. The right font for a "warm" brief is NOT Fraunces. If your final pick lines up with your reflex pattern, go back to Step 3.
+Paso 4. Verifica el resultado. La fuente adecuada para un estilo "elegante" NO es necesariamente una serif. La fuente adecuada para un estilo "técnico" NO es necesariamente una sans-serif. La fuente adecuada para un estilo "cálido" NO es Fraunces. Si tu elección final coincide con tu patrón reflejo, vuelve al Paso 3.
 </font_selection_procedure>
 
 <typography_rules>
-DO use a modular type scale with fluid sizing (clamp) on headings.
-DO vary font weights and sizes to create clear visual hierarchy.
-DO vary your font choices across projects. If you used a serif display font on the last project, look for a sans, monospace, or display face on this one.
+SÍ: Usa una escala tipográfica modular con tamaño fluido (clamp()) en los encabezados.
+SÍ: Varía los pesos y tamaños de fuente para crear una jerarquía visual clara.
+SÍ: Varía tus elecciones de fuentes entre proyectos. Si usaste una fuente display serif en el último proyecto, busca una sans, mono o display en este.
 
-DO NOT use overused fonts like Inter, Roboto, Arial, Open Sans, or system defaults — but also do not simply switch to your second-favorite. Every font in the reflex_fonts_to_reject list above is banned. Look further.
-DO NOT use monospace typography as lazy shorthand for "technical/developer" vibes.
-DO NOT put large icons with rounded corners above every heading. They rarely add value and make sites look templated.
-DO NOT use only one font family for the entire page. Pair a distinctive display font with a refined body font.
-DO NOT use a flat type hierarchy where sizes are too close together. Aim for at least a 1.25 ratio between steps.
-DO NOT set long body passages in uppercase. Reserve all-caps for short labels and headings.
+NO: Uses fuentes sobreutilizadas como Inter, Roboto, Arial, Open Sans o las predeterminadas del sistema, pero tampoco te limites a cambiar a tu segunda favorita. Todas las fuentes de la lista reflex_fonts_to_reject anterior están prohibidas. Busca más allá.
+NO: Uses tipografía mono como un atajo perezoso para dar vibras "técnicas o de desarrollador".
+NO: Coloques iconos grandes con esquinas redondeadas sobre cada encabezado. Rara vez aportan valor y hacen que los sitios parezcan basados en plantillas.
+NO: Uses una sola familia tipográfica para toda la página. Combina una fuente display distintiva con una fuente de cuerpo refinada.
+NO: Uses una jerarquía tipográfica plana donde los tamaños estén demasiado juntos. Busca al menos una proporción de 1.25 entre los pasos.
+NO: Escribas pasajes largos de texto de cuerpo en mayúsculas. Reserva las mayúsculas para etiquetas cortas y encabezados.
 </typography_rules>
 
-### Color & Theme
-→ *Consult [color reference](reference/color-and-contrast.md) for the deeper material on contrast, accessibility, and palette construction.*
+### Color y Tema
+→ *Consulta la [referencia de color](reference/color-and-contrast.md) para material más profundo sobre contraste, accesibilidad y construcción de paletas.*
 
-Commit to a cohesive palette. Dominant colors with sharp accents outperform timid, evenly-distributed palettes.
+Comprométete con una paleta cohesiva. Los colores dominantes con acentos definidos superan a las paletas tímidas y distribuidas uniformemente.
 
 <color_principles>
-Always apply these — do not consult a reference, just do them:
+Aplica siempre estas reglas, no consultes una referencia, solo hazlas:
 
-- Use OKLCH, not HSL. OKLCH is perceptually uniform: equal steps in lightness *look* equal, which HSL does not deliver. As you move toward white or black, REDUCE chroma — high chroma at extreme lightness looks garish. A light blue at 85% lightness wants ~0.08 chroma, not the 0.15 of your base color.
-- Tint your neutrals toward your brand hue. Even a chroma of 0.005-0.01 is perceptible and creates subconscious cohesion between brand color and UI surfaces. The hue you tint toward should come from THIS brand, not from a "warm = friendly" or "cool = tech" formula. Pick the brand's actual hue first, then tint everything toward it.
-- The 60-30-10 rule is about visual *weight*, not pixel count. 60% neutral / surface, 30% secondary text and borders, 10% accent. Accents work BECAUSE they're rare. Overuse kills their power.
+- Usa OKLCH, no HSL. OKLCH es perceptualmente uniforme: los pasos iguales en luminosidad *se ven* iguales, lo cual HSL no ofrece. A medida que te acerques al blanco o al negro, REDUCE la croma: una croma alta en luminosidad extrema se ve estridente. Un azul claro al 85% de luminosidad requiere ~0.08 de croma, no el 0.15 de tu color base.
+- Tiñe tus colores neutros hacia el tono de tu marca. Incluso una croma de 0.005-0.01 es perceptible y crea una cohesión subconsciente entre el color de la marca y las superficies de la interfaz. El tono hacia el que tiñes debe provenir de ESTA marca, no de una fórmula de "cálido = amigable" o "frío = tecnológico". Elige primero el tono real de la marca y luego tiñe todo hacia él.
+- La regla 60-30-10 se refiere al *peso* visual, no al conteo de píxeles. 60% neutro/superficie, 30% texto secundario y bordes, 10% acento. Los acentos funcionan PORQUE son raros. El uso excesivo destruye su impacto.
 </color_principles>
 
 <theme_selection>
-Theme (light vs dark) should be DERIVED from audience and viewing context, not picked from a default. Read the brief and ask: when is this product used, by whom, in what physical setting?
+El tema (claro vs oscuro) debe DERIVARSE de la audiencia y del contexto de visualización, no elegirse por defecto. Lee la descripción del proyecto y pregunta: ¿cuándo se usa este producto, quién lo usa y en qué entorno físico?
 
-- A perp DEX consumed during fast trading sessions → dark
-- A hospital portal consumed by anxious patients on phones late at night → light
-- A children's reading app → light
-- A vintage motorcycle forum where users sit in their garage at 9pm → dark
-- An observability dashboard for SREs in a dark office → dark
-- A wedding planning checklist for couples on a Sunday morning → light
-- A music player app for headphone listening at night → dark
-- A food magazine homepage browsed during a coffee break → light
+- Un DEX perpetuo consumido durante sesiones de trading rápidas → oscuro
+- Un portal de hospital consumido por pacientes ansiosos en teléfonos tarde en la noche → claro
+- Una aplicación de lectura infantil → claro
+- Un foro de motocicletas clásicas donde los usuarios se sientan en su garaje a las 9 p.m. → oscuro
+- Un panel de observabilidad para SREs en una oficina oscura → oscuro
+- Una lista de verificación de planificación de bodas para parejas un domingo por la mañana → claro
+- Una aplicación de reproductor de música para escuchar con auriculares por la noche → oscuro
+- La página de inicio de una revista de comida navegada durante un descanso para el café → claro
 
-Do not default everything to light "to play it safe." Do not default everything to dark "to look cool." Both defaults are the lazy reflex. The correct theme is the one the actual user wants in their actual context.
+No pongas todo en modo claro "para ir a lo seguro". No pongas todo en modo oscuro "para lucir genial". Ambos valores predeterminados son reflejos perezosos. El tema correcto es el que el usuario real desea en su contexto real.
 </theme_selection>
 
 <color_rules>
-DO use modern CSS color functions (oklch, color-mix, light-dark) for perceptually uniform, maintainable palettes.
-DO tint your neutrals toward your brand hue. Even a subtle hint creates subconscious cohesion.
+SÍ: Usa funciones de color CSS modernas (oklch, color-mix, light-dark) para paletas perceptualmente uniformes y mantenibles.
+SÍ: Tiñe tus colores neutros hacia el tono de tu marca. Incluso un matiz sutil crea una cohesión subconsciente.
 
-DO NOT use gray text on colored backgrounds; it looks washed out. Use a shade of the background color instead.
-DO NOT use pure black (#000) or pure white (#fff). Always tint; pure black/white never appears in nature.
-DO NOT use the AI color palette: cyan-on-dark, purple-to-blue gradients, neon accents on dark backgrounds.
-DO NOT use gradient text for impact — see <absolute_bans> below for the strict definition. Solid colors only for text.
-DO NOT default to dark mode with glowing accents. It looks "cool" without requiring actual design decisions.
-DO NOT default to light mode "to be safe" either. The point is to choose, not to retreat to a safe option.
+NO: Uses texto gris sobre fondos de color; se ve lavado. En su lugar, usa un tono oscuro del color de fondo.
+NO: Uses negro puro (#000) o blanco puro (#fff). Siempre tiñe; el negro/blanco puro nunca aparece en la naturaleza.
+NO: Uses la paleta de colores de IA: cian sobre oscuro, degradados de púrpura a azul, acentos de neón sobre fondos oscuros.
+NO: Uses texto con degradado para impacto; consulta las <absolute_bans> a continuación para ver la definición estricta. Solo colores sólidos para el texto.
+NO: Establezcas por defecto el modo oscuro con acentos brillantes. Se ve "genial" pero no requiere decisiones de diseño reales.
+NO: Establezcas por defecto el modo claro "para ir a lo seguro". El objetivo es elegir, no refugiarse en una opción segura.
 </color_rules>
 
-### Layout & Space
-→ *Consult [spatial reference](reference/spatial-design.md) for the deeper material on grids, container queries, and optical adjustments.*
+### Diseño y Espacio
+→ *Consulta la [referencia espacial](reference/spatial-design.md) para material más profundo sobre cuadrículas, consultas de contenedor y ajustes ópticos.*
 
-Create visual rhythm through varied spacing, not the same padding everywhere. Embrace asymmetry and unexpected compositions. Break the grid intentionally for emphasis.
+Crea ritmo visual mediante un espaciado variado, no usando el mismo relleno (padding) en todas partes. Adopta la asimetría y las composiciones inesperadas. Rompe la cuadrícula intencionadamente para dar énfasis.
 
 <spatial_principles>
-Always apply these — do not consult a reference, just do them:
+Aplica siempre estas reglas, no consultes una referencia, solo hazlas:
 
-- Use a 4pt spacing scale with semantic token names (`--space-sm`, `--space-md`), not pixel-named (`--spacing-8`). Scale: 4, 8, 12, 16, 24, 32, 48, 64, 96. 8pt is too coarse — you'll often want 12px between two values.
-- Use `gap` instead of margins for sibling spacing. It eliminates margin collapse and the cleanup hacks that come with it.
-- Vary spacing for hierarchy. A heading with extra space above it reads as more important — make use of that. Don't apply the same padding everywhere.
-- Self-adjusting grid pattern: `grid-template-columns: repeat(auto-fit, minmax(280px, 1fr))` is the breakpoint-free responsive grid for card-style content.
-- Container queries are for components, viewport queries are for page layout. A card in a sidebar should adapt to the sidebar's width, not the viewport's.
+- Usa una escala de espaciado de 4pt con nombres de tokens semánticos (`--space-sm`, `--space-md`), no nombres basados en píxeles (`--spacing-8`). Escala: 4, 8, 12, 16, 24, 32, 48, 64, 96. Una escala de 8pt es demasiado gruesa; a menudo querrás 12px entre dos valores.
+- Usa `gap` en lugar de márgenes para el espaciado entre elementos hermanos. Elimina el colapso de márgenes y los trucos de limpieza asociados.
+- Varía el espaciado para establecer jerarquía. Un encabezado con espacio adicional arriba se lee como más importante; aprovéchalo. No apliques el mismo padding en todas partes.
+- Patrón de cuadrícula autoajustable: `grid-template-columns: repeat(auto-fit, minmax(280px, 1fr))` es la cuadrícula responsiva sin breakpoints para contenido tipo tarjeta.
+- Las consultas de contenedor (container queries) son para componentes, las consultas de viewport son para el diseño de la página. Una tarjeta en una barra lateral debe adaptarse al ancho de la barra lateral, no al del viewport.
 </spatial_principles>
 
 <spatial_rules>
-DO create visual rhythm through varied spacing: tight groupings, generous separations.
-DO use fluid spacing with clamp() that breathes on larger screens.
-DO use asymmetry and unexpected compositions; break the grid intentionally for emphasis.
+SÍ: Crea ritmo visual mediante un espaciado variado: agrupaciones estrechas, separaciones generosas.
+SÍ: Usa espaciado fluido con clamp() que respire en pantallas más grandes.
+SÍ: Usa asimetría y composiciones inesperadas; rompe la cuadrícula intencionadamente para dar énfasis.
 
-DO NOT wrap everything in cards. Not everything needs a container.
-DO NOT nest cards inside cards. Visual noise; flatten the hierarchy.
-DO NOT use identical card grids (same-sized cards with icon + heading + text, repeated endlessly).
-DO NOT use the hero metric layout template (big number, small label, supporting stats, gradient accent).
-DO NOT center everything. Left-aligned text with asymmetric layouts feels more designed.
-DO NOT use the same spacing everywhere. Without rhythm, layouts feel monotonous.
-DO NOT let body text wrap beyond ~80 characters per line. Add a max-width like 65–75ch so the eye can track easily.
+NO: Envuelvas todo en tarjetas. No todo necesita un contenedor.
+NO: Anides tarjetas dentro de tarjetas. Genera ruido visual; aplana la jerarquía.
+NO: Uses cuadrículas de tarjetas idénticas (tarjetas del mismo tamaño con icono + título + texto, repetidas infinitamente).
+NO: Uses la plantilla de diseño de métricas hero (número grande, etiqueta pequeña, estadísticas de soporte, acento de degradado).
+NO: Centres todo. El texto alineado a la izquierda con diseños asimétricos se siente más diseñado.
+NO: Uses el mismo espaciado en todas partes. Sin ritmo, los diseños se sienten monótonos.
+NO: Permitas que el texto de cuerpo se extienda más allá de ~80 caracteres por línea. Añade un ancho máximo como 65–75ch para que el ojo pueda seguir el texto fácilmente.
 </spatial_rules>
 
-### Visual Details
+### Detalles Visuales
 
 <absolute_bans>
-These CSS patterns are NEVER acceptable. They are the most recognizable AI design tells. Match-and-refuse: if you find yourself about to write any of these, stop and rewrite the element with a different structure entirely.
+Estos patrones CSS NUNCA son aceptables. Son los indicadores más reconocibles del diseño de IA. Identifica y rechaza: si te encuentras a punto de escribir cualquiera de estos, detente y reescribe el elemento con una estructura completamente diferente.
 
-BAN 1: Side-stripe borders on cards/list items/callouts/alerts
-  - PATTERN: `border-left:` or `border-right:` with width greater than 1px
-  - INCLUDES: hard-coded colors AND CSS variables
-  - FORBIDDEN: `border-left: 3px solid red`, `border-left: 4px solid #ff0000`, `border-left: 4px solid var(--color-warning)`, `border-left: 5px solid oklch(...)`, etc.
-  - WHY: this is the single most overused "design touch" in admin, dashboard, and medical UIs. It never looks intentional regardless of color, radius, opacity, or whether the variable name is "primary" or "warning" or "accent."
-  - REWRITE: use a different element structure entirely. Do not just swap to box-shadow inset. Reach for full borders, background tints, leading numbers/icons, or no visual indicator at all.
+PROHIBICIÓN 1: Bordes con franja lateral en tarjetas/elementos de lista/destacados/alertas
+  - PATRÓN: `border-left:` o `border-right:` con un ancho mayor a 1px
+  - INCLUYE: colores fijos Y variables CSS
+  - PROHIBIDO: `border-left: 3px solid red`, `border-left: 4px solid #ff0000`, `border-left: 4px solid var(--color-warning)`, `border-left: 5px solid oklch(...)`, etc.
+  - POR QUÉ: este es el "toque de diseño" más sobreutilizado en UIs de administración, paneles de control y aplicaciones médicas. Nunca se ve intencional, independientemente del color, radio, opacidad o si el nombre de la variable es "primary", "warning" o "accent".
+  - REESCRITURA: usa una estructura de elemento completamente diferente. No te limites a cambiar por un box-shadow inset. Opta por bordes completos, tintes de fondo, números/iconos al frente o ningún indicador visual en absoluto.
 
-BAN 2: Gradient text
-  - PATTERN: `background-clip: text` (or `-webkit-background-clip: text`) combined with a gradient background
-  - FORBIDDEN: any combination that makes text fill come from a `linear-gradient`, `radial-gradient`, or `conic-gradient`
-  - WHY: gradient text is decorative rather than meaningful and is one of the top three AI design tells
-  - REWRITE: use a single solid color for text. If you want emphasis, use weight or size, not gradient fill.
+PROHIBICIÓN 2: Texto con degradado
+  - PATRÓN: `background-clip: text` (o `-webkit-background-clip: text`) combinado con un fondo degradado
+  - PROHIBIDO: cualquier combinación que haga que el relleno del texto provenga de un `linear-gradient`, `radial-gradient` o `conic-gradient`
+  - POR QUÉ: el texto con degradado es decorativo en lugar de significativo y es uno de los tres principales indicadores del diseño de IA.
+  - REESCRITURA: usa un único color sólido para el texto. Si deseas énfasis, usa el peso o el tamaño, no un relleno degradado.
 </absolute_bans>
 
-DO: Use intentional, purposeful decorative elements that reinforce brand.
-DO NOT: Use border-left or border-right greater than 1px as a colored accent stripe on cards, list items, callouts, or alerts. See <absolute_bans> above for the strict CSS pattern.
-DO NOT: Use glassmorphism everywhere (blur effects, glass cards, glow borders used decoratively rather than purposefully).
-DO NOT: Use sparklines as decoration. Tiny charts that look sophisticated but convey nothing meaningful.
-DO NOT: Use rounded rectangles with generic drop shadows. Safe, forgettable, could be any AI output.
-DO NOT: Use modals unless there's truly no better alternative. Modals are lazy.
+SÍ: Usa elementos decorativos intencionales y útiles que refuercen la marca.
+NO: Uses border-left o border-right mayor a 1px como una franja de acento de color en tarjetas, elementos de lista, destacados o alertas. Consulta las <absolute_bans> anteriores para el patrón CSS estricto.
+NO: Uses glassmorphism en todas partes (efectos de desenfoque, tarjetas de vidrio, bordes brillantes utilizados de manera decorativa en lugar de útil).
+NO: Uses sparklines como decoración. Gráficos pequeños que se ven sofisticados pero no transmiten nada significativo.
+NO: Uses rectángulos redondeados con sombras paralelas genéricas. Seguro, olvidable, podría ser cualquier resultado de IA.
+NO: Uses modales a menos que realmente no haya una alternativa mejor. Los modales son perezosos.
 
-### Motion
-→ *Consult [motion reference](reference/motion-design.md) for timing, easing, and reduced motion.*
+### Movimiento
+→ *Consulta la [referencia de movimiento](reference/motion-design.md) para tiempos, aceleraciones y reducción de movimiento.*
 
-Focus on high-impact moments: one well-orchestrated page load with staggered reveals creates more delight than scattered micro-interactions.
+Enfócate en momentos de alto impacto: una carga de página bien orquestada con revelaciones escalonadas crea más deleite que interacciones microscópicas dispersas.
 
-**DO**: Use motion to convey state changes: entrances, exits, feedback
-**DO**: Use exponential easing (ease-out-quart/quint/expo) for natural deceleration
-**DO**: For height animations, use grid-template-rows transitions instead of animating height directly
-**DON'T**: Animate layout properties (width, height, padding, margin). Use transform and opacity only
-**DON'T**: Use bounce or elastic easing. They feel dated and tacky; real objects decelerate smoothly
+**SÍ**: Usa el movimiento para transmitir cambios de estado: entradas, salidas, feedback.
+**SÍ**: Usa aceleraciones exponenciales (ease-out-quart/quint/expo) para una deceleración natural.
+**SÍ**: Para animaciones de altura, usa transiciones de grid-template-rows en lugar de animar height directamente.
+**NO**: Animes propiedades de diseño (width, height, padding, margin). Usa únicamente transform y opacity.
+**NO**: Uses aceleraciones elásticas o de rebote. Se sienten anticuadas y de mal gusto; los objetos reales desaceleran suavemente.
 
-### Interaction
-→ *Consult [interaction reference](reference/interaction-design.md) for forms, focus, and loading patterns.*
+### Interacción
+→ *Consulta la [referencia de interacción](reference/interaction-design.md) para formularios, enfoque y patrones de carga.*
 
-Make interactions feel fast. Use optimistic UI: update immediately, sync later.
+Haz que las interacciones se sientan rápidas. Usa una UI optimista: actualiza inmediatamente, sincroniza después.
 
-**DO**: Use progressive disclosure. Start simple, reveal sophistication through interaction (basic options first, advanced behind expandable sections; hover states that reveal secondary actions)
-**DO**: Design empty states that teach the interface, not just say "nothing here"
-**DO**: Make every interactive surface feel intentional and responsive
-**DON'T**: Repeat the same information (redundant headers, intros that restate the heading)
-**DON'T**: Make every button primary. Use ghost buttons, text links, secondary styles; hierarchy matters
+**SÍ**: Usa la divulgación progresiva. Comienza de forma simple, revela la sofisticación a través de la interacción (opciones básicas primero, opciones avanzadas detrás de secciones expandibles; estados de hover que revelan acciones secundarias).
+**SÍ**: Diseña estados vacíos que enseñen a usar la interfaz, no que solo digan "no hay nada aquí".
+**SÍ**: Haz que cada superficie interactiva se sienta intencional y receptiva.
+**NO**: Repitas la misma información (encabezados redundantes, introducciones que repiten el título).
+**NO**: Hagas que todos los botones sean principales. Usa botones fantasma (ghost buttons), enlaces de texto, estilos secundarios; la jerarquía importa.
 
-### Responsive
-→ *Consult [responsive reference](reference/responsive-design.md) for mobile-first, fluid design, and container queries.*
+### Responsivo
+→ *Consulta la [referencia de diseño responsivo](reference/responsive-design.md) para diseño fluido, mobile-first y consultas de contenedor.*
 
-**DO**: Use container queries (@container) for component-level responsiveness
-**DO**: Adapt the interface for different contexts, not just shrink it
-**DON'T**: Hide critical functionality on mobile. Adapt the interface, don't amputate it
+**SÍ**: Usa consultas de contenedor (@container) para la adaptabilidad a nivel de componente.
+**SÍ**: Adapta la interfaz para diferentes contextos, no te limites a encogerla.
+**NO**: Ocultes funcionalidades críticas en móviles. Adapta la interfaz, no la amputes.
 
-### UX Writing
-→ *Consult [ux-writing reference](reference/ux-writing.md) for labels, errors, and empty states.*
+### Textos de UX (UX Writing)
+→ *Consulta la [referencia de redacción de UX](reference/ux-writing.md) para etiquetas, errores y estados vacíos.*
 
-**DO**: Make every word earn its place
-**DON'T**: Repeat information users can already see
-
----
-
-## The AI Slop Test
-
-**Critical quality check**: If you showed this interface to someone and said "AI made this," would they believe you immediately? If yes, that's the problem.
-
-A distinctive interface should make someone ask "how was this made?" not "which AI made this?"
-
-Review the DON'T guidelines above. They are the fingerprints of AI-generated work from 2024-2025.
+**SÍ**: Haz que cada palabra se gane su lugar.
+**NO**: Repitas información que los usuarios ya pueden ver.
 
 ---
 
-## Implementation Principles
+## La Prueba del "AI Slop"
 
-Match implementation complexity to the aesthetic vision. Maximalist designs need elaborate code with extensive animations and effects. Minimalist or refined designs need restraint, precision, and careful attention to spacing, typography, and subtle details.
+**Control de calidad crítico**: Si le mostraras esta interfaz a alguien y le dijeras "la IA hizo esto", ¿lo creería de inmediato? Si la respuesta es sí, ese es el problema.
 
-Interpret creatively and make unexpected choices that feel genuinely designed for the context. No design should be the same. Vary between light and dark themes, different fonts, different aesthetics. NEVER converge on common choices across generations.
+Una interfaz distintiva debería hacer que alguien pregunte "¿cómo se hizo esto?" no "¿qué IA hizo esto?".
 
-Remember: Claude is capable of extraordinary creative work. Don't hold back. Show what can truly be created when thinking outside the box and committing fully to a distinctive vision.
-
----
-
-## Craft Mode
-
-If this skill is invoked with the argument "craft" (e.g., `/impeccable craft [feature description]`), follow the [craft flow](reference/craft.md). Pass any additional arguments as the feature description.
+Revisa las directrices de "NO" anteriores. Son las huellas dactilares del trabajo generado por IA de 2024-2025.
 
 ---
 
-## Teach Mode
+## Principios de Implementación
 
-If this skill is invoked with the argument "teach" (e.g., `/impeccable teach`), skip all design work above and instead run the teach flow below. This is a one-time setup that gathers design context for the project.
+Adapta la complejidad de la implementación a la visión estética. Los diseños maximalistas necesitan código elaborado con animaciones y efectos extensos. Los diseños minimalistas o refinados necesitan moderación, precisión y una atención cuidadosa al espaciado, la tipografía y los detalles sutiles.
 
-### Step 1: Explore the Codebase
+Interpreta de manera creativa y toma decisiones inesperadas que se sientan genuinamente diseñadas para el contexto. Ningún diseño debe ser igual a otro. Varía entre temas claros y oscuros, diferentes fuentes, diferentes estéticas. NUNCA converjas en elecciones comunes entre generaciones.
 
-Before asking questions, thoroughly scan the project to discover what you can:
+Recuerda: Claude es capaz de realizar un trabajo creativo extraordinario. No te limites. Muestra lo que realmente se puede crear cuando se piensa fuera de lo común y se compromete plenamente con una visión distintiva.
 
-- **README and docs**: Project purpose, target audience, any stated goals
-- **Package.json / config files**: Tech stack, dependencies, existing design libraries
-- **Existing components**: Current design patterns, spacing, typography in use
-- **Brand assets**: Logos, favicons, color values already defined
-- **Design tokens / CSS variables**: Existing color palettes, font stacks, spacing scales
-- **Any style guides or brand documentation**
+---
 
-Note what you've learned and what remains unclear.
+## Modo Craft (Construcción)
 
-### Step 2: Ask UX-Focused Questions
+Si esta habilidad se invoca con el argumento "craft" (por ejemplo, `/impeccable craft [descripción de la función]`), sigue el [flujo de craft](reference/craft.md). Pasa cualquier argumento adicional como la descripción de la función.
 
-ask the user directly to clarify what you cannot infer. Focus only on what you couldn't infer from the codebase:
+---
 
-#### Users & Purpose
-- Who uses this? What's their context when using it?
-- What job are they trying to get done?
-- What emotions should the interface evoke? (confidence, delight, calm, urgency, etc.)
+## Modo Teach (Aprendizaje)
 
-#### Brand & Personality
-- How would you describe the brand personality in 3 words?
-- Any reference sites or apps that capture the right feel? What specifically about them?
-- What should this explicitly NOT look like? Any anti-references?
+Si esta habilidad se invoca con el argumento "teach" (por ejemplo, `/impeccable teach`), omite todo el trabajo de diseño anterior y en su lugar ejecuta el flujo de aprendizaje a continuación. Esta es una configuración única que recopila el contexto de diseño para el proyecto.
 
-#### Aesthetic Preferences
-- Any strong preferences for visual direction? (minimal, bold, elegant, playful, technical, organic, etc.)
-- Light mode, dark mode, or both?
-- Any colors that must be used or avoided?
+### Paso 1: Explorar el Código Base
 
-#### Accessibility & Inclusion
-- Specific accessibility requirements? (WCAG level, known user needs)
-- Considerations for reduced motion, color blindness, or other accommodations?
+Antes de hacer preguntas, escanea a fondo el proyecto para descubrir lo que puedas:
 
-Skip questions where the answer is already clear from the codebase exploration.
+- **README y documentación**: Propósito del proyecto, audiencia objetivo, cualquier objetivo declarado.
+- **Package.json / archivos de configuración**: Stack tecnológico, dependencias, librerías de diseño existentes.
+- **Componentes existentes**: Patrones de diseño actuales, espaciado, tipografía en uso.
+- **Activos de marca**: Logos, favicons, valores de color ya definidos.
+- **Tokens de diseño / variables CSS**: Paletas de colores existentes, conjuntos de fuentes, escalas de espaciado.
+- **Cualquier guía de estilo o documentación de marca.**
 
-### Step 3: Write Design Context
+Anota lo que has aprendido y lo que aún no está claro.
 
-Synthesize your findings and the user's answers into a `## Design Context` section:
+### Paso 2: Hacer Preguntas Enfocadas en UX
+
+ask the user directly to clarify what you cannot infer. Enfócate solo en lo que no pudiste deducir del código base:
+
+#### Usuarios y Propósito
+- ¿Quién usa esto? ¿Cuál es su contexto al usarlo?
+- ¿Qué tarea están tratando de resolver?
+- ¿Qué emociones debe evocar la interfaz? (confianza, deleite, calma, urgencia, etc.)
+
+#### Marca y Personalidad
+- ¿Cómo describirías la personalidad de la marca en 3 palabras?
+- ¿Algún sitio o aplicación de referencia que capture el estilo correcto? ¿Qué específicamente sobre ellos?
+- ¿A qué no debería parecerse esto explícitamente? ¿Alguna referencia negativa?
+
+#### Preferencias Estéticas
+- ¿Alguna preferencia marcada para la dirección visual? (minimalista, atrevida, elegante, juguetona, técnica, orgánica, etc.)
+- ¿Modo claro, modo oscuro o ambos?
+- ¿Algún color que deba usarse o evitarse?
+
+#### Accesibilidad e Inclusión
+- ¿Requisitos de accesibilidad específicos? (nivel WCAG, necesidades de usuario conocidas)
+- ¿Consideraciones para reducción de movimiento, daltonismo u otras adaptaciones?
+
+Omite las preguntas cuya respuesta ya esté clara tras la exploración del código base.
+
+### Paso 3: Escribir el Contexto de Diseño
+
+Sintetiza tus hallazgos y las respuestas del usuario en una sección `## Contexto de diseño`:
 
 ```markdown
-## Design Context
+## Contexto de diseño
 
-### Users
-[Who they are, their context, the job to be done]
+### Usuarios
+[Quiénes son, su contexto, la tarea a realizar]
 
-### Brand Personality
-[Voice, tone, 3-word personality, emotional goals]
+### Personalidad de Marca
+[Voz, tono, personalidad en 3 palabras, objetivos emocionales]
 
-### Aesthetic Direction
-[Visual tone, references, anti-references, theme]
+### Dirección Estética
+[Tono visual, referencias, referencias negativas, tema]
 
-### Design Principles
-[3-5 principles derived from the conversation that should guide all design decisions]
+### Principios de Diseño
+[3-5 principios derivados de la conversación que deben guiar todas las decisiones de diseño]
 ```
 
-Write this section to `.impeccable.md` in the project root. If the file already exists, update the Design Context section in place.
+Escribe esta sección en el archivo `.impeccable.md` en la raíz del proyecto. Si el archivo ya existe, actualiza la sección Contexto de diseño en su lugar.
 
-Then ask the user directly to clarify what you cannot infer. whether they'd also like the Design Context appended to .kiro/settings.json. If yes, append or update the section there as well.
+Luego ask the user directly to clarify what you cannot infer. si también desean que el Contexto de diseño se agregue a .kiro/settings.json. Si es así, agrégalo o actualiza la sección allí también.
 
-Confirm completion and summarize the key design principles that will now guide all future work.
+Confirma la finalización y resume los principios de diseño clave que ahora guiarán todo el trabajo futuro.
 
 ---
 
-## Extract Mode
+## Modo Extract (Extracción)
 
-If this skill is invoked with the argument "extract" (e.g., `/impeccable extract [target]`), follow the [extract flow](reference/extract.md). Pass any additional arguments as the extraction target.
+Si esta habilidad se invoca con el argumento "extract" (por ejemplo, `/impeccable extract [objetivo]`), sigue el [flujo de extract](reference/extract.md). Pasa cualquier argumento adicional como el objetivo de extracción.

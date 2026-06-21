@@ -1,70 +1,70 @@
-# Craft Flow
+# Flujo de Desarrollo (Craft Flow)
 
-Build a feature with impeccable UX and UI quality through a structured process: shape the design, load the right references, then build and iterate visually until the result is delightful.
+Construye una funcionalidad con una calidad de UX y UI impecable a través de un proceso estructurado: planifica el diseño, carga las referencias adecuadas, desarrolla e itera visualmente hasta lograr un resultado deleitable.
 
-## Step 1: Shape the Design
+## Paso 1: Planificar el Diseño (Shape)
 
-Run /shape, passing along whatever feature description the user provided.
+Ejecuta /shape, proporcionando la descripción de la funcionalidad que el usuario haya indicado.
 
-Wait for the design brief to be fully confirmed before proceeding. The brief is your blueprint, and every implementation decision should trace back to it.
+Espera a que el informe de diseño (design brief) esté completamente confirmado antes de proceder. El informe es tu plano de trabajo, y cada decisión de desarrollo debe estar alineada con él.
 
-If the user has already run /shape and has a confirmed design brief, skip this step and use the existing brief.
+Si el usuario ya ejecutó /shape y cuenta con un informe de diseño confirmado, omite este paso y utiliza dicho informe.
 
-## Step 2: Load References
+## Paso 2: Cargar Referencias
 
-Based on the design brief's "Recommended References" section, consult the relevant impeccable reference files. At minimum, always consult:
+Basándote en la sección "Referencias Recomendadas" del informe de diseño, consulta los archivos de referencia de impeccable correspondientes. Como mínimo, consulta siempre:
 
-- [spatial-design.md](spatial-design.md) for layout and spacing
-- [typography.md](typography.md) for type hierarchy
+- [spatial-design.md](spatial-design.md) para el diseño y espaciado.
+- [typography.md](typography.md) para la jerarquía tipográfica.
 
-Then add references based on the brief's needs:
-- Complex interactions or forms? Consult [interaction-design.md](interaction-design.md)
-- Animation or transitions? Consult [motion-design.md](motion-design.md)
-- Color-heavy or themed? Consult [color-and-contrast.md](color-and-contrast.md)
-- Responsive requirements? Consult [responsive-design.md](responsive-design.md)
-- Heavy on copy, labels, or errors? Consult [ux-writing.md](ux-writing.md)
+Luego, añade referencias según las necesidades de la funcionalidad:
+- ¿Interacciones complejas o formularios? Consulta [interaction-design.md](interaction-design.md).
+- ¿Animación o transiciones? Consulta [motion-design.md](motion-design.md).
+- ¿Mucho uso de color o temas? Consulta [color-and-contrast.md](color-and-contrast.md).
+- ¿Requisitos responsivos? Consulta [responsive-design.md](responsive-design.md).
+- ¿Mucho texto, etiquetas o errores? Consulta [ux-writing.md](ux-writing.md).
 
-## Step 3: Build
+## Paso 3: Desarrollar
 
-Implement the feature following the design brief. Work in this order:
+Implementa la funcionalidad siguiendo el informe de diseño. Trabaja en este orden:
 
-1. **Structure first**: HTML/semantic structure for the primary state. No styling yet.
-2. **Layout and spacing**: Establish the spatial rhythm and visual hierarchy.
-3. **Typography and color**: Apply the type scale and color system.
-4. **Interactive states**: Hover, focus, active, disabled.
-5. **Edge case states**: Empty, loading, error, overflow, first-run.
-6. **Motion**: Purposeful transitions and animations (if appropriate).
-7. **Responsive**: Adapt for different viewports. Don't just shrink; redesign for the context.
+1. **Estructura primero**: Estructura HTML/semántica para el estado principal. Aún sin estilos.
+2. **Diseño y espaciado**: Establece el ritmo espacial y la jerarquía visual.
+3. **Tipografía y color**: Aplica la escala tipográfica y el sistema de color.
+4. **Estados interactivos**: Hover, focus (enfoque), active, disabled.
+5. **Estados de casos extremos**: Vacío, cargando, error, desbordamiento, primer uso.
+6. **Movimiento**: Transiciones y animaciones intencionadas (si son adecuadas).
+7. **Responsivo**: Adapta para diferentes tamaños de pantalla. No te limites a encoger los elementos; rediséñalos para el contexto.
 
-### During Build
-- Test with real (or realistic) data at every step, not placeholder text
-- Check each state as you build it, not all at the end
-- If you discover a design question, stop and ask rather than guessing
-- Every visual choice should trace back to something in the design brief
+### Durante el Desarrollo
+- Realiza pruebas con datos reales (o realistas) en cada paso, evita el texto de relleno.
+- Comprueba cada estado a medida que lo construyes, no todos al final.
+- Si surge alguna duda de diseño, detente y pregunta en lugar de adivinar.
+- Cada elección visual debe estar vinculada a una sección del informe de diseño.
 
-## Step 4: Visual Iteration
+## Paso 4: Iteración Visual
 
-**This step is critical.** Do not stop after the first implementation pass.
+**Este paso es crítico.** No te detengas tras la primera pasada de implementación.
 
-Open the result in a browser window. If browser automation tools are available, use them to navigate to the page and visually inspect the result. If not, ask the user to open it and provide feedback.
+Abre el resultado en una ventana del navegador. Si dispones de herramientas de automatización del navegador, utilízalas para navegar por la página e inspeccionar visualmente el resultado. Si no, pide al usuario que lo abra y te dé su opinión.
 
-Iterate through these checks visually:
+Itera visualmente a través de estas comprobaciones:
 
-1. **Does it match the brief?** Compare the live result against every section of the design brief. Fix discrepancies.
-2. **Does it pass the AI slop test?** If someone saw this and said "AI made this," would they believe it immediately? If yes, it needs more design intention.
-3. **Check against impeccable's DON'T guidelines.** Fix any anti-pattern violations.
-4. **Check every state.** Navigate through empty, error, loading, and edge case states. Each one should feel intentional, not like an afterthought.
-5. **Check responsive.** Resize the viewport. Does it adapt well or just shrink?
-6. **Check the details.** Spacing consistency, type hierarchy clarity, color contrast, interactive feedback, motion timing.
+1. **¿Coincide con el informe de diseño?** Compara el resultado en vivo con cada sección del informe. Corrige las discrepancias.
+2. **¿Supera la prueba de basura de IA (AI slop)?** Si alguien viera esto y dijera "la IA hizo esto", ¿lo creería de inmediato? Si es así, necesita una mayor intención de diseño.
+3. **Verifica las directrices de NO de impeccable.** Corrige cualquier infracción de los antipatrones.
+4. **Comprueba cada estado.** Navega por los estados vacío, de error, de carga y casos extremos. Cada uno debe sentirse intencional, no como una ocurrencia tardía.
+5. **Verifica la responsividad.** Cambia el tamaño del viewport. ¿Se adapta bien o simplemente se encoge?
+6. **Comprueba los detalles.** Consistencia en el espaciado, claridad en la jerarquía tipográfica, contraste de color, retroalimentación interactiva, tiempos de animación.
 
-After each round of fixes, visually verify again. **Repeat until you would be proud to show this to the user.** The bar is not "it works"; the bar is "this delights."
+Tras cada ronda de correcciones, vuelve a realizar la verificación visual. **Repite hasta que te sientas orgulloso de mostrar el resultado al usuario.** El listón no está en "funciona"; el listón está en "deleitante".
 
-## Step 5: Present
+## Paso 5: Presentar
 
-Present the result to the user:
-- Show the feature in its primary state
-- Walk through the key states (empty, error, responsive)
-- Explain design decisions that connect back to the design brief
-- Ask: "What's working? What isn't?"
+Presenta el resultado al usuario:
+- Muestra la funcionalidad en su estado principal.
+- Explica los estados clave (vacío, error, responsivo).
+- Detalla las decisiones de diseño que se vinculan con el informe original.
+- Pregunta: "¿Qué funciona? ¿Qué no?".
 
-Iterate based on feedback. Good design is rarely right on the first pass.
+Itera basándote en los comentarios. El buen diseño rara vez es perfecto al primer intento.
